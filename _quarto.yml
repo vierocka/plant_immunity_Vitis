@@ -1,0 +1,5 @@
+project:
+  title: "Vitis vinifera - pyramiding of resistance loci"
+  render:
+    - "*.qmd"
+    - "!publication/"

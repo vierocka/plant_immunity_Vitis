@@ -1,0 +1,33 @@
+---
+title: "Vitis vinifera and Plasmopara viticola: host-pathogen interactions"
+author:
+  - name: Viera Kovacova
+    orcid: 0000-0003-4581-4254
+    affiliations:
+      - "IBP, University of Cologne, Germany"
+
+date: today
+date-format: iso
+format:
+  html:
+    embed-resources: true
+  hikmah-pdf:
+    geometry:
+      - left=1.25in
+      - right=1.25in
+bibliography: references.bib
+---
+
+{{< include publication/00-summary.qmd >}}
+
+{{< include publication/01-collaborators.qmd >}}
+
+{{< include publication/02-problemdefinition.qmd >}}
+
+{{< include publication/03-methods.qmd >}}
+
+{{< include publication/04-results.qmd >}}
+
+
+::: refs
+:::
