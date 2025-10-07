@@ -1,6 +1,8 @@
 # Overview: Pyramiding of resistance loci in Vitis vinifera
 
-## Quality control and mappinSee the folder "Trimming_mapping".
+## Quality control and mappin
+
+See the folder "Trimming_mapping".
 
 1.  Quality checks: FastQC (version 0.11.9)
 2.  Read trimming: Trimmomatic (version 0.39)
