@@ -159,7 +159,6 @@ par(mar=c(5.5,5,2,1), mgp=c(3,1,0), cex.main=1.25, cex.axis=1.5, cex.lab=1.5)
 hist(CotranscModSize, main="155 significant co-transcriptional modules", xlab="nodes per module", ylab="count")
 # dev.off()
 
-
 sum(CotranscModSize) # 27316
 max(CotranscModSize) # 1547
 min(CotranscModSize) # 5
