@@ -1,8 +1,6 @@
 # Overview: Pyramiding of resistance loci in Vitis vinifera
 
-## Quality control and mapping
-
-See the folder "Trimming_mapping".
+## Quality control and mappinSee the folder "Trimming_mapping".
 
 1.  Quality checks: FastQC (version 0.11.9)
 2.  Read trimming: Trimmomatic (version 0.39)
@@ -30,7 +28,7 @@ Conclusion: one batch showed a lower proportion of properly paired reads, indica
 Several DESeq2-based normalization and batch-correction strategies were evaluated to determine which best removed batch structure while preserving biological clustering:
 
 | Approach | Description | PCA outcome / interpretation |
-|----|----|----|
+|------------------------|------------------------|------------------------|
 | **Size-factor normalization only** | `counts(dds, normalized=TRUE)` | Strong clustering by **batch**; technical variation dominates. |
 | **Size-factor normalization + ComBat** | log₂ of normalized counts → `ComBat()` | Batch effect largely removed; expected biological grouping recovers. |
 | **DESeq2 with batch modeling** | GLM design = `~ batch + condition`; normalized counts extracted | Batch variance not reduced; PCA still skewed toward batch origin; incomplete removal of technical structure. |
@@ -41,7 +39,7 @@ Several DESeq2-based normalization and batch-correction strategies were evaluate
 ### 3. Final data choices
 
 | Analysis type | Data used | Reason |
-|----|----|----|
+|------------------------|------------------------|------------------------|
 | **Aggregated Expression Divergence (AED)** | Size-factor-normalized + log₂ + ComBat | Preserves real expression amplitude; no variance shrinkage. |
 | **Correlation / Co-expression / PCA** | rlog + ComBat | Stabilizes variance and improves correlation structure for clustering. |
 | **DGEA** | rlog + ComBat | Provides balanced noise reduction and comparability across samples. |
@@ -58,9 +56,11 @@ Systematic sequencing batch effects were detected and corrected using ComBat aft
 
 ## Aggregated Expression Divergence (AED)
 
+See the folder "AED".
+
 ### Objective
 
-To quantify global transcriptional divergence between introgressed and susceptible grapevine cultivars over infection time points (0, 6, 24 hpi), while accounting for technical batch effects.
+To quantify global transcriptional divergence between introgressed and susceptible grapevine cultivars over infection time points (0, 6, 24 hpi), while accounting for technical batch effects. This approach is used to summarize large-scale correlation structures, identify genes with many co-expressed partners (hub genes), and examine whether some transcriptional programs share substantial membership. It does not aim to infer causal regulation but rather to describe patterns of coordinated expression and their structural organization.
 
 ### 1. Input and filtering
 
@@ -111,7 +111,7 @@ where:
 ### 6. Significant results (FDR \< 0.05)
 
 | Time   | Significant cultivars        | Comment                               |
-|--------|------------------------------|---------------------------------------|
+|------------------|------------------------|------------------------------|
 | 0 hpi  | Rpv12+1, Rpv12+1+3           | early expression shift                |
 | 6 hpi  | Rpv12+1, Rpv12+1+3           | strongest divergence                  |
 | 24 hpi | all three introgressed lines | broad expression shift post-infection |
@@ -125,6 +125,93 @@ where:
 ### 8. Interpretation
 
 AED quantifies genome-wide expression deviation from the susceptible background. Significant AED values indicate large, coordinated transcriptomic shifts potentially reflecting **complex** (non-additive) regulatory effects of resistance locus introgression.
+
+## Gene Co-expression Network Analysis (GCNA): Co-transcriptional Module and Metamodule Analysis
+
+See the folder "GCNA".
+
+This pipeline identifies co-transcriptional modules — groups of genes whose expression profiles are highly correlated — and then integrates them into metamodules based on shared membership between modules led by hub genes. All computations were performed in R using variance-stabilized (rlog) expression data corrected by ComBat for batch effects.
+
+### Objective
+
+To identify and characterize co-transcriptional gene modules underlying the transcriptomic response to infection and introgressed resistance loci, and to integrate them into higher-order metamodules reflecting shared regulatory programs. By quantifying pairwise gene correlations, reconstructing modules around significantly regulated genes, and analyzing network topology, this workflow aims to:
+
+-   Detect clusters of genes that are co-regulated across genotypes and time points,
+-   Identify hub genes with high network connectivity and potential regulatory importance, and
+-   Reveal metamodular structure — groups of overlapping modules suggesting coordinated biological pathways (e.g., defense, signaling, or metabolic remodeling).
+
+### 1. Sample and Gene Correlation
+
+Pearson correlations were computed:
+
+-   Between samples: to confirm data consistency (r \> 0.95 for all pairs).
+-   Between genes: using all 26 169 expressed genes.
+
+A significance cutoff of r ≥ 0.817 (top 0.5 %) was chosen to define co-expression links. Genes connected by correlations above this threshold were considered co-transcribed.
+
+### 2. Identification of Co-transcriptional Modules
+
+-   For each of the 3 553 differentially expressed (DE) genes, a module was defined as a gene of interest and all other genes with correlation ≥ 0.817.
+-   Only modules with ≥ 3 members were retained (3 224 total).
+-   Each module’s first principal component (PC1) was correlated with the simplified DE pattern of its seed gene using Spearman’s ρ.
+-   Modules with Bonferroni-corrected p \< 0.05 were considered significant (155 modules).
+-   FDR \< 0.05: 2 254 modules
+-   Bonferroni \< 0.05: 155 modules (stringent; used downstream)
+
+### 3. Network Construction
+
+-   A co-expression network was built from all pairwise gene–gene links (r ≥ 0.817) within the 155 significant modules.
+-   The resulting network contained 5 532 nodes and 27 161 edges.
+-   Degree centrality was used to identify highly connected hub genes.
+-   Hubs were defined as genes in the top 1 % of degree centrality (≥ 117 links); 56 such hub genes were found.
+-   Functional annotation revealed many immune-, signaling-, and transcription-related proteins among hubs (e.g., NAC, WRKY, RPM1, FERONIA).
+
+### 4. Metamodule Construction
+
+Modules led by the 56 hub genes were compared pairwise to quantify overlap of member genes:
+
+$$
+\text{Overlap}_{ij} = 
+\frac{|M_i \cap M_j|}
+     {\min(|M_i|, |M_j|)}
+$$
+
+Explanation
+
+-   Mi, Mj - sets of genes in modules i and j
+
+-   \|Mi ∩ Mj\| - number of shared genes
+
+-   min(\|Mi\|, \|Mj\|) - normalization by the smaller module size
+
+-   Overlapij - proportion of possible shared members between two modules
+
+-   Overlaps were visualized using pheatmap and corrplot heatmaps.
+
+-   Strongly overlapping modules were grouped into five metamodules (MM1–MM5), each representing a higher-order regulatory cluster.
+
+The assumption: shared gene membership could indicate common regulation or functional coupling among modules.
+
+### 5. Output Summary
+
+| Analysis Step                          | Result / Criterion |
+|----------------------------------------|--------------------|
+| Genes analyzed                         | 26 169             |
+| Correlation cutoff                     | r ≥ 0.817          |
+| Initial DE genes                       | 3 553              |
+| Co-transcriptional modules (≥ 4 genes) | 3 224              |
+| Significant (Bonferroni \< 0.05)       | 155                |
+| Genes in significant network           | 5 532              |
+| Hub genes (top 1 %)                    | 56                 |
+| Metamodules                            | 5 (MM1–MM5)        |
+
+### 6. Visualization
+
+-   Sample-wise correlation heatmap (pheatmap)
+-   Gene–gene correlation histogram with cutoff line (0.817)
+-   Module PCA plots (per DE gene)
+-   Network degree distribution (log₁₀-scaled)
+-   Metamodule overlap heatmaps (pheatmap, corrplot)
 
 #### Automatically generate the white paper
 
