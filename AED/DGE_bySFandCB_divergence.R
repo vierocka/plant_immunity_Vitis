@@ -4,10 +4,7 @@ library(sva)
 library(Cairo)
 library(svglite)
 
-# set your working directory
-# load read counts from the CSV file
-setwd("~/Dropbox/MendelUni_Vinselect/GitHub/")
-VvitCounts <- read.csv("RawCounts.csv", header = TRUE, sep="\t")
+VvitCounts <- read.csv("AED/RawCounts.csv", header = TRUE, sep="\t")
 VvitCountsMat <- as.matrix(VvitCounts[,c(2:37)])
 rownames(VvitCountsMat) <- VvitCounts[,1]
 dim(VvitCountsMat)
@@ -55,14 +52,14 @@ expr_adj <- ComBat(norm_counts_log2, batch=as.factor(BatchOriginIDs))
 norm_counts_log2[c(1:5),c(1:5)]
 expr_adj[c(1:5),c(1:5)]
 dim(expr_adj)
-
+colnames(expr_adj)
 # for details about the selected normalisation and batch effect correction methods see the folder Batch_effects
 
 ################## DIVERGENCE #################
 ### Mean rlog expression values
-mean_Go_0 <- apply(expr_adj[,c(10,22,34)], 1, mean)
-mean_Go_6 <- apply(expr_adj[,c(11,23,35)], 1, mean)
-mean_Go_24 <- apply(expr_adj[,c(12,24,36)], 1, mean)
+mean_Go_0 <- apply(expr_adj[,c(10,22,34)], 1, mean) # colnames(expr_adj)[c(10,22,34)]
+mean_Go_6 <- apply(expr_adj[,c(11,23,35)], 1, mean) # colnames(expr_adj)[c(11,23,35)]
+mean_Go_24 <- apply(expr_adj[,c(12,24,36)], 1, mean) # colnames(expr_adj)[c(12,24,36)]
 
 mean_Grpv12_0 <- apply(expr_adj[,c(1,13,25)], 1, mean)
 mean_Grpv12_6 <- apply(expr_adj[,c(2,14,26)], 1, mean)
@@ -92,7 +89,7 @@ AggrDiv_RPV1213_24 <- mean(abs(mean_Grpv1213_24 - mean_Go_24)^2)
 ########### 12 columns - by 3 - 220 all unique options
 ### Ho - null distribution - 0 hpi ###
 samples0 <- sample(seq(from=1, to=36, by=3))
-combos0 <- combn(samples, 3)
+combos0 <- combn(samples0, 3)
 
 AD_Ho_t0 <- c()
 for (i in c(1:220)){
@@ -100,29 +97,29 @@ AD_Ho_t0 <- c(AD_Ho_t0, mean(abs( apply(expr_adj[, combos0[,i] ], 1, mean) - mea
 }
 par(mfrow=c(1,1), mar=c(2.5,2.5,1,0.5), cex.main=0.85, mgp=c(1.5,0.5,0))
 hist(AD_Ho_t0)
-write(AD_Ho_t0, "AgrDivergence_perturbedColumns_H0_t0_220values.csv", sep="\t")
+# write(AD_Ho_t0, "AgrDivergence_perturbedColumns_H0_t0_220values.csv", sep="\t")
 
 ### Ho - null distribution - 6 hpi ###
 samples6 <- sample(seq(from=2, to=36, by=3))
-combos6 <- combn(samples, 3)
+combos6 <- combn(samples6, 3)
 AD_Ho_t6 <- c()
 for (i in c(1:220)){
   AD_Ho_t6 <- c(AD_Ho_t6, mean(abs( apply(expr_adj[, combos6[,i] ], 1, mean) - mean_Go_6 )^2))
 }
 par(mfrow=c(1,1), mar=c(2.5,2.5,1,0.5), cex.main=0.85, mgp=c(1.5,0.5,0))
 hist(AD_Ho_t6)
-write(AD_Ho_t6, "AgrDivergence_perturbedColumns_H0_t6_220values.csv", sep="\t")
+# write(AD_Ho_t6, "AgrDivergence_perturbedColumns_H0_t6_220values.csv", sep="\t")
 
 ### Ho - null distribution - 6 hpi ###
 samples24 <- sample(seq(from=3, to=36, by=3))
-combos24 <- combn(samples, 3)
+combos24 <- combn(samples24, 3)
 AD_Ho_t24 <- c()
 for (i in c(1:220)){
   AD_Ho_t24 <- c(AD_Ho_t24, mean(abs( apply(expr_adj[, combos24[,i] ], 1, mean) - mean_Go_24 )^2))
 }
 par(mfrow=c(1,1), mar=c(2.5,2.5,1,0.5), cex.main=0.85, mgp=c(1.5,0.5,0))
 hist(AD_Ho_t24)
-write(AD_Ho_t24, "AgrDivergence_perturbedColumns_H0_t24_220values.csv", sep="\t")
+# write(AD_Ho_t24, "AgrDivergence_perturbedColumns_H0_t24_220values.csv", sep="\t")
 
 # empirical p-values (the smallest possible: 1/220=0.0045)
 p_emp_RPV12_t0 <- (sum(AD_Ho_t0 >= AggrDiv_RPV12_0) + 1) / (length(AD_Ho_t0) + 1)
@@ -163,8 +160,8 @@ dens0 <- density(AD_Ho_t0)
 dens6 <- density(AD_Ho_t6)
 dens24  <- density(AD_Ho_t24)
 
-# svglite("~/Dropbox/MendelUni_Vinselect/draft/Sections_by_VK/PLANT_BIOTECH_J/Figures_by_SVG/AggregatedExprDivergence.svg", width = 10, height = 8)
-# pdf("~/Dropbox/MendelUni_Vinselect/draft/Sections_by_VK/PLANT_BIOTECH_J/Figures_by_SVG/AggregatedExprDivergence.pdf", width = 10, height = 8)
+# svglite("AggregatedExprDivergence.svg", width = 10, height = 8)
+# pdf("AggregatedExprDivergence.pdf", width = 10, height = 8)
 
 par(mfrow=c(1,3), mar=c(4,4,2,0.5), cex.main=1.5, cex.lab=1.5, cex.axis=1.5, mgp=c(2,0.75,0))
 plot(dens0, 
@@ -235,3 +232,4 @@ axis(side = 1, at = c(AggrDiv_RPV121_24, AggrDiv_RPV1213_24, AggrDiv_RPV12_24), 
 legend(x=0.4, y=2.175, legend = c("Rpv12", "Rpv12+1", "Rpv12+1+3"), col = c("goldenrod", "salmon", "cornflowerblue"), pch = 15, cex=1.25, bty = "n", x.intersp = 0.35, y.intersp = 1)
 
 # dev.off()
+# AED_t0_t6_t24_all220combinations.jpg
