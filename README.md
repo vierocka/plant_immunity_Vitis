@@ -126,6 +126,88 @@ where:
 
 AED quantifies genome-wide expression deviation from the susceptible background. Significant AED values indicate large, coordinated transcriptomic shifts potentially reflecting **complex** (non-additive) regulatory effects of resistance locus introgression.
 
+## Differential Gene Expression Analysis (DGEA)
+
+See the folder "DGEA".
+
+### Objective
+
+To explore major sources of transcriptomic variation across grapevine cultivars and time points, verify the success of batch correction, and identify differentially expressed genes (DEGs) between introgressed and susceptible genotypes after infection. This script uses ComBat-corrected regularized log-transformed (rlog) expression values for multivariate analyses (PCA, variance estimation, gene contributions) and for simple model-based DGE testing. The aim is descriptive: to characterize structure in the dataset, verify consistency, and quantify expression changes at each time point.
+
+### 1. Data loading and setup
+
+-   Loads rlog-transformed, ComBat-corrected expression matrix (Rlogs.csv), containing \~26,000 genes × 36 libraries.
+-   Assigns sample metadata:
+
+\*\* condition = cultivar × time (0, 6, 24 hpi), \*\* myTime = infection time point, \*\* myResistance = introgressed resistance locus combination, \*\* batch = sequencing batch (B1 or B2).
+
+-   Defines color and point-shape schemes for plotting batch and genotype distinctions.
+
+### 2. Principal Component Analysis (PCA)
+
+-   Performs PCA (prcomp) on the transposed expression matrix.
+-   Visualizes explained variance (fviz_eig) and sample positions in PC space.
+-   Colors and symbols represent genotype, infection time, and batch.
+-   PC1–PC4 explain \~71.5 % of total variance (PC1 ≈ 42.5 %, PC2 ≈ 11.4 %, PC3 ≈ 10.2 %, PC4 ≈ 7.4 %).
+-   PC plots are annotated with STRING-derived enrichment terms associated with the top-contributing genes.
+-   Example: Signal (FDR = 1.3e-10), Immune System (FDR = 3.6e-4), Plant defense (FDR = 2.8e-2).
+-   Objective: visualize major biological and residual batch-related structure.
+
+### 3. Gene contribution analysis
+
+-   Extracts PC loadings and computes percentage contributions of each gene to PC1–PC4
+-   Identifies top 50 contributing genes per PC; inspects their enrichment via STRING functional categories:
+
+\*\* PC1 → membrane transport / signal peptides
+
+\*\* PC2 → immune system & NB-ARC domain–containing genes
+
+\*\* PC3–4 → additional defense and signaling terms
+
+-   These lists provide descriptive anchors for interpreting the PCA axes.
+
+### 4. Mean gene-wise variance across genotypes
+
+-   For each genotype–time combination, computes mean and SD of gene-wise variance among replicates.
+-   Plots mean ± SD to visualize within-group dispersion.
+
+### 5. Residual batch check
+
+-   Tests whether any genes remain significantly different between batches after ComBat correction.
+-   Per-gene Wilcoxon and t-tests compare batch 1 vs batch 2 expression means.
+-   After FDR correction:
+
+\*\* 19 genes with FDR \< 0.05, but none with \|log₂FC\| \> 1.
+
+Conclusion: no biologically relevant batch bias remains.
+
+### 6. Differential gene expression analysis (DGEA)
+
+-   For each cultivar vs. susceptible reference, and for each time point (0 hpi, 6 hpi, 24 hpi):
+-   Compute mean log₂-fold change (log₂FCH) between groups.
+-   Fit a simple Gaussian GLM (glm(..., family="gaussian")) to test for group effect.
+-   Use F-test and Wilcoxon test; apply Benjamini–Hochberg (FDR) correction.
+-   Report up- and down-regulated genes at FDR \< 0.05 and \|log₂FCH\| \> 1.
+
+| Comparison         | Time (hpi) | Up-regulated | Down-regulated |
+|--------------------|------------|--------------|----------------|
+| Rpv12 vs Susc.     | 0          | 246          | 125            |
+| Rpv12 vs Susc.     | 6          | 130          | 713            |
+| Rpv12 vs Susc.     | 24         | 341          | 258            |
+| Rpv12+1 vs Susc.   | 0          | 126          | 49             |
+| Rpv12+1 vs Susc.   | 6          | 394          | 749            |
+| Rpv12+1 vs Susc.   | 24         | 19           | 14             |
+| Rpv12+1+3 vs Susc. | 0          | 152          | 296            |
+| Rpv12+1+3 vs Susc. | 6          | 396          | 1421           |
+| Rpv12+1+3 vs Susc. | 24         | 119          | 148            |
+
+Note: These counts are descriptive; they are not adjusted for possible covariates beyond batch correction and should be interpreted as indicative of transcriptional shifts, not formal DESeq2 results. The core issue is that **DESeq2’s GLM design can adjust for batch but cannot correct it**, since the model assumes raw counts follow a **negative binomial** distribution and the batch term merely explains part of the variance. If batch dominates, the residuals still reflect that bias, and the shrinkage/dispersion estimates become unreliable.
+
+### 7. Outputs and figures
+
+-   Figures: PCA plots (PC1–PC4 by genotype/time/batch), explained variance plot, mean variance per group.
+-   Tables: DGE result tables for all cultivar–time comparisons; top 50 PC contributors with functional annotations.
+
 ## Gene Co-expression Network Analysis (GCNA): Co-transcriptional Module and Metamodule Analysis
 
 See the folder "GCNA".
