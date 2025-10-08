@@ -54,6 +54,7 @@ expr_adj[c(1:5),c(1:5)]
 dim(expr_adj)
 colnames(expr_adj)
 # for details about the selected normalisation and batch effect correction methods see the folder Batch_effects
+# write.csv(expr_adj, "data_files/SizeFactorNorm_ComBat_36samples.csv")
 
 ################## DIVERGENCE #################
 ### Mean rlog expression values

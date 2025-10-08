@@ -56,6 +56,46 @@ Several DESeq2-based normalization and batch-correction strategies were evaluate
 
 Systematic sequencing batch effects were detected and corrected using ComBat after appropriate normalization. Size-factor normalization was used when absolute expression amplitude mattered (AED), whereas rlog + ComBat was used for analyses requiring variance stabilization (clustering, DGEA, and co-expression).
 
+## Heteroscedasticity
+
+See the folder "DGEA".
+
+### Objective
+
+To evaluate how different normalization and batch correction strategies affect the mean–variance structure of gene expression data, and to determine which method is appropriate for distinct downstream analyses.
+
+Specifically:
+
+1.  To confirm that rlog + ComBat produces homoscedastic (variance-stabilized) expression values, suitable for correlation-based analyses such as clustering, PCA, and co-expression network inference.
+2.  To verify that size factor normalization + ComBat preserves the natural mean–variance relationship of count data, making it appropriate for analyses (e.g., Aggregated Expression Divergence, AED) that depend on absolute expression amplitudes rather than variance-stabilized values.
+
+### Rationale
+
+Expression data often show heteroscedasticity (variance increasing with mean). If uncorrected, this can bias correlation- or regression-based analyses. Variance-stabilizing transformations (e.g. DESeq2’s rlog) aim to remove this trend globally, but it is still useful to test whether residual mean–variance dependence remains — either across the dataset or within biological conditions.
+
+### Statistical assumptions
+
+| Check type | Correlation type | Assumption | Interpretation |
+|---------------|---------------|-------------------|-----------------------|
+| **Spearman (nonparametric)** | Rank-based | Only monotonic trend (nonlinear allowed) | Robust test of overall variance stabilization |
+| **Pearson (parametric)** | Linear | Variance changes linearly with mean | Diagnostic of linear residual heteroscedasticity |
+
+### Results
+
+| Metric | `rlog+ComBat` | `sizeFactor+ComBat` |
+|-------------------|---------------------------|--------------------------|
+| Global Spearman r | −0.03 | −0.68 |
+| Global Pearson r | −0.01 | −0.36 |
+| Per-condition r | typically between −0.05 and −0.25 | typically between −0.3 and −0.6 |
+| Slopes | \~−0.001 to −0.003 | \~−0.08 to −0.15 |
+
+-   After rlog, mean–variance dependence is nearly zero, meaning the variance is stabilized — ideal for correlation-based analyses.
+-   After only size-factor normalization, variance scales strongly with mean (r \< −0.6) — expected, because no shrinkage or transformation was applied.
+
+Note: rlog (regularized log) performs variance shrinkage: low-count genes are pulled toward the mean, compressing dynamic range and flattening variance across expression levels. For AED, one needs to quantify absolute magnitude of shifts across conditions — not relative patterns.
+
+Because rlog + ComBat data exhibit no residual heteroscedasticity, basic Gaussian modeling (e.g., comparing log₂ fold changes between genotypes or time points) is appropriate and interpretable. The model will capture genuine biological shifts without being confounded by mean-dependent variance.
+
 ## Aggregated Expression Divergence (AED)
 
 See the folder "AED".
@@ -139,9 +179,16 @@ To explore major sources of transcriptomic variation across grapevine cultivars 
 ### 1. Data loading and setup
 
 -   Loads rlog-transformed, ComBat-corrected expression matrix (Rlogs.csv), containing \~26,000 genes × 36 libraries.
+
 -   Assigns sample metadata:
 
-\*\* condition = cultivar × time (0, 6, 24 hpi), \*\* myTime = infection time point, \*\* myResistance = introgressed resistance locus combination, \*\* batch = sequencing batch (B1 or B2).
+-   condition = cultivar × time (0, 6, 24 hpi)
+
+-   myTime = infection time point
+
+-   myResistance = introgressed resistance locus combination
+
+-   batch = sequencing batch (B1 or B2).
 
 -   Defines color and point-shape schemes for plotting batch and genotype distinctions.
 

@@ -305,6 +305,14 @@ length(myResDF[which(myResDF[,4] < 0.05 & myResDF[,6] < -1),7]) # 258 downregula
 colnames(CBrlogs)[c(4,16,28,10,22,34)]
 condition_to_compare <- c(rep("rpv12.1.0", 3), rep("susceptible.0", 3))
 
+plot(gene_means, gene_vars,
+     log="xy", pch=16, cex=0.5,
+     xlab="Mean expression (log scale)",
+     ylab="Variance (log scale)",
+     main="Mean–variance relationship")
+abline(lm(log10(gene_vars) ~ log10(gene_means)), col="red")
+
+
 log2FCH <- c()
 Pval <- c()
 for (i in c(1:dim(CBrlogs)[1])){
@@ -446,4 +454,3 @@ myResDF$proteID <- matchedPR
 length(myResDF[which(myResDF[,4] < 0.05 & myResDF[,6] > 1),7]) # 119 upregulated in Rpv12+1+3
 length(myResDF[which(myResDF[,4] < 0.05 & myResDF[,6] < -1),7]) # 148 downregulated in Rpv12+1+3
 # write.table(myResDF, "DGEA/DGEA_Rpv12_1_3_vs_susceptible_24hpi.csv", sep="\t")
-
