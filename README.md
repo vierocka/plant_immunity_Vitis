@@ -76,7 +76,7 @@ Expression data often show heteroscedasticity (variance increasing with mean). I
 ### Statistical assumptions
 
 | Check type | Correlation type | Assumption | Interpretation |
-|---------------|---------------|-------------------|-----------------------|
+|------------------|------------------|------------------|--------------------|
 | **Spearman (nonparametric)** | Rank-based | Only monotonic trend (nonlinear allowed) | Robust test of overall variance stabilization |
 | **Pearson (parametric)** | Linear | Variance changes linearly with mean | Diagnostic of linear residual heteroscedasticity |
 
@@ -120,7 +120,9 @@ To quantify global transcriptional divergence between introgressed and susceptib
 
 -   Raw counts normalized by DESeq2 size factors (counts(dds, normalized=TRUE)).
 -   Normalized counts log₂-transformed (log2(x + 1)).
--   ComBat correction (sva package) applied to remove additive/multiplicative batch bias. Note: 104 genes with uniform expression within a batch were skipped from adjustment.
+-   ComBat correction (sva package) applied to remove additive/multiplicative batch bias.
+
+Note: 104 genes with uniform expression within a batch were skipped from adjustment.
 
 Rationale: Size-factor normalization preserves full dynamic range (suitable for quantitative divergence), while ComBat removes systematic technical variance between batches.
 
@@ -207,11 +209,9 @@ To explore major sources of transcriptomic variation across grapevine cultivars 
 -   Extracts PC loadings and computes percentage contributions of each gene to PC1–PC4
 -   Identifies top 50 contributing genes per PC; inspects their enrichment via STRING functional categories:
 
-\*\* PC1 → membrane transport / signal peptides
-
-\*\* PC2 → immune system & NB-ARC domain–containing genes
-
-\*\* PC3–4 → additional defense and signaling terms
+1.  PC1 → membrane transport / signal peptides
+2.  PC2 → immune system & NB-ARC domain–containing genes
+3.  PC3–4 → additional defense and signaling terms
 
 -   These lists provide descriptive anchors for interpreting the PCA axes.
 
@@ -256,6 +256,89 @@ Note: These counts are descriptive; they are not adjusted for possible covariate
 
 -   Figures: PCA plots (PC1–PC4 by genotype/time/batch), explained variance plot, mean variance per group.
 -   Tables: DGE result tables for all cultivar–time comparisons; top 50 PC contributors with functional annotations.
+
+## Transcriptional dynamics
+
+See the folder "transcriptional_dynamics".
+
+### Objective
+
+Quantify and compare the number and proportions of differentially expressed genes (DEGs) among three resistant grapevine genotypes (Rpv12, Rpv12+1, Rpv12+1+3) across infection time points (0, 6, 24 hpi), using the susceptible line as the implicit baseline (0 DEGs).
+
+### 1. Main modeling (see: DEGs_counts_global_tests.R)
+
+-   GLMs (quasipoisson) tested effects of genotype, infection timing, and regulation direction (Up/Down) on DEG counts.
+-   Timing had a significant effect (p \< 0.01); direction showed a weaker trend (more down- than up-regulated DEGs).
+-   Genotype had no significant main effect—overall DEG counts did not scale with the number of introgressed loci.
+-   Pairwise contrasts revealed significant between-genotype differences only at specific time points (notably 6 hpi and 24 hpi).
+
+### 2. Visualization
+
+Log-scaled DEG trajectories and point-line plots illustrate time-dependent transcriptional responsiveness per genotype and direction.
+
+### 3. Group-level (category) modeling:
+
+Quasibinomial GLM assessed proportions of DEGs across shared/specific gene-pattern groups and timing categories (IEV, ER, TRS, LR, Sch).
+
+#### Abbreviations
+
+**Gene categories**
+
+-   IEV - significant DE at 0, or 0 and 6 hpi (initial expression variation)
+-   ER - significant DE at 6 and 24 hpi (early response)
+-   LR - significant DE at 24 hpi (lare response)
+-   TRS - significant DE at 6 hpi (transient stress response)
+-   Sch - significant DE maintained over the time (0, 6 and 24 hpi)
+
+**Groups**
+
+1.  I - pattern of timing (gene category) shared across all 3 genotypes
+2.  II - shared by Rpv12 and Rpv12+1
+3.  III - shared by Rpv12+1 and Rpv12+1+3
+4.  IV - shared by Rpv12 and Rpv12+1+3
+5.  Va - specific to Rpv12
+6.  Vb - specific to Rpv12+1
+7.  Vc - specific to Rpv12+1+3
+8.  VI - complex patterns across cultivars
+
+Timing and direction were significant predictors; group identity was not, indicating conserved transcriptomic timing structure across cultivars.
+
+### 4. Follow-up contrasts (emmeans)
+
+Highlighted strongest temporal differences between transient (TRS) and early (IEV) or late (LR) response phases. Down-regulation dominated most categories.
+
+### 5. Interpretation:
+
+Infection timing drives transcriptomic divergence more strongly than genotype or number of loci. Resistant cultivars exhibit similar total DEG counts but differ in which genes respond and when, with early and transient down-regulation dominating the overall response.
+
+| Effect | exp(Estimate) | Fold change |
+|-----------------|-----------------|--------------------------------------|
+| IEV | 13.78× | Strongly enriched early (0–6 hpi) |
+| LR | 9.73× | Elevated at late infection |
+| TSR | 82× | Extremely high transient upsurge at 6 hpi |
+| Up-regulation | 0.32× | Upregulated genes are \~68% fewer than downregulated |
+
+**Genotype-specific behavior**:
+
+1.  Rpv12 (Va) — modest DEG counts and limited timing effects; suggests a weaker or slower activation of defense responses.
+2.  Rpv12+1 (Vb) — intermediate overall responsiveness; TRS and LR phases both active but with stronger down-regulation.
+3.  Rpv12+1+3 (Vc) — most transcriptionally dynamic, with the largest number of DEGs (especially at TRS) and broader participation of unique genes; indicates an expanded or more complex defense signaling network.
+
+Despite quantitative differences, all resistant genotypes shared the same temporal hierarchy (IEV \< TRS \> LR), suggesting conserved defense timing but varying magnitude and composition of gene activation.
+
+**Cross-genotype timing patterns**: Shared timing groups (I–IV) did not differ significantly in overall DEG proportions, implying that major transcriptional phases are conserved. However, genotype-specific groups (Va, Vb, Vc) carried the bulk of DEGs at TRS and LR, pointing to divergence in which genes participate rather than when
+
+| Timing phase | Significance | Dominant effects | Key groups | Regulation bias | Biological meaning |
+|------------|------------|------------|------------|------------|---------------|
+| IEV (0/0+6h) | *p=0.02* | mild group effect | Va/Vc trends | none | Early, weak differences among genotypes |
+| ER (6+24h) | *p=0.02* | strong for Vc | Vc | none | Early response dominated by Rpv12+1+3 |
+| TSR (6h) | *p=0.048*, *direction p=0.0035* | both group and direction | Vc, Vb | Down \> Up | Peak differential regulation, transient burst |
+| LR (24h) | ***p=1.4e−6*** | strong group effect | IV, Va, Vc | none | Late, genotype-specific DE patterns |
+| Sch (sustained) | *p=0.0048* (weak) | sparse DEGs | IV, Va, Vc (minor) | none | Few genes maintain expression across time |
+
+### 6. Exploratory proportional analysis (see: proportions_exploratory_analysis.R):
+
+Summarized percentages of up/downregulated genes per genotype and shared pattern group. Boxplots and facet-wrapped scatterplots visualize how response phases differ in prevalence and regulation direction.
 
 ## Gene Co-expression Network Analysis (GCNA): Co-transcriptional Module and Metamodule Analysis
 

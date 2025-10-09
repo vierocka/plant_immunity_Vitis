@@ -131,7 +131,7 @@ check_heteroscedasticity_Pearson <- function(expr_mat, condition, plot = TRUE) {
   gene_means <- rowMeans(expr_mat)
   gene_vars  <- apply(expr_mat, 1, var)
   
-  cor_global <- cor(gene_means, gene_vars, metho = "pearson")
+  cor_global <- cor(gene_means, gene_vars, method = "pearson")
   lm_global  <- lm(gene_vars ~ gene_means)
   slope_global <- coef(lm_global)[2]
   
