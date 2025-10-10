@@ -1,10 +1,15 @@
 library(corrplot)
 library(pheatmap)
+library(igraph)
+library(corrplot)
+library(ggplot2)
+library(dplyr)
+library(tidyr)
 
 # ID conversion
 convTab <- read.table("GCNA/26169genes_conversions_gene_protein_IDs.tsv", sep="\t", header = FALSE)
 # raw counts
-CBrlDF <- read.table("GCNA/Rlogs.csv", header = TRUE, sep="\t")
+CBrlDF <- read.table("data_files/Rlogs.csv", header = TRUE, sep="\t")
 CBrlogs <- as.matrix(CBrlDF[,c(2:37)])
 rownames(CBrlogs) <- CBrlDF[,1]
 head(CBrlogs)
@@ -139,10 +144,9 @@ unique(na.omit(fullAnnot[match(MySet, fullAnnot$V1), 5])) # 14 proteins
 
 ############################################################################ iGRAPH ###############################################
 ################# NETWORK ANALYSIS ##############
-library(igraph)
 
-# Let's assume we have a simple PPI network represented as an edge list
-# in 155 SignifGenesOfInt 
+# assumption:  a simple PPI network represented as an edge list
+# only edges between genes with correlation equal/higher than 0.817 are kept
 source <- c()
 target <- c()
 CotranscModSize <- c()
@@ -330,6 +334,429 @@ pheatmap(sharedGenesPercOfPossibleMat, cluster_rows = TRUE, cluster_cols = TRUE,
 # dev.off()
 # Metamodules_proportions_of_shared_genes_btw_modules.jpg
 
-library(corrplot)
 corrplot(sharedGenesPercOfPossibleMat, method = 'square', type = 'lower', title = "Intersections", diag = FALSE, is.corr = FALSE, tl.cex = 0.5, tl.col = "dimgray")
 # Proportions_of_shared_genes_btw_modules.jpg
+
+######################### building adjacency graphs ##############################
+# input: CBrlogs and nonEEEgenes
+
+genes_use <- nonEEEgenes$X  # 3553 DE gene IDs
+expr_all  <- CBrlogs[genes_use, ]
+cor_mat <- cor(t(expr_all), use = "pairwise.complete.obs")
+hist(unlist(cor_mat))
+dim(cor_mat)
+length(unlist(cor_mat)) # 12623809
+# top 5 %: 0.05*12623809=631190
+# 12623809-631190=11992619
+sort(unlist(cor_mat), decreasing = FALSE)[11992619]
+# 0.8254117
+
+build_graph <- function(expr_mat, thr = 0.75) {
+  # 1. pairwise Pearson correlations among genes
+  cor_mat <- cor(t(expr_mat), use = "pairwise.complete.obs")
+  cor_mat[is.na(cor_mat)] <- 0
+  
+  # 2. build logical adjacency above threshold
+  adj <- cor_mat >= thr
+  adj[lower.tri(adj, diag = TRUE)] <- 0  # keep upper triangle only
+  
+  # 3. create undirected graph safely
+  g <- graph_from_adjacency_matrix(adj, mode = "undirected", diag = FALSE)
+  E(g)$weight <- cor_mat[adj]             # assign r-values as edge weights
+  g
+}
+
+graph_metrics <- function(g) {
+  data.frame(
+    n_nodes     = gorder(g),
+    n_edges     = gsize(g),
+    density     = edge_density(g),
+    mean_degree = mean(degree(g)),
+    clustering  = if (gsize(g) > 0) transitivity(g, type="global") else NA_real_
+  )
+}
+
+
+### only for 3 553 genes with DE profile
+# per genotype
+g_suscp = build_graph(expr_all[,c(10:12,22:24,34:36)])
+g_Rpv12 = build_graph(expr_all[,c(1:3,13:15,25:27)])
+g_Rpv121 = build_graph(expr_all[,c(4:6,16:18,28:30)])
+g_Rpv1213 = build_graph(expr_all[,c(7:9,19:21,31:33)])
+
+# per time point:
+g_0hpi = build_graph(expr_all[,c(1,4,7,10,13,16,19,22,25,28,31,34)])
+g_6hpi = build_graph(expr_all[,c(2,5,8,11,14,17,20,23,26,29,32,35)])
+g_24hpi = build_graph(expr_all[,c(3,6,9,12,15,18,21,24,27,30,33,36)])
+
+
+metrics_genotype <- rbind(
+  cbind(genotype = "Susceptible", graph_metrics(g_suscp)),
+  cbind(genotype = "Rpv12", graph_metrics(g_Rpv12)),
+  cbind(genotype = "Rpv12+1", graph_metrics(g_Rpv121)),
+  cbind(genotype = "Rpv12+1+3", graph_metrics(g_Rpv1213))
+)
+print(metrics_genotype)
+# RESULTS if corr. cut-off >=0.817
+# genotype n_nodes n_edges    density mean_degree clustering
+# Susceptible    3553  635423 0.10069891    357.6825  0.7116704
+#       Rpv12    3553  832362 0.13190889    468.5404  0.6981292
+#     Rpv12+1    3553  837230 0.13268035    471.2806  0.7238729
+#   Rpv12+1+3    3553  344794 0.05464136    194.0861  0.5918548
+
+# RESULTS if corr. cut-off > 75==0.75
+# genotype n_nodes n_edges    density mean_degree clustering
+# genotype n_nodes n_edges    density mean_degree clustering
+# Susceptible    3553  912584 0.14462211    513.6977  0.7392473
+# Rpv12    3553 1179769 0.18696435    664.0974  0.7309057
+# Rpv12+1    3553 1199896 0.19015399    675.4270  0.7678020
+# Rpv12+1+3    3553  584155 0.09257419    328.8235  0.6188233
+
+metrics_time <- rbind(
+  cbind(genotype = "0 hpi", graph_metrics(g_0hpi)),
+  cbind(genotype = "6 hpi", graph_metrics(g_6hpi)),
+  cbind(genotype = "24 hpi", graph_metrics(g_24hpi))
+)
+print(metrics_time)
+# RESULTS if corr. cut-off >=0.817
+# time n_nodes n_edges    density mean_degree clustering
+# 0 hpi    3553  793077 0.12568319    446.4267  0.7450907
+# 6 hpi    3553  681074 0.10793347    383.3797  0.6538471
+# 24 hpi    3553  401957 0.06370029    226.2634  0.6845203
+# RESULTS if corr. cut-off > 75==0.75
+# time n_nodes n_edges    density mean_degree clustering
+# genotype n_nodes n_edges   density mean_degree clustering
+#   0 hpi    3553 1134668 0.1798170    638.7098  0.7744829
+#    6 hpi    3553 1076476 0.1705950    605.9533  0.7156618
+#   24 hpi    3553  640831 0.1015559    360.7267  0.7180727
+
+### stable pattern under strict and also softer cut-off
+
+# Linear regression of density vs number of loci
+## genotype
+density <- c(0.10069891, 0.13190889, 0.13268035, 0.05464136)
+loci_count <- c(0, 1, 2, 3)
+Mlcd <- lm(density ~ loci_count)
+summary(Mlcd)
+# Residuals:
+#  1        2        3        4 
+# -0.02489  0.02006  0.03457 -0.02973 
+# Coefficients:
+# Estimate Std. Error t value Pr(>|t|)  
+# (Intercept)  0.12559    0.03294   3.812   0.0624 .
+# loci_count  -0.01374    0.01761  -0.780   0.5169 
+# Residual standard error: 0.03938 on 2 degrees of freedom
+# Multiple R-squared:  0.2334,	Adjusted R-squared:  -0.1499 
+# F-statistic: 0.6088 on 1 and 2 DF,  p-value: 0.5169
+cor.test(loci_count, density, method = "spearman")
+# r=-0.2 
+# p-value = 0.9167
+# RESULTS
+# Networks of Rpv12 and Rpv12+1 are denser and have higher mean degrees than the susceptible control, implying a more tightly coordinated transcriptional response.
+# Rpv12+1+3 shows a drop in connectivity (density ≈ 0.05), suggesting extensive transcriptional reprogramming that breaks prior co-expression structure — typical of massive downregulation or phase-shifted regulation.
+# Linear regression and Spearman correlation confirm no monotonic increase in density with more loci (p ≈ 0.5).
+# → Polygenic pyramiding does not simply strengthen network connectivity; rather, it restructures it.
+
+# Linear regression of density vs number of loci
+## genotype
+densityT <- c(0.12568319, 0.10793347, 0.06370029)
+time <- c(0, 6, 24)
+Mtd <- lm(densityT ~ time)
+summary(Mtd)
+# Residuals:
+#  1          2          3 
+# 0.0010403 -0.0013871  0.0003468 
+# Coefficients:
+# Estimate Std. Error t value Pr(>|t|)   
+# (Intercept)  0.1246429  0.0014298   87.18   0.0073 **
+# time        -0.0025537  0.0001001  -25.51   0.0249 * 
+# Residual standard error: 0.001768 on 1 degrees of freedom
+# Multiple R-squared:  0.9985,	Adjusted R-squared:  0.9969 
+# F-statistic: 650.8 on 1 and 1 DF,  p-value: 0.02494
+cor.test(time, densityT, method = "spearman")
+# r=-1
+# p=0.333
+# RESULTS
+# Density drops steadily from 0 hpi → 6 hpi → 24 hpi (p = 0.025, Spearman r = −1).
+# This indicates that transcriptional coupling weakens over time, as early immune activation gives way to more specialized or desynchronized responses.
+# Clustering stays moderate (≈ 0.65–0.75), suggesting modular structure is retained even as global correlation diminishes.
+# The 0 hpi networks exhibited the tightest overall co-expression, consistent with a primed basal defense state.
+
+# network density by genotype (NWdensity_in_genotypes.jpg)
+ggplot(metrics_genotype, aes(x = genotype, y = density, fill = genotype)) +
+  geom_bar(stat = "identity", color = "black") +
+  theme_bw() +
+  labs(y = "Network density (r > 0.817)", x = "Genotype") +
+  scale_fill_manual(values = c("goldenrod", "salmon", "cornflowerblue", "dimgray"))
+
+# network density over time (NWdensity_in_time.jpg)
+ggplot(metrics_time, aes(x = as.numeric(gsub(" hpi", "", genotype)), y = density)) +
+  geom_point(size = 3) + geom_line() +
+  theme_bw() +
+  labs(x = "Time post infection (hpi)", y = "Network density (r > 0.817)")
+
+##################################### Cross-talk enrichment between PTI and ETI genes
+gene_classif <- read.csv("data_files/Vitis_gene_immunity_class.csv") 
+table(gene_classif$Immunity_Class)
+# ETI_specific          Other PTI_ETI_shared   PTI_specific 
+# 104          26033             12             20 
+
+head(gene_classif, 3)
+# GeneID Immunity_Class
+# Vitvi01g04000          Other
+# Vitvi01g04001          Other
+# Vitvi01g04002          Other
+
+gene_classes <- setNames(gene_classif$Immunity_Class, gene_classif$GeneID)
+myClasses <- gene_classes[match(V(g_Rpv12)$name, names(gene_classes))]
+
+cross_talk_test <- function(g, class_vector) {
+  # keep only vertices that have class annotation
+  valid_nodes <- intersect(V(g)$name, names(class_vector))
+  g <- induced_subgraph(g, vids = valid_nodes)
+  V(g)$class <- class_vector[V(g)$name]
+  
+  # extract edge list safely (modern igraph)
+  edges_df <- igraph::as_data_frame(g, what = "edges")  # safe, not deprecated
+  if (nrow(edges_df) == 0) {
+    return(data.frame(
+      n_edges = 0,
+      cross_edges = 0,
+      cross_prop = NA,
+      expected_prop = NA,
+      odds_ratio = NA
+    ))
+  }
+  
+  # add vertex class labels to edges
+  edges_df$class1 <- V(g)$class[edges_df$from]
+  edges_df$class2 <- V(g)$class[edges_df$to]
+  edges_df$class_pair <- apply(
+    edges_df[, c("class1", "class2")],
+    1,
+    function(x) paste(sort(x), collapse = "_")
+  )
+  
+  # define "cross-type" edges between PTI and ETI classes
+  cross_mask <- grepl(
+    "PTI_specific_ETI_specific|PTI_specific_PTI_ETI_shared|ETI_specific_PTI_ETI_shared",
+    edges_df$class_pair
+  )
+  
+  n_cross <- sum(cross_mask)
+  n_total <- nrow(edges_df)
+  
+  # expected probability under random pairing
+  p_pti <- mean(V(g)$class == "PTI_specific")
+  p_eti <- mean(V(g)$class == "ETI_specific")
+  p_shared <- mean(V(g)$class == "PTI_ETI_shared")
+  p_cross_exp <- p_pti*p_eti + p_pti*p_shared + p_eti*p_shared
+  
+  or <- (n_cross / n_total) / p_cross_exp
+  
+  data.frame(
+    n_edges = n_total,
+    cross_edges = n_cross,
+    cross_prop = n_cross / n_total,
+    expected_prop = p_cross_exp,
+    odds_ratio = or
+  )
+}
+
+############### Question: Across the whole infection process, how much do PTI and ETI layers act in concert in each genotype? #################
+# a global summary of the network structure - only for 3 553 DE genes
+
+cross_susc   <- cross_talk_test(g_suscp, myClasses)
+cross_Rpv12  <- cross_talk_test(g_Rpv12, myClasses)
+cross_Rpv121 <- cross_talk_test(g_Rpv121, myClasses)
+cross_Rpv1213 <- cross_talk_test(g_Rpv1213, myClasses)
+
+cross_summary <- rbind(
+  cbind(genotype = "Susceptible", cross_susc),
+  cbind(genotype = "Rpv12", cross_Rpv12),
+  cbind(genotype = "Rpv12+1", cross_Rpv121),
+  cbind(genotype = "Rpv12+1+3", cross_Rpv1213)
+)
+
+print(cross_summary)
+# cut-off 0.817 seems to be too stringent
+# genotype n_edges cross_edges cross_prop expected_prop odds_ratio
+# Susceptible  635423           0          0  8.634478e-06          0
+#       Rpv12  832362           0          0  8.634478e-06          0
+#     Rpv12+1  837230           0          0  8.634478e-06          0
+#   Rpv12+1+3  344794           0          0  8.634478e-06          0
+# cut-off > 0.75
+
+# The correlation-based graph detects co-regulation, not mechanistic links.
+# The fact that no direct PTI–ETI edges exist at r > 0.75 just means:
+# At the transcriptional level, PTI and ETI marker genes don’t show strong synchronous fluctuations across conditions.
+# This is actually expected: PTI and ETI signals often act in staggered temporal waves, not perfect co-expression.
+# The “cross-talk” between PTI and ETI happens at network module overlap, not pairwise gene–gene correlation.
+
+################## Question: At which infection stage does PTI–ETI integration emerge or peak? ###############
+# Stratify by time point (separate networks per time)
+
+cross_0hpi  <- cross_talk_test(g_0hpi,  myClasses)
+cross_6hpi  <- cross_talk_test(g_6hpi,  myClasses)
+cross_24hpi <- cross_talk_test(g_24hpi, myClasses)
+
+cross_time <- rbind(
+  cbind(time = "0 hpi",  cross_0hpi),
+  cbind(time = "6 hpi",  cross_6hpi),
+  cbind(time = "24 hpi", cross_24hpi)
+)
+print(cross_time)
+
+# cut-off 0.817 seems to be too stringent
+# cut-off > 0.75, no results
+
+###################################
+Rpv12_0 <- read.table("DGEA/DGEA_Rpv12_vs_susceptible_0hpi.csv", sep="\t", header = TRUE)
+Rpv121_0 <- read.table("DGEA/DGEA_Rpv12_1_vs_susceptible_0hpi.csv", sep="\t", header = TRUE)
+Rpv1213_0 <- read.table("DGEA/DGEA_Rpv12_1_3_vs_susceptible_0hpi.csv", sep="\t", header = TRUE)
+
+Rpv12_6 <- read.table("DGEA/DGEA_Rpv12_vs_susceptible_6hpi.csv", sep="\t", header = TRUE)
+Rpv121_6 <- read.table("DGEA/DGEA_Rpv12_1_vs_susceptible_6hpi.csv", sep="\t", header = TRUE)
+Rpv1213_6 <- read.table("DGEA/DGEA_Rpv12_1_3_vs_susceptible_6hpi.csv", sep="\t", header = TRUE)
+
+Rpv12_24 <- read.table("DGEA/DGEA_Rpv12_vs_susceptible_24hpi.csv", sep="\t", header = TRUE)
+Rpv121_24 <- read.table("DGEA/DGEA_Rpv12_1_vs_susceptible_24hpi.csv", sep="\t", header = TRUE)
+Rpv1213_24 <- read.table("DGEA/DGEA_Rpv12_1_3_vs_susceptible_24hpi.csv", sep="\t", header = TRUE)
+
+allLOG2FCH <- as.data.frame(cbind(Rpv12_0$log2FCH..Rpv1_vs_wt., Rpv121_0$log2FCH..Rpv1_vs_wt., Rpv1213_0$log2FCH..Rpv1_vs_wt., Rpv12_6$log2FCH..Rpv1_vs_wt., Rpv121_6$log2FCH..Rpv1_vs_wt., Rpv1213_6$log2FCH..Rpv1_vs_wt., Rpv12_24$log2FCH..Rpv1_vs_wt., Rpv121_24$log2FCH..Rpv1_vs_wt., Rpv1213_24$log2FCH..Rpv1_vs_wt.))
+rownames(allLOG2FCH) <- rownames(Rpv12_24)
+
+table(gene_classif$Immunity_Class)
+# ETI_specific, Other, PTI_ETI_shared, PTI_specific 
+# 104, 26033, 12, 20 
+
+# --- Select only ETI- and PTI-related genes ---
+eti_pti_genes <- gene_classif$GeneID[
+  gene_classif$Immunity_Class %in% c("ETI_specific", "PTI_specific", "PTI_ETI_shared")
+]
+
+# --- Subset your expression matrix (e.g., rlog_data) ---
+expr_eti_pti <- allLOG2FCH[rownames(allLOG2FCH) %in% eti_pti_genes, ]
+dim(expr_eti_pti)
+# 136x 9
+head(expr_eti_pti, 2)
+# Vitvi01g01848 -0.17374612 -0.4290626641 -6.686727e-01 0.2853347793 -0.429105213 -0.53520936 -0.12622595 -0.89572321
+# Vitvi01g01849  0.04075123  0.0003847615 -5.029325e-05 0.0007255392  0.003229121  0.03967847 -0.05500514 -0.06949303
+
+# Create a named vector mapping GeneID → Immunity_Class
+gene_classes <- setNames(gene_classif$Immunity_Class, gene_classif$GeneID)
+
+# Add class as a new column to expr_eti_pti
+expr_eti_pti$class <- gene_classes[rownames(expr_eti_pti)]
+expr_eti_pti <- expr_eti_pti[order(expr_eti_pti$class), ]
+
+colnames(expr_eti_pti) <- c(
+  "Rpv12_0", "Rpv12+1_0", "Rpv12+1+3_0",
+  "Rpv12_6", "Rpv12+1_6", "Rpv12+1+3_6",
+  "Rpv12_24","Rpv12+1_24","Rpv12+1+3_24"
+)
+
+col_order <- c(
+  "Rpv12_0", "Rpv12_6", "Rpv12_24",
+  "Rpv12+1_0", "Rpv12+1_6", "Rpv12+1_24",
+  "Rpv12+1+3_0", "Rpv12+1+3_6", "Rpv12+1+3_24"
+)
+expr_eti_pti <- expr_eti_pti[, col_order]
+
+ann_colors <- list(
+  Immunity_Class = c(
+    "ETI_specific" = "#D95F02",      # orange
+    "PTI_specific" = "#1B9E77",      # teal/green
+    "PTI_ETI_shared" = "#7570B3"     # purple
+  )
+)
+
+ann_row <- data.frame(Immunity_Class = expr_eti_pti$class)
+rownames(ann_row) <- rownames(expr_eti_pti)
+
+pheatmap(
+  expr_eti_pti[,c(1:9)],
+  color = colorRampPalette(c("navy", "white", "firebrick3"))(100),
+  cluster_rows = TRUE,
+  cluster_cols = TRUE,
+  annotation_row = ann_row,
+  annotation_colors = ann_colors,
+  show_rownames = FALSE,
+  fontsize_col = 10,
+  main = "Expression dynamics of PTI / ETI / shared immunity genes"
+)
+
+expr_long <- expr_eti_pti %>%
+  pivot_longer(
+    cols = starts_with("Rpv"),
+    names_to = "Condition",
+    values_to = "log2FCH"
+  ) %>%
+  separate(Condition, into = c("Genotype", "Time"), sep = "_") %>%
+  mutate(Time = factor(Time, levels = c("0","6","24")))
+
+summary_df <- expr_long %>%
+  group_by(class, Genotype, Time) %>%
+  summarise(
+    mean_log2FCH = mean(log2FCH, na.rm = TRUE),
+    se_log2FCH   = sd(log2FCH, na.rm = TRUE) / sqrt(n()),
+    n = n(),
+    .groups = "drop"
+  )
+
+ggplot(summary_df, aes(x = Time, y = mean_log2FCH,
+                       fill = Genotype)) +
+  geom_col(position = position_dodge(width = 0.8), width = 0.7) +
+  geom_errorbar(aes(ymin = mean_log2FCH - se_log2FCH,
+                    ymax = mean_log2FCH + se_log2FCH),
+                width = 0.2, position = position_dodge(width = 0.8)) +
+  facet_wrap(~ class, nrow = 1, scales = "free_y") +
+  scale_fill_manual(values = c(
+    "Rpv12" = "goldenrod",
+    "Rpv12+1" = "salmon",
+    "Rpv12+1+3" = "cornflowerblue"
+  )) +
+  theme_bw(base_size = 12) +
+  theme(
+    strip.text = element_text(face = "bold"),
+    panel.grid.minor = element_blank(),
+    panel.grid.major.x = element_blank()
+  ) +
+  labs(
+    x = "Time post infection (hpi)",
+    y = "Mean log₂ fold change vs susceptible",
+    fill = "Genotype",
+    title = "Average expression intensity of immunity-related genes"
+  )
+
+print(summary_df)
+### A tibble: 27 × 6
+# class          Genotype  Time  mean_log2FCH se_log2FCH     n
+# <chr>          <chr>     <fct>        <dbl>      <dbl> <int>
+# 1 ETI_specific   Rpv12     0         0.252        0.120    104
+# 2 ETI_specific   Rpv12     6         0.0367       0.0911   104
+# 3 ETI_specific   Rpv12     24       -0.000595     0.140    104
+# 4 ETI_specific   Rpv12+1   0         0.138        0.0941   104
+# 5 ETI_specific   Rpv12+1   6        -0.0400       0.0733   104
+# 6 ETI_specific   Rpv12+1   24       -0.201        0.121    104
+# 7 ETI_specific   Rpv12+1+3 0        -0.107        0.107    104
+# 8 ETI_specific   Rpv12+1+3 6        -0.122        0.0923   104
+# 9 ETI_specific   Rpv12+1+3 24       -0.205        0.133    104
+# 10 PTI_ETI_shared Rpv12     0         0.258        0.220     12
+# 11 PTI_ETI_shared Rpv12     6         0.0672       0.142     12
+# 12 PTI_ETI_shared Rpv12     24       -0.201        0.149     12
+# 13 PTI_ETI_shared Rpv12+1   0         0.310        0.122     12
+# 14 PTI_ETI_shared Rpv12+1   6         0.109        0.146     12
+# 15 PTI_ETI_shared Rpv12+1   24       -0.166        0.110     12
+# 16 PTI_ETI_shared Rpv12+1+3 0        -0.0177       0.149     12
+# 17 PTI_ETI_shared Rpv12+1+3 6        -0.0454       0.221     12
+# 18 PTI_ETI_shared Rpv12+1+3 24       -0.0575       0.126     12
+# 19 PTI_specific   Rpv12     0         0.127        0.117     20
+# 20 PTI_specific   Rpv12     6        -0.0109       0.126     20
+# 21 PTI_specific   Rpv12     24        0.0937       0.187     20
+# 22 PTI_specific   Rpv12+1   0        -0.0158       0.0930    20
+# 23 PTI_specific   Rpv12+1   6         0.0107       0.0869    20
+# 24 PTI_specific   Rpv12+1   24       -0.0400       0.142     20
+# 25 PTI_specific   Rpv12+1+3 0        -0.0377       0.103     20
+# 26 PTI_specific   Rpv12+1+3 6        -0.156        0.124     20
+# 27 PTI_specific   Rpv12+1+3 24       -0.102        0.0939    20
