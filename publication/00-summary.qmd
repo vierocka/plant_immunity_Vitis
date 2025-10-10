@@ -1,2 +1,14 @@
-# Summary
+# Project Summary
+
+This project investigates how multilocus introgression reshapes the transcriptional and regulatory landscape of grapevine (Vitis vinifera) immunity against the oomycete Plasmopara viticola.
+Using high-resolution RNA-seq data from three resistant genotypes carrying successively pyramided loci (Rpv12, Rpv12+1, Rpv12+1+3) and a susceptible reference, we quantify differential expression dynamics, co-expression network structure, and aggregated transcriptional divergence across infection time points (0–24 hpi).
+
+Our analyses reveal that early immune activation is strongest in Rpv12, transitions toward receptor-mediated signalling in Rpv12+1, and becomes globally repressed but highly interconnected in Rpv12+1+3, consistent with the concept of layered immunity.
+These findings parallel the temporal “immune waves” observed in Arabidopsis thaliana (Ngou et al., 2021; Yuan et al., 2021; Lu et al., 2023), where PTI and ETI pathways interact dynamically through sequential amplification and feedback integration.
+
+By mapping co-expression modules onto Recognition, Signal Integration, and Defense Action layers (after Pruitt et al., 2021), this study provides a cross-species perspective on how polygenic resistance stabilizes immune signaling without loss of modular coherence.
+An interactive Shiny web application (https://vierakovacova.shinyapps.io/playing_with_immunity/
+) complements this repository, allowing users to explore gene-specific trajectories, GO enrichment, and immunity-layer associations in real time.
+
+Together, the data and code presented here establish a reproducible framework for dissecting the temporal and structural coordination of plant immune responses in polygenic resistance systems.
 

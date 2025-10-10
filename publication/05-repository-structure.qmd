@@ -1,0 +1,23 @@
+---
+title: "05-repository-structure"
+format: html
+---
+
+## 1.  Repository
+
+
+
+## 2.  Interactive Companion App
+
+For interactive browsing of the same dataset, visit:
+👉 https://vierakovacova.shinyapps.io/playing_with_immunity/
+
+The app enables:
+
+Gene-level queries with dynamic log₂ fold-change plots
+
+Real-time GO and Reactome enrichment browsing
+
+Interactive co-expression network visualization
+
+Filtered export for reproducible analyses

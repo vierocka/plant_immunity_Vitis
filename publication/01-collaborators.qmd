@@ -1,32 +1,57 @@
-# Signatories
-<!--
-This section provides the ISC with a view of the support received from
-the community for a proposal. Acceptance isn't predicated on
-popularity but community acceptance is important. Willingness to
-accept outside input is also a good marker for project delivery.
+## 1. Contributors
 
-An optional section would be for R-Core signatories where changes to R
-are proposed.
--->
+| Name | Affiliation | Contribution |
+|----|----|----|
+| **Dr. Viera Kováčová** | Institute for Biological Physics (Z3 CRC1310), University of Cologne, Germany | Conceptualization, data analysis, manuscript writing, figure preparation, shiny app design and implementation |
+| **Prof. Miroslav Baránek** | Department of Plant Biology, Mendel University in Brno, Czech Republic | Conceptualization, experimental design, manuscript writing |
+| **Ing. Martin Hadlík** | Department of Plant Biology, Mendel University in Brno, Czech Republic | Wet-lab, sample collection, RNA isolation, genotyping, resistance locus characterization, figure preparation |
+| **Dr. Kateřina Baránková** | Department of Plant Biology, Mendel University in Brno, Czech Republic | Wet-lab, manuscript review |
 
-## Project team
-<!--
-Who are the people responsible for actually delivering the project if
-the proposal gets accepted and are already signed up and rearing to
-go? Briefly describe all participants and the skills they will bring
-to the project.
--->
+## 2. Institutional Support
 
-## Contributors
-<!--
-Who are the people who have actively helped with this proposal but
-won't necessarily be on the core project team later?
--->
+This work was supported by:
 
-## Consulted
-<!--
-Who has been given the opportunity to provide feedback on the
-proposal? This should include any R Consortium & ISC members who the
-proposal has been discussed with.
--->
+-   Mendel University in Brno (Project IGA-ZF/2023-SI1-015)
+-   University of Cologne (Collaborative Research Center CRC1310 – Predictability in Evolution)
 
+## 3. Interactive Database
+
+An accompanying interactive Shiny web application provides full access to the parsed and annotated transcriptomic results, enabling dynamic exploration of gene expression patterns, GO enrichment, and co-expression modules across Vitis vinifera genotypes and time points.
+
+🔗 Access the app: https://vierakovacova.shinyapps.io/playing_with_immunity/
+
+The interface allows users to:
+
+Search for individual genes or immunity-related modules
+
+Visualize log₂ fold-change trajectories across infection stages
+
+Browse GO and Reactome enrichment results interactively
+
+Export plots and tables for custom analyses
+
+All datasets shown in the app are synchronized with this repository and are fully parseable for downstream analysis or integration into other bioinformatics workflows.
+
+## 4. Citation
+
+If you use the data, code, or figures provided in this repository, please cite the following:
+
+Kováčová, V., Baránek, M., Hadlík, M., & Baránková, K. (2025). Temporal coordination and network integration of multilocus resistance in Vitis vinifera. Plant Biotechnology Journal. \[In preparation\] GitHub repository: https://github.com/vierocka/plant_immunity_Vitis
+
+### 5. License
+
+This repository and all its contents are released under the Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0) license.
+
+You are free to:
+
+Share — copy and redistribute the material in any medium or format
+
+Adapt — remix, transform, and build upon the material
+
+Under the following terms:
+
+Attribution: Credit must be given to the original authors.
+
+NonCommercial: The material may not be used for commercial purposes.
+
+See: https://creativecommons.org/licenses/by-nc/4.0/

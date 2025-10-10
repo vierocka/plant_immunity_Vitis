@@ -28,6 +28,8 @@ bibliography: references.bib
 
 {{< include publication/04-results.qmd >}}
 
+{{< include publication/05-repository-structure.qmd >}}
+
 
 ::: refs
 :::
