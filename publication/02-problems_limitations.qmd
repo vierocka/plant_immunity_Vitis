@@ -1,0 +1,103 @@
+---
+bibliography: references.bib
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+## Problem Definition
+
+Plant immune responses rely on two interconnected recognition systems:
+
+-   Pattern-triggered immunity (PTI) — initiated by cell-surface
+    receptors detecting conserved microbial features, and
+-   Effector-triggered immunity (ETI) — mediated by intracellular NLR
+    receptors detecting pathogen effectors.
+
+In Arabidopsis thaliana and other model species, these two layers are
+known to act sequentially and synergistically, generating temporal
+“waves” of defense activation. However, in long-lived crops such as
+grapevine (Vitis vinifera), the molecular integration of PTI and ETI
+under natural multilocus resistance remains largely unknown.
+
+Classical breeding has introduced multiple Rpv loci (e.g., Rpv12, Rpv1,
+Rpv3) from wild relatives into cultivated V. vinifera backgrounds. While
+these loci confer durable resistance to Plasmopara viticola, it is
+unclear how their combined introgression reshapes genome-wide
+transcriptional dynamics and whether multi-locus resistance strengthens
+defense by additive activation, by stabilization of signaling, or by
+regulatory redundancy.
+
+Thus, the central problem addressed in this study is:
+
+**How does the introgression of multiple resistance loci alter the
+structure, timing, and coordination of immune gene expression networks
+in grapevine?**
+
+We tackle this question by integrating:
+
+-   differential expression and aggregated divergence analyses
+-   generalized linear modeling of immune activation intensity
+-   co-expression network reconstruction
+-   PTI/ETI gene classification based on Arabidopsis homology
+
+This approach bridges the gap between single-locus studies and
+systems-level understanding of multilayered plant immunity, revealing
+how polygenic resistance can rewire defense timing and network
+organization to achieve robust pathogen control.
+
+## Limitations
+
+Although our study provides a comprehensive transcriptomic and
+network-level view of multilocus resistance in *Vitis vinifera*, several
+caveats should be acknowledged:
+
+-   Non-isogenic genetic backgrounds The resistant lines (Rpv12,
+    Rpv12+1, and Rpv12+1+3) are not fully isogenic with the susceptible
+    reference. Each line represents decades of breeding and
+    backcrossing; hence, background genomic variation unrelated to
+    resistance loci may influence expression profiles. Our design
+    minimizes this effect by focusing on conserved early and
+    defense-related transcriptional modules, but residual genetic
+    heterogeneity cannot be excluded.
+
+-   Comparative reference limitation All differential expression
+    contrasts are computed against a single susceptible reference
+    genotype, which defines “zero” DEGs by construction. While this
+    enables a direct assessment of resistance-associated activation, it
+    prevents estimation of absolute transcriptional baselines for each
+    genotype.
+
+-   Homology-based PTI/ETI classification The PTI- and ETI-related gene
+    groups were inferred from Arabidopsis thaliana homologs and existing
+    immunity annotations. Because immune receptor repertoires and
+    downstream signaling components are only partially conserved between
+    Arabidopsis and Vitis, these classifications should be interpreted
+    as functional analogies, not strict orthologies.
+
+-   Lack of genomic sequence validation DNA resequencing was not
+    performed, and the precise introgressed segments were inferred from
+    known Rpv locus coordinates. As such, we cannot quantify
+    recombination boundaries or confirm the absence of additional linked
+    loci.
+
+-   Temporal and tissue resolution The present dataset captures three
+    discrete infection time points (0, 6, and 24 hpi) in leaf tissue.
+    Intermediate signaling events and cell-type–specific dynamics (e.g.,
+    epidermal versus mesophyll responses) remain unresolved and could
+    refine the temporal model of layered immunity.
+
+-   Functional inference from transcriptional data Network density,
+    clustering, and aggregated divergence are correlative measures of
+    regulatory coordination, not direct evidence of causal gene–gene
+    interactions. Integrating phosphoproteomics or metabolite data in
+    future work will be necessary to validate inferred regulatory
+    stabilization.
+
+### Summary Statement
+
+Taken together, these limitations do not undermine the main conclusions
+— that multilocus introgression reshapes the timing and coordination of
+immune responses — but they delineate the scope of inference to
+transcriptomic-level regulatory organization rather than direct genetic
+or mechanistic causality.

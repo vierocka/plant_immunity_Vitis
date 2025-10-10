@@ -22,7 +22,7 @@ bibliography: references.bib
 
 {{< include publication/01-collaborators.qmd >}}
 
-{{< include publication/02-problemdefinition.qmd >}}
+{{< include publication/02-problems_limitations.qmd >}}
 
 {{< include publication/03-methods.qmd >}}
 
