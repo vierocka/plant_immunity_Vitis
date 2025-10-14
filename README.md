@@ -340,9 +340,9 @@ Despite quantitative differences, all resistant genotypes shared the same tempor
 
 Summarized percentages of up/downregulated genes per genotype and shared pattern group. Boxplots and facet-wrapped scatterplots visualize how response phases differ in prevalence and regulation direction.
 
-## Gene Co-expression Network Analysis (GCNA): Co-transcriptional Module and Metamodule Analysis
+## Weighted Gene Co-expression Network Analysis (WGCNA): Co-transcriptional Module and Metamodule Analysis
 
-See the folder "GCNA".
+See the folder "WGCNA".
 
 This pipeline identifies co-transcriptional modules — groups of genes whose expression profiles are highly correlated — and then integrates them into metamodules based on shared membership between modules led by hub genes. All computations were performed in R using variance-stabilized (rlog) expression data corrected by ComBat for batch effects.
 
