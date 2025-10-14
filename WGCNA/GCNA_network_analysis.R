@@ -760,3 +760,13 @@ print(summary_df)
 # 25 PTI_specific   Rpv12+1+3 0        -0.0377       0.103     20
 # 26 PTI_specific   Rpv12+1+3 6        -0.156        0.124     20
 # 27 PTI_specific   Rpv12+1+3 24       -0.102        0.0939    20
+
+
+
+### Meta-module 2
+# generalized pattern: down in all 3 genotypes
+# Bio. processes - GO terms enrichment analysis - Plant-type hypersensitive response - FDR=0.0105 - if Athal equivalents are used
+### MM2: Vitvi08g01235, Vitvi02g04134, Vitvi02g04135, Vitvi07g00890, Vitvi07g02323, Vitvi12g01776, Vitvi01g02242, Vitvi18g04640, Vitvi01g01751, Vitvi12g04630
+MM2 <- c("Vitvi08g01235", "Vitvi02g04134", "Vitvi02g04135", "Vitvi07g00890", "Vitvi07g02323", "Vitvi12g01776", "Vitvi01g02242", "Vitvi18g04640", "Vitvi01g01751", "Vitvi12g04630")
+convTab[match(MM2, convTab$PN40024_genotype_ENSMBL_ID),]
+convTab[match(MM2, convTab$PN40024_genotype_ENSMBL_ID),12]
