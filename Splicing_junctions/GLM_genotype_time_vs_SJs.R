@@ -73,6 +73,7 @@ anova(fit_poisson, test = "Chisq")
 # Batch          1    362.6        29      41204   0.6363
 # genotype:time  6   3823.5        23      37381   0.8840
 
+########################### NB ################
 #### Negative binomial
 fit_nb <- glm.nb(filteredSJs ~ genotype*timing + Batch + offset(offset), data = SJoverview)
 summary(fit_nb)
@@ -126,8 +127,6 @@ summary(fit_nb)
 # genotypeRpv12.1.3 -0.12712    0.05763   -2.206   0.0274 *  
 # Batch2            -0.04062    0.04263   -0.953   0.3407    
 # Dispersion parameter for Negative Binomial(75.0961) family taken to be 1
-p.adjust(c(2e-16, 0.2113, 0.0581, 0.0274, 0.3407), method = "fdr")
-# 1.000000e-15 2.641250e-01 9.683333e-02 6.850000e-02 3.407000e-01
 
 anova(fit_nb)
 # Df Deviance Resid. Df Resid. Dev Pr(>Chi)
@@ -262,12 +261,6 @@ convTab[match(rownames(AdjPvalues[which(AdjPvalues$adjPgen > 0.05 & AdjPvalues$a
 dim(AdjPvalues[which(AdjPvalues$adjPgen < 0.05 & AdjPvalues$adjPtim > 0.05 & AdjPvalues$adjPgen_tim > 0.05 & AdjPvalues$adjPbatch > 0.05),])
 unique(sort(convTab[match(rownames(AdjPvalues[which(AdjPvalues$adjPgen < 0.05 & AdjPvalues$adjPtim > 0.05 & AdjPvalues$adjPgen_tim > 0.05 & AdjPvalues$adjPbatch > 0.05),]), convTab$PN40024_genotype_ENSMBL_ID), 12]))
 
-# only differences in genotypes: 824 
-AdjPvalues[which(AdjPvalues$adjPgen < 0.001 & AdjPvalues$adjPtim > 0.05 & AdjPvalues$adjPgen_tim > 0.05 & AdjPvalues$adjPbatch > 0.05),]
-
-# only differences in genotypes: 0
-AdjPvalues[which(AdjPvalues$adjPgen < 0.001 & AdjPvalues$adjPtim == 1 & AdjPvalues$adjPgen_tim == 1 & AdjPvalues$adjPbatch == 1),]
-
 # separate table for genotype-specific
 genotype_specific <- as.data.frame(resultsNB[match(rownames(AdjPvalues[which(AdjPvalues$adjPgen < 0.05 & AdjPvalues$adjPtim > 0.05 & AdjPvalues$adjPgen_tim > 0.05 & AdjPvalues$adjPbatch > 0.05),]), rownames(resultsNB)),])
 
@@ -338,6 +331,10 @@ unique(sort(convTab[match(rownames(suscp_resist_SJ_diff[which(suscp_resist_SJ_di
 # InterPro - IPR045344 - C-JID domain - 5 of 70	1.91	1.74;	FDR=3.28e-05
 # InterPro - IPR000157	- Toll/interleukin-1 receptor homology (TIR) domain; 5 of 79	1.86	1.71; FDR=3.28e-05
 
+grep("i18g", rownames(suscp_resist_SJ_diff[which(suscp_resist_SJ_diff$adjPgen < 0.05),])) # 23 conseq. loci
+grep("i3g", rownames(suscp_resist_SJ_diff[which(suscp_resist_SJ_diff$adjPgen < 0.05),]))  # 13 conseq. loci
+grep("i14g", rownames(suscp_resist_SJ_diff[which(suscp_resist_SJ_diff$adjPgen < 0.05),])) # 2 conseq. loci
+grep("i12g", rownames(suscp_resist_SJ_diff[which(suscp_resist_SJ_diff$adjPgen < 0.05),])) # 1 conseq. loci
 #### all susceptible samples must have more than 0 SJ, all resistant samples must have  0 SJs
 # Condition A: all susceptible columns are zero
 cond_susc_zero <- rowSums(SJmat[, susc_idx] > 0) == length(susc_idx)
