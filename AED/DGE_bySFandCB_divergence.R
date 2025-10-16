@@ -76,16 +76,25 @@ mean_Grpv1213_24 <- apply(expr_adj[,c(9,21,33)], 1, mean)
 
 #### AGGREGATED DIVERGENCE ###
 AggrDiv_RPV12_0 <- mean(abs(mean_Grpv12_0 - mean_Go_0)^2)
-AggrDiv_RPV121_0 <- mean(abs(mean_Grpv121_0 - mean_Go_0)^2)
+# 0.8793808
+AggrDiv_RPV121_0 <- mean(abs(mean_Grpv121_0 - mean_Go_0)^2) 
+# 1.168903
 AggrDiv_RPV1213_0 <- mean(abs(mean_Grpv1213_0 - mean_Go_0)^2)
+# 1.447296
 
 AggrDiv_RPV12_6 <- mean(abs(mean_Grpv12_6 - mean_Go_6)^2)
+# 0.9952562
 AggrDiv_RPV121_6 <- mean(abs(mean_Grpv121_6 - mean_Go_6)^2)
+# 1.211891
 AggrDiv_RPV1213_6 <- mean(abs(mean_Grpv1213_6 - mean_Go_6)^2)
+# 2.157126
 
 AggrDiv_RPV12_24 <- mean(abs(mean_Grpv12_24 - mean_Go_24)^2)
+# 1.567063
 AggrDiv_RPV121_24 <- mean(abs(mean_Grpv121_24 - mean_Go_24)^2)
+# 1.342263 
 AggrDiv_RPV1213_24 <- mean(abs(mean_Grpv1213_24 - mean_Go_24)^2)
+# 1.538979
 
 ########### 12 columns - by 3 - 220 all unique options
 ### Ho - null distribution - 0 hpi ###

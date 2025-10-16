@@ -156,7 +156,6 @@ unique(sort(protIDs2))
 geneIDs2 <- names(sort(contributions2, decreasing = TRUE)[1:50])
 convTab[match(geneIDs2, convTab$PN40024_genotype_ENSMBL_ID),c(1,2,7,8,10)]
 
-
 # PC3:
 plot(x=c(1:length(contributions[,3])), sort(contributions[,3]), ylab="contributions (%)", xlab="26 169 genes", main="PC3 (10.21 %)")
 abline(h=sort(contributions[,3], decreasing = TRUE)[50], lty=2, col="firebrick", lwd=1.25)
@@ -166,6 +165,11 @@ protIDs3 <- convTab[match(names(sort(contributions3, decreasing = TRUE)[1:50]), 
 unique(sort(protIDs3))
 geneIDs3 <- names(sort(contributions3, decreasing = TRUE)[1:50])
 convTab[match(geneIDs3, convTab$PN40024_genotype_ENSMBL_ID),c(1,2,7,8,10)]
+unique(sort(convTab[match(geneIDs3, convTab$PN40024_genotype_ENSMBL_ID),12]))
+# A. thal. homologs: AT1G16150, AT1G19250, AT1G35710, AT1G49760, AT2G22910, AT2G29420, AT2G31900, AT2G33800, AT3G07040, AT3G14470, AT3G18370, AT3G21420, AT3G46530, AT3G46710, AT3G47570, AT3G50740, AT3G51550, AT3G51850, AT3G52500, AT3G54630, AT4G03230, AT4G03500, AT4G05320, AT4G12010, AT4G26090, AT4G27190, AT4G31940, AT4G36550, AT5G05260, AT5G06220, AT5G17680, AT5G23960, AT5G25930, AT5G35810, AT5G44870, AT5G45230, AT5G48850, AT5G60900
+# Biol. Pr.:
+# GO:0009626	Plant-type hypersensitive response 6 of 75	1.76	1.73	FDR=7.98e-06
+# GO:0006952	Defense response 13 of 1621	0.76	0.74	FDR=0.00012
 
 # PC4:
 plot(x=c(1:length(contributions[,4])), sort(contributions[,4]), ylab="contributions (%)", xlab="26 169 genes", main="PC4 (7.38 %)")

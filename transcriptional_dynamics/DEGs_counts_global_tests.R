@@ -3,15 +3,13 @@ library(stats)
 library(dplyr)
 library(emmeans)
 library(ggplot2)
+library(MASS)
 
 ##########################################################################
 ####### 3 GENOTYPES #######################
-
-DEGs <- c(125,713,258,246,130,341,49,749,14,126,394,19,296,1421,148,152,396,119)
-genotype <- c(rep("Rpv12",6),rep("Rpv12+1",6),rep("Rpv12+1+3",6))
-timing <- rep(c(0,6,24),6)
-direction <- rep(c("Down","Down","Down","Up","Up","Up"),3)
-myCountDF <- as.data.frame(cbind(DEGs, genotype, timing, direction))
+#### Model A
+DEGcounts <- read.table("DGEA/DEGs_genotype_time_direction_overview.csv", sep=",", header = TRUE)
+myCountDF <- as.data.frame(DEGcounts[,c(2:5)])
 
 myCountDF$DEGs <- as.numeric(myCountDF$DEGs)
 myCountDF$genotype <- factor(myCountDF$genotype)
@@ -20,23 +18,22 @@ myCountDF$direction <- factor(myCountDF$direction)
 
 str(myCountDF)
 
-m1 <- glm(
+m1 <- glm.nb(
   DEGs ~ genotype + timing + direction,
-  family = quasipoisson(link = "log"),
   data = myCountDF
 )
 
-sum(residuals(m1, type="pearson")^2) / df.residual(m1) # 130.4372 
+sum(residuals(m1, type="pearson")^2) / df.residual(m1) # 1.228425
 
 summary(m1)
 # Coefficients:
 # Estimate Std. Error t value Pr(>|t|)    
-# (Intercept)         5.3451     0.4381  12.200 4.02e-08 ***
-# genotypeRpv12+1    -0.2941     0.4105  -0.717  0.48735    
-# genotypeRpv12+1+3   0.3340     0.3514   0.951  0.36054    
-# timing24           -0.1005     0.5257  -0.191  0.85164    
-# timing6             1.3418     0.4068   3.298  0.00636 ** 
-# directionUp        -0.6740     0.3200  -2.106  0.05692 .  
+# (Intercept)         5.5565     0.3697  15.029  < 2e-16 ***
+# genotypeRpv12+1    -1.0436     0.3706  -2.816  0.00487 ** 
+# genotypeRpv12+1+3  -0.1515     0.3692  -0.410  0.68164    
+# timing6             1.4408     0.3694   3.901  9.6e-05 ***
+# timing24           -0.3239     0.3712  -0.872  0.38294    
+# directionUp        -0.1930     0.3022  -0.639  0.52303     
 
 # The model analyzes how much each resistant genotype diverges from the susceptible over time.
 # The susceptible control defines the zero point, not a modeled group.
@@ -44,16 +41,45 @@ summary(m1)
 # The direction trend suggests more suppression than activation relative to the susceptible.
 # The genotype effect being nonsignificant implies similar total transcriptomic divergence among resistant genotypes (differences may still occur in which genes, but not in the number).
 
-anova(m1, test = "F")
-# Df Deviance Resid. Df Resid. Dev       F   Pr(>F)   
-# NULL                         17     5097.0                    
-# genotype   2   370.79        15     4726.2  1.4213 0.279262   
-# timing     2  2652.62        13     2073.6 10.1682 0.002612 **
-# direction  1   611.90        12     1461.7  4.6911 0.051169 . 
+anova(m1, test = "Chisq")
+# Df Deviance Resid. Df Resid. Dev       F   Pr(>Chi)   
+# NULL                          17     47.668              
+# genotype   2   2.8993        15     44.769    0.2347    
+# timing     2  25.1998        13     19.569 3.372e-06 ***
+# direction  1   0.3662        12     19.203    0.5451       
 
-# Timing significantly affects DEG counts (p < 0.001), while the effect of direction is weaker (p ≈ 0.1).
+# Timing significantly affects DEG counts (p < 0.001), while the effect of direction or genotype is not significant.
 # Infection time greatly affects DEG counts
+# Resistant genotypes do not simply “increase DEG count” compared to each other.
 
+emm <- emmeans(m1, ~ genotype | timing)
+print(pairs(emm, adjust = "tukey"))
+# timing = 0:
+# contrast                estimate    SE  df z.ratio p.value
+# Rpv12 - (Rpv12+1)          1.044 0.371 Inf   2.816  0.0135 *
+# Rpv12 - (Rpv12+1+3)        0.151 0.369 Inf   0.410  0.9114
+# (Rpv12+1) - (Rpv12+1+3)   -0.892 0.371 Inf  -2.406  0.0426 *
+
+# timing = 6:
+# contrast                estimate    SE  df z.ratio p.value
+# Rpv12 - (Rpv12+1)          1.044 0.371 Inf   2.816  0.0135 *
+# Rpv12 - (Rpv12+1+3)        0.151 0.369 Inf   0.410  0.9114
+# (Rpv12+1) - (Rpv12+1+3)   -0.892 0.371 Inf  -2.406  0.0426 *
+
+# timing = 24:
+# contrast                estimate    SE  df z.ratio p.value
+# Rpv12 - (Rpv12+1)          1.044 0.371 Inf   2.816  0.0135 *
+# Rpv12 - (Rpv12+1+3)        0.151 0.369 Inf   0.410  0.9114
+# (Rpv12+1) - (Rpv12+1+3)   -0.892 0.371 Inf  -2.406  0.0426 *
+
+p.adjust(c(0.0135, 0.9114, 0.0426), method="fdr") # 0.0405 0.9114 0.0639
+# At each time point:
+# Rpv12 vs Rpv12+1 differs significantly.
+# But Rpv12+1+3 is not consistently higher (sometimes even lower).
+# Therefore:
+# More loci ≠ more DEGs. Stacking changes which genes, not the total number.
+
+################## Plot 
 myCountDF$timing <- as.numeric(as.character(myCountDF$timing))
 
 ggplot(myCountDF, aes(x = timing, y = DEGs,
@@ -81,34 +107,124 @@ ggplot(myCountDF, aes(x = timing, y = DEGs,
 # DEGs_time_direction_genotypes.jpg
 
 ################## Q: Does the number of DEGs systematically increases with the number of loci. ##############
-myCountDF$loci <- as.numeric(factor(myCountDF$genotype,
-                                    levels = c("Rpv12", "Rpv12+1", "Rpv12+1+3")))
+#### Model B
+myCountDF$loci <- as.numeric(factor(myCountDF$genotype, levels = c("Rpv12", "Rpv12+1", "Rpv12+1+3")))
 # loci = 1, 2, 3
-m_loci <- glm(
+m_loci <- glm.nb(
   DEGs ~ loci + timing + direction,
-  family = quasipoisson(link = "log"),
   data = myCountDF
 )
 
 summary(m_loci)
 # Coefficients:
 # Estimate Std. Error t value Pr(>|t|)    
-# (Intercept)  5.84825    0.68044   8.595 5.89e-07 ***
-# loci         0.19049    0.27868   0.684    0.505    
-# timing      -0.02288    0.02406  -0.951    0.358    
-# directionUp -0.67398    0.47683  -1.413    0.179    
+# (Intercept)  5.35594    0.55234   9.697  < 2e-16 ***
+# loci        -0.03758    0.21390  -0.176  0.86054    
+# timing6      1.26250    0.42743   2.954  0.00314 ** 
+# timing24    -0.11451    0.42841  -0.267  0.78925    
+# directionUp -0.29980    0.34930  -0.858  0.39073    
+
+anova(m_loci, test = "Chisq")
+# Df Deviance Resid. Df Resid. Dev  Pr(>Chi)    
+# NULL                         17     35.633              
+# loci       1   0.6957        16     34.938 0.4042241    
+# timing     2  14.6501        14     20.288 0.0006588 ***
+# direction  1   0.6646        13     19.623 0.4149351    
+
+p.adjust(c(0.4042241, 0.0006588, 0.4149351), method="fdr")
+# 0.4149351 0.0019764 0.4149351
 
 # The non-significant loci trend means the overall DEG counts are not simply scaling with the number of introgressed loci.
-# Across all time points and regulation directions, the total number of DEGs did not significantly increase with the number of introgressed loci (p = 0.505), although the direction of the slope (β = +0.19) suggested a mild upward trend (~21% more DEGs per additional locus).
+# Across time points, the total number of DEGs significantly changes (p = 0.0006588)
+# timing significant
 
-## total transcriptional responsiveness differs by genotype/time - no direction 
+emm <- emmeans(m_loci, ~ timing | loci)
+print(pairs(emm, adjust = "tukey"))
+# loci = 2:
+# contrast           estimate    SE  df z.ratio p.value
+# timing0 - timing6    -1.263 0.427 Inf  -2.954  0.0088
+# timing0 - timing24    0.115 0.428 Inf   0.267  0.9614
+# timing6 - timing24    1.377 0.428 Inf   3.221  0.0037
+
+emm <- emmeans(m_loci, ~ timing + direction | loci)
+print(pairs(emm, adjust = "tukey"))
+# loci = 2:
+# contrast                     estimate    SE  df z.ratio p.value
+# timing0 Down - timing6 Down    -1.263 0.427 Inf  -2.954  0.0370 *
+# timing0 Down - timing24 Down    0.115 0.428 Inf   0.267  0.9998
+# timing0 Down - timing0 Up       0.300 0.349 Inf   0.858  0.9562
+# timing0 Down - timing6 Up      -0.963 0.552 Inf  -1.744  0.5022
+# timing0 Down - timing24 Up      0.414 0.553 Inf   0.749  0.9756
+# timing6 Down - timing24 Down    1.377 0.428 Inf   3.221  0.0162
+# timing6 Down - timing0 Up       1.562 0.552 Inf   2.830  0.0529
+# timing6 Down - timing6 Up       0.300 0.349 Inf   0.858  0.9562
+# timing6 Down - timing24 Up      1.677 0.552 Inf   3.036  0.0289 *
+# timing24 Down - timing0 Up      0.185 0.553 Inf   0.335  0.9994
+# timing24 Down - timing6 Up     -1.077 0.552 Inf  -1.952  0.3706
+# timing24 Down - timing24 Up     0.300 0.349 Inf   0.858  0.9562
+# timing0 Up - timing6 Up        -1.263 0.427 Inf  -2.954  0.0370 *
+# timing0 Up - timing24 Up        0.115 0.428 Inf   0.267  0.9998
+# timing6 Up - timing24 Up        1.377 0.428 Inf   3.221  0.0162 *
+
+############## 
+## total transcriptional responsiveness differs by time and genotype - no by direction 
 agg <- aggregate(DEGs ~ genotype + timing, data = myCountDF, sum)
-m_simple <- glm(DEGs ~ genotype * timing, family = quasipoisson, data = agg)
-anova(m_simple, test = "F")
+m_simple <- glm.nb(agg$DEGs ~ as.factor(agg$genotype) + as.factor(agg$timing), data = agg)
+anova(m_simple, test = "Chisq")
+# Df Deviance Resid. Df Resid. Dev  Pr(>Chi)    
+# NULL                                        8     32.163              
+# as.factor(agg$genotype)  2   2.3415         6     29.822    0.3101    
+# as.factor(agg$timing)    2  20.3804         4      9.441 3.754e-05 ***
+# time >> genotype in terms of transcriptome-wide responsiveness
 summary(m_simple)
-# not significant
-# That means the overall number of DEGs is not systematically explained by genotype, time, or up/down direction in a global sense.
+#  Estimate Std. Error z value Pr(>|z|)    
+# (Intercept)                        6.1334     0.3754  16.338  < 2e-16 ***
+# as.factor(agg$genotype)Rpv12+1    -1.0614     0.4121  -2.576 0.010003 *  
+# as.factor(agg$genotype)Rpv12+1+3  -0.1237     0.4108  -0.301 0.763356    
+# as.factor(agg$timing)6             1.5000     0.4109   3.650 0.000262 ***
+# as.factor(agg$timing)24           -0.3225     0.4126  -0.782 0.434444   
 
+emm <- emmeans(m_simple, ~ timing | genotype)
+print(pairs(emm, adjust = "tukey"))
+# genotype = Rpv12:
+# contrast           estimate    SE  df z.ratio p.value
+# timing0 - timing6    -1.500 0.411 Inf  -3.650  0.0008
+# timing0 - timing24    0.323 0.413 Inf   0.782  0.7143
+# timing6 - timing24    1.823 0.411 Inf   4.429  <.0001
+
+# genotype = Rpv12+1:
+# contrast           estimate    SE  df z.ratio p.value
+# timing0 - timing6    -1.500 0.411 Inf  -3.650  0.0008
+# timing0 - timing24    0.323 0.413 Inf   0.782  0.7143
+# timing6 - timing24    1.823 0.411 Inf   4.429  <.0001
+
+# genotype = Rpv12+1+3:
+# contrast           estimate    SE  df z.ratio p.value
+# timing0 - timing6    -1.500 0.411 Inf  -3.650  0.0008
+# timing0 - timing24    0.323 0.413 Inf   0.782  0.7143
+# timing6 - timing24    1.823 0.411 Inf   4.429  <.0001
+
+emm <- emmeans(m_simple, ~ genotype | timing)
+print(pairs(emm, adjust = "tukey"))
+# timing = 0:
+# contrast                estimate    SE  df z.ratio p.value
+# Rpv12 - (Rpv12+1)          1.061 0.412 Inf   2.576  0.0270
+# Rpv12 - (Rpv12+1+3)        0.124 0.411 Inf   0.301  0.9513
+# (Rpv12+1) - (Rpv12+1+3)   -0.938 0.412 Inf  -2.275  0.0593
+
+# timing = 6:
+# contrast                estimate    SE  df z.ratio p.value
+# Rpv12 - (Rpv12+1)          1.061 0.412 Inf   2.576  0.0270
+# Rpv12 - (Rpv12+1+3)        0.124 0.411 Inf   0.301  0.9513
+# (Rpv12+1) - (Rpv12+1+3)   -0.938 0.412 Inf  -2.275  0.0593
+
+# timing = 24:
+# contrast                estimate    SE  df z.ratio p.value
+# Rpv12 - (Rpv12+1)          1.061 0.412 Inf   2.576  0.0270
+# Rpv12 - (Rpv12+1+3)        0.124 0.411 Inf   0.301  0.9513
+# (Rpv12+1) - (Rpv12+1+3)   -0.938 0.412 Inf  -2.275  0.0593
+
+#############
 library(ggplot2)
 
 # svg("/home/veve/Dropbox/MendelUni_Vinselect/draft/Sections_by_VK/PLANT_BIOTECH_J/DGE_counts.svg", width = 14, height = 8)
@@ -121,185 +237,212 @@ ggplot(myCountDF, aes(x = as.factor(genotype), y = as.double(DEGs))) +
 # DEGs_direction_timing_genotypes.jpg
 
 ########################### timing effect separately per genotype ########
+#### Model C
 # Loop through cultivars
 for (g in unique(myCountDF$genotype)) {
   cat("\n###", g, "###\n")
   df_sub <- myCountDF %>% filter(genotype == g)
   
-  m_sub <- glm(
+  m_sub <- glm.nb(
     DEGs ~ timing + direction,
-    family = quasipoisson(link = "log"),
     data = df_sub
   )
   
   print(summary(m_sub))
-  print(anova(m_sub, test = "F"))
+  print(anova(m_sub, test = "Chisq"))
 }
 
 
-### Rpv12 ###
-
+### Rpv12 ### Rpv12: flat response, low inducibility
 # Call:
-# glm(formula = DEGs ~ timing + direction, family = quasipoisson(link = "log"), data = df_sub)
+# glm.nb(formula = DEGs ~ timing + direction, data = df_sub, init.theta = 4.159536525,  link = log)
 # Coefficients:
-# Estimate Std. Error t value Pr(>|t|)   
-# (Intercept)  5.83038    0.55735  10.461  0.00186 **
-# timing       0.00680    0.03258   0.209  0.84806   
-# directionUp -0.42435    0.69066  -0.614  0.58240   
-  
-# (Dispersion parameter for quasipoisson family taken to be 206.7559)
-# Null deviance: 684.00  on 5  degrees of freedom
-# Residual deviance: 595.27  on 3  degrees of freedom
-# AIC: NA
+# Estimate Std. Error z value Pr(>|z|)    
+# (Intercept)   5.3549     0.4041  13.250   <2e-16 ***
+# timing6       0.7221     0.4943   1.461    0.144    
+# timing24      0.4619     0.4946   0.934    0.350    
+# directionUp  -0.1939     0.4034  -0.481    0.631    
+# (Dispersion parameter for Negative Binomial(4.1595) family taken to be 1)
+# Null deviance: 9.0992  on 5  degrees of freedom
+# Residual deviance: 6.2269  on 2  degrees of freedom
+# AIC: 85.368
+# Theta:  4.16 
+# Std. Err.:  2.35 
+# 2 x log-likelihood:  -75.368 
+# Df Deviance Resid. Df Resid. Dev Pr(>Chi)
+# NULL                          5     9.0992         
+# timing     2  2.68777         3     6.4115   0.2608
+# direction  1  0.18453         2     6.2269   0.6675
 
-# Df Deviance Resid. Df Resid. Dev      F Pr(>F)
-# NULL                          5     684.00              
-# timing     1    8.915         4     675.09 0.0431 0.8488
-# direction  1   79.816         3     595.27 0.3860 0.5784
-
-### Rpv12+1 ###
-
+### Rpv12+1 ### very strong timing structure, but symmetric up/down.
 # Call:
-# glm(formula = DEGs ~ timing + direction, family = quasipoisson(link = "log"), data = df_sub)
+# glm.nb(formula = DEGs ~ timing + direction, data = df_sub, init.theta = 9.345703886, link = log)
 # Coefficients:
-# Estimate Std. Error t value Pr(>|t|)   
-# (Intercept)  5.99031    0.86988   6.886  0.00627 **
-# timing      -0.05083    0.07361  -0.691  0.53946   
-# directionUp -0.40978    1.20880  -0.339  0.75695   
-# (Dispersion parameter for quasipoisson family taken to be 473.3659)
-# Null deviance: 1773.9  on 5  degrees of freedom
-# Residual deviance: 1443.9  on 3  degrees of freedom
-# AIC: NA
+# Estimate Std. Error z value Pr(>|z|)    
+# (Intercept)   4.3585     0.2846  15.316  < 2e-16 ***
+# timing6       1.9354     0.3373   5.738 9.58e-09 ***
+# timing24     -1.6448     0.3788  -4.343 1.41e-05 ***
+# directionUp   0.1653     0.2914   0.567     0.57    
+# (Dispersion parameter for Negative Binomial(9.3457) family taken to be 1)
+# Null deviance: 94.999  on 5  degrees of freedom
+# Residual deviance:  5.444  on 2  degrees of freedom
+# AIC: 68.184
+# Theta:  9.35 
+# Std. Err.:  5.73 
+# 
+# 2 x log-likelihood:  -58.184 
+# Analysis of Deviance Table
+# Model: Negative Binomial(9.3457), link: log
+# Df Deviance Resid. Df Resid. Dev Pr(>Chi)    
+# NULL                          5     94.999             
+# timing     2   89.264         3      5.735   <2e-16 ***
+# direction  1    0.291         2      5.444   0.5893    
 
-# Df Deviance Resid. Df Resid. Dev      F Pr(>F)
-# NULL                          5     1773.9              
-# timing     1  274.457         4     1499.4 0.5798 0.5018
-# direction  1   55.548         3     1443.8 0.1173 0.7545
-
-### Rpv12+1+3 ###
-
-# Call:
-# glm(formula = DEGs ~ timing + direction, family = quasipoisson(link = "log"), data = df_sub)
-
+### Rpv12+1+3 ### strong timing and strong directional bias (more downregulation).
+# Call: glm.nb(formula = DEGs ~ timing + direction, data = df_sub, init.theta = 23.46246714, link = log)
 # Coefficients:
-# Estimate Std. Error t value Pr(>|t|)   
-# (Intercept)  6.71943    0.61468  10.932  0.00164 **
-# timing      -0.03440    0.04968  -0.692  0.53847   
-# directionUp -1.02823    0.99816  -1.030  0.37874   
-# (Dispersion parameter for quasipoisson family taken to be 489.4913)
-# Null deviance: 2268.3  on 5  degrees of freedom
-# Residual deviance: 1415.6  on 3  degrees of freedom
-# AIC: NA
+# Estimate Std. Error z value Pr(>|z|)    
+# (Intercept)   5.7273     0.1763  32.480  < 2e-16 ***
+# timing6       1.3022     0.2140   6.085 1.17e-09 ***
+# timing24     -0.4487     0.2213  -2.027   0.0427 *  
+# directionUp  -0.7418     0.1775  -4.180 2.92e-05 ***
+# (Dispersion parameter for Negative Binomial(23.4625) family taken to be 1)
+# Null deviance: 111.9290  on 5  degrees of freedom
+# Residual deviance:   5.9835  on 2  degrees of freedom
+# AIC: 76.205
+# Theta:  23.5 
+# Std. Err.:  14.7 
+# 2 x log-likelihood:  -66.205 
+# Model: Negative Binomial(23.4625), link: log
+# Df Deviance Resid. Df Resid. Dev  Pr(>Chi)    
+# NULL                          5    111.929              
+# timing     2   89.420         3     22.509 < 2.2e-16 ***
+# direction  1   16.526         2      5.983 4.799e-05 ***
 
-# Df Deviance Resid. Df Resid. Dev      F Pr(>F)
-# NULL                          5     2268.3              
-# timing     1   262.56         4     2005.8 0.5364 0.5170
-# direction  1   590.13         3     1415.6 1.2056 0.3524
+## Only stacked genotypes show coordinated temporal AND directional regulation.
 
 ######## Compare cultivars at the same time point
+#### Model D
 for (t in unique(myCountDF$timing)) {
   cat("\n### Time:", t, "hpi ###\n")
   df_sub <- myCountDF %>% filter(timing == t)
   
-  m_sub <- glm(
+  m_sub <- glm.nb(
     DEGs ~ genotype + direction,
-    family = quasipoisson(link = "log"),
     data = df_sub
   )
   
   print(summary(m_sub))
-  print(anova(m_sub, test = "F"))
+  print(anova(m_sub, test = "Chisq"))
   
   emm <- emmeans(m_sub, ~ genotype | direction)
   print(pairs(emm, adjust = "tukey"))
 }
 
-### Time: 0 hpi ###
-# Call: glm(formula = DEGs ~ genotype + direction, family = quasipoisson(link = "log"), data = df_sub)
+### Time: 0 hpi ### There is basal difference before infection. Rpv12+1 lower DEGs than Rpv12 → interesting basal tuning.
+# Call: glm.nb(formula = DEGs ~ genotype + direction, data = df_sub, init.theta = 8.867476876, link = log)
 # Coefficients:
-# Estimate Std. Error t value Pr(>|t|)   
-# (Intercept)         5.1672     0.4726  10.933  0.00826 **
-# genotypeRpv12+1    -0.7514     0.7015  -1.071  0.39624   
-# genotypeRpv12+1+3   0.1886     0.5370   0.351  0.75899   
-# directionUp         0.1088     0.4860   0.224  0.84370   
-# (Dispersion parameter for quasipoisson family taken to be 58.52073)
-# Null deviance: 253.16  on 5  degrees of freedom
-# Residual deviance: 119.45  on 2  degrees of freedom
-# AIC: NA
-# Df Deviance Resid. Df Resid. Dev      F Pr(>F)
-# NULL                          5     253.16              
-# genotype   2  130.779         3     122.38 1.1174 0.4723
-# direction  1    2.935         2     119.44 0.0502 0.8436
+# Estimate Std. Error z value Pr(>|z|)    
+# (Intercept)         5.0248     0.2820  17.817   <2e-16 ***
+# genotypeRpv12+1    -0.7672     0.3489  -2.199   0.0279 *  
+# genotypeRpv12+1+3   0.2870     0.3431   0.837   0.4028    
+# directionUp         0.3186     0.2829   1.126   0.2601    
+# (Dispersion parameter for Negative Binomial(8.8675) family taken to be 1)
+# Null deviance: 14.6470  on 5  degrees of freedom
+# Residual deviance:  6.0474  on 2  degrees of freedom
+# AIC: 74.07
+# Theta:  8.87 
+# Std. Err.:  5.32 
+# 2 x log-likelihood:  -64.07 
+# Model: Negative Binomial(8.8675), link: log
+# Df Deviance Resid. Df Resid. Dev Pr(>Chi)  
+# NULL                          5    14.6470           
+# genotype   2   7.4621         3     7.1849  0.02397 *
+# direction  1   1.1375         2     6.0474  0.28618  
 
 # direction = Down:
 # contrast                estimate    SE  df z.ratio p.value
-# Rpv12 - (Rpv12+1)          0.751 0.702 Inf   1.071  0.5320
-# Rpv12 - (Rpv12+1+3)       -0.189 0.537 Inf  -0.351  0.9343
-# (Rpv12+1) - (Rpv12+1+3)   -0.940 0.682 Inf  -1.378  0.3522
+# Rpv12 - (Rpv12+1)          0.767 0.349 Inf   2.199  0.0713
+# Rpv12 - (Rpv12+1+3)       -0.287 0.343 Inf  -0.837  0.6803
+# (Rpv12+1) - (Rpv12+1+3)   -1.054 0.348 Inf  -3.031  0.0069*
 
 # direction = Up:
 # contrast                estimate    SE  df z.ratio p.value
-# Rpv12 - (Rpv12+1)          0.751 0.702 Inf   1.071  0.5320
-# Rpv12 - (Rpv12+1+3)       -0.189 0.537 Inf  -0.351  0.9343
-# (Rpv12+1) - (Rpv12+1+3)   -0.940 0.682 Inf  -1.378  0.3522
+# Rpv12 - (Rpv12+1)          0.767 0.349 Inf   2.199  0.0713
+# Rpv12 - (Rpv12+1+3)       -0.287 0.343 Inf  -0.837  0.6803
+# (Rpv12+1) - (Rpv12+1+3)   -1.054 0.348 Inf  -3.031  0.0069*
 
-### Time: 6 hpi ###
-# Call: glm(formula = DEGs ~ genotype + direction, family = quasipoisson(link = "log"), data = df_sub)
+### Time: 6 hpi ### genotype highly significant; direction highly significant (down > up)
+# Call: glm.nb(formula = DEGs ~ genotype + direction, data = df_sub, init.theta = 23.12015981, link = log)
 # Coefficients:
-# Estimate Std. Error t value Pr(>|t|)   
-# (Intercept)         6.4600     0.2606  24.792  0.00162 **
-# genotypeRpv12+1     0.3044     0.3319   0.917  0.45586   
-# genotypeRpv12+1+3   0.7680     0.3047   2.521  0.12789   
-# directionUp        -1.1422     0.2768  -4.126  0.05403 . 
-# (Dispersion parameter for quasipoisson family taken to be 53.45317)
-# Null deviance: 1553.28  on 5  degrees of freedom
-# Residual deviance:  105.63  on 2  degrees of freedom
-# AIC: NA
-# Df Deviance Resid. Df Resid. Dev      F  Pr(>F)  
-# NULL                          5    1553.28                 
-# genotype   2   383.79         3    1169.49  3.590 0.21787  
-# direction  1  1063.86         2     105.63 19.903 0.04675 *
+# Estimate Std. Error z value Pr(>|z|)    
+# (Intercept)         6.3602     0.1744  36.459  < 2e-16 ***
+# genotypeRpv12+1     0.5691     0.2148   2.650  0.00806 ** 
+# genotypeRpv12+1+3   0.8617     0.2142   4.024 5.73e-05 ***
+# directionUp        -1.2003     0.1746  -6.876 6.15e-12 ***
+# (Dispersion parameter for Negative Binomial(23.1202) family taken to be 1)
+# Null deviance: 63.1317  on 5  degrees of freedom
+# Residual deviance:  6.0866  on 2  degrees of freedom
+# AIC: 83.214
+# Theta:  23.1 
+# Std. Err.:  14.1 
+# 2 x log-likelihood:  -73.214 
+# Analysis of Deviance Table
+# Model: Negative Binomial(23.1202), link: log
+# Df Deviance Resid. Df Resid. Dev  Pr(>Chi)    
+# NULL                          5     63.132              
+# genotype   2   13.504         3     49.627  0.001168 ** 
+# direction  1   43.541         2      6.087 4.153e-11 ***
 
 # direction = Down:
 # contrast                estimate    SE  df z.ratio p.value
-# Rpv12 - (Rpv12+1)         -0.304 0.332 Inf  -0.917  0.6294
-# Rpv12 - (Rpv12+1+3)       -0.768 0.305 Inf  -2.521  0.0314*
-# (Rpv12+1) - (Rpv12+1+3)   -0.464 0.276 Inf  -1.679  0.2131
+# Rpv12 - (Rpv12+1)         -0.569 0.215 Inf  -2.650  0.0220
+# Rpv12 - (Rpv12+1+3)       -0.862 0.214 Inf  -4.024  0.0002
+# (Rpv12+1) - (Rpv12+1+3)   -0.293 0.212 Inf  -1.378  0.3524
 
 # direction = Up:
 # contrast                estimate    SE  df z.ratio p.value
-# Rpv12 - (Rpv12+1)         -0.304 0.332 Inf  -0.917  0.6294
-# Rpv12 - (Rpv12+1+3)       -0.768 0.305 Inf  -2.521  0.0314*
-# (Rpv12+1) - (Rpv12+1+3)   -0.464 0.276 Inf  -1.679  0.2131
+# Rpv12 - (Rpv12+1)         -0.569 0.215 Inf  -2.650  0.0220
+# Rpv12 - (Rpv12+1+3)       -0.862 0.214 Inf  -4.024  0.0002
+# (Rpv12+1) - (Rpv12+1+3)   -0.293 0.212 Inf  -1.378  0.3524
 
-### Time: 24 hpi ###
-# Call: glm(formula = DEGs ~ genotype + direction, family = quasipoisson(link = "log"), data = df_sub)
+## This is the main transcriptional burst. Rpv12+1+3 diverges the most → stacking amplifies early response.
+
+### Time: 24 hpi ### genotype extremely significant
+# Call: glm.nb(formula = DEGs ~ genotype + direction, data = df_sub, init.theta = 121.6926169, link = log)
 # Coefficients:
-# Estimate Std. Error t value Pr(>|t|)    
-# (Intercept)         5.6342     0.1305  43.187 0.000536 ***
-# genotypeRpv12+1    -2.8988     0.4304  -6.736 0.021339 *  
-# genotypeRpv12+1+3  -0.8080     0.1771  -4.562 0.044838 *  
-# directionUp         0.1314     0.1609   0.817 0.499782    
-# (Dispersion parameter for quasipoisson family taken to be 5.793023)
-# Null deviance: 637.94  on 5  degrees of freedom
-# Residual deviance:  11.58  on 2  degrees of freedom
-# AIC: NA
-# Df Deviance Resid. Df Resid. Dev       F  Pr(>F)  
-# NULL                          5     637.94                  
-# genotype   2   622.48         3      15.45 53.7268 0.01827 *
-# direction  1     3.87         2      11.58  0.6689 0.49938  
+# Estimate Std. Error z value Pr(>|z|)    
+# (Intercept)        5.65371    0.09435  59.924  < 2e-16 ***
+# genotypeRpv12+1   -2.89634    0.20056 -14.441  < 2e-16 ***
+# genotypeRpv12+1+3 -0.80148    0.11675  -6.865 6.65e-12 ***
+# directionUp        0.08887    0.11022   0.806     0.42    
+# (Dispersion parameter for Negative Binomial(121.6926) family taken to be 1)
+# Null deviance: 325.0107  on 5  degrees of freedom
+# Residual deviance:   4.8773  on 2  degrees of freedom
+# AIC: 56.882
+# Theta:  122 
+# Std. Err.:  135 
+# 2 x log-likelihood:  -46.882 
+# Analysis of Deviance Table
+# Model: Negative Binomial(121.6926), link: log
+# Df Deviance Resid. Df Resid. Dev Pr(>Chi)    
+# NULL                          5     325.01             
+# genotype   2   319.49         3       5.52   <2e-16 ***
+# direction  1     0.65         2       4.88   0.4212    
 
 # direction = Down:
 # contrast                estimate    SE  df z.ratio p.value
-# Rpv12 - (Rpv12+1)          2.899 0.430 Inf   6.736  <.0001
-# Rpv12 - (Rpv12+1+3)        0.808 0.177 Inf   4.562  <.0001
-# (Rpv12+1) - (Rpv12+1+3)   -2.091 0.444 Inf  -4.708  <.0001
+# Rpv12 - (Rpv12+1)          2.896 0.201 Inf  14.441  <.0001
+# Rpv12 - (Rpv12+1+3)        0.801 0.117 Inf   6.865  <.0001
+# (Rpv12+1) - (Rpv12+1+3)   -2.095 0.206 Inf -10.188  <.0001
 
 # direction = Up:
 # contrast                estimate    SE  df z.ratio p.value
-# Rpv12 - (Rpv12+1)          2.899 0.430 Inf   6.736  <.0001
-# Rpv12 - (Rpv12+1+3)        0.808 0.177 Inf   4.562  <.0001
-# (Rpv12+1) - (Rpv12+1+3)   -2.091 0.444 Inf  -4.708  <.0001
+# Rpv12 - (Rpv12+1)          2.896 0.201 Inf  14.441  <.0001
+# Rpv12 - (Rpv12+1+3)        0.801 0.117 Inf   6.865  <.0001
+# (Rpv12+1) - (Rpv12+1+3)   -2.095 0.206 Inf -10.188  <.0001
+
+## Late-stage regulation differs strongly by genotype, but up/down is more balanced.
 
 ##########################################################################################################
 ################# ACROSS GROUPS OF GENE CATEGORIES ##########################
@@ -342,11 +485,415 @@ sum(totalDEGs_perGroup$totalDEGs)
 # timing, genotype, direction = predictors (factors)
 # to test proportion of DEGs per category
 
-mqb <- glm(
-  cbind(DEGs, total_per_group - DEGs) ~ timing + groups + direction,
-  family = quasibinomial(link = "logit"),
-  data = DEGsBig
-)
+######## Compare groups at the same time point
+#### Model E
+for (t in unique(DEGsBig$timing)) {
+  cat("\n### Time:", t, "hpi ###\n")
+  df_sub <- DEGsBig %>% filter(timing == t)
+  
+  m_sub <- glm.nb(
+    DEGs ~ groups + direction,
+    data = df_sub
+  )
+  
+  print(summary(m_sub))
+  print(anova(m_sub, test = "Chisq"))
+  
+  emm <- emmeans(m_sub, ~ groups | direction)
+  print(pairs(emm, adjust = "tukey"))
+}
+
+### Time: IEV hpi ###
+# Call:
+# glm.nb(formula = DEGs ~ groups + direction, data = df_sub, init.theta = 6.488036399, 
+#         link = log)
+
+# Coefficients:
+# Estimate Std. Error z value Pr(>|z|)    
+# (Intercept)  0.36884    0.65461   0.563  0.57313    
+# groupsII     1.19521    0.76638   1.560  0.11886    
+# groupsIII    0.69499    0.80787   0.860  0.38964    
+# groupsIV     1.99949    0.72919   2.742  0.00611 ** 
+# groupsVa     4.13732    0.70142   5.899 3.67e-09 ***
+# groupsVb     3.52781    0.70459   5.007 5.53e-07 ***
+# groupsVc     4.20541    0.70117   5.998 2.00e-09 ***
+# directionUp  0.07716    0.26677   0.289  0.77241    
+# (Dispersion parameter for Negative Binomial(6.488) family taken to be 1)
+# Null deviance: 136.919  on 13  degrees of freedom
+# Residual deviance:  11.086  on  6  degrees of freedom
+# AIC: 110.61
+# Theta:  6.49 
+# Std. Err.:  3.13 
+# 2 x log-likelihood:  -92.611 
+# Analysis of Deviance Table
+# Df Deviance Resid. Df Resid. Dev Pr(>Chi)    
+# NULL                         13    136.919             
+# groups     6  125.760         7     11.159   <2e-16 ***
+#  direction  1    0.073         6     11.086   0.7864    
+
+# direction = Down:
+# contrast estimate    SE  df z.ratio p.value
+# I - II    -1.1952 0.766 Inf  -1.560  0.7083
+# I - III   -0.6950 0.808 Inf  -0.860  0.9783
+# I - IV    -1.9995 0.729 Inf  -2.742  0.0881
+# I - Va    -4.1373 0.701 Inf  -5.899  <.0001
+# I - Vb    -3.5278 0.705 Inf  -5.007  <.0001
+# I - Vc    -4.2054 0.701 Inf  -5.998  <.0001
+# II - III   0.5002 0.649 Inf   0.771  0.9877
+# II - IV   -0.8043 0.548 Inf  -1.469  0.7635
+# II - Va   -2.9421 0.510 Inf  -5.769  <.0001
+# II - Vb   -2.3326 0.514 Inf  -4.535  0.0001
+# II - Vc   -3.0102 0.510 Inf  -5.906  <.0001
+# III - IV  -1.3045 0.604 Inf  -2.159  0.3183
+# III - Va  -3.4423 0.570 Inf  -6.034  <.0001
+# III - Vb  -2.8328 0.574 Inf  -4.932  <.0001
+# III - Vc  -3.5104 0.570 Inf  -6.157  <.0001
+# IV - Va   -2.1378 0.452 Inf  -4.727  <.0001
+# IV - Vb   -1.5283 0.457 Inf  -3.343  0.0145
+# IV - Vc   -2.2059 0.452 Inf  -4.882  <.0001
+# Va - Vb    0.6095 0.411 Inf   1.482  0.7559
+# Va - Vc   -0.0681 0.405 Inf  -0.168  1.0000
+# Vb - Vc   -0.6776 0.411 Inf  -1.649  0.6503
+
+# direction = Up:
+# contrast estimate    SE  df z.ratio p.value
+# I - II    -1.1952 0.766 Inf  -1.560  0.7083
+# I - III   -0.6950 0.808 Inf  -0.860  0.9783
+# I - IV    -1.9995 0.729 Inf  -2.742  0.0881
+# I - Va    -4.1373 0.701 Inf  -5.899  <.0001
+# I - Vb    -3.5278 0.705 Inf  -5.007  <.0001
+# I - Vc    -4.2054 0.701 Inf  -5.998  <.0001
+# II - III   0.5002 0.649 Inf   0.771  0.9877
+# II - IV   -0.8043 0.548 Inf  -1.469  0.7635
+# II - Va   -2.9421 0.510 Inf  -5.769  <.0001
+# II - Vb   -2.3326 0.514 Inf  -4.535  0.0001
+# II - Vc   -3.0102 0.510 Inf  -5.906  <.0001
+# III - IV  -1.3045 0.604 Inf  -2.159  0.3183
+# III - Va  -3.4423 0.570 Inf  -6.034  <.0001
+# III - Vb  -2.8328 0.574 Inf  -4.932  <.0001
+# III - Vc  -3.5104 0.570 Inf  -6.157  <.0001
+# IV - Va   -2.1378 0.452 Inf  -4.727  <.0001
+# IV - Vb   -1.5283 0.457 Inf  -3.343  0.0145
+# IV - Vc   -2.2059 0.452 Inf  -4.882  <.0001
+# Va - Vb    0.6095 0.411 Inf   1.482  0.7559
+# Va - Vc   -0.0681 0.405 Inf  -0.168  1.0000
+# Vb - Vc   -0.6776 0.411 Inf  -1.649  0.6503
+
+### Time: ER hpi ###
+
+# Call:
+#  glm.nb(formula = DEGs ~ groups + direction, data = df_sub, init.theta = 31637.45102, 
+#          link = log)
+# Coefficients:
+# Estimate Std. Error z value Pr(>|z|)   
+# (Intercept)  5.955e-01  5.904e-01   1.009  0.31316   
+# groupsII    -1.099e+00  1.155e+00  -0.951  0.34140   
+# groupsIII   -3.743e+01  4.745e+07   0.000  1.00000   
+# groupsIV     1.099e+00  6.667e-01   1.648  0.09938 . 
+# groupsVa     8.473e-01  6.901e-01   1.228  0.21952   
+# groupsVb    -4.055e-01  9.129e-01  -0.444  0.65694   
+# groupsVc     1.946e+00  6.172e-01   3.153  0.00162 **
+# directionUp -4.248e-01  3.119e-01  -1.362  0.17325   
+# (Dispersion parameter for Negative Binomial(31637.45) family taken to be 1)
+# Null deviance: 58.7178  on 13  degrees of freedom
+# Residual deviance:  8.9142  on  6  degrees of freedom
+# AIC: 57.248
+
+# Theta:  31637 
+# Std. Err.:  843067 
+# Warning while fitting theta: alternation limit reached 
+# 2 x log-likelihood:  -39.248 
+# Analysis of Deviance Table
+# Model: Negative Binomial(31637.45), link: log
+# Df Deviance Resid. Df Resid. Dev  Pr(>Chi)    
+# NULL                         13     58.718              
+# groups     6   47.907         7     10.811 1.233e-08 ***
+# direction  1    1.897         6      8.914    0.1685    
+
+# direction = Down:
+# contrast estimate       SE  df z.ratio p.value
+# I - II      1.099        1 Inf   0.951  0.9640
+# I - III    37.427 47500000 Inf   0.000  1.0000
+# I - IV     -1.099        1 Inf  -1.648  0.6510
+# I - Va     -0.847        1 Inf  -1.228  0.8835
+# I - Vb      0.405        1 Inf   0.444  0.9994
+# I - Vc     -1.946        1 Inf  -3.153  0.0270
+# II - III   36.328 47500000 Inf   0.000  1.0000
+# II - IV    -2.197        1 Inf  -2.084  0.3619
+# II - Va    -1.946        1 Inf  -1.820  0.5342
+# II - Vb    -0.693        1 Inf  -0.566  0.9977
+# II - Vc    -3.045        1 Inf  -2.974  0.0464
+# III - IV  -38.525 47500000 Inf   0.000  1.0000
+# III - Va  -38.274 47500000 Inf   0.000  1.0000
+# III - Vb  -37.021 47500000 Inf   0.000  1.0000
+# III - Vc  -39.373 47500000 Inf   0.000  1.0000
+# IV - Va     0.251        1 Inf   0.499  0.9989
+# IV - Vb     1.504        1 Inf   1.924  0.4642
+# IV - Vc    -0.847        0 Inf  -2.126  0.3369
+# Va - Vb     1.253        1 Inf   1.562  0.7065
+# Va - Vc    -1.099        0 Inf  -2.517  0.1531
+# Vb - Vc    -2.351        1 Inf  -3.177  0.0250
+
+# direction = Up:
+# contrast estimate       SE  df z.ratio p.value
+# I - II      1.099        1 Inf   0.951  0.9640
+# I - III    37.427 47500000 Inf   0.000  1.0000
+# I - IV     -1.099        1 Inf  -1.648  0.6510
+# I - Va     -0.847        1 Inf  -1.228  0.8835
+# I - Vb      0.405        1 Inf   0.444  0.9994
+# I - Vc     -1.946        1 Inf  -3.153  0.0270
+# II - III   36.328 47500000 Inf   0.000  1.0000
+# II - IV    -2.197        1 Inf  -2.084  0.3619
+# II - Va    -1.946        1 Inf  -1.820  0.5342
+# II - Vb    -0.693        1 Inf  -0.566  0.9977
+# II - Vc    -3.045        1 Inf  -2.974  0.0464
+# III - IV  -38.525 47500000 Inf   0.000  1.0000
+# III - Va  -38.274 47500000 Inf   0.000  1.0000
+# III - Vb  -37.021 47500000 Inf   0.000  1.0000
+# III - Vc  -39.373 47500000 Inf   0.000  1.0000
+# IV - Va     0.251        1 Inf   0.499  0.9989
+# IV - Vb     1.504        1 Inf   1.924  0.4642
+# IV - Vc    -0.847        0 Inf  -2.126  0.3369
+# Va - Vb     1.253        1 Inf   1.562  0.7065
+# Va - Vc    -1.099        0 Inf  -2.517  0.1531
+# Vb - Vc    -2.351        1 Inf  -3.177  0.0250
+
+### Time: TSR hpi ###
+
+# Call:
+# glm.nb(formula = DEGs ~ groups + direction, data = df_sub, init.theta = 4.249144746, 
+#        link = log)
+# Coefficients:
+# Estimate Std. Error z value Pr(>|z|)    
+# (Intercept)   4.3119     0.3939  10.946  < 2e-16 ***
+# groupsII      0.1693     0.5286   0.320  0.74880    
+# groupsIII     1.5998     0.5143   3.111  0.00186 ** 
+# groupsIV      0.6950     0.5211   1.334  0.18233    
+# groupsVa      0.5515     0.5228   1.055  0.29147    
+# groupsVb      2.2722     0.5119   4.439 9.04e-06 ***
+# groupsVc      2.2752     0.5119   4.445 8.79e-06 ***
+# directionUp  -1.9281     0.2722  -7.084 1.40e-12 ***
+# (Dispersion parameter for Negative Binomial(4.2491) family taken to be 1)
+# Null deviance: 81.354  on 13  degrees of freedom
+# Residual deviance: 14.210  on  6  degrees of freedom
+# AIC: 159.99
+# Theta:  4.25 
+# Std. Err.:  1.69 
+# 2 x log-likelihood:  -141.994 
+# Analysis of Deviance Table
+# Model: Negative Binomial(4.2491), link: log
+#  Df Deviance Resid. Df Resid. Dev  Pr(>Chi)    
+# NULL                         13     81.354              
+# groups     6   28.510         7     52.844 7.529e-05 ***
+# direction  1   38.634         6     14.210 5.111e-10 ***
+
+# direction = Down:
+# contrast estimate    SE  df z.ratio p.value
+# I - II   -0.16926 0.529 Inf  -0.320  0.9999
+# I - III  -1.59985 0.514 Inf  -3.111  0.0308
+# I - IV   -0.69496 0.521 Inf  -1.334  0.8362
+# I - Va   -0.55152 0.523 Inf  -1.055  0.9409
+# I - Vb   -2.27216 0.512 Inf  -4.439  0.0002
+# I - Vc   -2.27520 0.512 Inf  -4.445  0.0002
+# II - III -1.43059 0.511 Inf  -2.800  0.0755
+# II - IV  -0.52570 0.518 Inf  -1.015  0.9507
+# II - Va  -0.38226 0.520 Inf  -0.736  0.9904
+# II - Vb  -2.10290 0.508 Inf  -4.136  0.0007
+# II - Vc  -2.10594 0.508 Inf  -4.142  0.0007
+# III - IV  0.90489 0.503 Inf   1.799  0.5487
+# III - Va  1.04833 0.505 Inf   2.077  0.3666
+# III - Vb -0.67231 0.493 Inf  -1.363  0.8214
+# III - Vc -0.67535 0.493 Inf  -1.369  0.8183
+# IV - Va   0.14344 0.512 Inf   0.280  1.0000
+# IV - Vb  -1.57720 0.501 Inf  -3.151  0.0272
+# IV - Vc  -1.58024 0.501 Inf  -3.157  0.0267
+# Va - Vb  -1.72064 0.502 Inf  -3.425  0.0110
+# Va - Vc  -1.72368 0.502 Inf  -3.431  0.0108
+# Vb - Vc  -0.00304 0.491 Inf  -0.006  1.0000
+
+# direction = Up:
+# contrast estimate    SE  df z.ratio p.value
+# I - II   -0.16926 0.529 Inf  -0.320  0.9999
+# I - III  -1.59985 0.514 Inf  -3.111  0.0308
+# I - IV   -0.69496 0.521 Inf  -1.334  0.8362
+# I - Va   -0.55152 0.523 Inf  -1.055  0.9409
+# I - Vb   -2.27216 0.512 Inf  -4.439  0.0002
+# I - Vc   -2.27520 0.512 Inf  -4.445  0.0002
+# II - III -1.43059 0.511 Inf  -2.800  0.0755
+# II - IV  -0.52570 0.518 Inf  -1.015  0.9507
+# II - Va  -0.38226 0.520 Inf  -0.736  0.9904
+# II - Vb  -2.10290 0.508 Inf  -4.136  0.0007
+# II - Vc  -2.10594 0.508 Inf  -4.142  0.0007
+# III - IV  0.90489 0.503 Inf   1.799  0.5487
+# III - Va  1.04833 0.505 Inf   2.077  0.3666
+# III - Vb -0.67231 0.493 Inf  -1.363  0.8214
+# III - Vc -0.67535 0.493 Inf  -1.369  0.8183
+# IV - Va   0.14344 0.512 Inf   0.280  1.0000
+# IV - Vb  -1.57720 0.501 Inf  -3.151  0.0272
+# IV - Vc  -1.58024 0.501 Inf  -3.157  0.0267
+# Va - Vb  -1.72064 0.502 Inf  -3.425  0.0110
+# Va - Vc  -1.72368 0.502 Inf  -3.431  0.0108
+# Vb - Vc  -0.00304 0.491 Inf  -0.006  1.0000
+
+### Time: LR hpi ###
+# Call:
+# glm.nb(formula = DEGs ~ groups + direction, data = df_sub, init.theta = 264596.7244, 
+#        link = log)
+# Coefficients:
+# Estimate Std. Error z value Pr(>|z|)    
+# (Intercept) -0.05549    0.70913  -0.078    0.938    
+# groupsII     0.40547    0.91287   0.444    0.657    
+# groupsIII   -0.69315    1.22475  -0.566    0.571    
+# groupsIV     3.29584    0.72008   4.577 4.72e-06 ***
+# groupsVa     4.87137    0.70981   6.863 6.75e-12 ***
+# groupsVb     1.09861    0.81650   1.346    0.178    
+# groupsVc     3.43399    0.71842   4.780 1.75e-06 ***
+# directionUp  0.10807    0.10157   1.064    0.287    
+#  (Dispersion parameter for Negative Binomial(264596.7) family taken to be 1)
+# Null deviance: 757.7650  on 13  degrees of freedom
+# Residual deviance:   4.3587  on  6  degrees of freedom
+# AIC: 73.074
+# Theta:  264597 
+# Std. Err.:  4239206 
+# Warning while fitting theta: iteration limit reached 
+# 2 x log-likelihood:  -55.074 
+#  Model: Negative Binomial(264596.7), link: log
+# Df Deviance Resid. Df Resid. Dev Pr(>Chi)    
+# NULL                         13     757.76             
+# groups     6   752.27         7       5.49   <2e-16 ***
+# direction  1     1.13         6       4.36    0.287    
+
+# direction = Down:
+# contrast estimate    SE  df z.ratio p.value
+# I - II     -0.405 0.913 Inf  -0.444  0.9994
+# I - III     0.693 1.220 Inf   0.566  0.9977
+# I - IV     -3.296 0.720 Inf  -4.577  0.0001
+# I - Va     -4.871 0.710 Inf  -6.863  <.0001
+# I - Vb     -1.099 0.816 Inf  -1.346  0.8304
+# I - Vc     -3.434 0.718 Inf  -4.780  <.0001
+# II - III    1.099 1.150 Inf   0.951  0.9640
+# II - IV    -2.890 0.593 Inf  -4.873  <.0001
+# II - Va    -4.466 0.581 Inf  -7.691  <.0001
+# II - Vb    -0.693 0.707 Inf  -0.980  0.9584
+# II - Vc    -3.029 0.591 Inf  -5.123  <.0001
+# III - IV   -3.989 1.010 Inf  -3.953  0.0015
+# III - Va   -5.565 1.000 Inf  -5.554  <.0001
+# III - Vb   -1.792 1.080 Inf  -1.659  0.6437
+# III - Vc   -4.127 1.010 Inf  -4.094  0.0008
+# IV - Va    -1.576 0.150 Inf -10.538  <.0001
+# IV - Vb     2.197 0.430 Inf   5.106  <.0001
+# IV - Vc    -0.138 0.186 Inf  -0.742  0.9899
+# Va - Vb     3.773 0.413 Inf   9.137  <.0001
+# Va - Vc     1.437 0.141 Inf  10.173  <.0001
+# Vb - Vc    -2.335 0.428 Inf  -5.462  <.0001
+
+# direction = Up:
+# contrast estimate    SE  df z.ratio p.value
+# I - II     -0.405 0.913 Inf  -0.444  0.9994
+# I - III     0.693 1.220 Inf   0.566  0.9977
+# I - IV     -3.296 0.720 Inf  -4.577  0.0001
+# I - Va     -4.871 0.710 Inf  -6.863  <.0001
+# I - Vb     -1.099 0.816 Inf  -1.346  0.8304
+# I - Vc     -3.434 0.718 Inf  -4.780  <.0001
+# II - III    1.099 1.150 Inf   0.951  0.9640
+# II - IV    -2.890 0.593 Inf  -4.873  <.0001
+# II - Va    -4.466 0.581 Inf  -7.691  <.0001
+# II - Vb    -0.693 0.707 Inf  -0.980  0.9584
+# II - Vc    -3.029 0.591 Inf  -5.123  <.0001
+# III - IV   -3.989 1.010 Inf  -3.953  0.0015
+# III - Va   -5.565 1.000 Inf  -5.554  <.0001
+# III - Vb   -1.792 1.080 Inf  -1.659  0.6437
+# III - Vc   -4.127 1.010 Inf  -4.094  0.0008
+# IV - Va    -1.576 0.150 Inf -10.538  <.0001
+# IV - Vb     2.197 0.430 Inf   5.106  <.0001
+# IV - Vc    -0.138 0.186 Inf  -0.742  0.9899
+# Va - Vb     3.773 0.413 Inf   9.137  <.0001
+# Va - Vc     1.437 0.141 Inf  10.173  <.0001
+# Vb - Vc    -2.335 0.428 Inf  -5.462  <.0001
+
+### Time: Sch hpi ###
+# Call:
+# glm.nb(formula = DEGs ~ groups + direction, data = df_sub, init.theta = 34085.43974, 
+#        link = log)
+# Coefficients:
+# Estimate Std. Error z value Pr(>|z|)
+# (Intercept) -2.130e+01  1.808e+04  -0.001    0.999
+# groupsII    -8.029e-08  2.556e+04   0.000    1.000
+# groupsIII   -8.028e-08  2.556e+04   0.000    1.000
+# groupsIV     2.360e+01  1.808e+04   0.001    0.999
+# groupsVa     2.199e+01  1.808e+04   0.001    0.999
+# groupsVb    -8.030e-08  2.556e+04   0.000    1.000
+# groupsVc     2.324e+01  1.808e+04   0.001    0.999
+# directionUp  2.162e-05  3.245e-01   0.000    1.000
+# (Dispersion parameter for Negative Binomial(34085.44) family taken to be 1)
+# Null deviance: 84.6412  on 13  degrees of freedom
+# Residual deviance:  8.4013  on  6  degrees of freedom
+# AIC: 45.396
+# Theta:  34085 
+# Std. Err.:  1083213 
+# Warning while fitting theta: iteration limit reached 
+# 2 x log-likelihood:  -27.396 
+# Analysis of Deviance Table
+# Model: Negative Binomial(34085.44), link: log
+# Df Deviance Resid. Df Resid. Dev  Pr(>Chi)    
+# NULL                         13     84.641              
+# groups     6    76.24         7      8.401 2.132e-14 ***
+# direction  1     0.00         6      8.401    0.9998    
+
+# direction = Down:
+# contrast estimate       SE  df z.ratio p.value
+# I - II      0.000 2.56e+04 Inf   0.000  1.0000
+# I - III     0.000 2.56e+04 Inf   0.000  1.0000
+# I - IV    -23.600 1.81e+04 Inf  -0.001  1.0000
+# I - Va    -21.991 1.81e+04 Inf  -0.001  1.0000
+# I - Vb      0.000 2.56e+04 Inf   0.000  1.0000
+# I - Vc    -23.244 1.81e+04 Inf  -0.001  1.0000
+# II - III    0.000 2.56e+04 Inf   0.000  1.0000
+# II - IV   -23.600 1.81e+04 Inf  -0.001  1.0000
+# II - Va   -21.991 1.81e+04 Inf  -0.001  1.0000
+# II - Vb     0.000 2.56e+04 Inf   0.000  1.0000
+# II - Vc   -23.244 1.81e+04 Inf  -0.001  1.0000
+# III - IV  -23.600 1.81e+04 Inf  -0.001  1.0000
+# III - Va  -21.991 1.81e+04 Inf  -0.001  1.0000
+# III - Vb    0.000 2.56e+04 Inf   0.000  1.0000
+# III - Vc  -23.244 1.81e+04 Inf  -0.001  1.0000
+# IV - Va     1.609 5.48e-01 Inf   2.938  0.0515
+# IV - Vb    23.600 1.81e+04 Inf   0.001  1.0000
+# IV - Vc     0.357 3.49e-01 Inf   1.023  0.9488
+# Va - Vb    21.991 1.81e+04 Inf   0.001  1.0000
+# Va - Vc    -1.253 5.67e-01 Inf  -2.210  0.2901
+# Vb - Vc   -23.244 1.81e+04 Inf  -0.001  1.0000
+
+# direction = Up:
+# contrast estimate       SE  df z.ratio p.value
+# I - II      0.000 2.56e+04 Inf   0.000  1.0000
+# I - III     0.000 2.56e+04 Inf   0.000  1.0000
+# I - IV    -23.600 1.81e+04 Inf  -0.001  1.0000
+# I - Va    -21.991 1.81e+04 Inf  -0.001  1.0000
+# I - Vb      0.000 2.56e+04 Inf   0.000  1.0000
+# I - Vc    -23.244 1.81e+04 Inf  -0.001  1.0000
+# II - III    0.000 2.56e+04 Inf   0.000  1.0000
+# II - IV   -23.600 1.81e+04 Inf  -0.001  1.0000
+# II - Va   -21.991 1.81e+04 Inf  -0.001  1.0000
+# II - Vb     0.000 2.56e+04 Inf   0.000  1.0000
+# II - Vc   -23.244 1.81e+04 Inf  -0.001  1.0000
+# III - IV  -23.600 1.81e+04 Inf  -0.001  1.0000
+# III - Va  -21.991 1.81e+04 Inf  -0.001  1.0000
+# III - Vb    0.000 2.56e+04 Inf   0.000  1.0000
+# III - Vc  -23.244 1.81e+04 Inf  -0.001  1.0000
+# IV - Va     1.609 5.48e-01 Inf   2.938  0.0515
+# IV - Vb    23.600 1.81e+04 Inf   0.001  1.0000
+# IV - Vc     0.357 3.49e-01 Inf   1.023  0.9488
+# Va - Vb    21.991 1.81e+04 Inf   0.001  1.0000
+# Va - Vc    -1.253 5.67e-01 Inf  -2.210  0.2901
+# Vb - Vc   -23.244 1.81e+04 Inf  -0.001  1.0000
+
+# Transient responses (TSR): strongest directionality (suppression) and genotype effects.
+# Sustained responses (Sch): shared vs specific patterns dominate, direction irrelevant.
+# Late responses (LR): huge genotype-specific divergence.
+
+#### Model F
+mqb <- glm(cbind(DEGs, total_per_group - DEGs) ~ timing + groups + direction, family = quasibinomial(link = "logit"), data = DEGsBig)
 
 summary(mqb)
 # Coefficients:
@@ -365,12 +912,12 @@ summary(mqb)
 # directionUp -1.146e+00  2.976e-01  -3.849 0.000298 ***
 # Dispersion parameter for quasibinomial family taken to be 43.8516
 
-anova(mqb, test = "F")
-#Df Deviance Resid. Df Resid. Dev      F    Pr(>F)    
+anova(mqb, test = "Chisq")
+# Df Deviance Resid. Df Resid. Dev      F    Pr(>F)    
 # NULL                         69     7649.9                     
-# timing     4   4776.4        65     2873.5 27.231 9.679e-13 ***
-# groups     6      0.0        59     2873.5  0.000 1.0000000    
-# direction  1    705.8        58     2167.6 16.096 0.0001747 ***
+# timing     4   4776.4        65     2873.5 < 2.2e-16 ***
+# groups     6      0.0        59     2873.5         1    
+# direction  1    705.8        58     2167.6 6.022e-05 ***
 
 # Timing: Highly significant — the relative proportion of DEGs differs strongly across infection phases. 
 # → Indicates major temporal structure in transcriptomic responses (some phases have far more DEGs).
@@ -378,6 +925,8 @@ anova(mqb, test = "F")
 # Direction: Significant — upregulated vs downregulated genes differ in prevalence.
 # → Downregulated genes dominate globally.
 
+# The when (timing) and polarity (direction) matter more than which genotype shares the genes.
+# This matches the biology: immune response is temporally structured and largely repressive.
 # Groups: Non-significant — the pattern of shared vs specific DEGs across cultivars does not affect overall DEG proportions.
 
 emm <- emmeans(mqb, ~ timing | direction)
@@ -414,372 +963,3 @@ pairs(emm, adjust = "tukey")
 # Significant timing → certain transcriptomic phases dominate (e.g., TRS vs. IEV).
 # Significant direction → asymmetric up/down regulation.
 # Nonsignificant groups
-
-######## Compare groups at the same time point
-for (t in unique(DEGsBig$timing)) {
-  cat("\n### Time:", t, "hpi ###\n")
-  df_sub <- DEGsBig %>% filter(timing == t)
-  
-  m_sub <- glm(
-    DEGs ~ groups + direction,
-    family = quasipoisson(link = "log"),
-    data = df_sub
-  )
-  
-  print(summary(m_sub))
-  print(anova(m_sub, test = "F"))
-  
-  emm <- emmeans(m_sub, ~ groups | direction)
-  print(pairs(emm, adjust = "tukey"))
-}
-
-### Time: IEV (0 or 0+6 hpi) ###
-# Call: glm(formula = DEGs ~ groups + direction, family = quasipoisson(link = "log"), data = df_sub)
-# Coefficients:
-# Estimate Std. Error t value Pr(>|t|)
-# (Intercept)   0.3516     2.4305   0.145    0.890
-# groupsII      1.2040     2.7626   0.436    0.678
-# groupsIII     0.6931     2.9675   0.234    0.823
-# groupsIV      1.9924     2.5829   0.771    0.470
-# groupsVa      4.1537     2.4419   1.701    0.140
-# groupsVb      3.5458     2.4577   1.443    0.199
-# groupsVc      4.1897     2.4413   1.716    0.137
-# directionUp   0.1050     0.3637   0.289    0.783
-
-# (Dispersion parameter for quasipoisson family taken to be 17.61246)
-# Null deviance: 758.33  on 13  degrees of freedom
-# Residual deviance: 109.39  on  6  degrees of freedom
-# AIC: NA
-
-# Df Deviance Resid. Df Resid. Dev      F  Pr(>F)  
-# NULL                         13     758.33                 
-# groups     6   647.48         7     110.86 6.1271 0.02214 *
-# direction  1     1.47         6     109.39 0.0834 0.78246  
-
-# direction = Down:
-# contrast estimate    SE  df z.ratio p.value
-# I - II     -1.204 2.760 Inf  -0.436  0.9995
-# I - III    -0.693 2.970 Inf  -0.234  1.0000
-# I - IV     -1.992 2.580 Inf  -0.771  0.9876
-# I - Va     -4.154 2.440 Inf  -1.701  0.6154
-# I - Vb     -3.546 2.460 Inf  -1.443  0.7785
-# I - Vc     -4.190 2.440 Inf  -1.716  0.6051
-# II - III    0.511 2.170 Inf   0.236  1.0000
-# II - IV    -0.788 1.600 Inf  -0.493  0.9990
-# II - Va    -2.950 1.360 Inf  -2.167  0.3138
-# II - Vb    -2.342 1.390 Inf  -1.685  0.6259
-# II - Vc    -2.986 1.360 Inf  -2.195  0.2981
-# III - IV   -1.299 1.930 Inf  -0.672  0.9941
-# III - Va   -3.461 1.740 Inf  -1.989  0.4217
-# III - Vb   -2.853 1.760 Inf  -1.619  0.6700
-# III - Vc   -3.497 1.740 Inf  -2.011  0.4078
-# IV - Va    -2.161 0.945 Inf  -2.287  0.2500
-# IV - Vb    -1.553 0.985 Inf  -1.577  0.6970
-# IV - Vc    -2.197 0.943 Inf  -2.330  0.2297
-# Va - Vb     0.608 0.511 Inf   1.189  0.8987
-# Va - Vc    -0.036 0.426 Inf  -0.085  1.0000
-# Vb - Vc    -0.644 0.508 Inf  -1.267  0.8671
-
-# direction = Up:
-# contrast estimate    SE  df z.ratio p.value
-# I - II     -1.204 2.760 Inf  -0.436  0.9995
-# I - III    -0.693 2.970 Inf  -0.234  1.0000
-# I - IV     -1.992 2.580 Inf  -0.771  0.9876
-# I - Va     -4.154 2.440 Inf  -1.701  0.6154
-# I - Vb     -3.546 2.460 Inf  -1.443  0.7785
-# I - Vc     -4.190 2.440 Inf  -1.716  0.6051
-# II - III    0.511 2.170 Inf   0.236  1.0000
-# II - IV    -0.788 1.600 Inf  -0.493  0.9990
-# II - Va    -2.950 1.360 Inf  -2.167  0.3138
-# II - Vb    -2.342 1.390 Inf  -1.685  0.6259
-# II - Vc    -2.986 1.360 Inf  -2.195  0.2981
-# III - IV   -1.299 1.930 Inf  -0.672  0.9941
-# III - Va   -3.461 1.740 Inf  -1.989  0.4217
-# III - Vb   -2.853 1.760 Inf  -1.619  0.6700
-# III - Vc   -3.497 1.740 Inf  -2.011  0.4078
-# IV - Va    -2.161 0.945 Inf  -2.287  0.2500
-# IV - Vb    -1.553 0.985 Inf  -1.577  0.6970
-# IV - Vc    -2.197 0.943 Inf  -2.330  0.2297
-# Va - Vb     0.608 0.511 Inf   1.189  0.8987
-# Va - Vc    -0.036 0.426 Inf  -0.085  1.0000
-# Vb - Vc    -0.644 0.508 Inf  -1.267  0.8671
-
-### Time: ER hpi ###
-
-# Call: glm(formula = DEGs ~ groups + direction, family = quasipoisson(link = "log"), data = df_sub)
-# Coefficients:
-# Estimate Std. Error t value Pr(>|t|)  
-# (Intercept)    0.5955     0.6735   0.884   0.4106  
-# groupsII      -1.0986     1.3172  -0.834   0.4362  
-# groupsIII    -18.6783  4543.8337  -0.004   0.9969  
-# groupsIV       1.0986     0.7605   1.445   0.1987  
-# groupsVa       0.8473     0.7872   1.076   0.3231  
-# groupsVb      -0.4055     1.0413  -0.389   0.7104  
-# groupsVc       1.9459     0.7041   2.764   0.0327 * - Rpv12+1+3 specific group
-# directionUp   -0.4249     0.3558  -1.194   0.2775  
-# (Dispersion parameter for quasipoisson family taken to be 1.301252) - very small - nearly Poisson distr.
-
-# Null deviance: 58.7249  on 13  degrees of freedom
-# Residual deviance:  8.9151  on  6  degrees of freedom
-# AIC: NA
-
-# Df Deviance Resid. Df Resid. Dev      F  Pr(>F)  
-# NULL                         13     58.725                 
-# groups     6   47.912         7     10.813 6.1367 0.02205 *
-# direction  1    1.898         6      8.915 1.4584 0.27263  
-
-# direction = Down:
-# contrast estimate       SE  df z.ratio p.value
-# I - II      1.099    1.320 Inf   0.834  0.9814
-# I - III    18.678 4540.000 Inf   0.004  1.0000
-# I - IV     -1.099    0.760 Inf  -1.445  0.7774
-# I - Va     -0.847    0.787 Inf  -1.076  0.9351
-# I - Vb      0.405    1.040 Inf   0.389  0.9997
-# I - Vc     -1.946    0.704 Inf  -2.764  0.0832
-# II - III   17.580 4540.000 Inf   0.004  1.0000
-# II - IV    -2.197    1.200 Inf  -1.827  0.5294
-# II - Va    -1.946    1.220 Inf  -1.596  0.6852
-# II - Vb    -0.693    1.400 Inf  -0.496  0.9989
-# II - Vc    -3.045    1.170 Inf  -2.608  0.1236
-# III - IV  -19.777 4540.000 Inf  -0.004  1.0000
-# III - Va  -19.526 4540.000 Inf  -0.004  1.0000
-# III - Vb  -18.273 4540.000 Inf  -0.004  1.0000
-# III - Vc  -20.624 4540.000 Inf  -0.005  1.0000
-# IV - Va     0.251    0.575 Inf   0.437  0.9995
-# IV - Vb     1.504    0.892 Inf   1.687  0.6250
-# IV - Vc    -0.847    0.454 Inf  -1.864  0.5042
-# Va - Vb     1.253    0.915 Inf   1.370  0.8181
-# Va - Vc    -1.099    0.498 Inf  -2.207  0.2917
-# Vb - Vc    -2.351    0.844 Inf  -2.785  0.0785
-
-# direction = Up:
-# contrast estimate       SE  df z.ratio p.value
-# I - II      1.099    1.320 Inf   0.834  0.9814
-# I - III    18.678 4540.000 Inf   0.004  1.0000
-# I - IV     -1.099    0.760 Inf  -1.445  0.7774
-# I - Va     -0.847    0.787 Inf  -1.076  0.9351
-# I - Vb      0.405    1.040 Inf   0.389  0.9997
-# I - Vc     -1.946    0.704 Inf  -2.764  0.0832
-# II - III   17.580 4540.000 Inf   0.004  1.0000
-# II - IV    -2.197    1.200 Inf  -1.827  0.5294
-# II - Va    -1.946    1.220 Inf  -1.596  0.6852
-# II - Vb    -0.693    1.400 Inf  -0.496  0.9989
-# II - Vc    -3.045    1.170 Inf  -2.608  0.1236
-# III - IV  -19.777 4540.000 Inf  -0.004  1.0000
-# III - Va  -19.526 4540.000 Inf  -0.004  1.0000
-# III - Vb  -18.273 4540.000 Inf  -0.004  1.0000
-# III - Vc  -20.624 4540.000 Inf  -0.005  1.0000
-# IV - Va     0.251    0.575 Inf   0.437  0.9995
-# IV - Vb     1.504    0.892 Inf   1.687  0.6250
-# IV - Vc    -0.847    0.454 Inf  -1.864  0.5042
-# Va - Vb     1.253    0.915 Inf   1.370  0.8181
-# Va - Vc    -1.099    0.498 Inf  -2.207  0.2917
-# Vb - Vc    -2.351    0.844 Inf  -2.785  0.0785
-
-
-### Time: TSR hpi ###
-# Call: glm(formula = DEGs ~ groups + direction, family = quasipoisson(link = "log"), data = df_sub)
-
-#Coefficients:
-# Estimate Std. Error t value Pr(>|t|)    
-# (Intercept)   4.2752     0.6747   6.337 0.000723 ***
-# groupsII      0.3556     0.8755   0.406 0.698760    
-# groupsIII     0.9050     0.7956   1.137 0.298732    
-# groupsIV      0.9004     0.7962   1.131 0.301241    
-# groupsVa      0.8344     0.8040   1.038 0.339366    
-# groupsVb      1.6726     0.7317   2.286 0.062288 .  
-# groupsVc      2.1821     0.7082   3.081 0.021630 *  
-# directionUp  -1.4359     0.3489  -4.116 0.006245 ** 
-# (Dispersion parameter for quasipoisson family taken to be 40.11359)
-# Null deviance: 2157.61  on 13  degrees of freedom
-# Residual deviance:  244.15  on  6  degrees of freedom
-# Df Deviance Resid. Df Resid. Dev       F   Pr(>F)   
-# NULL                         13    2157.61                    
-# groups     6  1048.23         7    1109.39  4.3552 0.048237 * 
-# direction  1   865.24         6     244.15 21.5697 0.003525 **
-
-# direction = Down:
-# contrast estimate    SE  df z.ratio p.value
-# I - II   -0.35555 0.876 Inf  -0.406  0.9997
-# I - III  -0.90499 0.796 Inf  -1.137  0.9166
-# I - IV   -0.90044 0.796 Inf  -1.131  0.9187
-# I - Va   -0.83437 0.804 Inf  -1.038  0.9453
-# I - Vb   -1.67257 0.732 Inf  -2.286  0.2507
-# I - Vc   -2.18213 0.708 Inf  -3.081  0.0337
-# II - III -0.54944 0.706 Inf  -0.778  0.9870
-# II - IV  -0.54488 0.706 Inf  -0.771  0.9876
-# II - Va  -0.47882 0.715 Inf  -0.669  0.9942
-# II - Vb  -1.31702 0.633 Inf  -2.081  0.3639
-# II - Vc  -1.82658 0.606 Inf  -3.016  0.0410
-# III - IV  0.00456 0.605 Inf   0.008  1.0000
-# III - Va  0.07062 0.615 Inf   0.115  1.0000
-# III - Vb -0.76758 0.517 Inf  -1.486  0.7536
-# III - Vc -1.27714 0.483 Inf  -2.645  0.1128
-# IV - Va   0.06606 0.616 Inf   0.107  1.0000
-# IV - Vb  -0.77214 0.517 Inf  -1.492  0.7498
-# IV - Vc  -1.28169 0.484 Inf  -2.650  0.1115
-# Va - Vb  -0.83820 0.529 Inf  -1.583  0.6932
-# Va - Vc  -1.34776 0.497 Inf  -2.714  0.0946
-# Vb - Vc  -0.50956 0.368 Inf  -1.384  0.8104
-
-# direction = Up:
-# contrast estimate    SE  df z.ratio p.value
-# I - II   -0.35555 0.876 Inf  -0.406  0.9997
-# I - III  -0.90499 0.796 Inf  -1.137  0.9166
-# I - IV   -0.90044 0.796 Inf  -1.131  0.9187
-# I - Va   -0.83437 0.804 Inf  -1.038  0.9453
-# I - Vb   -1.67257 0.732 Inf  -2.286  0.2507
-# I - Vc   -2.18213 0.708 Inf  -3.081  0.0337
-# II - III -0.54944 0.706 Inf  -0.778  0.9870
-# II - IV  -0.54488 0.706 Inf  -0.771  0.9876
-# II - Va  -0.47882 0.715 Inf  -0.669  0.9942
-# II - Vb  -1.31702 0.633 Inf  -2.081  0.3639
-# II - Vc  -1.82658 0.606 Inf  -3.016  0.0410
-# III - IV  0.00456 0.605 Inf   0.008  1.0000
-# III - Va  0.07062 0.615 Inf   0.115  1.0000
-# III - Vb -0.76758 0.517 Inf  -1.486  0.7536
-# III - Vc -1.27714 0.483 Inf  -2.645  0.1128
-# IV - Va   0.06606 0.616 Inf   0.107  1.0000
-# IV - Vb  -0.77214 0.517 Inf  -1.492  0.7498
-# IV - Vc  -1.28169 0.484 Inf  -2.650  0.1115
-# Va - Vb  -0.83820 0.529 Inf  -1.583  0.6932
-# Va - Vc  -1.34776 0.497 Inf  -2.714  0.0946
-# Vb - Vc  -0.50956 0.368 Inf  -1.384  0.8104
-
-### Time: LR ###
-# Call: glm(formula = DEGs ~ groups + direction, family = quasipoisson(link = "log"), data = df_sub)
-# Coefficients:
-# Estimate Std. Error t value Pr(>|t|)    
-# (Intercept)  -0.0555     0.5761  -0.096  0.92639    
-# groupsII      0.4055     0.7416   0.547  0.60428    
-# groupsIII    -0.6932     0.9950  -0.697  0.51210    
-# groupsIV      3.2958     0.5850   5.634  0.00134 ** 
-# groupsVa      4.8714     0.5766   8.448  0.00015 ***
-# groupsVb      1.0986     0.6633   1.656  0.14875    
-# groupsVc      3.4340     0.5836   5.884  0.00107 ** 
-# directionUp   0.1081     0.0825   1.310  0.23812    
-# (Dispersion parameter for quasipoisson family taken to be 0.6599888)
-# Null deviance: 757.867  on 13  degrees of freedom
-# Residual deviance:   4.359  on  6  degrees of freedom
-# Df Deviance Resid. Df Resid. Dev        F    Pr(>F)    
-# NULL                         13     757.87                       
-# groups     6   752.37         7       5.49 189.9965 1.424e-06 ***
-# direction  1     1.13         6       4.36   1.7186    0.2378    
-
-# direction = Down:
-# contrast estimate    SE  df z.ratio p.value
-# I - II     -0.405 0.742 Inf  -0.547  0.9981
-# I - III     0.693 0.995 Inf   0.697  0.9928
-# I - IV     -3.296 0.585 Inf  -5.634  <.0001
-# I - Va     -4.871 0.577 Inf  -8.448  <.0001
-# I - Vb     -1.099 0.663 Inf  -1.656  0.6454
-# I - Vc     -3.434 0.584 Inf  -5.884  <.0001
-# II - III    1.099 0.938 Inf   1.171  0.9051
-# II - IV    -2.890 0.482 Inf  -5.998  <.0001
-# II - Va    -4.466 0.472 Inf  -9.467  <.0001
-# II - Vb    -0.693 0.574 Inf  -1.207  0.8919
-# II - Vc    -3.029 0.480 Inf  -6.306  <.0001
-# III - IV   -3.989 0.820 Inf  -4.865  <.0001
-# III - Va   -5.565 0.814 Inf  -6.836  <.0001
-# III - Vb   -1.792 0.877 Inf  -2.042  0.3880
-# III - Vc   -4.127 0.819 Inf  -5.040  <.0001
-# IV - Va    -1.576 0.121 Inf -12.972  <.0001
-# IV - Vb     2.197 0.350 Inf   6.285  <.0001
-# IV - Vc    -0.138 0.151 Inf  -0.914  0.9706
-# Va - Vb     3.773 0.335 Inf  11.247  <.0001
-# Va - Vc     1.437 0.115 Inf  12.523  <.0001
-# Vb - Vc    -2.335 0.347 Inf  -6.724  <.0001
-
-# direction = Up:
-# contrast estimate    SE  df z.ratio p.value
-# I - II     -0.405 0.742 Inf  -0.547  0.9981
-# I - III     0.693 0.995 Inf   0.697  0.9928
-# I - IV     -3.296 0.585 Inf  -5.634  <.0001
-# I - Va     -4.871 0.577 Inf  -8.448  <.0001
-# I - Vb     -1.099 0.663 Inf  -1.656  0.6454
-# I - Vc     -3.434 0.584 Inf  -5.884  <.0001
-# II - III    1.099 0.938 Inf   1.171  0.9051
-# II - IV    -2.890 0.482 Inf  -5.998  <.0001
-# II - Va    -4.466 0.472 Inf  -9.467  <.0001
-# II - Vb    -0.693 0.574 Inf  -1.207  0.8919
-# II - Vc    -3.029 0.480 Inf  -6.306  <.0001
-# III - IV   -3.989 0.820 Inf  -4.865  <.0001
-# III - Va   -5.565 0.814 Inf  -6.836  <.0001
-# III - Vb   -1.792 0.877 Inf  -2.042  0.3880
-# III - Vc   -4.127 0.819 Inf  -5.040  <.0001
-# IV - Va    -1.576 0.121 Inf -12.972  <.0001
-# IV - Vb     2.197 0.350 Inf   6.285  <.0001
-# IV - Vc    -0.138 0.151 Inf  -0.914  0.9706
-# Va - Vb     3.773 0.335 Inf  11.247  <.0001
-# Va - Vc     1.437 0.115 Inf  12.523  <.0001
-# Vb - Vc    -2.335 0.347 Inf  -6.724  <.0001
-
-### Time: Sch hpi ###
-# Call: glm(formula = DEGs ~ groups + direction, family = quasipoisson(link = "log"), data = df_sub)
-# Coefficients:
-# Estimate Std. Error t value Pr(>|t|)
-# (Intercept) -2.030e+01  1.165e+04  -0.002    0.999
-# groupsII     1.672e-07  1.647e+04   0.000    1.000
-# groupsIII    1.673e-07  1.647e+04   0.000    1.000
-# groupsIV     2.260e+01  1.165e+04   0.002    0.999
-# groupsVa     2.099e+01  1.165e+04   0.002    0.999
-# groupsVb     1.673e-07  1.647e+04   0.000    1.000
-# groupsVc     2.224e+01  1.165e+04   0.002    0.999
-# directionUp -6.256e-16  3.447e-01   0.000    1.000
-# (Dispersion parameter for quasipoisson family taken to be 1.128571)
-# Null deviance: 84.6480  on 13  degrees of freedom
-# Residual deviance:  8.4021  on  6  degrees of freedom
-# Df Deviance Resid. Df Resid. Dev     F   Pr(>F)   
-# NULL                         13     84.648                  
-# groups     6   76.246         7      8.402 11.26 0.004784 **
-# direction  1    0.000         6      8.402  0.00 1.000000   
-
-# direction = Down:
-# contrast estimate       SE  df z.ratio p.value
-# I - II      0.000 1.65e+04 Inf   0.000  1.0000
-# I - III     0.000 1.65e+04 Inf   0.000  1.0000
-# I - IV    -22.600 1.16e+04 Inf  -0.002  1.0000
-# I - Va    -20.991 1.16e+04 Inf  -0.002  1.0000
-# I - Vb      0.000 1.65e+04 Inf   0.000  1.0000
-# I - Vc    -22.244 1.16e+04 Inf  -0.002  1.0000
-# II - III    0.000 1.65e+04 Inf   0.000  1.0000
-# II - IV   -22.600 1.16e+04 Inf  -0.002  1.0000
-# II - Va   -20.991 1.16e+04 Inf  -0.002  1.0000
-# II - Vb     0.000 1.65e+04 Inf   0.000  1.0000
-# II - Vc   -22.244 1.16e+04 Inf  -0.002  1.0000
-# III - IV  -22.600 1.16e+04 Inf  -0.002  1.0000
-# III - Va  -20.991 1.16e+04 Inf  -0.002  1.0000
-# III - Vb    0.000 1.65e+04 Inf   0.000  1.0000
-# III - Vc  -22.244 1.16e+04 Inf  -0.002  1.0000
-# IV - Va     1.609 5.82e-01 Inf   2.766  0.0827
-# IV - Vb    22.600 1.16e+04 Inf   0.002  1.0000
-# IV - Vc     0.357 3.70e-01 Inf   0.963  0.9617
-# Va - Vb    20.991 1.16e+04 Inf   0.002  1.0000
-# Va - Vc    -1.253 6.02e-01 Inf  -2.080  0.3646
-# Vb - Vc   -22.244 1.16e+04 Inf  -0.002  1.0000
-
-# direction = Up:
-# contrast estimate       SE  df z.ratio p.value
-# I - II      0.000 1.65e+04 Inf   0.000  1.0000
-# I - III     0.000 1.65e+04 Inf   0.000  1.0000
-# I - IV    -22.600 1.16e+04 Inf  -0.002  1.0000
-# I - Va    -20.991 1.16e+04 Inf  -0.002  1.0000
-# I - Vb      0.000 1.65e+04 Inf   0.000  1.0000
-# I - Vc    -22.244 1.16e+04 Inf  -0.002  1.0000
-# II - III    0.000 1.65e+04 Inf   0.000  1.0000
-# II - IV   -22.600 1.16e+04 Inf  -0.002  1.0000
-# II - Va   -20.991 1.16e+04 Inf  -0.002  1.0000
-# II - Vb     0.000 1.65e+04 Inf   0.000  1.0000
-# II - Vc   -22.244 1.16e+04 Inf  -0.002  1.0000
-# III - IV  -22.600 1.16e+04 Inf  -0.002  1.0000
-# III - Va  -20.991 1.16e+04 Inf  -0.002  1.0000
-# III - Vb    0.000 1.65e+04 Inf   0.000  1.0000
-# III - Vc  -22.244 1.16e+04 Inf  -0.002  1.0000
-# IV - Va     1.609 5.82e-01 Inf   2.766  0.0827
-# IV - Vb    22.600 1.16e+04 Inf   0.002  1.0000
-# IV - Vc     0.357 3.70e-01 Inf   0.963  0.9617
-# Va - Vb    20.991 1.16e+04 Inf   0.002  1.0000
-# Va - Vc    -1.253 6.02e-01 Inf  -2.080  0.3646
-# Vb - Vc   -22.244 1.16e+04 Inf  -0.002  1.0000
-
-
