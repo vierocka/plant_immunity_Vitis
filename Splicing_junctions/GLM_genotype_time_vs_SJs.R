@@ -261,7 +261,7 @@ convTab[match(rownames(AdjPvalues[which(AdjPvalues$adjPgen > 0.05 & AdjPvalues$a
 dim(AdjPvalues[which(AdjPvalues$adjPgen < 0.05 & AdjPvalues$adjPtim > 0.05 & AdjPvalues$adjPgen_tim > 0.05 & AdjPvalues$adjPbatch > 0.05),])
 unique(sort(convTab[match(rownames(AdjPvalues[which(AdjPvalues$adjPgen < 0.05 & AdjPvalues$adjPtim > 0.05 & AdjPvalues$adjPgen_tim > 0.05 & AdjPvalues$adjPbatch > 0.05),]), convTab$PN40024_genotype_ENSMBL_ID), 12]))
 
-# separate table for genotype-specific
+# separate table for genotype-specificity
 genotype_specific <- as.data.frame(resultsNB[match(rownames(AdjPvalues[which(AdjPvalues$adjPgen < 0.05 & AdjPvalues$adjPtim > 0.05 & AdjPvalues$adjPgen_tim > 0.05 & AdjPvalues$adjPbatch > 0.05),]), rownames(resultsNB)),])
 
 ## RPV12 specific - 20 genes
