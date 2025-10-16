@@ -333,6 +333,10 @@ unique(sort(convTab[match(rownames(suscp_resist_SJ_diff[which(suscp_resist_SJ_di
 # InterPro - IPR042197/IPR002182 - Apoptotic protease-activating factors, helical domain / NB-ARC - 7 of 147	1.75	2.37;	FDR=2.18e-07
 library(pheatmap)
 pheatmap(as.matrix(SJmat_clean))
+unique(sort(convTab[match(rownames(suscp_resist_SJ_diff[which(suscp_resist_SJ_diff$adjPgen < 0.05),]), convTab$PN40024_genotype_ENSMBL_ID),2]))
+# Vitis vinifera UniProt IDs: D7TLH6,D7TLI1,D7TU37,D7U3W2,D7U627,D7UBC1,E0CVF1,F6GYS1,F6GYT4,F6H885,F6HCQ6,F6HD90,F6HK89,F6HN40,F6HN42,F6HN43,F6HN44,F6HN46,F6HU30,F6HVH2,F6HXI8,F6HYC6,F6I139,F6I3U8,F6I3U9,F6I5F1
+# InterPro - IPR045344 - C-JID domain - 5 of 70	1.91	1.74;	FDR=3.28e-05
+# InterPro - IPR000157	- Toll/interleukin-1 receptor homology (TIR) domain; 5 of 79	1.86	1.71; FDR=3.28e-05
 
 #### all susceptible samples must have more than 0 SJ, all resistant samples must have  0 SJs
 # Condition A: all susceptible columns are zero
