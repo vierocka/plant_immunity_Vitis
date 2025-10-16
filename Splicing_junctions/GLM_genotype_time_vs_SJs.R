@@ -331,6 +331,8 @@ unique(sort(convTab[match(rownames(suscp_resist_SJ_diff[which(suscp_resist_SJ_di
 # RPS4-2, K18C1.11, RPP13, DSC1, MVA3.30, T6K12.1, F14D7.1, M4I22.30 
 # UniProt - KW-0433 - Leucine-rich repeat - 7 of 593	1.15	1.06;	FDR=0.00019
 # InterPro - IPR042197/IPR002182 - Apoptotic protease-activating factors, helical domain / NB-ARC - 7 of 147	1.75	2.37;	FDR=2.18e-07
+library(pheatmap)
+pheatmap(as.matrix(SJmat_clean))
 
 #### all susceptible samples must have more than 0 SJ, all resistant samples must have  0 SJs
 # Condition A: all susceptible columns are zero
