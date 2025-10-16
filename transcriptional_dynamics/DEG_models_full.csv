@@ -1,0 +1,76 @@
+Model,Test_Type,Term_or_Contrast,Raw_p,Notes,FDR_q,Significance
+A,omnibus,genotype,0.2347,glm.nb; DEGs ~ genotype + timing + direction,0.35205,ns
+A,omnibus,timing,3.372e-06,Significant timing effect,4.0464e-05,q<0.01
+A,omnibus,direction,0.5451,Direction not significant,0.7268,ns
+A,emmeans: genotype|timing=0 hpi,Rpv12 - (Rpv12+1),0.0135,pairwise Tukey,0.0405,q<0.05
+A,emmeans: genotype|timing=0 hpi,Rpv12 - (Rpv12+1+3),0.9114,pairwise Tukey,0.9114,ns
+A,emmeans: genotype|timing=0 hpi,(Rpv12+1) - (Rpv12+1+3),0.0426,pairwise Tukey,0.07302857142857143,q<0.1
+A,emmeans: genotype|timing=6 hpi,Rpv12 - (Rpv12+1),0.0135,pairwise Tukey,0.0405,q<0.05
+A,emmeans: genotype|timing=6 hpi,Rpv12 - (Rpv12+1+3),0.9114,pairwise Tukey,0.9114,ns
+A,emmeans: genotype|timing=6 hpi,(Rpv12+1) - (Rpv12+1+3),0.0426,pairwise Tukey,0.07302857142857143,q<0.1
+A,emmeans: genotype|timing=24 hpi,Rpv12 - (Rpv12+1),0.0135,pairwise Tukey,0.0405,q<0.05
+A,emmeans: genotype|timing=24 hpi,Rpv12 - (Rpv12+1+3),0.9114,pairwise Tukey,0.9114,ns
+A,emmeans: genotype|timing=24 hpi,(Rpv12+1) - (Rpv12+1+3),0.0426,pairwise Tukey,0.07302857142857143,q<0.1
+B,omnibus,loci (1→3),0.4042241,No scaling with loci count,0.46103900000000003,ns
+B,omnibus,timing,0.0006588,Significant timing effect,0.006588,q<0.01
+B,omnibus,direction,0.4149351,Direction not significant,0.46103900000000003,ns
+B,emmeans: timing|loci=2,timing0 - timing6,0.0088,pairwise Tukey,0.029333333333333336,q<0.05
+B,emmeans: timing|loci=2,timing0 - timing24,0.9614,pairwise Tukey,0.9614,ns
+B,emmeans: timing|loci=2,timing6 - timing24,0.0037,pairwise Tukey,0.018500000000000003,q<0.05
+B,emmeans: timing+direction|loci=2,timing6 Down - timing24 Down,0.0162,pairwise Tukey,0.0324,q<0.05
+B,emmeans: timing+direction|loci=2,timing6 Up - timing24 Up,0.0162,pairwise Tukey,0.0324,q<0.05
+B,emmeans: timing+direction|loci=2,timing0 Down - timing6 Down,0.037,pairwise Tukey,0.05285714285714286,q<0.1
+B,emmeans: timing+direction|loci=2,timing0 Up - timing6 Up,0.037,pairwise Tukey,0.05285714285714286,q<0.1
+C,omnibus,genotype,0.3101,Aggregated counts across direction,0.443,ns
+C,omnibus,timing,3.754e-05,Strong timing effect,0.0005,q<0.01
+C,emmeans: timing|genotype=Rpv12,timing0 - timing6,0.0008,pairwise Tukey,0.002285714285714286,q<0.01
+C,emmeans: timing|genotype=Rpv12,timing0 - timing24,0.7143,pairwise Tukey,0.8403529411764706,ns
+C,emmeans: timing|genotype=Rpv12,timing6 - timing24,0.0001,pairwise Tukey (reported <.0001),0.0005,q<0.01
+C,emmeans: timing|genotype=Rpv12+1,timing0 - timing6,0.0008,pairwise Tukey,0.002285714285714286,q<0.01
+C,emmeans: timing|genotype=Rpv12+1,timing0 - timing24,0.7143,pairwise Tukey,0.8403529411764706,ns
+C,emmeans: timing|genotype=Rpv12+1,timing6 - timing24,0.0001,pairwise Tukey (reported <.0001),0.0005,q<0.01
+C,emmeans: timing|genotype=Rpv12+1+3,timing0 - timing6,0.0008,pairwise Tukey,0.002285714285714286,q<0.01
+C,emmeans: timing|genotype=Rpv12+1+3,timing0 - timing24,0.7143,pairwise Tukey,0.8403529411764706,ns
+C,emmeans: timing|genotype=Rpv12+1+3,timing6 - timing24,0.0001,pairwise Tukey (reported <.0001),0.0005,q<0.01
+C,emmeans: genotype|timing=0 hpi,Rpv12 - (Rpv12+1),0.027,pairwise Tukey,0.054000000000000006,q<0.1
+C,emmeans: genotype|timing=0 hpi,Rpv12 - (Rpv12+1+3),0.9513,pairwise Tukey,0.9513,ns
+C,emmeans: genotype|timing=0 hpi,(Rpv12+1) - (Rpv12+1+3),0.0593,pairwise Tukey (trend),0.09123076923076923,q<0.1
+C,emmeans: genotype|timing=6 hpi,Rpv12 - (Rpv12+1),0.027,pairwise Tukey,0.054000000000000006,q<0.1
+C,emmeans: genotype|timing=6 hpi,Rpv12 - (Rpv12+1+3),0.9513,pairwise Tukey,0.9513,ns
+C,emmeans: genotype|timing=6 hpi,(Rpv12+1) - (Rpv12+1+3),0.0593,pairwise Tukey (trend),0.09123076923076923,q<0.1
+C,emmeans: genotype|timing=24 hpi,Rpv12 - (Rpv12+1),0.027,pairwise Tukey,0.054000000000000006,q<0.1
+C,emmeans: genotype|timing=24 hpi,Rpv12 - (Rpv12+1+3),0.9513,pairwise Tukey,0.9513,ns
+C,emmeans: genotype|timing=24 hpi,(Rpv12+1) - (Rpv12+1+3),0.0593,pairwise Tukey (trend),0.09123076923076923,q<0.1
+D_Rpv12,omnibus,timing,0.2608,Not significant,0.5216,ns
+D_Rpv12,omnibus,direction,0.6675,Not significant,0.6675,ns
+D_Rpv12+1,omnibus,timing,2e-16,Highly significant timing,4e-16,q<0.01
+D_Rpv12+1,omnibus,direction,0.5893,Not significant,0.5893,ns
+D_Rpv12+1+3,omnibus,timing,2.2e-16,Highly significant timing,4.4e-16,q<0.01
+D_Rpv12+1+3,omnibus,direction,4.799e-05,Direction significant,4.799e-05,q<0.01
+E_0h,omnibus,genotype,0.02397,Genotype effect at 0 hpi,0.04794,q<0.05
+E_0h,omnibus,direction,0.28618,Direction NS,0.28618,ns
+E_6h,omnibus,genotype,0.001168,Genotype effect at 6 hpi,0.001168,q<0.01
+E_6h,omnibus,direction,4.153e-11,Strong direction effect (Down > Up),8.306e-11,q<0.01
+E_24h,omnibus,genotype,2e-16,Genotype effect at 24 hpi,4e-16,q<0.01
+E_24h,omnibus,direction,0.4212,Direction NS,0.4212,ns
+F,omnibus,timing,2.2e-16,Quasibinomial (proportions) — timing strong,2.42e-15,q<0.01
+F,omnibus,groups,1.0,Groups not significant globally,1.0,ns
+F,omnibus,direction,6.022e-05,Up vs Down proportions differ,0.00018333333333333334,q<0.01
+F,emmeans: timing|direction=Down,ER - TSR,0.0002,pairwise Tukey,0.000275,q<0.01
+F,emmeans: timing|direction=Down,IEV - TSR,0.0001,pairwise Tukey (reported <.0001),0.00018333333333333334,q<0.01
+F,emmeans: timing|direction=Down,LR - TSR,0.0001,pairwise Tukey (reported <.0001),0.00018333333333333334,q<0.01
+F,emmeans: timing|direction=Down,Sch - TSR,0.0003,pairwise Tukey,0.00032999999999999994,q<0.01
+F,emmeans: timing|direction=Up,ER - TSR,0.0002,pairwise Tukey,0.000275,q<0.01
+F,emmeans: timing|direction=Up,IEV - TSR,0.0001,pairwise Tukey (reported <.0001),0.00018333333333333334,q<0.01
+F,emmeans: timing|direction=Up,LR - TSR,0.0001,pairwise Tukey (reported <.0001),0.00018333333333333334,q<0.01
+F,emmeans: timing|direction=Up,Sch - TSR,0.0003,pairwise Tukey,0.00032999999999999994,q<0.01
+G_IEV,omnibus,groups,2e-16,Group effect strong at IEV,4e-16,q<0.01
+G_IEV,omnibus,direction,0.7864,Direction NS at IEV,0.7864,ns
+G_ER,omnibus,groups,1.233e-08,Group effect strong at ER,2.466e-08,q<0.01
+G_ER,omnibus,direction,0.1685,Direction NS at ER,0.1685,ns
+G_TSR,omnibus,groups,7.529e-05,Group effect at TSR,7.529e-05,q<0.01
+G_TSR,omnibus,direction,5.111e-10,Direction strong at TSR,1.0222e-09,q<0.01
+G_LR,omnibus,groups,2e-16,Group effect strong at LR,4e-16,q<0.01
+G_LR,omnibus,direction,0.287,Direction NS at LR,0.287,ns
+G_Sch,omnibus,groups,2.132e-14,Group effect strong at Sch,4.264e-14,q<0.01
+G_Sch,omnibus,direction,0.9998,Direction NS at Sch,0.9998,ns

@@ -8,7 +8,7 @@ library(tidyr)
 
 # ID conversion
 convTab <- read.table("GCNA/26169genes_conversions_gene_protein_IDs.tsv", sep="\t", header = FALSE)
-# raw counts
+# raw counts: 26169
 CBrlDF <- read.table("data_files/Rlogs.csv", header = TRUE, sep="\t")
 CBrlogs <- as.matrix(CBrlDF[,c(2:37)])
 rownames(CBrlogs) <- CBrlDF[,1]
@@ -760,8 +760,6 @@ print(summary_df)
 # 25 PTI_specific   Rpv12+1+3 0        -0.0377       0.103     20
 # 26 PTI_specific   Rpv12+1+3 6        -0.156        0.124     20
 # 27 PTI_specific   Rpv12+1+3 24       -0.102        0.0939    20
-
-
 
 ### Meta-module 2
 # generalized pattern: down in all 3 genotypes
