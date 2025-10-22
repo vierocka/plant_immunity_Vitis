@@ -25,7 +25,7 @@ BigPCA <- prcomp(t(CBrlogs))
 summary(BigPCA)
 library(factoextra)
 
-#svg("/home/veve/Dropbox/MendelUni_Vinselect/draft/Sections_by_VK/PLANT_BIOTECH_J/PCA_cumulative_proportions.svg", width = 14, height = 8)
+#svg("DGEA/PCA_cumulative_proportions.svg", width = 14, height = 8)
 par(mfrow=c(1,1), mar=c(2.5,2.5,1,1), mgp=c(1.5,0.5,0))
 fviz_eig(BigPCA, main = "", 
          addlabels = TRUE,
@@ -40,7 +40,7 @@ plot(BigPCA$x[,1], BigPCA$x[,2], col=myCol, pch=myPch, xlab="PC1 (42.49 %)", yla
 par(mar=c(2.5,3,1,1), mgp=c(1.5,0.5,0))
 plot(BigPCA$x[,3], BigPCA$x[,4], col=myCol, pch=myPch, xlab="PC3 (10.21 %)", ylab="PC4 (7.38 %)")
 
-# svg("/home/veve/Dropbox/MendelUni_Vinselect/draft/Sections_by_VK/PLANT_BIOTECH_J/Figures_by_SVG/PCA_BatchEff_FigS1A.svg", width = 14, height = 8)
+# svg("DGEA/PCA_BatchEff_FigS2.svg", width = 14, height = 8)
 par(mfrow=c(1,2), mar=c(2.75,2.75,0.5,1), cex.main=0.65, mgp=c(1.5,0.5,0))
 plot(BigPCA$x[,1], BigPCA$x[,2], col=myCol, pch=myExctPch, xlab="PC1 (42.49 %)", ylab="PC2 (11.40 %)")
 text(x=-15, y=25, "Rpv12+1", col="salmon", cex=0.75)
@@ -48,7 +48,7 @@ text(x=10, y=15, "susceptible", col="dimgray", cex=0.75)
 text(x=-30, y=-30, "Rpv12", col="goldenrod", cex=0.75)
 text(x=90, y=-15, "Rpv12+1+3", col="cornflowerblue", cex=0.75)
 abline(h=0, lty=2, col="cornflowerblue")
-text(x = 12, y=2, "UniProt term: Signal (FDR=1.30e-10)", cex=0.75, col="cornflowerblue")
+text(x = 12, y=2, "Signal (FDR=1.30e-10)", cex=0.75, col="cornflowerblue")
 text(x = 12, y=-2, "PPI enrichment (FDR=0.0344)", cex=0.75, col="cornflowerblue")
 legend(x=75, y=-30, c("1","2"), pch=myExctPch, border = "dimgray", box.lty=2, cex = 0.75, pt.cex = 1, horiz = FALSE, title = "Batch")
 plot(BigPCA$x[,1], BigPCA$x[,2], col=myCol, pch=myPch, xlab="PC1 (42.49 %)", ylab="PC2 (11.40 %)")
@@ -60,7 +60,7 @@ legend(x=75, y=-20, c("0 hpi","6 hpi", "24 hpi"), pch=myPch, border = "dimgray",
 # dev.off()
 # PC1_PC2_byBatch_byTime.jpg
 
-# svg("/home/veve/Dropbox/MendelUni_Vinselect/draft/Sections_by_VK/PLANT_BIOTECH_J/Figures_by_SVG/PCA_BatchEff_FigS1B.svg", width = 14, height = 8)
+# svg("DGEA/PCA_BatchEff_FigS3.svg", width = 14, height = 8)
 par(mfrow=c(1,2), mar=c(2.75,2.75,0.5,1), cex.main=0.65, mgp=c(1.5,0.5,0))
 plot(BigPCA$x[,2], BigPCA$x[,3], col=myCol, pch=myExctPch, xlab="PC2 (11.40 %)", ylab="PC3 (10.21 %)")
 text(x=20, y=25, "Rpv12+1", col="salmon", cex=0.75)
@@ -83,30 +83,30 @@ legend(x=25.5, y=-40, c("0 hpi","6 hpi", "24 hpi"), pch=myPch, border = "dimgray
 # PC2_PC3_byBatch_byTime.jpg
 
 ##### main PCA figure
-# svg("/home/veve/Dropbox/MendelUni_Vinselect/draft/Sections_by_VK/PLANT_BIOTECH_J/Figures_by_SVG/PCA_PC1_2_3_4_main.svg", width = 10, height = 8)
-par(mfrow=c(1,2), mar=c(2.75,2.75,0.5,1), cex.main=0.65, mgp=c(1.5,0.5,0))
+# svg("DGEA/PCA_PC1_2_3_4_main.svg", width = 10, height = 8)
+par(mfrow=c(1,2), mar=c(3.5,3.5,1,1), cex.main=1, cex.axis=1, cex.lab=1.25, mgp=c(2,0.75,0))
 plot(BigPCA$x[,1], BigPCA$x[,2], col=myCol, pch=myPch, xlab="PC1 (42.49 %)", ylab="PC2 (11.40 %)")
-text(x=-32, y=25, "Rpv12+1", col="salmon", cex=0.95)
-text(x=10, y=15, "susceptible", col="dimgray", cex=0.95)
-text(x=-42, y=-30, "Rpv12", col="goldenrod", cex=0.95)
-text(x=92, y=-15, "Rpv12+1+3", col="cornflowerblue", cex=0.95)
+text(x=-27, y=25, "Rpv12+1", col="salmon", cex=1.25)
+text(x=10, y=15, "susceptible", col="dimgray", cex=1.25)
+text(x=-42, y=-30, "Rpv12", col="goldenrod", cex=1.25)
+text(x=85, y=-12, "Rpv12+1+3", col="cornflowerblue", cex=1.25)
 abline(h=0, lty=2, col="cornflowerblue")
-text(x = 75, y=2, "Signal (FDR=1.30e-10)", cex=0.85, col="cornflowerblue")
+text(x = 75, y=2, "Signal (FDR<1e-9)", cex=1, col="cornflowerblue")
 abline(v=0, lty=2, col="salmon")
-text(x = -11, y=-15, "Immune System\n(FDR=0.00036)", cex=0.85, col="salmon", srt=90)
-text(x = 10, y=-20, "Apoptotic protease-activating\nfactors (FDR=9.20e-05)", cex=0.85, col="salmon", srt=90)
-legend(x=60, y=-25, c("0 hpi","6 hpi", "24 hpi"), pch=myPch, border = "dimgray", box.lty=2, cex = 0.75, pt.cex = 1, horiz = FALSE, title = "Time")
-plot(BigPCA$x[,2], BigPCA$x[,3], col=myCol, pch=myPch, xlab="PC2 (11.40 %)", ylab="PC3 (10.21 %)")
-text(x=20, y=25, "Rpv12+1", col="salmon", cex=0.95)
-text(x=15, y=-40, "susceptible", col="dimgray", cex=0.95)
-text(x=-30, y=15, "Rpv12", col="goldenrod", cex=0.95)
-text(x=-15, y=-8, "Rpv12+1+3", col="cornflowerblue", cex=0.95)
-abline(h=0, lty=2, col="salmon")
-text(x = 22, y=-4, "Immune System\n(FDR=0.00036)", cex=0.85, col="salmon")
-text(x = 20, y=4, "Apoptotic protease-activating\nfactors (FDR=9.20e-05)", cex=0.85, col="salmon")
-abline(v=0, lty=2, col="dimgray")
-text(x = -2.5, y=-45, "Plant defense (FDR=0.0282)", cex=0.85, col="dimgray", srt=90)
-legend(x=-50, y=-45, c("0 hpi","6 hpi", "24 hpi"), pch=myPch, border = "dimgray", box.lty=2, cex = 0.75, pt.cex = 1, horiz = FALSE, title = "Time")
+#text(x = -11, y=-25, "Immune System\n(FDR<1e-3)", cex=1, col="salmon", srt=90)
+text(x = 7, y=-25, "PCD-related factors (FDR<1e-4)", cex=1, col="salmon", srt=90)
+legend(x=92, y=-35, c("0 hpi","6 hpi", "24 hpi"), pch=myPch, border = "dimgray", box.lty=2, cex = 0.75, pt.cex = 1, horiz = FALSE, title = "Time")
+plot(BigPCA$x[,3], BigPCA$x[,4], col=myCol, pch=myPch, xlab="PC3 (10.21 %)", ylab="PC4 (7.37 %)")
+text(x=20, y=-15, "Rpv12+1", col="salmon", cex=1.25)
+text(x=-40, y=20, "susceptible", col="dimgray", cex=1.25)
+text(x=20, y=12, "Rpv12", col="goldenrod", cex=1.25)
+text(x=-9, y=5, "Rpv12+1+3", col="cornflowerblue", cex=1.25)
+abline(h=0, lty=2, col="dimgray")
+text(x = -50, y=-5, "Plant hypersensitive\nresponse(FDR<1e-05)", cex=1, col="dimgray")
+abline(v=0, lty=2, col="darkolivegreen")
+text(x = -8, y=-25, "L-pipecolic acid biosynthetic\nprocess (FDR=0.0143)", cex=1, col="darkolivegreen", srt=90)
+
+#legend(x=-50, y=-45, c("0 hpi","6 hpi", "24 hpi"), pch=myPch, border = "dimgray", box.lty=2, cex = 0.75, pt.cex = 1, horiz = FALSE, title = "Time")
 # dev.off()
 # PC1_PC2_PC3_PC4_byTime_4genotypes_stringDBannot.jpg
 
@@ -136,6 +136,7 @@ text(x=10000, y=sort(contributions1, decreasing = TRUE)[50]+0.005, "50 most cont
 sum(sort(contributions1, decreasing = TRUE)[1:50])
 protIDs1 <- convTab[match(names(sort(contributions1, decreasing = TRUE)[1:50]), convTab$PN40024_genotype_ENSMBL_ID),2]
 unique(sort(protIDs1))
+# Vitvi11g00518,Vitvi10g01505,Vitvi10g00667,Vitvi04g00501,Vitvi01g00816,Vitvi09g00264,Vitvi01g00710,Vitvi07g01844,Vitvi08g00853,Vitvi15g00714,Vitvi07g04337,Vitvi08g01686,Vitvi12g00456,Vitvi13g02005,Vitvi04g00307,Vitvi07g04398,Vitvi14g01952,Vitvi14g00146,Vitvi06g00119,Vitvi07g00741,Vitvi07g00351,Vitvi11g01075,Vitvi05g02156,Vitvi18g00510,Vitvi10g04092,Vitvi02g00303,Vitvi11g00016,Vitvi03g01760,Vitvi11g00708,Vitvi04g01424,Vitvi03g01500,Vitvi18g00773,Vitvi14g02493,Vitvi16g01144,Vitvi09g00593,Vitvi14g01381,Vitvi10g01616,Vitvi06g00639,Vitvi05g00067,Vitvi03g00312,Vitvi11g01098,Vitvi03g01388,Vitvi14g00029,Vitvi13g01913,Vitvi05g01950,Vitvi06g01346,Vitvi06g00266,Vitvi18g00422,Vitvi03g00537,Vitvi10g01678
 # A5AI86,A5APN4,A5BE55,A5BJW5,D7SJY1,D7SXB4,D7TEG1,D7TNN1,D7TY23,D7U117,D7UAA6,D7UBL5,D7UE06,F6GU16,F6GUE8,F6GW83,F6GWP8,F6GXX4,F6H0Q8,F6H120,F6H1C4,F6H3E5,F6H3H9,F6H479,F6H4B3,F6H6M1,F6H6V1,F6H7G5,F6H8C9,F6H8N4,F6HC80,F6HGZ4,F6HHB3,F6HHV8,F6HME1,F6HN60,F6HNS9,F6HQ84,F6HQL4,F6HRL3,F6HUB7,F6HWM9,F6HYJ9,F6HZ64,F6I0K7,F6I133,F6I1Z9,F6I383,F6I4P5,F6I5Q5
 # PPI enrichment p-value:	0.0344 - known interactions among genes
 # UniProt Annot Keywords: Signal (KW-0732) - 1.30e-10
@@ -150,6 +151,7 @@ text(x=10000, y=sort(contributions[,2], decreasing = TRUE)[50]+0.005, "50 most c
 sum(sort(contributions[,2], decreasing = TRUE)[1:50])
 protIDs2 <- convTab[match(names(sort(contributions2, decreasing = TRUE)[1:50]), convTab$PN40024_genotype_ENSMBL_ID),2]
 unique(sort(protIDs2))
+# 
 # RPs: Immune System (MAP-168256) - 0.00036
 # InterPro: NB-ARC Apoptotic protease-activating factors, helical domain (IPR042197) - 9.20e-05
 # A5BNW5,D7SP93,D7SWS2,D7TC36,D7TE77,D7TGN6,D7TT01,D7U0N8,D7U7H4,D7UBT2,F6GT73,F6GWZ3,F6GXU9,F6H300,F6H366,F6H367,F6H368,F6H370,F6H4R5,F6H7N8,F6H7Z8,F6H8W7,F6H8Y3,F6H969,F6HAR6,F6HAW3,F6HBL1,F6HCD4,F6HGN0,F6HHW4,F6HJG6,F6HJI3,F6HKD9,F6HKG7,F6HKM8,F6HKR2,F6HL84,F6HNY6,F6HQB3,F6HSN2,F6HUI0,F6HV60,F6HVE1,F6HWQ6,F6HY71
@@ -164,7 +166,9 @@ sum(sort(contributions[,3], decreasing = TRUE)[1:50])
 protIDs3 <- convTab[match(names(sort(contributions3, decreasing = TRUE)[1:50]), convTab$PN40024_genotype_ENSMBL_ID),2]
 unique(sort(protIDs3))
 geneIDs3 <- names(sort(contributions3, decreasing = TRUE)[1:50])
+# Vitvi16g01546,Vitvi12g02066,Vitvi08g01235,Vitvi07g02323,Vitvi10g01679,Vitvi01g01751,Vitvi12g04563,Vitvi12g04630,Vitvi18g04752,Vitvi18g02451,Vitvi04g04009,Vitvi07g00890,Vitvi19g04259,Vitvi10g04088,Vitvi18g04003,Vitvi04g00193,Vitvi09g01214,Vitvi00g04728,Vitvi12g04076,Vitvi12g04597,Vitvi18g02720,Vitvi18g04176,Vitvi12g04185,Vitvi16g04012,Vitvi18g02180,Vitvi14g00668,Vitvi08g04284,Vitvi04g04012,Vitvi08g02397,Vitvi16g01733,Vitvi08g02249,Vitvi12g02621,Vitvi05g04494,Vitvi01g00083,Vitvi09g01592,Vitvi01g04132,Vitvi17g01380,Vitvi12g04548,Vitvi08g04290,Vitvi07g02362,Vitvi18g04656,Vitvi00g04449,Vitvi07g00807,Vitvi12g04518,Vitvi04g01233,Vitvi13g04038,Vitvi18g04640,Vitvi04g02226,Vitvi18g04646,Vitvi03g04050
 convTab[match(geneIDs3, convTab$PN40024_genotype_ENSMBL_ID),c(1,2,7,8,10)]
+# no terms for UniProt Vitis vinifera IDs
 unique(sort(convTab[match(geneIDs3, convTab$PN40024_genotype_ENSMBL_ID),12]))
 # A. thal. homologs: AT1G16150, AT1G19250, AT1G35710, AT1G49760, AT2G22910, AT2G29420, AT2G31900, AT2G33800, AT3G07040, AT3G14470, AT3G18370, AT3G21420, AT3G46530, AT3G46710, AT3G47570, AT3G50740, AT3G51550, AT3G51850, AT3G52500, AT3G54630, AT4G03230, AT4G03500, AT4G05320, AT4G12010, AT4G26090, AT4G27190, AT4G31940, AT4G36550, AT5G05260, AT5G06220, AT5G17680, AT5G23960, AT5G25930, AT5G35810, AT5G44870, AT5G45230, AT5G48850, AT5G60900
 # Biol. Pr.:
@@ -178,9 +182,14 @@ text(x=10000, y=sort(contributions[,4], decreasing = TRUE)[50]+0.005, "50 most c
 sum(sort(contributions[,4], decreasing = TRUE)[1:50])
 protIDs4 <- convTab[match(names(sort(contributions[,4], decreasing = TRUE)[1:50]), convTab$PN40024_genotype_ENSMBL_ID),2]
 unique(sort(protIDs4))
-geneIDs4 <- names(sort(contributions4, decreasing = TRUE)[1:50])
-convTab[match(geneIDs4, convTab$PN40024_genotype_ENSMBL_ID),c(1,2,7,8,10)]
+# UnitProt: A5AXI7,A5B5N0,A5C1J5,D7SK85,D7SLR0,D7STZ9,D7U8Y1,D7UE06,F6GSZ7,F6GW09,F6GWH1,F6GXK7,F6GXQ0,F6H019,F6H1N0,F6H3S1,F6H594,F6H6Z7,F6H8M1,F6HBL1,F6HC15,F6HC56,F6HDR9,F6HIV3,F6HK51,F6HKY5,F6HNJ5,F6HTG0,F6HTG3,F6HTK1,F6HTK2,F6HW94,F6HWB8,F6HZZ6,F6I0F5,F6I555,F6I660,F6I7C2
 # PPI enrichment p-value:	0.00563
+geneIDs4 <- names(sort(contributions4, decreasing = TRUE)[1:50])
+convTab[match(geneIDs4, convTab$PN40024_genotype_ENSMBL_ID),12]
+# Athal homologs: AT1G04220,AT1G17840,AT1G19250,AT1G49760,AT1G55990,AT1G65680,AT1G75280,AT2G13810,AT2G14580,AT2G22590,AT2G28500,AT2G29150,AT2G47180,AT3G09220,AT3G22620,AT3G55090,AT4G03230,AT4G03500,AT4G12010,AT4G13710,AT4G31940,AT5G05340,AT5G09520,AT5G09530,AT5G09900,AT5G17680,AT5G33370,AT5G35550,AT5G41040,AT5G65940
+# PPI enrichment p-value:	5.3e-07
+# GO:0009698	Phenylpropanoid metabolic process; 7 of 144	1.65	1.95;	FDR=1.38e-06
+# GO:0062034 L-pipecolic acid biosynthetic process; 2 of 4	2.66	0.75;	FDR=0.0143
 
 # dev.off()
 # PC1-4_contributions_top50genes.jpg

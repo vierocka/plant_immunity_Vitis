@@ -7,7 +7,7 @@ library(dplyr)
 library(tidyr)
 
 # ID conversion
-convTab <- read.table("GCNA/26169genes_conversions_gene_protein_IDs.tsv", sep="\t", header = FALSE)
+convTab <- read.table("WGCNA/26169genes_conversions_gene_protein_IDs.tsv", sep="\t", header = FALSE)
 # raw counts: 26169
 CBrlDF <- read.table("data_files/Rlogs.csv", header = TRUE, sep="\t")
 CBrlogs <- as.matrix(CBrlDF[,c(2:37)])
@@ -70,7 +70,7 @@ for (i in c(1:dim(nonEEEgenes)[1])){
     #  myCol <- rep(c(rep("goldenrod", 3),rep("salmon", 3),rep("cornflowerblue", 3),rep("dimgray", 3)),3)
     #  myCol_Time <- rep(c("gray","pink","purple"),12)
     #  myTimePCH <- rep(c(20,17,15),12)
-    # svg(paste("GCNA/", InvestigatedGene, "_module_PCA_CorrCutOff08.svg", sep=""), width = 8, height = 10)
+    # svg(paste("WGCNA/", InvestigatedGene, "_module_PCA_CorrCutOff08.svg", sep=""), width = 8, height = 10)
     # par(mfrow=c(1,1), mar=c(4,4,2,0.5), mgp=c(2.5,1,0), cex.axis=1, cex.lab=1.5, cex.main=1.5)
     # plot(PCA_myModule$x[,1], PCA_myModule$x[,2], col=myCol, xlab=paste("PC1 [", round(summary(PCA_myModule)[[6]][2]*100,digits = 2), "%]", sep=" "), ylab=paste("PC2 [", round(summary(PCA_myModule)[[6]][5]*100,digits = 2), "%]", sep=" "), main=paste(InvestigatedGene, "- co-transcriptional module", sep=" "), pch=myTimePCH)  
     # dev.off()
@@ -93,11 +93,11 @@ modulesInfo <- as.data.frame(cbind(PearsonCorr, Pvals, Padj, FDR))
 dim(modulesInfo)
 rownames(modulesInfo) <- InvestigatedGeneSelectedList
 modulesInfo[1:6,1:4]
-# write.csv(modulesInfo, "GCNA/Modules_info.csv")
+# write.csv(modulesInfo, "WGCNA/Modules_info.csv")
 length(InvestigatedGeneSelectedList)
 length(which(modulesInfo$Padj < 0.05)) # Bonf.: 155 ### much stricter
 length(which(modulesInfo$FDR < 0.05)) # FDR: 2254
-fullAnnot <- read.csv("GCNA/ChangedExpression_3553genes_fullInfo.csv", head=FALSE, sep="\t")
+fullAnnot <- read.csv("WGCNA/ChangedExpression_3553genes_fullInfo.csv", head=FALSE, sep="\t")
 # continue with the strict Bonferroni correction
 SignifGenesOfInt <- InvestigatedGeneSelectedList[which(modulesInfo$Padj < 0.05)]
 dim(fullAnnot[match(SignifGenesOfInt, fullAnnot$V12),c(1:5,12)]) # 155 modules pass the selectio criteria (Spearman correlation,at least 4 co-transcr. genes in a module, Bonfer. correction)
@@ -106,7 +106,7 @@ length(grep("NA", fullAnnot[match(SignifGenesOfInt, fullAnnot$V1),12])) # 5 NAs
 ## 155 - 25 = 130 characterized protein coding genes with their modules
 
 ################ 155 genes has significant co-transcriptional modules #############
-fullAnnot <- read.csv("GCNA/ChangedExpression_3553genes_fullInfo.csv", head=FALSE, sep="\t")
+fullAnnot <- read.csv("WGCNA/ChangedExpression_3553genes_fullInfo.csv", head=FALSE, sep="\t")
 unique(fullAnnot[match(SignifGenesOfInt, fullAnnot$V1),5]) # 138 unique protein IDs (UniProt)
 sort(table(fullAnnot[match(SignifGenesOfInt, fullAnnot$V1),5]))
 # 2x are: D7TGN6 F6H8W7 F6H943 F6H969 F6HBD8 F6HLZ1 F6HS81 F6HVE1
@@ -117,7 +117,7 @@ fullAnnot[match(SignifGenesOfInt, fullAnnot$V1),c(1:5,12)]
 fullAnnot[match(SignifGenesOfInt, fullAnnot$V1),c(1:5,12)][grep("transcription factor", fullAnnot[match(SignifGenesOfInt, fullAnnot$V1),12]),] # 4x TFs: NAC transcription factor 29, bZIP transcription factor 53, WRKY transcription factor 47, transcription factor PRE6
 fullAnnot[match(SignifGenesOfInt, fullAnnot$V1),c(1:5,12)][grep("disease", fullAnnot[match(SignifGenesOfInt, fullAnnot$V1),12]),] # 30x
 
-########### Check your gene of interest:
+########### Check the gene of interest:
 #### EXAMPLE
 ### example: JOX2 - Vitvi03g04163 -	DEE	EEE	EUE	- F6HQF2 - VIT_03s0063g01180	lcl|NC_081807.1_prot_XP_059591869.1_4703	82.474	3.61E-104	LOC100253819 	XP_059591869.1 	jasmonate-induced oxygenase 2
 # Arabidopsis JASMONATE-INDUCED OXYGENASES down-regulate plant immunity by hydroxylation and inactivation of the hormone jasmonic acid
@@ -158,7 +158,7 @@ for (i in c(1:length(SignifGenesOfInt))){
   target <- c(target, names(which(correlation_matrix_byGenes[match(queriedGene, rownames(correlation_matrix_byGenes)),] >= 0.817 & correlation_matrix_byGenes[match(queriedGene, rownames(correlation_matrix_byGenes)),] < 1)))
 }
 
-#svg("GCNA/SpearmanCorr_155signifCotranscrModules.svg", width = 14, height = 8)
+#svg("WGCNA/SpearmanCorr_155signifCotranscrModules.svg", width = 14, height = 8)
 par(mar=c(5.5,5,2,1), mgp=c(3,1,0), cex.main=1.25, cex.axis=1.5, cex.lab=1.5)
 hist(CotranscModSize, main="155 significant co-transcriptional modules", xlab="nodes per module", ylab="count")
 # dev.off()
@@ -215,7 +215,7 @@ max(degree_centrality[match(hub_proteins, names(degree_centrality))]) # max: 155
 fullAnnot[match(hub_proteins, fullAnnot$V1), c(1:5,12)]
 # check the annotation of hub proteins:
 cbind(degree_centrality[match(hub_proteins, names(degree_centrality))],fullAnnot[match(hub_proteins, fullAnnot$V1), c(2:5,12)])
-# write.table(cbind(degree_centrality[match(hub_proteins, names(degree_centrality))],fullAnnot[match(hub_proteins, fullAnnot$V1), c(1:5,12)]), "GCNA//Top56HubGenes_annotation.csv", sep="\t")
+# write.table(cbind(degree_centrality[match(hub_proteins, names(degree_centrality))],fullAnnot[match(hub_proteins, fullAnnot$V1), c(1:5,12)]), "WWGCNA//Top56HubGenes_annotation.csv", sep="\t")
 # ENSMBL - degree centrality - c1 - c2 - c3 - UniProt - common description
 # Vitvi01g00508                                                              567 EEE EUE UUE  D7T8J2                      MACPF domain-containing protein At1g14780
 # Vitvi01g00656                                                             1552 UDE EEE DDE  D7SYR2                                      protein DETOXIFICATION 30
@@ -329,6 +329,7 @@ ph <- pheatmap(sharedGenesPercOfPossibleMat, cluster_rows = TRUE, cluster_cols =
 ordered_indices <- ph$tree_row$order
 rownames(row_annotation) <- colnames(sharedGenesPercOfPossibleMat)[ordered_indices]
 
+### PROPORTIONS OF SHARED
 # svg("/home/veve/Dropbox/MendelUni_Vinselect/draft/Sections_by_VK/PLANT_BIOTECH_J/Figures_by_SVG/Pheatmap_MMs_intersectionPerct_56hubs.svg", width = 15, height = 10)
 pheatmap(sharedGenesPercOfPossibleMat, cluster_rows = TRUE, cluster_cols = TRUE, annotation_legend = TRUE, show_colnames = TRUE, show_rownames = TRUE, legend = TRUE, fontsize = 8, annotation_row = row_annotation, main = "Proportions of shared genes among hub proteins")
 # dev.off()
@@ -351,7 +352,7 @@ length(unlist(cor_mat)) # 12623809
 sort(unlist(cor_mat), decreasing = FALSE)[11992619]
 # 0.8254117
 
-build_graph <- function(expr_mat, thr = 0.75) {
+build_graph <- function(expr_mat, thr = 0.817) {
   # 1. pairwise Pearson correlations among genes
   cor_mat <- cor(t(expr_mat), use = "pairwise.complete.obs")
   cor_mat[is.na(cor_mat)] <- 0
@@ -389,7 +390,6 @@ g_0hpi = build_graph(expr_all[,c(1,4,7,10,13,16,19,22,25,28,31,34)])
 g_6hpi = build_graph(expr_all[,c(2,5,8,11,14,17,20,23,26,29,32,35)])
 g_24hpi = build_graph(expr_all[,c(3,6,9,12,15,18,21,24,27,30,33,36)])
 
-
 metrics_genotype <- rbind(
   cbind(genotype = "Susceptible", graph_metrics(g_suscp)),
   cbind(genotype = "Rpv12", graph_metrics(g_Rpv12)),
@@ -423,6 +423,7 @@ print(metrics_time)
 # 0 hpi    3553  793077 0.12568319    446.4267  0.7450907
 # 6 hpi    3553  681074 0.10793347    383.3797  0.6538471
 # 24 hpi    3553  401957 0.06370029    226.2634  0.6845203
+
 # RESULTS if corr. cut-off > 75==0.75
 # time n_nodes n_edges    density mean_degree clustering
 # genotype n_nodes n_edges   density mean_degree clustering
@@ -434,6 +435,7 @@ print(metrics_time)
 
 # Linear regression of density vs number of loci
 ## genotype
+# cut-off >=0.817
 density <- c(0.10069891, 0.13190889, 0.13268035, 0.05464136)
 loci_count <- c(0, 1, 2, 3)
 Mlcd <- lm(density ~ loci_count)
@@ -457,8 +459,8 @@ cor.test(loci_count, density, method = "spearman")
 # Linear regression and Spearman correlation confirm no monotonic increase in density with more loci (p ≈ 0.5).
 # → Polygenic pyramiding does not simply strengthen network connectivity; rather, it restructures it.
 
-# Linear regression of density vs number of loci
-## genotype
+# Linear regression of density vs timing
+## timing
 densityT <- c(0.12568319, 0.10793347, 0.06370029)
 time <- c(0, 6, 24)
 Mtd <- lm(densityT ~ time)
@@ -499,7 +501,7 @@ ggplot(metrics_time, aes(x = as.numeric(gsub(" hpi", "", genotype)), y = density
 gene_classif <- read.csv("data_files/Vitis_gene_immunity_class.csv") 
 table(gene_classif$Immunity_Class)
 # ETI_specific          Other PTI_ETI_shared   PTI_specific 
-# 104          26033             12             20 
+# 48          26092             12             17 
 
 head(gene_classif, 3)
 # GeneID Immunity_Class
@@ -581,11 +583,12 @@ cross_summary <- rbind(
 print(cross_summary)
 # cut-off 0.817 seems to be too stringent
 # genotype n_edges cross_edges cross_prop expected_prop odds_ratio
-# Susceptible  635423           0          0  8.634478e-06          0
-#       Rpv12  832362           0          0  8.634478e-06          0
-#     Rpv12+1  837230           0          0  8.634478e-06          0
-#   Rpv12+1+3  344794           0          0  8.634478e-06          0
-# cut-off > 0.75
+# Susceptible  635423           0          0  3.0894e-06          0
+#       Rpv12  832362           0          0  3.0894e-06          0
+#     Rpv12+1  837230           0          0  3.0894e-06          0
+#   Rpv12+1+3  344794           0          0  3.0894e-06          0
+
+# if cut-off 0.75, results are the same (0)
 
 # The correlation-based graph detects co-regulation, not mechanistic links.
 # The fact that no direct PTI–ETI edges exist at r > 0.75 just means:
@@ -607,8 +610,13 @@ cross_time <- rbind(
 )
 print(cross_time)
 
+# time n_edges cross_edges cross_prop expected_prop odds_ratio
+# 0 hpi  793077           0          0    3.0894e-06          0
+# 6 hpi  681074           0          0    3.0894e-06          0
+# 24 hpi  401957           0          0    3.0894e-06          0
+ 
 # cut-off 0.817 seems to be too stringent
-# cut-off > 0.75, no results
+# tried with the cut-off > 0.75, no results either
 
 ###################################
 Rpv12_0 <- read.table("DGEA/DGEA_Rpv12_vs_susceptible_0hpi.csv", sep="\t", header = TRUE)
@@ -628,27 +636,18 @@ rownames(allLOG2FCH) <- rownames(Rpv12_24)
 
 table(gene_classif$Immunity_Class)
 # ETI_specific, Other, PTI_ETI_shared, PTI_specific 
-# 104, 26033, 12, 20 
+# 48, 26092, 12, 17 
 
 # --- Select only ETI- and PTI-related genes ---
 eti_pti_genes <- gene_classif$GeneID[
   gene_classif$Immunity_Class %in% c("ETI_specific", "PTI_specific", "PTI_ETI_shared")
 ]
 
-# --- Subset your expression matrix (e.g., rlog_data) ---
+# --- Subset the expression matrix (e.g., rlog_data) ---
 expr_eti_pti <- allLOG2FCH[rownames(allLOG2FCH) %in% eti_pti_genes, ]
 dim(expr_eti_pti)
-# 136x 9
+# 77x 9
 head(expr_eti_pti, 2)
-# Vitvi01g01848 -0.17374612 -0.4290626641 -6.686727e-01 0.2853347793 -0.429105213 -0.53520936 -0.12622595 -0.89572321
-# Vitvi01g01849  0.04075123  0.0003847615 -5.029325e-05 0.0007255392  0.003229121  0.03967847 -0.05500514 -0.06949303
-
-# Create a named vector mapping GeneID → Immunity_Class
-gene_classes <- setNames(gene_classif$Immunity_Class, gene_classif$GeneID)
-
-# Add class as a new column to expr_eti_pti
-expr_eti_pti$class <- gene_classes[rownames(expr_eti_pti)]
-expr_eti_pti <- expr_eti_pti[order(expr_eti_pti$class), ]
 
 colnames(expr_eti_pti) <- c(
   "Rpv12_0", "Rpv12+1_0", "Rpv12+1+3_0",
@@ -662,6 +661,13 @@ col_order <- c(
   "Rpv12+1+3_0", "Rpv12+1+3_6", "Rpv12+1+3_24"
 )
 expr_eti_pti <- expr_eti_pti[, col_order]
+
+# Creating a named vector mapping GeneID → Immunity_Class
+gene_classes <- setNames(gene_classif$Immunity_Class, gene_classif$GeneID)
+
+# Add class as a new column to expr_eti_pti
+expr_eti_pti$class <- as.vector(gene_classes[rownames(expr_eti_pti)])
+expr_eti_pti <- expr_eti_pti[order(expr_eti_pti$class), ]
 
 ann_colors <- list(
   Immunity_Class = c(
@@ -677,7 +683,7 @@ rownames(ann_row) <- rownames(expr_eti_pti)
 pheatmap(
   expr_eti_pti[,c(1:9)],
   color = colorRampPalette(c("navy", "white", "firebrick3"))(100),
-  cluster_rows = TRUE,
+  cluster_rows = FALSE,
   cluster_cols = TRUE,
   annotation_row = ann_row,
   annotation_colors = ann_colors,
@@ -716,7 +722,7 @@ ggplot(summary_df, aes(x = Time, y = mean_log2FCH,
     "Rpv12+1" = "salmon",
     "Rpv12+1+3" = "cornflowerblue"
   )) +
-  theme_bw(base_size = 12) +
+  theme_bw(base_size = 18) +
   theme(
     strip.text = element_text(face = "bold"),
     panel.grid.minor = element_blank(),
@@ -726,40 +732,40 @@ ggplot(summary_df, aes(x = Time, y = mean_log2FCH,
     x = "Time post infection (hpi)",
     y = "Mean log₂ fold change vs susceptible",
     fill = "Genotype",
-    title = "Average expression intensity of immunity-related genes"
+    title = ""
   )
 
-print(summary_df)
+print(summary_df, n=30)
 ### A tibble: 27 × 6
 # class          Genotype  Time  mean_log2FCH se_log2FCH     n
 # <chr>          <chr>     <fct>        <dbl>      <dbl> <int>
-# 1 ETI_specific   Rpv12     0         0.252        0.120    104
-# 2 ETI_specific   Rpv12     6         0.0367       0.0911   104
-# 3 ETI_specific   Rpv12     24       -0.000595     0.140    104
-# 4 ETI_specific   Rpv12+1   0         0.138        0.0941   104
-# 5 ETI_specific   Rpv12+1   6        -0.0400       0.0733   104
-# 6 ETI_specific   Rpv12+1   24       -0.201        0.121    104
-# 7 ETI_specific   Rpv12+1+3 0        -0.107        0.107    104
-# 8 ETI_specific   Rpv12+1+3 6        -0.122        0.0923   104
-# 9 ETI_specific   Rpv12+1+3 24       -0.205        0.133    104
-# 10 PTI_ETI_shared Rpv12     0         0.258        0.220     12
-# 11 PTI_ETI_shared Rpv12     6         0.0672       0.142     12
-# 12 PTI_ETI_shared Rpv12     24       -0.201        0.149     12
-# 13 PTI_ETI_shared Rpv12+1   0         0.310        0.122     12
-# 14 PTI_ETI_shared Rpv12+1   6         0.109        0.146     12
-# 15 PTI_ETI_shared Rpv12+1   24       -0.166        0.110     12
-# 16 PTI_ETI_shared Rpv12+1+3 0        -0.0177       0.149     12
-# 17 PTI_ETI_shared Rpv12+1+3 6        -0.0454       0.221     12
-# 18 PTI_ETI_shared Rpv12+1+3 24       -0.0575       0.126     12
-# 19 PTI_specific   Rpv12     0         0.127        0.117     20
-# 20 PTI_specific   Rpv12     6        -0.0109       0.126     20
-# 21 PTI_specific   Rpv12     24        0.0937       0.187     20
-# 22 PTI_specific   Rpv12+1   0        -0.0158       0.0930    20
-# 23 PTI_specific   Rpv12+1   6         0.0107       0.0869    20
-# 24 PTI_specific   Rpv12+1   24       -0.0400       0.142     20
-# 25 PTI_specific   Rpv12+1+3 0        -0.0377       0.103     20
-# 26 PTI_specific   Rpv12+1+3 6        -0.156        0.124     20
-# 27 PTI_specific   Rpv12+1+3 24       -0.102        0.0939    20
+# ETI_specific   Rpv12     0           0.389      0.134     48
+# ETI_specific   Rpv12     6           0.0111     0.111     48
+# ETI_specific   Rpv12     24          0.132      0.138     48
+# ETI_specific   Rpv12+1   0           0.273      0.0904    48
+# ETI_specific   Rpv12+1   6          -0.0491     0.0844    48
+# ETI_specific   Rpv12+1   24         -0.0971     0.122     48
+# ETI_specific   Rpv12+1+3 0          -0.125      0.122     48
+# ETI_specific   Rpv12+1+3 6          -0.207      0.125     48
+# ETI_specific   Rpv12+1+3 24         -0.224      0.151     48
+# PTI_ETI_shared Rpv12     0           0.258      0.220     12
+# PTI_ETI_shared Rpv12     6           0.0672     0.142     12
+# PTI_ETI_shared Rpv12     24         -0.201      0.149     12
+# PTI_ETI_shared Rpv12+1   0           0.310      0.122     12
+# PTI_ETI_shared Rpv12+1   6           0.109      0.146     12
+# PTI_ETI_shared Rpv12+1   24         -0.166      0.110     12
+# PTI_ETI_shared Rpv12+1+3 0          -0.0177     0.149     12
+# PTI_ETI_shared Rpv12+1+3 6          -0.0454     0.221     12
+# PTI_ETI_shared Rpv12+1+3 24         -0.0575     0.126     12
+# PTI_specific   Rpv12     0           0.227      0.118     17
+# PTI_specific   Rpv12     6           0.0746     0.104     17
+# PTI_specific   Rpv12     24          0.0116     0.198     17
+# PTI_specific   Rpv12+1   0          -0.0527     0.0797    17
+# PTI_specific   Rpv12+1   6           0.0286     0.101     17
+# PTI_specific   Rpv12+1   24         -0.0924     0.155     17
+# PTI_specific   Rpv12+1+3 0           0.0535     0.103     17
+# PTI_specific   Rpv12+1+3 6          -0.0546     0.0935    17
+# PTI_specific   Rpv12+1+3 24         -0.0610     0.102     17
 
 ### Meta-module 2
 # generalized pattern: down in all 3 genotypes

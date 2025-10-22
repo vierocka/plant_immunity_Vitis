@@ -2,8 +2,8 @@ CBrlDF <- read.table("data_files/Rlogs.csv", header = TRUE, sep="\t")
 CBrlogs <- as.matrix(CBrlDF[,c(2:37)])
 rownames(CBrlogs) <- CBrlDF[,1]
 
-eti <- read.table("data_files/ETIspecific_genes.csv", header = FALSE, stringsAsFactors = FALSE)[,1]
-pti <- read.table("data_files/PTIspecific_genes.csv", header = FALSE, stringsAsFactors = FALSE)[,1]
+eti <- read.table("data_files/ETIspecific_genes_reducedToHomology_over35.csv", header = FALSE, stringsAsFactors = FALSE)[,1]
+pti <- read.table("data_files/PTIspecific_genes_reducedToHomology_over35.csv", header = FALSE, stringsAsFactors = FALSE)[,1]
 shared <- read.table("data_files/ETI_PTI_bridging_genes.csv", header = FALSE, stringsAsFactors = FALSE)[,1]
 
 all_genes <- rownames(CBrlogs)
