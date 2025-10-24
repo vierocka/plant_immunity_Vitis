@@ -6,8 +6,9 @@ library(ggplot2)
 library(MASS)
 
 ##########################################################################
+
 ####### 3 GENOTYPES #######################
-#### Model A
+################################################# Model A
 DEGcounts <- read.table("DGEA/DEGs_genotype_time_direction_overview.csv", sep=",", header = TRUE)
 myCountDF <- as.data.frame(DEGcounts[,c(2:5)])
 
@@ -107,7 +108,7 @@ ggplot(myCountDF, aes(x = timing, y = DEGs,
 # DEGs_time_direction_genotypes.jpg
 
 ################## Q: Does the number of DEGs systematically increases with the number of loci. ##############
-#### Model B
+############################################### Model B
 myCountDF$loci <- as.numeric(factor(myCountDF$genotype, levels = c("Rpv12", "Rpv12+1", "Rpv12+1+3")))
 # loci = 1, 2, 3
 m_loci <- glm.nb(
@@ -237,7 +238,7 @@ ggplot(myCountDF, aes(x = as.factor(genotype), y = as.double(DEGs))) +
 # DEGs_direction_timing_genotypes.jpg
 
 ########################### timing effect separately per genotype ########
-#### Model C
+################################################## Model C
 # Loop through cultivars
 for (g in unique(myCountDF$genotype)) {
   cat("\n###", g, "###\n")
@@ -322,7 +323,7 @@ for (g in unique(myCountDF$genotype)) {
 ## Only stacked genotypes show coordinated temporal AND directional regulation.
 
 ######## Compare cultivars at the same time point
-#### Model D
+################################################## Model D
 for (t in unique(myCountDF$timing)) {
   cat("\n### Time:", t, "hpi ###\n")
   df_sub <- myCountDF %>% filter(timing == t)
@@ -445,6 +446,7 @@ for (t in unique(myCountDF$timing)) {
 ## Late-stage regulation differs strongly by genotype, but up/down is more balanced.
 
 ##########################################################################################################
+##########################################################################################################
 ################# ACROSS GROUPS OF GENE CATEGORIES ##########################
 
 DEGsBig <- read.csv("data_files/DEGs_perGroup_timing_direction.csv", sep="\t")
@@ -485,8 +487,10 @@ sum(totalDEGs_perGroup$totalDEGs)
 # timing, genotype, direction = predictors (factors)
 # to test proportion of DEGs per category
 
-######## Compare groups at the same time point
-#### Model E
+########################## GROUPS OF GENE CATEGORIES ###############################
+
+##################### Compare groups at the same time point
+################################### Model E
 for (t in unique(DEGsBig$timing)) {
   cat("\n### Time:", t, "hpi ###\n")
   df_sub <- DEGsBig %>% filter(timing == t)
@@ -610,53 +614,6 @@ for (t in unique(DEGsBig$timing)) {
 # groups     6   47.907         7     10.811 1.233e-08 ***
 # direction  1    1.897         6      8.914    0.1685    
 
-# direction = Down:
-# contrast estimate       SE  df z.ratio p.value
-# I - II      1.099        1 Inf   0.951  0.9640
-# I - III    37.427 47500000 Inf   0.000  1.0000
-# I - IV     -1.099        1 Inf  -1.648  0.6510
-# I - Va     -0.847        1 Inf  -1.228  0.8835
-# I - Vb      0.405        1 Inf   0.444  0.9994
-# I - Vc     -1.946        1 Inf  -3.153  0.0270
-# II - III   36.328 47500000 Inf   0.000  1.0000
-# II - IV    -2.197        1 Inf  -2.084  0.3619
-# II - Va    -1.946        1 Inf  -1.820  0.5342
-# II - Vb    -0.693        1 Inf  -0.566  0.9977
-# II - Vc    -3.045        1 Inf  -2.974  0.0464
-# III - IV  -38.525 47500000 Inf   0.000  1.0000
-# III - Va  -38.274 47500000 Inf   0.000  1.0000
-# III - Vb  -37.021 47500000 Inf   0.000  1.0000
-# III - Vc  -39.373 47500000 Inf   0.000  1.0000
-# IV - Va     0.251        1 Inf   0.499  0.9989
-# IV - Vb     1.504        1 Inf   1.924  0.4642
-# IV - Vc    -0.847        0 Inf  -2.126  0.3369
-# Va - Vb     1.253        1 Inf   1.562  0.7065
-# Va - Vc    -1.099        0 Inf  -2.517  0.1531
-# Vb - Vc    -2.351        1 Inf  -3.177  0.0250
-
-# direction = Up:
-# contrast estimate       SE  df z.ratio p.value
-# I - II      1.099        1 Inf   0.951  0.9640
-# I - III    37.427 47500000 Inf   0.000  1.0000
-# I - IV     -1.099        1 Inf  -1.648  0.6510
-# I - Va     -0.847        1 Inf  -1.228  0.8835
-# I - Vb      0.405        1 Inf   0.444  0.9994
-# I - Vc     -1.946        1 Inf  -3.153  0.0270
-# II - III   36.328 47500000 Inf   0.000  1.0000
-# II - IV    -2.197        1 Inf  -2.084  0.3619
-# II - Va    -1.946        1 Inf  -1.820  0.5342
-# II - Vb    -0.693        1 Inf  -0.566  0.9977
-# II - Vc    -3.045        1 Inf  -2.974  0.0464
-# III - IV  -38.525 47500000 Inf   0.000  1.0000
-# III - Va  -38.274 47500000 Inf   0.000  1.0000
-# III - Vb  -37.021 47500000 Inf   0.000  1.0000
-# III - Vc  -39.373 47500000 Inf   0.000  1.0000
-# IV - Va     0.251        1 Inf   0.499  0.9989
-# IV - Vb     1.504        1 Inf   1.924  0.4642
-# IV - Vc    -0.847        0 Inf  -2.126  0.3369
-# Va - Vb     1.253        1 Inf   1.562  0.7065
-# Va - Vc    -1.099        0 Inf  -2.517  0.1531
-# Vb - Vc    -2.351        1 Inf  -3.177  0.0250
 
 ### Time: TSR hpi ###
 
@@ -763,54 +720,6 @@ for (t in unique(DEGsBig$timing)) {
 # groups     6   752.27         7       5.49   <2e-16 ***
 # direction  1     1.13         6       4.36    0.287    
 
-# direction = Down:
-# contrast estimate    SE  df z.ratio p.value
-# I - II     -0.405 0.913 Inf  -0.444  0.9994
-# I - III     0.693 1.220 Inf   0.566  0.9977
-# I - IV     -3.296 0.720 Inf  -4.577  0.0001
-# I - Va     -4.871 0.710 Inf  -6.863  <.0001
-# I - Vb     -1.099 0.816 Inf  -1.346  0.8304
-# I - Vc     -3.434 0.718 Inf  -4.780  <.0001
-# II - III    1.099 1.150 Inf   0.951  0.9640
-# II - IV    -2.890 0.593 Inf  -4.873  <.0001
-# II - Va    -4.466 0.581 Inf  -7.691  <.0001
-# II - Vb    -0.693 0.707 Inf  -0.980  0.9584
-# II - Vc    -3.029 0.591 Inf  -5.123  <.0001
-# III - IV   -3.989 1.010 Inf  -3.953  0.0015
-# III - Va   -5.565 1.000 Inf  -5.554  <.0001
-# III - Vb   -1.792 1.080 Inf  -1.659  0.6437
-# III - Vc   -4.127 1.010 Inf  -4.094  0.0008
-# IV - Va    -1.576 0.150 Inf -10.538  <.0001
-# IV - Vb     2.197 0.430 Inf   5.106  <.0001
-# IV - Vc    -0.138 0.186 Inf  -0.742  0.9899
-# Va - Vb     3.773 0.413 Inf   9.137  <.0001
-# Va - Vc     1.437 0.141 Inf  10.173  <.0001
-# Vb - Vc    -2.335 0.428 Inf  -5.462  <.0001
-
-# direction = Up:
-# contrast estimate    SE  df z.ratio p.value
-# I - II     -0.405 0.913 Inf  -0.444  0.9994
-# I - III     0.693 1.220 Inf   0.566  0.9977
-# I - IV     -3.296 0.720 Inf  -4.577  0.0001
-# I - Va     -4.871 0.710 Inf  -6.863  <.0001
-# I - Vb     -1.099 0.816 Inf  -1.346  0.8304
-# I - Vc     -3.434 0.718 Inf  -4.780  <.0001
-# II - III    1.099 1.150 Inf   0.951  0.9640
-# II - IV    -2.890 0.593 Inf  -4.873  <.0001
-# II - Va    -4.466 0.581 Inf  -7.691  <.0001
-# II - Vb    -0.693 0.707 Inf  -0.980  0.9584
-# II - Vc    -3.029 0.591 Inf  -5.123  <.0001
-# III - IV   -3.989 1.010 Inf  -3.953  0.0015
-# III - Va   -5.565 1.000 Inf  -5.554  <.0001
-# III - Vb   -1.792 1.080 Inf  -1.659  0.6437
-# III - Vc   -4.127 1.010 Inf  -4.094  0.0008
-# IV - Va    -1.576 0.150 Inf -10.538  <.0001
-# IV - Vb     2.197 0.430 Inf   5.106  <.0001
-# IV - Vc    -0.138 0.186 Inf  -0.742  0.9899
-# Va - Vb     3.773 0.413 Inf   9.137  <.0001
-# Va - Vc     1.437 0.141 Inf  10.173  <.0001
-# Vb - Vc    -2.335 0.428 Inf  -5.462  <.0001
-
 ### Time: Sch hpi ###
 # Call:
 # glm.nb(formula = DEGs ~ groups + direction, data = df_sub, init.theta = 34085.43974, 
@@ -840,59 +749,8 @@ for (t in unique(DEGsBig$timing)) {
 # groups     6    76.24         7      8.401 2.132e-14 ***
 # direction  1     0.00         6      8.401    0.9998    
 
-# direction = Down:
-# contrast estimate       SE  df z.ratio p.value
-# I - II      0.000 2.56e+04 Inf   0.000  1.0000
-# I - III     0.000 2.56e+04 Inf   0.000  1.0000
-# I - IV    -23.600 1.81e+04 Inf  -0.001  1.0000
-# I - Va    -21.991 1.81e+04 Inf  -0.001  1.0000
-# I - Vb      0.000 2.56e+04 Inf   0.000  1.0000
-# I - Vc    -23.244 1.81e+04 Inf  -0.001  1.0000
-# II - III    0.000 2.56e+04 Inf   0.000  1.0000
-# II - IV   -23.600 1.81e+04 Inf  -0.001  1.0000
-# II - Va   -21.991 1.81e+04 Inf  -0.001  1.0000
-# II - Vb     0.000 2.56e+04 Inf   0.000  1.0000
-# II - Vc   -23.244 1.81e+04 Inf  -0.001  1.0000
-# III - IV  -23.600 1.81e+04 Inf  -0.001  1.0000
-# III - Va  -21.991 1.81e+04 Inf  -0.001  1.0000
-# III - Vb    0.000 2.56e+04 Inf   0.000  1.0000
-# III - Vc  -23.244 1.81e+04 Inf  -0.001  1.0000
-# IV - Va     1.609 5.48e-01 Inf   2.938  0.0515
-# IV - Vb    23.600 1.81e+04 Inf   0.001  1.0000
-# IV - Vc     0.357 3.49e-01 Inf   1.023  0.9488
-# Va - Vb    21.991 1.81e+04 Inf   0.001  1.0000
-# Va - Vc    -1.253 5.67e-01 Inf  -2.210  0.2901
-# Vb - Vc   -23.244 1.81e+04 Inf  -0.001  1.0000
 
-# direction = Up:
-# contrast estimate       SE  df z.ratio p.value
-# I - II      0.000 2.56e+04 Inf   0.000  1.0000
-# I - III     0.000 2.56e+04 Inf   0.000  1.0000
-# I - IV    -23.600 1.81e+04 Inf  -0.001  1.0000
-# I - Va    -21.991 1.81e+04 Inf  -0.001  1.0000
-# I - Vb      0.000 2.56e+04 Inf   0.000  1.0000
-# I - Vc    -23.244 1.81e+04 Inf  -0.001  1.0000
-# II - III    0.000 2.56e+04 Inf   0.000  1.0000
-# II - IV   -23.600 1.81e+04 Inf  -0.001  1.0000
-# II - Va   -21.991 1.81e+04 Inf  -0.001  1.0000
-# II - Vb     0.000 2.56e+04 Inf   0.000  1.0000
-# II - Vc   -23.244 1.81e+04 Inf  -0.001  1.0000
-# III - IV  -23.600 1.81e+04 Inf  -0.001  1.0000
-# III - Va  -21.991 1.81e+04 Inf  -0.001  1.0000
-# III - Vb    0.000 2.56e+04 Inf   0.000  1.0000
-# III - Vc  -23.244 1.81e+04 Inf  -0.001  1.0000
-# IV - Va     1.609 5.48e-01 Inf   2.938  0.0515
-# IV - Vb    23.600 1.81e+04 Inf   0.001  1.0000
-# IV - Vc     0.357 3.49e-01 Inf   1.023  0.9488
-# Va - Vb    21.991 1.81e+04 Inf   0.001  1.0000
-# Va - Vc    -1.253 5.67e-01 Inf  -2.210  0.2901
-# Vb - Vc   -23.244 1.81e+04 Inf  -0.001  1.0000
-
-# Transient responses (TSR): strongest directionality (suppression) and genotype effects.
-# Sustained responses (Sch): shared vs specific patterns dominate, direction irrelevant.
-# Late responses (LR): huge genotype-specific divergence.
-
-#### Model F
+######################################################## Model F
 mqb <- glm(cbind(DEGs, total_per_group - DEGs) ~ timing + groups + direction, family = quasibinomial(link = "logit"), data = DEGsBig)
 
 summary(mqb)
