@@ -1,3 +1,5 @@
+https://www.authorea.com/users/1004777/articles/1364976-polygenic-resistance-is-associated-with-altered-early-immune-timing-and-changes-in-transcriptome-network-structure
+
 # Overview: Pyramiding of resistance loci in Vitis vinifera
 
 ## Quality control and mappin
