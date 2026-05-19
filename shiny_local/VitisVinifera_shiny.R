@@ -9,10 +9,19 @@ library(data.table)
 library(shinycssloaders)
 library(writexl)
 library(Biostrings)
+library(duckdb)
 
-metadata <- readxl::read_xlsx("26169genes_with_AthalHomologs_allIDs_exprPatterns.xlsx")
-Rlogs <- read.table("Rlogs.csv", sep="\t", header = TRUE)
-rawCounts <- read.table("RawCounts.csv", sep="\t", header = TRUE)
+# ---------------------------------------------------------------------------
+# One-time startup: open DuckDB (read-only) and load small tables into memory.
+# Heavy tables (rlogs, raw_counts) stay in DuckDB and are queried per-request.
+# FASTA files are loaded ONCE here — not inside the server/observeEvent.
+# ---------------------------------------------------------------------------
+con <- dbConnect(duckdb(), "vitis_data.duckdb", read_only = TRUE)
+
+# metadata: 26k rows but small columns — keep in memory for DT rendering
+metadata    <- dbReadTable(con, "metadata")
+# module info: 139 KB — keep in memory, avoids per-click disk read
+module_info <- dbReadTable(con, "module_info")
 
 ui <- fluidPage(
   useShinyjs(),
@@ -53,6 +62,8 @@ ui <- fluidPage(
                 
                 tabPanel( title = "Microview", icon=icon(name="magnifying-glass-plus", lib="font-awesome"), value="detailsTab",
                           tags$br(),
+                          actionButton("btnBack", label = "← Gene Table",
+                                       style = "margin-bottom:12px; background-color:#2E8B57; color:white; border:none;"),
                           tableOutput("rowDetails"),
                           tags$br(),
                           fluidRow(
@@ -317,9 +328,12 @@ ui <- fluidPage(
                            ),
                 tabPanel("Data analysis", icon=icon(name="github", lib="font-awesome"),
                          fluidRow(
-                         tags$a(href ="https://github.com/vierocka/plant_immunity_Vitis", ">> GitHub link", 
+                         tags$a(href ="https://github.com/vierocka/plant_immunity_Vitis", ">> All datafiles and scripts are on our GitHub.", 
                                 style="font-size:18px; color:dimgray; font-weight:normal"),
-                         tags$br()
+                         tags$br(),
+                         tags$a(href ="https://www.biorxiv.org/content/10.1101/2025.11.27.690962v2", ">> Please, cite our bioxriv preprint.", 
+                                style="font-size:18px; color:dimgray; font-weight:normal"),
+                         tags$br(),
                          )        
                 ),
                 tabPanel("Project information", icon = icon(name="circle-info", lib="font-awesome"),
@@ -357,17 +371,27 @@ ui <- fluidPage(
                          )
                 ),
 
-# Back to top button
+# Fixed navigation buttons (bottom-right corner)
 tags$style(HTML("
     #backToTop {
       position: fixed;
       bottom: 20px;
       right: 20px;
       z-index: 1000;
-      display: none;  /* hidden by default */
+      display: none;
+    }
+    #btnHome {
+      position: fixed;
+      bottom: 60px;
+      right: 20px;
+      z-index: 1000;
+      background-color: #2E8B57;
+      color: white;
+      border: none;
     }
   ")),
 
+actionButton("btnHome", "Home"),
 actionButton("backToTop", "⬆ Back to Top"),
 
 # JavaScript to show button when scrolling down and scroll to top on click
@@ -393,159 +417,207 @@ tags$script(HTML("
   
 
 server <- function(input, output, session) {
-  Sys.sleep(1) 
-  
-  output$conversionTab <- renderDT({ metadata })
-  
+
+  # -------------------------------------------------------------------------
+  # FASTA loaded ONCE here (not inside observeEvent).
+  # Biostrings keeps these as XStringSet objects — lookup by name is O(1).
+  # -------------------------------------------------------------------------
+  CDSes    <- readDNAStringSet("Vitis_vinifera.PN40024.v4.cds.all.fa")
+  Proteins <- readAAStringSet("Vitis_vinifera.PN40024.v4.pep.all.fa")
+
+  # -------------------------------------------------------------------------
+  # Main table: server=TRUE sends only the visible page to the browser.
+  # -------------------------------------------------------------------------
+  output$conversionTab <- renderDT(
+    datatable(metadata, selection = "single"),
+    server = TRUE
+  )
+
+  # -------------------------------------------------------------------------
+  # Download handlers: stream from DuckDB — no need to hold giant matrices
+  # in memory just for the download button.
+  # -------------------------------------------------------------------------
   output$downloadMetadata <- downloadHandler(
     filename = function() { "metadata.csv" },
-    content = function(file) {
-      write.csv(metadata, file, row.names = FALSE)
-    }
+    content  = function(file) { write.csv(metadata, file, row.names = FALSE) }
   )
-  
 
   output$downloadRlogs <- downloadHandler(
-    filename = function() { "data_files/Rlogs.csv" },
-    content = function(file) {
-      write.csv(Rlogs, file, row.names = FALSE)
+    filename = function() { "Rlogs.csv" },
+    content  = function(file) {
+      dat <- dbReadTable(con, "rlogs")
+      write.csv(dat, file, row.names = FALSE)
     }
   )
-  
-  output$downloadRawCounts <- downloadHandler(
-    filename = function() { "data_files/rawCounts.csv" },
-    content = function(file) {
-      write.csv(rawCounts, file, row.names = FALSE)
-    }
-  )
-  
 
-  # Hide the "Conditional" tab on startup
+  output$downloadRawCounts <- downloadHandler(
+    filename = function() { "RawCounts.csv" },
+    content  = function(file) {
+      dat <- dbReadTable(con, "raw_counts")
+      write.csv(dat, file, row.names = FALSE)
+    }
+  )
+
+  # -------------------------------------------------------------------------
+  # Hide detail tab on startup
+  # -------------------------------------------------------------------------
   hideTab(inputId = "plateFill", target = "detailsTab")
-  
-# condition for zooming into data after row click
+
+  # -------------------------------------------------------------------------
+  # Row click: query only the ONE selected gene from DuckDB.
+  # No FASTA re-reading, no module_info re-reading.
+  # -------------------------------------------------------------------------
   observeEvent(input$conversionTab_rows_selected, {
     req(input$conversionTab_rows_selected)
     selected_row <- input$conversionTab_rows_selected
-    if (selected_row != ""){
-    selected_data <- metadata[selected_row,]
-    VitisID <- metadata[selected_row,1]
-    UniProt <- metadata[selected_row,2]
-    NCBIacc <-  metadata[selected_row,8]
-    Tair10 <-  metadata[selected_row,16]
-    
-    output$rowDetails <- renderTable({ selected_data })
+    if (selected_row != "") {
 
-    output$UniprotLink <- renderUI({
-      tags$a(href = paste0("https://www.uniprot.org/uniprotkb/", UniProt, "/entry"),
-             "UniProt link",
-             style="font-size:18px; color:dimgray; font-weight:normal",
-             target = "_blank")
-    })
-    
-    output$Ncbiacc <- renderUI({
-      tags$a(href = paste0("https://www.ncbi.nlm.nih.gov/protein/", NCBIacc),
-             "NCBI ASM3070453v1 protein accession",
-             style="font-size:18px; color:dimgray; font-weight:normal",
-             target = "_blank")
-    })
-    
-    output$TAIR10protLink <- renderUI({
-      tags$a(href = paste0("https://www.arabidopsis.org/results?mainType=general&searchText=", Tair10, "&category=genes"),
-             "TAIR10 link",
-             style="font-size:18px; color:dimgray; font-weight:normal",
-             target = "_blank")
-    })
-    
-    output$rlogsDetail <- renderTable({ Rlogs[match(VitisID, Rlogs$geneID),] })
-    
-    output$BoxPlotRlogs <- renderPlot({
-    BoxPlData <- matrix(unlist(c(Rlogs[match(VitisID, Rlogs$geneID), as.double(c(2,14,26))], Rlogs[match(VitisID, Rlogs$geneID), as.double(c(3,15,27))], Rlogs[match(VitisID, Rlogs$geneID), as.double(c(4,16,28))], Rlogs[match(VitisID, Rlogs$geneID), as.double(c(5,17,29))], Rlogs[match(VitisID, Rlogs$geneID), as.double(c(6,18,30))], Rlogs[match(VitisID, Rlogs$geneID), as.double(c(7,19,31))], Rlogs[match(VitisID, Rlogs$geneID), as.double(c(8,20,32))], Rlogs[match(VitisID, Rlogs$geneID), as.double(c(9,21,33))], Rlogs[match(VitisID, Rlogs$geneID), as.double(c(10,22,34))], Rlogs[match(VitisID, Rlogs$geneID), as.double(c(11,23,35))], Rlogs[match(VitisID, Rlogs$geneID), as.double(c(12,24,36))], Rlogs[match(VitisID, Rlogs$geneID), as.double(c(13,25,37))])), ncol=12)
-    colnames(BoxPlData) <- c("Rpv12_0hpi","Rpv12_6hpi","Rpv12_24hpi","Rpv12+1_0hpi","Rpv12+1_6hpi","Rpv12+1_24hpi", "Rpv12+1+3_0hpi","Rpv12+1+3_6hpi","Rpv12+1+3_24hpi", "susceptible_0hpi", "susceptible_6hpi", "susceptible_24hpi")
-    par(mar=c(8,3.5,1.5,1), mgp=c(2.5,0.75, 0), cex.lab=1, cex.axis=1, cex.main=0.9)
-    boxplot(BoxPlData, main=VitisID, xaxt="n", xlab="", ylab="rlog values", col=c("goldenrod","goldenrod","goldenrod","salmon","salmon","salmon","cornflowerblue","cornflowerblue","cornflowerblue","dimgray","dimgray","dimgray"))
-    axis(1, at=c(1:12), labels = c("Rpv12_0hpi","Rpv12_6hpi","Rpv12_24hpi","Rpv12+1_0hpi","Rpv12+1_6hpi","Rpv12+1_24hpi", "Rpv12+1+3_0hpi","Rpv12+1+3_6hpi","Rpv12+1+3_24hpi", "susceptible_0hpi", "susceptible_6hpi", "susceptible_24hpi"), las=2)
-    points(x=c(1:12), y=BoxPlData[1,], pch=rep(c(20,17,15), 4), cex=1.25, col="gray60")
-    points(x=c(1:12), y=BoxPlData[2,], pch=rep(c(20,17,15), 4), cex=1.25, col="gray60")
-    points(x=c(1:12), y=BoxPlData[3,], pch=rep(c(20,17,15), 4), cex=1.25, col="gray60") })
-    
-    CDSes <- readDNAStringSet("Vitis_vinifera.PN40024.v4.cds.all.fa")
-    Proteins <- readAAStringSet("Vitis_vinifera.PN40024.v4.pep.all.fa")
-    
-    output$downloadCDSseq <- downloadHandler(
-      filename = function() { paste0(VitisID, "_t001_CDS_Nt.fa") },
-      content = function(file) {
-        writeXStringSet( CDSes[ grep( paste0(VitisID, "_t001"), names(CDSes)) ], file )
-      }
-    )
-    
-    output$downloadProtseq <- downloadHandler(
-      filename = function() { paste0(VitisID, "_P001_AA.fa") },
-      content = function(file) {
-        writeXStringSet( Proteins[ grep( paste0(VitisID, "_P001"), names(Proteins)) ], file )
-      }
-    )
+      selected_data <- metadata[selected_row, ]
+      VitisID <- metadata[selected_row, 1]
+      UniProt <- metadata[selected_row, 2]
+      NCBIacc <- metadata[selected_row, 8]
+      Tair10  <- metadata[selected_row, 16]
 
-    if (file.exists( paste0("www/", VitisID, "_module_PCA_CorrCutOff08.svg") )) {
-    output$VitisID_plot <- renderImage({
-       list(
-        src = paste0("www/", VitisID, "_module_PCA_CorrCutOff08.svg"),
-        contentType = "image/svg+xml",
-        width = 500
+      output$rowDetails <- renderTable({ selected_data })
+
+      output$UniprotLink <- renderUI({
+        tags$a(href   = paste0("https://www.uniprot.org/uniprotkb/", UniProt, "/entry"),
+               "UniProt link",
+               style  = "font-size:18px; color:dimgray; font-weight:normal",
+               target = "_blank")
+      })
+
+      output$Ncbiacc <- renderUI({
+        tags$a(href   = paste0("https://www.ncbi.nlm.nih.gov/protein/", NCBIacc),
+               "NCBI ASM3070453v1 protein accession",
+               style  = "font-size:18px; color:dimgray; font-weight:normal",
+               target = "_blank")
+      })
+
+      output$TAIR10protLink <- renderUI({
+        tags$a(href   = paste0("https://www.arabidopsis.org/results?mainType=general&searchText=", Tair10, "&category=genes"),
+               "TAIR10 link",
+               style  = "font-size:18px; color:dimgray; font-weight:normal",
+               target = "_blank")
+      })
+
+      # Single-gene rlog lookup via DuckDB index — no full scan
+      gene_rlogs <- dbGetQuery(con,
+        "SELECT * FROM rlogs WHERE geneID = ?",
+        params = list(VitisID)
       )
-    }, deleteFile = FALSE) }else{
-      
-      output$VitisID_plot <- renderImage({
-        list(
-          src = paste0("www/", "NoPCA.svg"),
-          contentType = "image/svg+xml",
-          width = 500
+
+      output$rlogsDetail <- renderTable({ gene_rlogs })
+
+      output$BoxPlotRlogs <- renderPlot({
+        row <- gene_rlogs
+        BoxPlData <- matrix(unlist(c(
+          row[, c(2,14,26)], row[, c(3,15,27)], row[, c(4,16,28)],
+          row[, c(5,17,29)], row[, c(6,18,30)], row[, c(7,19,31)],
+          row[, c(8,20,32)], row[, c(9,21,33)], row[, c(10,22,34)],
+          row[, c(11,23,35)], row[, c(12,24,36)], row[, c(13,25,37)]
+        )), ncol = 12)
+        colnames(BoxPlData) <- c(
+          "Rpv12_0hpi","Rpv12_6hpi","Rpv12_24hpi",
+          "Rpv12+1_0hpi","Rpv12+1_6hpi","Rpv12+1_24hpi",
+          "Rpv12+1+3_0hpi","Rpv12+1+3_6hpi","Rpv12+1+3_24hpi",
+          "susceptible_0hpi","susceptible_6hpi","susceptible_24hpi"
         )
+        par(mar = c(8, 3.5, 1.5, 1), mgp = c(2.5, 0.75, 0),
+            cex.lab = 1, cex.axis = 1, cex.main = 0.9)
+        boxplot(BoxPlData, main = VitisID, xaxt = "n", xlab = "",
+                ylab = "rlog values",
+                col = c(rep("goldenrod",3), rep("salmon",3),
+                        rep("cornflowerblue",3), rep("dimgray",3)))
+        axis(1, at = 1:12, labels = colnames(BoxPlData), las = 2)
+        for (i in 1:3) {
+          points(x = 1:12, y = BoxPlData[i, ],
+                 pch = rep(c(20,17,15), 4), cex = 1.25, col = "gray60")
+        }
+      })
+
+      # FASTA lookup uses pre-loaded objects (no disk read here)
+      output$downloadCDSseq <- downloadHandler(
+        filename = function() { paste0(VitisID, "_t001_CDS_Nt.fa") },
+        content  = function(file) {
+          writeXStringSet(CDSes[grep(paste0(VitisID, "_t001"), names(CDSes))], file)
+        }
+      )
+
+      output$downloadProtseq <- downloadHandler(
+        filename = function() { paste0(VitisID, "_P001_AA.fa") },
+        content  = function(file) {
+          writeXStringSet(Proteins[grep(paste0(VitisID, "_P001"), names(Proteins))], file)
+        }
+      )
+
+      # Module PCA plot
+      svg_path <- paste0("www/", VitisID, "_module_PCA_CorrCutOff08.svg")
+      output$VitisID_plot <- renderImage({
+        src <- if (file.exists(svg_path)) svg_path else "www/NoPCA.svg"
+        list(src = src, contentType = "image/svg+xml", width = 500)
       }, deleteFile = FALSE)
-      
-    }
-    
-    moduleInfo <- read.table("TranscrpModule_Spearman_Pval_Padj_FDR.csv", sep=",", header = TRUE)
-    output$moduleInfo_VitisID <-  renderTable({ moduleInfo[match(VitisID, moduleInfo$geneID),] }, digits = 6)
-    if (file.exists(paste("CotranscModules/", VitisID, "_info.csv", sep = ""))) {
-    CotrPart <- read.table(paste("CotranscModules/", VitisID, "_info.csv", sep = ""), sep="\t",  header = TRUE)
-    MatchAbbrev <- as.data.frame( cbind(CotrPart, metadata[match(rownames(CotrPart), metadata$PN40024v4_ENSMBL),c(2,3,7,8,9)]))}else{
-      MatchAbbrev <- c()
-    }
-    output$partners_VitisID <-  renderDT({ MatchAbbrev })
-    
-    output$downloadCotrP <- downloadHandler(
-      filename = function() { paste(VitisID, "_cotranscrPartners.csv", sep = "") },
-      content = function(file) {
-        write.csv(MatchAbbrev, file, row.names = TRUE )
+
+      # Module info: already in memory — just filter
+      output$moduleInfo_VitisID <- renderTable({
+        module_info[match(VitisID, module_info$geneID), ]
+      }, digits = 6)
+
+      # Co-transcriptional partners
+      cotr_path <- paste0("CotranscModules/", VitisID, "_info.csv")
+      MatchAbbrev <- if (file.exists(cotr_path)) {
+        CotrPart <- read.table(cotr_path, sep = "\t", header = TRUE)
+        as.data.frame(cbind(
+          CotrPart,
+          metadata[match(rownames(CotrPart), metadata$PN40024v4_ENSMBL), c(2,3,7,8,9)]
+        ))
+      } else {
+        NULL
       }
-    )
-    
-    showTab(inputId = "plateFill", target = "detailsTab")
-    updateTabsetPanel(session, "plateFill", selected = "detailsTab")
-    
-    }else{
-      updateTabsetPanel(session, "plateFill", selected = "otherTab") 
+
+      output$partners_VitisID <- renderDT({ MatchAbbrev })
+
+      output$downloadCotrP <- downloadHandler(
+        filename = function() { paste0(VitisID, "_cotranscrPartners.csv") },
+        content  = function(file) { write.csv(MatchAbbrev, file, row.names = TRUE) }
+      )
+
+      showTab(inputId = "plateFill", target = "detailsTab")
+      updateTabsetPanel(session, "plateFill", selected = "detailsTab")
+
+    } else {
+      updateTabsetPanel(session, "plateFill", selected = "otherTab")
       hideTab(inputId = "plateFill", target = "detailsTab")
     }
   })
-  
+
   table_proxy <- dataTableProxy("conversionTab")
-  # When the user navigates tabs
+
+  go_home <- function() {
+    updateTabsetPanel(session, "plateFill", selected = "otherTab")
+    hideTab(inputId = "plateFill", target = "detailsTab")
+    selectRows(table_proxy, NULL)
+  }
+  observeEvent(input$btnBack, { go_home() })
+  observeEvent(input$btnHome, { go_home() })
+
   observeEvent(input$plateFill, {
-    if ( !identical(input$plateFill, "detailsTab")){
-      # Hide the Conditional tab again
+    if (!identical(input$plateFill, "detailsTab")) {
       hideTab(inputId = "plateFill", target = "detailsTab")
-      
-      # Clear the detail content and reset selection
       output$selected_data <- renderTable(NULL)
       selectRows(table_proxy, NULL)
     }
   })
 
+  # Close DuckDB connection when session ends.
+  # shutdown=FALSE keeps the DuckDB engine alive in case another session opens
+  # in the same R process (e.g. after browser refresh without restarting R).
+  session$onSessionEnded(function() {
+    try(dbDisconnect(con, shutdown = FALSE), silent = TRUE)
+  })
 }
 
-setwd("~/Dropbox/MendelUni_Vinselect/shiny_local/")
+setwd("~/Dropbox/MendelUni_Vinselect/plant_immunity_Vitis/shiny_local/")
 # library(rsconnect)
 # deployApp(appName = "playing_with_immunity", appDir = "~/Dropbox/MendelUni_Vinselect/shinyData/")
 shinyApp(ui = ui, server = server)

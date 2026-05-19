@@ -1,0 +1,20 @@
+Figure 5. EDS1-centred co-transcription module and predicted protein–protein interaction network in Vitis vinifera.
+                                                                                                                                                                      
+  (A) Log₂ fold-change heatmap for 29 immunity-related genes across three multilocus genotypes (Rpv12; Rpv12+1; Rpv12+1+3) at 0, 6, and 24 hpi relative to the
+  susceptible reference. Genes are grouped by predicted functional complex (coloured bar, right). Significance of differential expression is indicated within cells   
+  (FDR: *** < 0.001, ** < 0.01, * < 0.05; DESeq2). Attenuated transcriptional activation in multilocus genotypes is consistent with dosage-dependent modulation of the
+   EDS1/SOBIR1-centred defence response. † SAG101-III carries the Lipase_3 domain only (lacks EDS1_EP). * Predicted co-receptor partners of both SOBIR1 and EIX1      
+  (RLP-a, GSO2, RLP-b, RLP-c; 4 of 7 SOBIR1 partners).      
+
+  (B) Co-expression network of the 29 genes based on Pearson r ≥ 0.817 (top 0.1% of all 26,169 × 26,169 pairwise correlations; Rpv12 rlog counts). Solid grey edges:  
+  co-expression. Dashed orange edges: functional support from STRING-db Arabidopsis homologs (combined score ≥ 0.4). Node fill indicates functional complex (see
+  legend); node size is proportional to Rpv12 log₂ fold-change at 0 hpi. * See panel A footnote.                                                                      
+                                                            
+  (C) Summary table of the 29 genes. Evidence categories: core complex — structurally characterised complex member; co-transcribed — co-expressed with the EDS1 module
+   without AF2 PPI support; receptor kinase — central adaptor; AF2 co-receptor — predicted co-receptor partner (ColabFold screen). Module size: number of genes in the
+   co-expression module passing Bonferroni correction (r ≥ 0.817 threshold). * See panel A footnote.                                                                  
+                                                            
+  (D) AlphaFold2-Multimer/ColabFold predicted PPI network. Only pairs meeting interface-compatibility criteria are shown (ipTM ≥ 0.70; contact-filtered mean iPAE < 10
+   Å). Solid edges: iPAE < 10 Å; dashed edge: iPAE ≥ 10 Å (SOBIR1–EIX1; iPAE = 11.82 Å, included as a cross-module interaction candidate). Edge colour indicates ipTM
+  confidence (blue: 0.70; red: ≥ 0.85). All interactions require biochemical validation. † SAG101-III†–MIK2-II interaction involves the truncated SAG101 paralog      
+  (Lipase_3 domain only). * RLP-a, GSO2, RLP-b, and RLP-c are shared predicted co-receptor partners of both SOBIR1 and EIX1.
