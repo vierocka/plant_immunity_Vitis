@@ -1,84 +1,150 @@
----
-editor: 
-  markdown: 
-    wrap: 72
----
+## Key Results
 
-This repository accompanies the study “Temporal coordination and network
-integration of multilocus resistance in Vitis vinifera” and contains all
-scripts, data, and figures used for analysis.
+All quantitative values are from Hádlík et al. (2025, *bioRxiv*, <https://doi.org/10.1101/2025.11.27.690962>).
 
-## 1. PTI & ETI Network Properties
+### 1. Batch Effects and Normalization
 
-| Genotype | n_nodes | n_edges | Density | Mean degree | Clustering | Interpretation |
-|---------|---------|---------|---------|---------|---------|-------------------|
-| Susceptible | 3553 | 635,423 | 0.101 | 357.7 | 0.712 | Sparse, weakly connected |
-| Rpv12 | 3553 | 832,362 | 0.132 | 468.5 | 0.698 | Moderate ETI-centered connectivity |
-| Rpv12+1 | 3553 | 837,230 | 0.133 | 471.3 | 0.724 | Reinforced PTI–ETI cross-talk |
-| Rpv12+1+3 | 3553 | 344,794 | 0.055 | 194.1 | 0.592 | Global downscaling, reduced density |
+Three of four read-mapping quality metrics differed significantly between the two sequencing batches (FDR ≤ 0.014), confirming the need for batch correction.
+The proportion of properly paired reads was comparable across batches (92–97%; FDR = 0.077), indicating similar overall data quality.
 
-Summary: Network density increased from the susceptible to Rpv12+1,
-indicating strengthened regulatory connectivity with locus stacking. In
-Rpv12+1+3, network density decreased markedly, reflecting
-transcriptional downregulation and system stabilization rather than
-further activation.
+After batch correction, Spearman ρ between PC1 scores and batch membership:
 
-## 2. Aggregated Expression Divergence (AED)
+| Strategy | ρ(PC1, batch) |
+|---|---|
+| Raw counts | −0.640 |
+| Raw counts + ComBat | −0.200 |
+| Size-factor + log₂ | −0.597 |
+| Size-factor + log₂ + ComBat | **−0.104** ← used for AED |
+| rlog (blind) | −0.603 |
+| rlog + ComBat | **−0.137** ← used for network/PCA/DGEA |
 
-| Genotype | 0 hpi (FDR) | 6 hpi (FDR) | 24 hpi (FDR) | Interpretation |
-|------------|------------|------------|------------|---------------------------|
-| Susceptible | — | — | — | Reference baseline |
-| Rpv12 | 0.0045 (\*\*\*) | 0.028 (\*\*) | 0.042 (\*) | Rapid early divergence, moderate persistence |
-| Rpv12+1 | 0.0052 (\*\*\*) | 0.013 (\*\*) | 0.015 (\*\*) | Stabilized early defense |
-| Rpv12+1+3 | 0.0007 (\*\*\*) | 0.008 (\*\*\*) | 0.061 (ns) | Transient burst and re-stabilization |
+### 2. Aggregated Expression Divergence (AED)
 
-Summary: AED confirms the strongest early (0–6 hpi) transcriptomic
-divergence in Rpv12 and Rpv12+1, followed by partial stabilization in
-Rpv12+1+3, consistent with regulatory compensation across loci.
+Minimum attainable FDR given the permutation design: **0.024** (1/220 + 1 correction).
 
-### 3. GLM Models of DEG Counts
+| Genotype | 0 hpi (FDR) | 6 hpi (FDR) | 24 hpi (FDR) |
+|---|---|---|---|
+| *Rpv12* | 0.12 (ns) | 0.34 (ns) | **0.024** (\*) |
+| *Rpv12*+1 | **0.024** (\*) | 0.20 (ns) | 0.068 (ns) |
+| *Rpv12*+1+3 | **0.024** (\*) | **0.024** (\*) | **0.024** (\*) |
 
-| Effect Tested | χ² | df | p-value | Direction | Interpretation |
-|-----------|----------|----------|----------|----------|-----------------------|
-| Genotype | 18.6 | 3 | 0.0003 | — | Strong effect of resistance background |
-| Time (0–6–24 hpi) | 24.7 | 2 | 0.00001 | ↓ over time | Fewer DEGs at later stages |
-| Direction (Up vs Down) | 9.2 | 1 | 0.002 | Down \> Up | Repression dominates late responses |
-| Genotype × Time | 7.1 | 6 | 0.312 | — | Interaction not significant |
+Key interpretations:
 
-Summary: Overall transcriptional activation peaks early and declines
-over time. Rpv12+1 shows the most balanced up/down regulation, while
-Rpv12+1+3 displays overall downregulation compatible with late
-suppression or feedback control.
+- *Rpv12* alone shows no significant transcriptome-wide divergence at early time points; its divergence appears at 24 hpi.
+- *Rpv12*+1 and *Rpv12*+1+3 diverge significantly from the susceptible control already at inoculation (0 hpi), indicating altered basal transcriptional states.
+- *Rpv12*+1+3 shows the largest early shift (6 hpi), followed by lower AED values at 24 hpi compared to 6 hpi, consistent with a temporal transcriptional shift.
 
-### 4. Immunity-Class Expression Dynamics
+### 3. PCA of Batch-Corrected Expression (26,169 genes)
 
-| Immunity Class | Genotype  | 0 hpi | 6 hpi | 24 hpi | Trend                          |
-|----------|----------|----------|----------|----------|----------------------|
-| ETI_specific   | Rpv12     | +0.25 | +0.04 | 0.00   | Early ETI burst                |
-| ETI_specific   | Rpv12+1   | +0.14 | −0.04 | −0.20  | Decline after early activation |
-| ETI_specific   | Rpv12+1+3 | −0.11 | −0.12 | −0.21  | Persistent downregulation      |
-| PTI_specific   | Rpv12     | +0.13 | −0.01 | +0.09  | Weak late activation           |
-| PTI_specific   | Rpv12+1   | −0.02 | +0.01 | −0.04  | Transient                      |
-| PTI_specific   | Rpv12+1+3 | −0.04 | −0.16 | −0.10  | Inhibited signaling            |
-| PTI_ETI_shared | Rpv12     | +0.26 | +0.07 | −0.20  | Early–late inversion           |
-| PTI_ETI_shared | Rpv12+1   | +0.31 | +0.11 | −0.17  | Strong early synergy           |
-| PTI_ETI_shared | Rpv12+1+3 | −0.02 | −0.05 | −0.06  | Flattened response             |
+- **PC1** (42.5% variance): captures the dominant transcriptional gradient; *Rpv12*+1+3 shows the largest separation from the susceptible control.
+- **PC2** (≈11%): separates *Rpv12* and *Rpv12*+1+3 from *Rpv12*+1 and susceptible.
+- **PC3** enriched for hypersensitive response genes (FDR = 7.98 × 10⁻⁶); **PC4** enriched for biosynthesis of pipecolic acid (FDR = 0.014), a systemic acquired resistance signal.
 
-Summary: Early ETI activation dominates in Rpv12, while Rpv12+1 exhibits
-strong PTI–ETI synergy at 0 hpi. Rpv12+1+3 shows general transcriptional
-repression, consistent with regulatory saturation and reduced network
-density.
+### 4. Temporal Transcriptional Dynamics (3,553 DEGs)
 
-### 5. Interpretive Summary
+A total of 3,553 genes were differentially expressed (FDR < 0.05, |log₂FC| > 1) across all comparisons.
 
--   PTI–ETI integration peaks in Rpv12+1, representing maximal
-    cross-layer reinforcement.
--   Rpv12+1+3 shows strong signal compression, suggesting network
-    stabilization or feedback inhibition.
--   Temporal analysis indicates that defense waves shift from early ETI
-    bursts (Rpv12) toward integrated PTI/ETI signaling (Rpv12+1) and
-    then global damping (Rpv12+1+3).
+Transcriptional divergence from the susceptible background was driven primarily by **infection timing** (GLM Model A: timing p < 3.4 × 10⁻⁶), not by genotype identity (p = 0.23) or direction of change (p = 0.55).
+DEG counts did not scale with major locus dosage (Model B: loci p = 0.40).
 
-These trends are consistent with aggregated divergence and network
-metrics, implying that multilocus resistance enhances robustness not by
-continuous activation but by regulatory balance.
+Per-genotype temporal models:
+
+| Genotype | Timing effect |
+|---|---|
+| *Rpv12* | p = 0.26 (weak) |
+| *Rpv12*+1 | p < 2 × 10⁻¹⁶ (peak at 6 hpi) |
+| *Rpv12*+1+3 | p < 2.2 × 10⁻¹⁶ (peak at 6 hpi, less pronounced at 24 hpi) |
+
+Per-timepoint genotype effects: 0 hpi p = 0.024; 6 hpi p = 0.0012; 24 hpi p < 2 × 10⁻¹⁶.
+At 6 hpi, downregulation was more common than upregulation (direction p < 4 × 10⁻¹¹).
+
+Category-level modelling revealed significant genotype-specific timing patterns across all temporal categories (groups p ≤ 7.5 × 10⁻⁵ across IEV, ER, TRS, LR, and SCh), with transient 6 hpi responses enriched (p = 7.5 × 10⁻⁵), dominated by downregulated genes (direction p = 5.1 × 10⁻¹⁰).
+An additional 426 genes showed complex patterns not fitting defined temporal categories (Group VI).
+
+### 5. Co-transcriptional Network Organization
+
+Networks were constructed per genotype and per time point from the 3,553 DE genes (Pearson r > 0.817; 99.5th percentile).
+
+**Genotype-specific network topology:**
+
+| Genotype | Density (ρ) | Mean degree | Clustering coefficient |
+|---|---|---|---|
+| Susceptible | ≈ 0.10 | ≈ 358 | ≈ 0.71 |
+| *Rpv12* | ≈ 0.13 | ≈ 469 | ≈ 0.70 |
+| *Rpv12*+1 | ≈ 0.13 | ≈ 471 | ≈ 0.72 |
+| *Rpv12*+1+3 | **≈ 0.055** | **≈ 194** | ≈ 0.59 |
+
+Network density was not linearly related to locus dosage (Pearson and Spearman p ≈ 0.5).
+Density declined significantly over time (0 → 6 → 24 hpi; linear model p = 0.025).
+
+**Module structure:** 155 co-transcriptional modules (≥4 genes; Bonferroni-adjusted p < 0.05).
+**Hub genes:** 56 genes in the top 1% of degree centrality (117–1,552 partners), including NAC, bZIP, and WRKY transcription factors; receptor-like kinases (FERONIA, WAK5-like); and canonical resistance genes (RPM1, RPP13-like).
+Hub gene identity and connectivity shifted across genotypes, indicating genotype-specific reorganization of transcriptional regulatory programs.
+**Metamodules:** 5 higher-order transcriptional programs. Metamodule MM2 was consistently downregulated across all resistant genotypes and enriched for hypersensitive response genes, including FERONIA and LAZ5.
+
+### 6. Layer-Specific Immunity Gene Expression
+
+Based on literature curation, 36 immunity-annotated DEGs were identified across Recognition, Signal Integration, and Defense Action layers.
+
+In ***Rpv12***, layer-associated DEGs were distributed across Recognition (5), Signal Integration (4), and Defense Action (3).
+The following genes were upregulated specifically at 0 hpi in *Rpv12*:
+
+| Gene ID | Symbol | Layer |
+|---|---|---|
+| Vitvi17g04216 | EDS1 | Signal Integration |
+| Vitvi14g03033 | SAG101-like† | Signal Integration |
+| Vitvi16g01127 | SARD4 | Defense Action |
+| Vitvi13g00189 | WRKY55 | Signal Integration |
+| Vitvi07g01847 | WRKY51 | Signal Integration |
+| Vitvi07g02294 | MIK2 | Recognition |
+| Vitvi17g00964 | SOBIR1 | Recognition |
+| Vitvi05g00637 | ACD6 | Defense Action |
+| Vitvi12g02607 | RUN1/ACD6 | Recognition/Defense |
+
+†SAG101-like (UniProt F6HV27) retains only the Lipase_3 domain; lacks the EP domain required for canonical EDS1–SAG101 signaling.
+
+In ***Rpv12*+1**, the *Rpv12*-specific SOBIR1 signature was absent; TGA1, MYB12, and PRE6 were upregulated.
+Recognition (6) and Signal Integration (6) layers expanded.
+
+In ***Rpv12*+1+3**, the SOBIR1 signature was also absent; Signal Integration (6) and Defense Action (3) dominated, with RIPK, WRKY47, bZIP53, and NAC transcription factors (NAC29, NAC JA2L).
+
+### 7. SOBIR1-Centered Receptor Complex
+
+SOBIR1 (Vitvi17g00964) emerged as a hub with **seven high-confidence predicted interaction partners** (ipTM 0.71–0.85; contact-filtered PAE 2.1–3.6 Å):
+
+| Partner | Gene ID | PAE (Å) |
+|---|---|---|
+| RGI1-like RLP | Vitvi09g04545 | 2.09 |
+| GSO2 RLK | Vitvi09g04536 | 2.32 |
+| LRR RLP | Vitvi09g04548 | 2.98 |
+| LRR RLP | Vitvi01g04416 | 3.50 |
+| RGI1 | Vitvi09g01951 | 2.28 |
+| HSL3 RLK | Vitvi04g04013 | 2.20 |
+| RLP | Vitvi09g04565 | 3.57 |
+
+Five of seven partners (GSO2, Vitvi09g04548, Vitvi01g04416, RGI1, Vitvi09g04565) showed coordinated transcript upregulation at 0 hpi specifically in *Rpv12* (fold-change 1.5–3.2 vs susceptible; padj < 0.05); this signature was absent in *Rpv12*+1 and *Rpv12*+1+3.
+
+LRR domains dominated the partner architecture (62.5% of unique domain types across all 25 proteins); kinase domains were present exclusively in RLKs (SOBIR1, GSO2, HSL3, MIK2).
+
+### 8. EIX1–SOBIR1 Predicted Interaction
+
+A grapevine EIX1 homolog (Vitvi09g04475) was predicted to associate with SOBIR1 (ipTM = 0.81; contact-filtered PAE = 11.82 Å — above the strict threshold but reported separately).
+Four predicted partners were shared between EIX1 and SOBIR1 (GSO2, Vitvi09g04548, Vitvi01g04416, Vitvi09g04565), raising the possibility of an overlapping receptor complex analogous to the LeEIX2–SlSOBIR1 system in tomato.
+
+Specificity was supported by systematic AF2-Multimer comparison across eight membrane-resident proteins: EIX1×SOBIR1 ipTM = 0.81 versus EIX1×WAK5 = 0.23, EIX1×RGA4 = 0.24 (≈3.5-fold margin).
+
+### 9. EDS1–SAG101 Paralog Network
+
+EDS1 (Vitvi17g04216) was predicted to interact with three SAG101-like grapevine paralogs:
+
+| Paralog | Gene ID | ipTM | PAE (Å) |
+|---|---|---|---|
+| SAG101-a | Vitvi14g03030 | 0.79–0.89 | 4.8–6.9 |
+| SAG101-b | Vitvi14g03031 | 0.79–0.89 | 4.8–6.9 |
+| SAG101-c | Vitvi05g00062 | 0.79–0.89 | 4.8–6.9 |
+| SAG101-like† | Vitvi14g03033 | 0.84 | 2.43 |
+
+All three canonical paralogs retained both the Lipase_3 and EDS1_EP domain architecture despite ≈37% sequence identity to *Arabidopsis* SAG101.
+SARD4 (Vitvi16g01127) was additionally predicted to interact with LRR protein Vitvi03g00614 (PAE 4.07 Å), suggesting a possible link between systemic acquired resistance components and receptor-like proteins.
+
+STRING-db analysis of the nine core hub genes (SOBIR1, EDS1, SAG101 homologs, WRKY51, WRKY55, MIK2, SARD4, ACD6, RUN1) confirmed functional coherence (PPI enrichment p = 1.12 × 10⁻¹³) with significant enrichment for systemic acquired resistance (GO:0009862, FDR = 0.0014) and the EDS1 disease-resistance complex (GO:0080183, FDR = 0.0011).

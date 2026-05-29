@@ -1,57 +1,51 @@
-## 1. Contributors
+## Contributors
 
 | Name | Affiliation | Contribution |
-|----|----|----|
-| **Dr. Viera Kováčová** | Institute for Biological Physics (Z3 CRC1310), University of Cologne, Germany | Conceptualization, data analysis, manuscript writing, figure preparation, shiny app design and implementation |
-| **Prof. Miroslav Baránek** | Department of Plant Biology, Mendel University in Brno, Czech Republic | Conceptualization, experimental design, manuscript writing |
-| **Ing. Martin Hadlík** | Department of Plant Biology, Mendel University in Brno, Czech Republic | Wet-lab, sample collection, RNA isolation, genotyping, resistance locus characterization, figure preparation |
-| **Dr. Kateřina Baránková** | Department of Plant Biology, Mendel University in Brno, Czech Republic | Wet-lab, manuscript review |
+|---|---|---|
+| **Martin Hádlík** | Mendeleum—Institute of Genetics, Faculty of Horticulture, Mendel University in Brno, Valtická 334, 69144 Lednice, Czech Republic | Wet-lab, plant inoculation, sample collection, RNA isolation, genotype characterization using SSR markers, figure preparation |
+| **Prof. Miroslav Baránek** | Mendeleum—Institute of Genetics, Faculty of Horticulture, Mendel University in Brno, Czech Republic | Conceptualization, experimental design, manuscript writing |
+| **Dr. Kateřina Baránková** | Mendeleum—Institute of Genetics, Faculty of Horticulture, Mendel University in Brno, Czech Republic | Wet-lab, manuscript review |
+| **Dr. Viera Kováčová** | Institute for Biological Physics, University of Cologne, Zuelpicher Str. 77, 50937, Cologne, Germany | Conceptualization, bioinformatics pipeline, network analysis, AlphaFold2-Multimer analysis, manuscript writing, figure preparation, Shiny app design and implementation |
 
-## 2. Institutional Support
+## Institutional Support
 
 This work was supported by:
 
--   Mendel University in Brno (Project IGA-ZF/2023-SI1-015)
--   University of Cologne (Collaborative Research Center CRC1310 – Predictability in Evolution)
+- Mendel University in Brno (Project IGA-ZF/2023-SI1-015)
+- University of Cologne (Collaborative Research Center CRC1310 – Predictability in Evolution)
 
-## 3. Interactive Database
+## Interactive Companion App
 
-An accompanying interactive Shiny web application provides full access to the parsed and annotated transcriptomic results, enabling dynamic exploration of gene expression patterns, GO enrichment, and co-expression modules across Vitis vinifera genotypes and time points.
+An accompanying Shiny web application provides full access to the parsed and annotated transcriptomic results, enabling dynamic exploration across genotypes and time points.
 
-🔗 Access the app: https://vierakovacova.shinyapps.io/playing_with_immunity/
+🔗 Access the app: <https://vierakovacova.shinyapps.io/playing_with_immunity/>
 
 The interface allows users to:
 
-Search for individual genes or immunity-related modules
+- Search for individual genes or immunity-related modules
+- Visualize log₂ fold-change trajectories across infection stages
+- Browse GO and Reactome enrichment results interactively
+- Explore co-expression network structure and immunity layer annotations
+- Export plots and tables for custom analyses
 
-Visualize log₂ fold-change trajectories across infection stages
+All datasets shown in the app are synchronized with this repository.
 
-Browse GO and Reactome enrichment results interactively
+## Citation
 
-Export plots and tables for custom analyses
+If you use the data, code, or figures from this repository, please cite:
 
-All datasets shown in the app are synchronized with this repository and are fully parseable for downstream analysis or integration into other bioinformatics workflows.
+> Hádlík M., Baránek M., Baránková K., Kovacova V. (2025).
+> A SOBIR1-associated receptor network shows *Rpv12*-specific upregulation in grapevine downy mildew resistance.
+> *bioRxiv*. <https://doi.org/10.1101/2025.11.27.690962>
+> GitHub repository: <https://github.com/vierocka/plant_immunity_Vitis>
 
-## 4. Citation
+## License
 
-If you use the data, code, or figures provided in this repository, please cite the following:
+This repository and all its contents are released under the **Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)** license.
 
-Kováčová, V., Baránek, M., Hadlík, M., & Baránková, K. (2025). Temporal coordination and network integration of multilocus resistance in Vitis vinifera. Plant Biotechnology Journal. \[In preparation\] GitHub repository: https://github.com/vierocka/plant_immunity_Vitis
+You are free to share and adapt the material under the following terms:
 
-### 5. License
+- **Attribution:** Credit must be given to the original authors.
+- **NonCommercial:** The material may not be used for commercial purposes.
 
-This repository and all its contents are released under the Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0) license.
-
-You are free to:
-
-Share — copy and redistribute the material in any medium or format
-
-Adapt — remix, transform, and build upon the material
-
-Under the following terms:
-
-Attribution: Credit must be given to the original authors.
-
-NonCommercial: The material may not be used for commercial purposes.
-
-See: https://creativecommons.org/licenses/by-nc/4.0/
+See: <https://creativecommons.org/licenses/by-nc/4.0/>

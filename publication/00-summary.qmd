@@ -1,14 +1,23 @@
 # Project Summary
 
-This project investigates how multilocus introgression reshapes the transcriptional and regulatory landscape of grapevine (Vitis vinifera) immunity against the oomycete Plasmopara viticola.
-Using high-resolution RNA-seq data from three resistant genotypes carrying successively pyramided loci (Rpv12, Rpv12+1, Rpv12+1+3) and a susceptible reference, we quantify differential expression dynamics, co-expression network structure, and aggregated transcriptional divergence across infection time points (0–24 hpi).
+Downy mildew caused by *Plasmopara viticola* is a major threat to grapevine production, yet the molecular organization of multilocus resistance remains poorly understood.
+We generated 36 time-resolved transcriptomes from grapevine genotypes carrying single (*Rpv12*), double (*Rpv12*+1), or triple (*Rpv12*+1+3) resistance loci together with a susceptible control (Pinot Noir) and integrated co-transcriptional network analysis with systematic AlphaFold2-Multimer screening to identify candidate immune receptor complexes.
 
-Our analyses reveal that early immune activation is strongest in Rpv12, transitions toward receptor-mediated signalling in Rpv12+1, and becomes globally repressed but highly interconnected in Rpv12+1+3, consistent with the concept of layered immunity.
-These findings parallel the temporal “immune waves” observed in Arabidopsis thaliana (Ngou et al., 2021; Yuan et al., 2021; Lu et al., 2023), where PTI and ETI pathways interact dynamically through sequential amplification and feedback integration.
+A SOBIR1-associated receptor network emerged as a candidate interaction hub, with seven predicted partners enriched for leucine-rich repeat receptor-like proteins and kinases.
+Five of these seven partner genes showed coordinated transcript upregulation at inoculation (0 hpi) specifically in *Rpv12* genotypes, whereas this signature was absent in multilocus backgrounds, suggesting genotype-specific regulatory restructuring rather than additive immune activation.
+Four of the seven partners were also predicted to interact with a grapevine EIX1 homolog, which itself was predicted to associate with SOBIR1 (ipTM = 0.81), consistent with the established tomato LeEIX–SOBIR1 co-receptor architecture.
+We additionally identified predicted structurally conserved EDS1–SAG101 candidate complexes despite substantial sequence divergence from *Arabidopsis* orthologs.
 
-By mapping co-expression modules onto Recognition, Signal Integration, and Defense Action layers (after Pruitt et al., 2021), this study provides a cross-species perspective on how polygenic resistance stabilizes immune signaling without loss of modular coherence.
-An interactive Shiny web application (https://vierakovacova.shinyapps.io/playing_with_immunity/
-) complements this repository, allowing users to explore gene-specific trajectories, GO enrichment, and immunity-layer associations in real time.
+Multilocus genotypes displayed distinct temporal transcriptional trajectories and altered co-transcriptional network organization, indicating that resistance stacking reshapes immune regulatory architecture.
+However, whether these transcriptional differences correspond to enhanced, equivalent, or reduced resistance requires quantitative phenotypic validation.
 
-Together, the data and code presented here establish a reproducible framework for dissecting the temporal and structural coordination of plant immune responses in polygenic resistance systems.
+Together, these results provide a structural and transcriptomic framework for investigating immune receptor organization in grapevine and generate testable hypotheses for functional dissection of multilocus resistance.
 
+**Keywords:** Grapevine, Downy mildew, SOBIR1, EIX1, Pattern recognition receptors, *Rpv12*, Pyramiding
+
+**Data availability:** Raw RNA-seq reads are deposited at NCBI BioProject [PRJNA1358055](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA1358055).
+
+**Preprint:** Hádlík M., Baránek M., Baránková K., Kovacova V. (2025). A SOBIR1-associated receptor network shows *Rpv12*-specific upregulation in grapevine downy mildew resistance. *bioRxiv*. <https://doi.org/10.1101/2025.11.27.690962>
+
+**Interactive companion:** An accompanying Shiny web application enables dynamic exploration of gene expression patterns, GO enrichment, and co-expression modules:
+🔗 <https://vierakovacova.shinyapps.io/playing_with_immunity/>

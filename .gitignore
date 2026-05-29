@@ -1,4 +1,21 @@
+# R
 .Rproj.user
 .Rhistory
 .RData
 .Ruserdata
+
+# Large / private folders not tracked on GitHub
+shiny_local/
+
+# Preprint PDF (large binary, available via bioRxiv)
+bioxriv_ms_version.pdf
+
+# Jupyter / Python artifacts
+.ipynb_checkpoints/
+.jupyter/
+__pycache__/
+*.pyc
+
+# OS artefacts
+.DS_Store
+Thumbs.db

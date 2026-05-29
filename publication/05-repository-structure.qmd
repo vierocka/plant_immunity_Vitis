@@ -1,23 +1,78 @@
----
-title: "05-repository-structure"
-format: html
----
+## Repository Structure
 
-## 1.  Repository
+All paths are relative to the repository root `plant_immunity_Vitis/`.
+GitHub repository: <https://github.com/vierocka/plant_immunity_Vitis>
 
+```
+plant_immunity_Vitis/
+│
+├── 01_QC_and_Filtering/
+│   └── Batch_effects/
+│       ├── read_checks.R            # Batch effect detection in mapping metrics (GLM + Spearman)
+│       ├── batch_effects.R          # PCA comparison of 8 normalization strategies
+│       └── PCA_all_methods_4x4.pdf  # Supplementary Figure 2 — PCA grid
+│
+├── 02_Normalization_and_DGEA/
+│   ├── DGEA.R                       # Differential expression analysis (t-test on rlog+ComBat)
+│   └── Heteroscedasticity_check.R   # Mean–variance homoscedasticity test
+│
+├── 03_AED/
+│   └── DGE_bySFandCB_divergence.R  # Aggregated Expression Divergence + permutation test
+│
+├── 05_transcriptional_dynamics/
+│   ├── DEGs_counts_global_tests.R   # GLM modelling of DEG counts (genotype × time × direction)
+│   └── proportions_exploratory_analysis.R
+│
+├── 06_PCNWA/
+│
+├── 07_exploratory_Splicing_junctions/   # Exploratory splicing junction analysis (not part of main paper)
+│   ├── GCNA_network_analysis.R      # Full co-transcriptional network pipeline
+│   ├── create_immunity_classes.R    # PTI/ETI/shared gene classification
+│   ├── Figure_5.R                   # Figure 5: SOBIR1 hub + EDS1-SAG101 network
+│   └── Figure3_pheatmap_MMs.R      # Figure 3: immunity layer heatmap
+│
+├── Athaliana_homology/              # Arabidopsis → Vitis homology mapping files
+│
+├── data_files/
+│   ├── RawCounts.csv                        # Raw gene counts (26,169 genes × 36 samples)
+│   ├── Rlogs.csv                            # rlog + ComBat values (R/DESeq2; used for PCA, DGEA, network)
+│   ├── SizeFactorNorm_ComBat_36samples.csv  # SF + log₂ + ComBat (used for AED)
+│   ├── Patterns_01_DUE.csv                  # Temporal expression pattern per DE gene (3,553 genes)
+│   ├── Vitis_gene_immunity_class.csv        # PTI / ETI / shared gene classification
+│   └── node1_node2_ConfidenceScore_stringDB.csv  # STRING-db edge list for hub genes
+│
+├── jupyter_nb/
+│   ├── plant_immunity_python_toolkit.ipynb  # Python learning notebook (PyDESeq2 + VST teaching version)
+│   └── build_python_toolkit_notebook.py     # Builder script that generates the notebook
+│   # Note: the notebook uses PyDESeq2 VST as a Python-accessible approximation for teaching.
+│   # The published analysis uses R/DESeq2 rlog (Rlogs.csv); both approaches are conceptually equivalent.
+│
+├── publication/
+│   ├── Vitis.qmd                    # Main Quarto document (assembles all sections)
+│   ├── _quarto.yml                  # Quarto project configuration
+│   ├── references.bib               # Full bibliography
+│   ├── 00-summary.qmd               # Project summary and abstract
+│   ├── 01-collaborators.qmd         # Contributors, funding, citation, license
+│   ├── 02-problems_limitations.qmd  # Problem definition and study limitations
+│   ├── 03-methods.qmd               # Methods overview (scripts + parameters)
+│   ├── 04-results.qmd               # Key quantitative results
+│   └── 05-repository-structure.qmd  # This file
+│
+├── shiny_local/                     # Local Shiny app source (DuckDB-backed)
+│
+├── bioxriv_ms_version.pdf           # bioRxiv preprint (Hádlík et al., 2025; doi:10.1101/2025.11.27.690962)
+├── README.md                        # Repository overview
+└── LICENSE                          # CC BY-NC 4.0
+```
 
-
-## 2.  Interactive Companion App
+## Interactive Companion App
 
 For interactive browsing of the same dataset, visit:
-👉 https://vierakovacova.shinyapps.io/playing_with_immunity/
+🔗 <https://vierakovacova.shinyapps.io/playing_with_immunity/>
 
 The app enables:
 
-Gene-level queries with dynamic log₂ fold-change plots
-
-Real-time GO and Reactome enrichment browsing
-
-Interactive co-expression network visualization
-
-Filtered export for reproducible analyses
+- Gene-level queries with dynamic log₂ fold-change plots
+- Real-time GO and Reactome enrichment browsing
+- Interactive co-expression network visualization
+- Filtered export for reproducible downstream analyses

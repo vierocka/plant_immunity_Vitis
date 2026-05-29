@@ -1,68 +1,145 @@
----
-editor: 
-  markdown: 
-    wrap: sentence
----
+## Methods Overview
 
-Methods Overview
+Scripts referenced below are relative to the repository root `plant_immunity_Vitis/`.
 
-1.  Plant Material and Experimental Design
+### 1. Plant Material and Inoculum
 
-Three *Vitis vinifera*–based genotypes carrying different combinations of resistance loci (Rpv12, Rpv12+1, Rpv12+1+3) and a susceptible control were propagated under controlled conditions.
-Leaves were inoculated with *Plasmopara viticola* sporangia (50,000 spores mL⁻¹).
-Samples were collected at 0, 6, and 24 hours post-inoculation (hpi), each with three biological replicates (36 total libraries).
+*Plasmopara viticola* was obtained in June 2022 as a natural inoculum from Vinselekt Michlovský vineyards at the oil-spot stage.
+Leaves were stored in the dark at 100% humidity and 22°C until sporulation; inoculum identity was confirmed by PCR and sequencing.
+Spore suspensions were adjusted to 50,000 spores/ml (Cellometer K2).
 
-2.  RNA Isolation and Sequencing
+In January 2022, one-year-old wood segments were collected from Vinselekt Michlovský vineyards and propagated under controlled conditions.
+Three resistant genotypes carrying unique combinations of resistance loci — *Rpv12* (single), *Rpv12*+1 (double), and *Rpv12*+1+3 (triple) — were selected and verified by SSR markers linked to resistance loci (Hádlík et al., 2024).
+Pinot Noir served as the susceptible control and fresh inoculum source.
+
+At the five-leaf stage, 20 µl of spore suspension was pipetted onto the abaxial surface of three leaves per plant.
+One-centimetre leaf discs were excised from the inoculation spot at 0, 6, and 24 hours post-inoculation (hpi) and stored at −80°C; three biological replicates (A, B, C) were collected per genotype × time combination, yielding **36 libraries** in total (4 genotypes × 3 time points × 3 replicates).
+
+### 2. RNA Isolation and Sequencing
 
 Total RNA was extracted using the Spectrum™ Plant Total RNA Kit (Sigma-Aldrich).
-RNA integrity was confirmed with an Agilent Bioanalyzer.
-Sequencing libraries were prepared by Novogene (UK) and sequenced on an Illumina NovaSeq platform (150 bp paired-end).
+Concentrations were measured with SPECTROstar Nano; RNA integrity was confirmed with an Agilent 2100 Bioanalyser.
+Library preparation and sequencing for all 36 samples were performed by Novogene (UK) on an Illumina NovaSeq platform (150 bp paired-end) across **two independent batches**.
 
-3.  Quality Control and Read Mapping
+### 3. Quality Control and Read Mapping
 
-Reads were trimmed with Trimmomatic (v0.39) and quality-checked using FastQC (v0.11.9) (Trimming_mapping/QualityChecks_Trimming_mapping.sh).
-Clean reads were mapped to the Vitis vinifera PN40024 v4 reference genome using STAR (v2.7.4a).
-Gene-level counts were quantified with featureCounts from the subread package.
+| Step | Tool | Version | Reference |
+|---|---|---|---|
+| Quality check | FastQC | 0.11.9 | Andrews S., 2010 |
+| Adapter trimming | Trimmomatic | 0.39 | Bolger et al., 2014 |
+| Read mapping | STAR | 2.7.4a | Dobin et al., 2013 |
+| Count quantification | featureCounts (Subread) | 2.0.3 | Liao et al., 2014 |
+| Gene annotation | BLASTp | 2.12.0+ | Johnson et al., 2008 |
 
-4.  Data Normalization and Batch Correction
+Reads were mapped to the *Vitis vinifera* PN40024 v4 reference genome (ENSEMBL; 35,134 annotated protein-coding genes).
+All 36 samples passed quality thresholds; 26,169 protein-coding genes were detected after filtering (≥15 total reads across all libraries).
 
-Raw count matrices were normalized by DESeq2 and log-transformed (Batch_effects/bacth_effects.R).
-Batch effects were detected and corrected using ComBat from the sva package (Batch_effects/bacth_effects.R and Batch_effects/read_checks.R and DGEA/Heteroscedasticity.R).
-Principal Component Analysis (PCA) verified clustering by genotype and time, not sequencing batch.
+Scripts: `01_QC_and_Filtering/Batch_effects/read_checks.R`
 
-5.  Differential Expression Analysis (DGEA)
+### 4. Batch Effect Detection and Normalization
 
-Differentially expressed genes (DEGs) were identified per genotype and time point (DGEA/DGEA.R).
-Statistical thresholds: \|log₂FoldChange\| \> 1, FDR \< 0.05.
-Functional enrichment (GO, Reactome, UniProt keywords) was performed using the STRINGdb API.
+Batch effects were detected by testing four read-mapping quality metrics (GLM + Spearman correlation, Benjamini–Hochberg FDR) between the two sequencing batches.
+Three of four metrics differed significantly between batches (forward-only survival FDR = 0.003; dropped reads FDR = 0.004; reverse-only survival FDR = 0.014).
 
-6.  Gene Categorization and Pattern Classification
+Two complementary normalization strategies were used depending on the analysis goal:
 
-Each gene’s temporal pattern was classified into six expression types (IEV, ER, TRS, LR, SCh, CPs) based on up/down regulation across time.
-Comparisons across genotypes defined shared, recovered, and genotype-specific categories (Groups I–VI).
+- **Size-factor normalization + log₂ + ComBat** (sva package; Leek et al., 2012): used for Aggregated Expression Divergence (AED). Preserves the full dynamic range of transcription amplitudes.
+- **Regularized-log (rlog) + ComBat**: used for all correlation-based analyses (PCA, DGEA, co-expression network). Stabilizes mean–variance relationship; homoscedasticity confirmed by Spearman correlation of gene means vs variances (ρ ≈ −0.03 after rlog+ComBat).
 
-7.  Aggregated Expression Divergence (AED)
+PCA confirmed that after batch correction, PC1 (42.5% variance) separates genotypes rather than batches (Spearman ρ between PC1 and batch assignment: −0.104 for SF+ComBat, −0.137 for rlog+ComBat).
 
-Transcriptomic divergence relative to the susceptible reference was computed using the mean squared difference of normalized counts (AED_analysis/DGE_bySFandCB_divergence.R).
-Empirical null distributions were generated by permutation to assess statistical significance (FDR correction).
-AED quantifies overall expression distance and system stabilization per genotype and time.
+Scripts: `01_QC_and_Filtering/Batch_effects/batch_effects.R`, `02_Normalization_and_DGEA/Heteroscedasticity_check.R`
 
-8.  Co-expression Network Analysis (GCNA)
+### 5. Differential Gene Expression Analysis (DGEA)
 
-Pairwise Pearson correlations were computed across 26,000 expressed genes (GCNA/GCNA_network_analysis.R).
-Edges above the 99.5th percentile (r \> 0.817) defined the adjacency network.
-Modules were detected using hierarchical clustering, and eigengenes correlated with genotype-time patterns.
-Network topology metrics (density, clustering coefficient) were calculated with igraph.
+Batch-corrected rlog-transformed values were used for DGEA.
+Because DESeq2 does not accept pre-corrected input, pairwise t-tests (Welch) were applied per gene for each resistant genotype vs the susceptible control at each time point.
+P-values were adjusted using Benjamini–Hochberg FDR.
 
-9.  PTI/ETI Gene Classification and Cross-Talk
+**DEG criteria:** |log₂FoldChange| > 1 AND FDR < 0.05
 
-Homology mapping linked Arabidopsis thaliana immunity genes to Vitis orthologs (data_files/Vitis_gene_immunity_class.csv).
-Genes were categorized as ETI-specific, PTI-specific, or PTI–ETI shared (GCNA/create_immunity_classes.R).
-Their log₂FC dynamics were visualized via clustered heatmaps (GCNA/GCNA_network_analysis.R), revealing time-resolved activation of immunity layers.
+A total of **3,553 DEGs** were identified across all comparisons.
 
-10. Statistical Modeling and Visualization
+Script: `02_Normalization_and_DGEA/DGEA.R`
 
-Generalized linear models (quasi-Poisson link) tested effects of genotype, time, and direction on DEG counts (transcriptional_dynamics/DEGs_counts_global_tests.R).
-Pairwise contrasts were evaluated by emmeans with FDR correction.
-Figures were generated in ggplot2 and pheatmap.
-All analyses were performed in R 4.3.2 and documented in the public repository: 👉 https://github.com/vierocka/plant_immunity_Vitis
+### 6. Gene Categorization and Grouping
+
+Each DEG was assigned a temporal expression pattern based on its up/down/equal regulation at each time point (0, 6, 24 hpi) relative to the susceptible control:
+
+| Category | Code | Definition |
+|---|---|---|
+| Initial Expression Variation | IEV | Change at 0 hpi (±0 and 6 hpi) |
+| Early Response | ER | Change at 0 and 6 hpi |
+| Transient Response to Stress | TRS | Change only at 6 hpi |
+| Late Response | LR | Change at 24 hpi |
+| Sustained Change | SCh | Change at all three time points |
+| Complex Patterns | CPs | All other combinations |
+
+Genes were further grouped by comparing patterns across genotypes (Groups I–VI):
+Group I = shared by all three genotypes; Group II = *Rpv12* and *Rpv12*+1; Group III = *Rpv12*+1 and *Rpv12*+1+3; Group IV = *Rpv12* and *Rpv12*+1+3 (recovered); Group V = genotype-specific; Group VI = complex multi-genotype patterns.
+
+### 7. Transcriptional Dynamics Modelling
+
+Generalized linear models (negative binomial family, log link) were applied to DEG counts to test effects of genotype, infection time, and direction of regulation.
+Pairwise contrasts used estimated marginal means with Tukey's HSD post-hoc tests (emmeans package).
+
+Script: `05_transcriptional_dynamics/DEGs_counts_global_tests.R`
+
+### 8. Aggregated Expression Divergence (AED)
+
+AED quantifies the overall transcriptional distance of each resistant genotype from the susceptible reference at a given time point:
+
+$$\text{AED} = \frac{1}{G} \sum_{g=1}^{G} \left(\bar{x}_{g,\text{resistant}} - \bar{x}_{g,\text{susceptible}}\right)^2$$
+
+where $G$ = number of genes and $\bar{x}$ = mean log₂ expression across replicates (size-factor + ComBat values).
+
+Statistical significance was assessed against a null distribution generated from all $\binom{12}{3} = 220$ random triplets of same-timepoint samples.
+Empirical one-sided p-values were FDR-corrected across nine genotype–time comparisons (minimum attainable FDR = 0.024).
+
+Script: `03_AED/DGE_bySFandCB_divergence.R`
+
+### 9. Co-transcriptional Network Analysis (PCNWA)
+
+Pairwise Pearson correlations were computed across the 3,553 DE genes using rlog+ComBat expression values.
+Edges were retained above the 99.5th percentile of the correlation distribution (r > 0.817).
+Co-transcriptional modules were defined for each DE gene as the set of genes with r ≥ 0.817; modules with ≥4 genes whose eigengene (first principal component) correlated significantly with the gene's temporal pattern (Spearman, Bonferroni-adjusted p < 0.05) were retained (155 modules).
+Hub genes = top 1% by degree centrality (56 hub genes; 117–1,552 partners).
+Metamodules were derived by hierarchical clustering (complete linkage) of Euclidean distances based on shared hub-gene neighbourhood overlap.
+
+Genotype-specific and time-specific networks were constructed separately using the same threshold.
+
+Scripts: `06_PCNWA/GCNA_network_analysis.R`, `06_PCNWA/create_immunity_classes.R`
+
+### 10. PTI/ETI Gene Classification
+
+Immunity-related genes were identified by homology mapping of *Arabidopsis thaliana* immunity annotations to *Vitis vinifera* orthologs.
+Genes were classified as ETI-specific, PTI-specific, or PTI–ETI shared based on literature-curated function.
+
+Data file: `data_files/Vitis_gene_immunity_class.csv`
+
+Script: `06_PCNWA/create_immunity_classes.R`
+
+### 11. Gene Enrichment Analysis
+
+Functional enrichment of GO terms, Reactome pathways, UniProt keywords, and protein domains used the STRING database (Szklarczyk et al., 2025) and PantherDB (Mi et al., 2013), queried with both *Vitis vinifera* gene IDs and *Arabidopsis* homologs.
+
+### 12. Protein–Protein Interaction Prediction (AlphaFold2-Multimer)
+
+Candidate immune receptor complexes were identified by systematic AlphaFold2-Multimer screening via ColabFold (Mirdita et al., 2022).
+A total of **1,645 protein pairs** were tested, selected from 155 co-transcriptional modules and layer-specific DEGs.
+
+ColabFold parameters: `--model-type alphafold2_multimer_v3 --num-models 5 --num-recycle 3`
+
+High-confidence interactions required all four filters:
+
+| Filter | Threshold |
+|---|---|
+| ipTM (interface predicted TM-score) | ≥ 0.7 |
+| pLDDT (per-residue confidence) | ≥ 50 |
+| Interface contacts (Cα–Cα ≤ 8 Å) | ≥ 5 |
+| Contact-filtered PAE | < 10 Å |
+
+Negative controls: transcription factors (PRE6, WRKY51, WRKY55, NAC29) and 325 cross-module protein pairs (0% hit rate).
+Positive control: EDS1–SAG101 heterodimer (ipTM 0.79–0.89, PAE 4.79–6.93 Å).
+
+Specificity of the EIX1–SOBIR1 interaction was further validated by comparing ipTM scores across eight co-localised membrane-resident proteins from orthogonal signalling pathways (EIX1, SOBIR1, FERONIA, WAK5, LAZ5, ACD6, RGA4, MIK2).

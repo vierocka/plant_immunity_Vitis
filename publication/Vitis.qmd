@@ -1,0 +1,47 @@
+---
+title: "A SOBIR1-associated receptor network shows *Rpv12*-specific upregulation in grapevine downy mildew resistance"
+author:
+  - name: Martin Hádlík
+    affiliations:
+      - "Mendeleum—Institute of Genetics, Faculty of Horticulture, Mendel University in Brno, Czech Republic"
+  - name: Miroslav Baránek
+    affiliations:
+      - "Mendeleum—Institute of Genetics, Faculty of Horticulture, Mendel University in Brno, Czech Republic"
+  - name: Kateřina Baránková
+    affiliations:
+      - "Mendeleum—Institute of Genetics, Faculty of Horticulture, Mendel University in Brno, Czech Republic"
+  - name: Viera Kovacova
+    orcid: 0000-0003-4581-4254
+    affiliations:
+      - "Institute for Biological Physics, University of Cologne, Zuelpicher Str. 77, 50937, Cologne, Germany"
+
+date: today
+date-format: iso
+format:
+  html:
+    embed-resources: true
+    toc: true
+    toc-depth: 3
+  pdf:
+    geometry:
+      - left=1.25in
+      - right=1.25in
+    toc: true
+bibliography: references.bib
+---
+
+{{< include 00-summary.qmd >}}
+
+{{< include 01-collaborators.qmd >}}
+
+{{< include 02-problems_limitations.qmd >}}
+
+{{< include 03-methods.qmd >}}
+
+{{< include 04-results.qmd >}}
+
+{{< include 05-repository-structure.qmd >}}
+
+
+::: refs
+:::

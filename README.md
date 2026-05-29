@@ -31,18 +31,20 @@ A SOBIR1-centered receptor network emerged as a hub, with seven predicted partne
 ```
 plant_immunity_Vitis/
 ├── 01_QC_and_Filtering/
-│   ├── Batch_effects/          # Batch detection and normalization comparison
+│   ├── Batch_effects/                       # Batch detection and normalization comparison
 │   └── QualityChecks_Trimming_Mapping.sh
-├── 02_Normalization_and_DGEA/  # Heteroscedasticity check and DGEA
-├── 03_AED/                     # Aggregated Expression Divergence
-├── 04_Splicing_junctions/      # Splicing junction analysis (exploratory)
-├── 05_transcriptional_dynamics/ # DEG categorization and GLM models
-├── 06_PCNWA/                   # Pearson Correlation Network and module analysis
-├── 07_AlphaFold2_PPI/          # ColabFold/AlphaFold2-Multimer PPI screen
-├── Athaliana_homology/         # BLAST homology to Arabidopsis thaliana
-├── data_files/                 # Processed input/output data files
-└── shiny_local/                # Shiny application source
+├── 02_Normalization_and_DGEA/               # Heteroscedasticity check and DGEA
+├── 03_AED/                                  # Aggregated Expression Divergence
+├── 05_transcriptional_dynamics/             # DEG categorization and GLM models
+├── 06_PCNWA/                                # Pearson Correlation Network and module analysis
+├── 07_exploratory_Splicing_junctions/       # Splicing junction analysis (exploratory; not in paper)
+├── Athaliana_homology/                      # BLAST homology to Arabidopsis thaliana
+├── data_files/                              # Processed input/output data files
+├── jupyter_nb/                              # Python learning notebook (PyDESeq2/NetworkX)
+└── publication/                             # Quarto documentation (Vitis.qmd + section files)
 ```
+
+> `shiny_local/` (Shiny app source) and `bioxriv_ms_version.pdf` are present locally but excluded from the repository via `.gitignore`.
 
 ---
 
@@ -151,7 +153,7 @@ Script: `DGE_bySFandCB_divergence.R`
 
 Per-gene transcriptional variance was modeled as a function of introgression dosage and time using linear regression with permutation testing (10,000 permutations). No significant increase in variance with locus dosage was detected (linear model p = 0.49; permutation p = 0.41). Unmapped read proportions showed no global reduction with introgression (quasibinomial GLM p = 0.57).
 
-Script: `variance.R`
+Script: `DEGs_counts_global_tests.R` (transcriptional noise modelling integrated in the dynamics analysis)
 
 ### 7. Differential Gene Expression Analysis — DGEA (`02_Normalization_and_DGEA/`)
 
@@ -204,9 +206,9 @@ Co-transcriptional networks were built from the 3,553 DEGs using Pearson correla
 - **5 metamodules** representing higher-order transcriptional programs (Figure 2D, Supplementary Figure 8)
 - Network density declined over time (linear model p = 0.025); no monotonic relationship with locus dosage (p ≈ 0.5)
 
-Scripts: `GCNA_network_analysis.R`, `network_all3553DEgenes.R`, `Figure3_pheatmap_MMs.R`, `create_immunity_classes.R`, `Figure_5_new_modified_v3.R`
+Scripts: `GCNA_network_analysis.R`, `Figure3_pheatmap_MMs.R`, `create_immunity_classes.R`, `Figure_5_new_modified_v3.R`
 
-### 10. AlphaFold2-Multimer / ColabFold PPI screen (`07_AlphaFold2_PPI/`)
+### 10. AlphaFold2-Multimer / ColabFold PPI screen (external; results in `data_files/`)
 
 **1,645 protein pairs** were screened using AlphaFold2-Multimer via ColabFold (`colabfold_batch --model-type alphafold2_multimer_v3 --num-models 5 --num-recycle 3`). High-confidence thresholds: ipTM ≥ 0.7, pLDDT ≥ 50, ≥ 5 interface contacts (Cα–Cα < 8 Å), contact-filtered PAE < 10 Å.
 
@@ -221,7 +223,7 @@ Scripts: `GCNA_network_analysis.R`, `network_all3553DEgenes.R`, `Figure3_pheatma
 
 Domain architecture analysis: 25 interacting proteins contain 24 unique domain types; LRR domains dominate (62.5%); kinase domains present exclusively in RLKs (SOBIR1, GSO2, HSL3, MIK2).
 
-Scripts: `prepare_colabfold_pairs.py`, `check_results.sh`, `get_PPpairs.sh`, per-protein `analyze_interfaces_contact_filtered.py`
+The AlphaFold2-Multimer screen was run on an external computing cluster. Analysis scripts are not included in this repository. Results are reported in Supplementary Table 9.
 
 ### 11. Arabidopsis homology (`Athaliana_homology/`)
 
@@ -229,7 +231,7 @@ BLASTP (e-value < 1 × 10⁻⁶) against TAIR10 proteins to assign functional an
 
 Scripts: `Athal_homologs.sh`, `call_homologs_Athal_Vvit.sh`, `qVvin_refAthalProt_blP.sh`, `Athal_tair_proteinID_homologsSearch.sh`
 
-### 12. Splicing junctions (`04_Splicing_junctions/`)
+### 12. Splicing junctions (`07_exploratory_Splicing_junctions/`)
 
 Exploratory analysis of splice junction counts from STAR alignments. Results not included in the final paper but scripts retained for completeness.
 

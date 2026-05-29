@@ -1,0 +1,4 @@
+project:
+  title: "A SOBIR1-associated receptor network shows Rpv12-specific upregulation in grapevine downy mildew resistance"
+  render:
+    - "Vitis.qmd"
