@@ -17,7 +17,7 @@
 # draws, and re-test the correlation.
 ###############################################################################
 
-shi_dir <- file.path("..", "RUN1_RPV1_microvine_2024", "03_AED/analysis/combat_protected/tables")
+shi_dir <- file.path("..", "Shi_2024", "03_AED/analysis/combat_protected/tables")
 own_dir <- "03_AED/analysis/combat_protected/tables"
 chit_dir <- file.path("..", "Chitarrini2020", "03_AED/analysis/combat_protected/tables")
 

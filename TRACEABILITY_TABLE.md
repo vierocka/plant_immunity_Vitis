@@ -47,8 +47,8 @@ so the mapping is unambiguous.
 
 | Table | Content (sheets) | Source script(s)/folder | Status |
 |---|---|---|---|
-| ST1 | Main table + `Chitarrini_2020`/`Shi_2024`/`Froussios_2019` per-dataset sample/accession overview | Sample metadata; matches `Froussios_2019/README.md`, `Chitarrini2020/README.md`, `RUN1_RPV1_microvine_2024/` accession citations | Verified (accessions cross-checked directly against ENA/SRA for all three datasets) |
-| ST2 | AED: inter-genotype, within-genotype, gene overlaps, noise-injection test, 3 external-dataset validations, gene concentration | `03_AED/analysis/` (combat_protected/comparison), `03_AED/Chitarrini_AED/`, `03_AED/RUN1_RPV1_microvine_2024_AED/`, `03_AED/Froussios_2019_AED/` | Verified (both Chitarrini_AED scripts run end-to-end after fixing a real broken-path bug; confirmed real output) |
+| ST1 | Main table + `Chitarrini_2020`/`Shi_2024`/`Froussios_2019` per-dataset sample/accession overview | Sample metadata; matches `Froussios_2019/README.md`, `Chitarrini2020/README.md`, `Shi_2024/` accession citations | Verified (accessions cross-checked directly against ENA/SRA for all three datasets) |
+| ST2 | AED: inter-genotype, within-genotype, gene overlaps, noise-injection test, 3 external-dataset validations, gene concentration | `03_AED/analysis/` (combat_protected/comparison), `03_AED/Chitarrini_AED/`, `03_AED/Shi_2024_AED/`, `03_AED/Froussios_2019_AED/` | Verified (both Chitarrini_AED scripts run end-to-end after fixing a real broken-path bug; confirmed real output) |
 | ST3 | Models (DESeq2 NB+BE model file definitions) | `data_files/METADATA_DESeq2_NB_BE_model_files.csv`, `02_Normalization_and_DGEA/DESeq2_classic/` | Present, not re-run |
 | ST4 | Top-50 PCA-contributing genes + STRING/Arabidopsis-homolog enrichment | `02_Normalization_and_DGEA/DESeq2_classic/` (PCA loadings), `Athaliana_homology/` | Present, not re-run |
 | ST5 | Full per-gene DESeq2 differential-transcription results (9,459 DEGs), per the proof's own in-text citation | not present locally | **Accepted as a known gap, not pursued further** |
@@ -56,7 +56,7 @@ so the mapping is unambiguous.
 | ST7 | Network density by genotype/time + module-level summary | `06_PCNWA/combat_protected/`, `06_PCNWA/combat_unprotected/` | Present, not re-run |
 | ST8 | AF2-Multimer PPI screen: positive hits, domain architecture, within/cross-module/negative/positive-control/stickiness-panel results, technical failures | `PPIs/`, raw screen run on an external HPC cluster (not locally reproducible — flagged, not re-run) | Present, not re-run — copied wholesale as the canonical results table; methodology cross-checked directly against the manuscript's own drafted text |
 | ST9 | rlog values, DE genes (2 contrasts), overlapping genes, Jaccard + significance | `PPIs/Chitarrini/`, `02_Normalization_and_DGEA/Chitarrini_DE/` | Verified (Jaccard/TPM-Spearman scripts re-run, producing this table's underlying numbers) |
-| ST10 | Shi2024 (RUN1/RPV1 microvine) size factors + log2 SF-norm expression | `RUN1_RPV1_microvine_2024/ST10_size_factors_and_expr_export.R` | Present, not re-run |
+| ST10 | Shi2024 (RUN1/RPV1 microvine) size factors + log2 SF-norm expression | `Shi_2024/ST10_size_factors_and_expr_export.R` | Present, not re-run |
 | ST11 | Froussios2019 size factors + log2 SF-norm expression | `Froussios_2019/ST11_size_factors_and_expr_export.R` | Present, not re-run (script confirmed present in the current `Froussios_2019/` folder) |
 
 ## Supplementary figures

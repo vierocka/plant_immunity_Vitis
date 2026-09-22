@@ -5,7 +5,7 @@ vinifera* resistance-locus study — manuscript Figure 2 A/B, Supplementary
 Figure 3, Supplementary Table 2.
 
 Master cross-study reference (own study + Chitarrini2020 + Shi2024 +
-Froussios2019, 55 tests/15 series): `../RUN1_RPV1_microvine_2024/explanation_for_AED.md`.
+Froussios2019, 55 tests/15 series): `../Shi_2024/explanation_for_AED.md`.
 This README covers only what's specific to this folder.
 
 | Folder | What it is |
@@ -15,7 +15,7 @@ This README covers only what's specific to this folder.
 | **results/** | `AED_top_contributing_genes_significant_calls.csv` |
 | **figures/** | Figure 2 A/B and Supplementary Figure 3 draft/rebuild figures |
 | **exploratory_material/** | Superseded pre-revision figures |
-| **Chitarrini_AED/**, **RUN1_RPV1_microvine_2024_AED/**, **Froussios_2019_AED/** | independent AED replications, one per external dataset — see their own ROADMAPs. Scripts are provenance copies (self-relative paths); rerun from each dataset's original folder |
+| **Chitarrini_AED/**, **Shi_2024_AED/**, **Froussios_2019_AED/** | independent AED replications, one per external dataset — see their own ROADMAPs. Scripts are provenance copies (self-relative paths); rerun from each dataset's original folder |
 
 ## Figure 2 redesign
 To simplify the message and purpose of Figure 2, it was redesigned into

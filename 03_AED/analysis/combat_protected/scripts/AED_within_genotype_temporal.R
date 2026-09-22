@@ -1,6 +1,6 @@
 ###############################################################################
 # Within-cultivar (within-genotype, across own time course) AED for the own
-# study -- the direct analog of RUN1_RPV1_microvine_2024/AED_bySFdivergence_
+# study -- the direct analog of Shi_2024/AED_bySFdivergence_
 # shi2024.R's within_MV102/within_MV32/within_Syrah_background panels, which
 # each compare a genotype ONLY to its own earlier self (own-baseline
 # reference), never across genotypes.

@@ -3,7 +3,7 @@
 # study's existing 03_AED/DGE_bySFandCB_divergence.R plotting block (density
 # null curve + vertical observed line, genotype colors goldenrod=Rpv12,
 # salmon=Rpv12+1, cornflowerblue=Rpv12+1+3, dimgray=Susceptible -- SAME
-# palette reused, not reinvented) and RUN1_RPV1_microvine_2024/
+# palette reused, not reinvented) and Shi_2024/
 # AED_plots_shi2024.R's combined trajectory idiom.
 #
 # Two outputs:
@@ -16,7 +16,7 @@
 #   2. AED_own_vs_shi2024_within_cultivar_comparison.pdf -- combined
 #      trajectory plot overlaying the own study's within-genotype AED
 #      (this script) with Shi2024's within-cultivar AED (MV102/MV32/Syrah,
-#      from ../RUN1_RPV1_microvine_2024_AED/results/AED_check_results/).
+#      from ../Shi_2024_AED/results/AED_check_results/).
 #      0hpi is treated as occupying the SAME x-axis ordinal slot
 #      as Shi2024's T1 (0hpi = own study's baseline/reference, exactly the
 #      role T0 played for Shi2024 -- so the first off-baseline point, 6hpi,
@@ -30,7 +30,7 @@ suppressPackageStartupMessages(library(Cairo))
 
 script_dir <- "."
 output_dir <- file.path(script_dir, "03_AED/analysis/combat_protected/tables")
-shi2024_dir <- file.path(script_dir, "03_AED", "RUN1_RPV1_microvine_2024_AED", "results", "AED_check_results")
+shi2024_dir <- file.path(script_dir, "03_AED", "Shi_2024_AED", "results", "AED_check_results")
 
 summary_table <- read.csv(file.path(output_dir, "own_study_within_genotype_AED_summary.csv"), stringsAsFactors = FALSE)
 

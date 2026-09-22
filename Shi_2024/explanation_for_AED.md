@@ -410,7 +410,7 @@ All analysis is reproducible from the following scripts, run in order. None of t
 project's pre-existing scripts or saved results were modified — every step here is a new,
 read-only-input script producing new output files.
 
-**In `RUN1_RPV1_microvine_2024/`:**
+**In `Shi_2024/`:**
 
 1. `T_index_validation_MV102_vs_MV32.R` → `AED_check_results/Tindex_crosscultivar_validation_MV102_vs_MV32.csv`, `Tindex_validated_for_crosscultivar_AED.txt`
 2. `AED_bySFdivergence_shi2024.R` → `AED_check_results/shi2024_AED_summary.csv`, `shi2024_AED_gene_concentration.csv`, `shi2024_AED_underpowered_tests.csv`, per-test null CSVs

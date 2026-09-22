@@ -1,4 +1,4 @@
-# ROADMAP: RUN1_RPV1_microvine_2024_AED
+# ROADMAP: Shi_2024_AED
 
 **AIM.** AED cross-check against Shi et al. 2024 (*Plants* 13(15):2095) —
 does AED shift toward later developmental time in RUN1/RPV1-carrying
@@ -9,7 +9,7 @@ matched physiological stage).
 supporting the manuscript's gene-concentration finding (9.8–18.0% of
 genes explain 75% of divergence, consistently). Full methodology, caveats,
 and the honest negative/inconclusive reading of the cross-cultivar result:
-`../../RUN1_RPV1_microvine_2024/explanation_for_AED.md` (kept at its
+`../../Shi_2024/explanation_for_AED.md` (kept at its
 original location, not duplicated here — this folder only holds the
 AED-specific scripts and results).
 
@@ -29,7 +29,7 @@ results/   AED_check_results/ (copied) — summaries, gene concentration,
 
 ## Known path limitation
 All four scripts set `script_dir <- "."` and read/write relative to it —
-they must be run with the original `../../RUN1_RPV1_microvine_2024/` as
+they must be run with the original `../../Shi_2024/` as
 the working directory, not from this copy. Kept here for provenance.
 
 ## Explicitly NOT a positive result

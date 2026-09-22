@@ -31,7 +31,7 @@
 # commensurate, only "how extreme relative to this test's own noise".
 ###############################################################################
 
-shi_dir <- file.path("..", "RUN1_RPV1_microvine_2024", "03_AED/analysis/combat_protected/tables")
+shi_dir <- file.path("..", "Shi_2024", "03_AED/analysis/combat_protected/tables")
 own_dir <- "03_AED/analysis/combat_protected/tables"
 
 shi_summary <- read.csv(file.path(shi_dir, "shi2024_AED_summary.csv"), stringsAsFactors = FALSE)

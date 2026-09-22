@@ -42,7 +42,7 @@ set -euo pipefail
 module purge
 module add bio/SRA-Toolkit/3.0.10-gompi-2023a-Java-8
 
-WORK_DIR="/scratch/USERNAME/Vitis/RUN1_RPV1_microvine_2024"
+WORK_DIR="/scratch/USERNAME/Vitis/Shi_2024"
 ACC_LIST="${WORK_DIR}/sra_accession_list.txt"
 FASTQ_DIR="${WORK_DIR}/fastq"
 JOBLOG="${WORK_DIR}/xargs_joblog.tsv"

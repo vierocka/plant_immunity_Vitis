@@ -34,5 +34,5 @@ Across all 15 series (own study + Chitarrini2020 + Shi2024, plus the
 manuscript's own published cross-genotype result), 9.8–18.0% of genes
 explain 75% of total divergence — the same narrow band regardless of
 dataset, batch, or biological process. See
-`../../../RUN1_RPV1_microvine_2024/explanation_for_AED.md` §9–10 for the
+`../../../Shi_2024/explanation_for_AED.md` §9–10 for the
 full derivation (that document is the master cross-study reference).

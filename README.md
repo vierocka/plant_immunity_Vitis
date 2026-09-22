@@ -49,7 +49,7 @@ plant_immunity_Vitis/
 │   └── exploratory_material/
 ├── 03_AED/                                  # Aggregated Expression Divergence
 │   ├── analysis/                            # combat_protected/, comparison/
-│   ├── Chitarrini_AED/, Froussios_2019_AED/, RUN1_RPV1_microvine_2024_AED/
+│   ├── Chitarrini_AED/, Froussios_2019_AED/, Shi_2024_AED/
 │   └── exploratory_material/
 ├── 05_transcriptional_dynamics/             # DEG-count models, temporal-pattern classification
 │   ├── canonical_DESeq2/
@@ -65,7 +65,7 @@ plant_immunity_Vitis/
 ├── Athaliana_homology/                      # BLASTP homology to Arabidopsis thaliana
 ├── data_files/                              # Shared processed input/output data files
 ├── Froussios_2019/, Chitarrini2020/         # Raw-data folders: RAMSES download/map/count pipeline only
-├── RUN1_RPV1_microvine_2024/                # Raw-data folder + AED validation
+├── Shi_2024/                                 # Raw-data folder + AED validation
 ├── qPCR/                                    # qPCR validation of RNA-seq DEGs
 ├── jupyter_nb/                              # Python walkthrough (QC/normalization/DGEA/AED)
 ├── publication/                             # Quarto documentation (Vitis.qmd + section files)
@@ -324,7 +324,7 @@ which may still show an earlier version).
 | **Supp. Table 6** | DESeq2 primary DE calls + temporal-pattern/cross-genotype group classification (Groups I-VI) | Repository (`02_Normalization_and_DGEA/DESeq2_classic/`, `05_transcriptional_dynamics/`) |
 | **Supp. Table 7** | Co-transcriptional network density by genotype/time + module-level summary | Repository (`06_PCNWA/`) |
 | **Supp. Table 8** | AlphaFold2-Multimer PPI screen: positive hits, domain architecture, within/cross-module, negative/positive-control, stickiness-panel results | Repository (`PPIs/results/`) |
-| **Supp. Tables 9-11** | Reprocessed external datasets (Chitarrini 2020, Shi 2024, Froussios 2019): size factors, normalized expression, DE results, Jaccard/significance | Zenodo [10.5281/zenodo.22212051](https://doi.org/10.5281/zenodo.22212051); working copies in `PPIs/Chitarrini/`, `RUN1_RPV1_microvine_2024/`, `Froussios_2019/` |
+| **Supp. Tables 9-11** | Reprocessed external datasets (Chitarrini 2020, Shi 2024, Froussios 2019): size factors, normalized expression, DE results, Jaccard/significance | Zenodo [10.5281/zenodo.22212051](https://doi.org/10.5281/zenodo.22212051); working copies in `PPIs/Chitarrini/`, `Shi_2024/`, `Froussios_2019/` |
 
 ---
 
