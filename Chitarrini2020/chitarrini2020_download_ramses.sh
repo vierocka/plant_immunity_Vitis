@@ -20,7 +20,7 @@
 # chitarrini_run_list.tsv are STILL PRESENT on ENA with valid fastq_ftp URLs -
 # ERR2987455 specifically confirmed present, NOT withdrawn. So a missing local
 # file on RAMSES is a download gap, not a genuine data-loss/withdrawal case -
-# don't assume the latter without checking, as this session initially did.
+# do not assume the latter without checking first.
 #
 # Same MD5-verified, skip-if-already-downloaded, negative-logic-checked
 # pattern as froussios2019_download_ramses.sh - built here specifically
