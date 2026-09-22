@@ -1,0 +1,11 @@
+"combat","r_cutoff","n_anchors_with_ge3_partners","n_significant_modules","median_module_size","max_module_size"
+"unprotected",0.75,3497,141,191,2486
+"unprotected",0.775,3434,148,145,2170
+"unprotected",0.8,3321,155,103,1806
+"unprotected",0.817,3224,155,74,1546
+"unprotected",0.85,2877,145,42,1035
+"protected",0.75,3506,141,182,2288
+"protected",0.775,3457,145,138,1942
+"protected",0.8,3360,146,96.5,1586
+"protected",0.817,3257,147,72,1346
+"protected",0.85,2945,149,39,859

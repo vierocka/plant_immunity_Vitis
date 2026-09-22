@@ -1,0 +1,24 @@
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+Welcome to emmeans.
+Caution: You lose important information if you filter this package's results.
+See '? untidy'
+
+Attaching package: ‘MASS’
+
+The following object is masked from ‘package:dplyr’:
+
+    select
+
+Error in `[.data.frame`(DEGcounts, , c(2:5)) : undefined columns selected
+Calls: as.data.frame -> [ -> [.data.frame
+Execution halted

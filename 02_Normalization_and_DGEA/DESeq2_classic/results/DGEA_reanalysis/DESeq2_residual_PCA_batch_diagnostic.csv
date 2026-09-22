@@ -1,0 +1,5 @@
+"matrix","PC","variance_percent","partial_R2_batch_given_condition","F_batch_given_condition","p_batch_given_condition"
+"DESeq2_NB_Pearson_residuals","PC1",21.578,2.18913796756665e-05,0.000503512755129224,0.982291239554397
+"DESeq2_NB_Pearson_residuals","PC2",14.165,3.34054961571156e-09,7.68326414180291e-08,0.999781226946029
+"DESeq2_NB_Pearson_residuals","PC3",9.673,2.41596849996905e-07,5.55672889241701e-06,0.998139498014847
+"DESeq2_NB_Pearson_residuals","PC4",7.663,4.09796759561279e-07,9.42532933237884e-06,0.997576915785882

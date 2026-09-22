@@ -1,0 +1,441 @@
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+SKIP download ERR1811902 (Sample_15): fastq already present at /scratch/USERNAME/Athal/fastq
+=== ERR1811903 (Sample_16) download start Mon Sep 14 13:52:02 CEST 2026 ===
+Loading bio/SRA-Toolkit/3.0.10-gompi-2023a
+  Loading requirement: compiler/GCCcore/12.3.0 lib/zlib/1.2.13-GCCcore-12.3.0
+    tools/binutils/2.40-GCCcore-12.3.0 compiler/GCC/12.3.0
+    tools/numactl/2.0.16-GCCcore-12.3.0 tools/XZ/5.4.2-GCCcore-12.3.0
+    lib/libxml2/2.11.4-GCCcore-12.3.0 system/libpciaccess/0.17-GCCcore-12.3.0
+    system/hwloc/2.9.1-GCCcore-12.3.0 lib/UCX/1.14.1-GCCcore-12.3.0
+    lib/libfabric/1.21.0-GCCcore-12.3.0 lib/UCC/1.2.0-GCCcore-12.3.0
+    system/CUDA/12.1.1 lib/GDRCopy/2.3.1-GCCcore-12.3.0
+    lib/UCX-CUDA/1.14.1-GCCcore-12.3.0-CUDA-12.1.1 mpi/OpenMPI/4.1.5-GCC-12.3.0
+    toolchain/gompi/2023a tools/bzip2/1.0.8-GCCcore-12.3.0
+    devel/ncurses/6.4-GCCcore-12.3.0 lib/libreadline/8.2-GCCcore-12.3.0
+    lang/Tcl/8.6.13-GCCcore-12.3.0 devel/SQLite/3.42.0-GCCcore-12.3.0
+    lib/libffi/3.4.4-GCCcore-12.3.0 system/OpenSSL/1.1
+    lang/Python/3.11.3-GCCcore-12.3.0 lang/Java/11.0.20
+    tools/Szip/2.1.1-GCCcore-12.3.0 data/HDF5/1.14.0-gompi-2023a
+    bio/ncbi-vdb/3.0.10-gompi-2023a system/file/5.43-GCCcore-12.3.0
+
+2026-09-14T11:52:04 prefetch.3.0.10: Current preference is set to retrieve SRA Normalized Format files with full base quality scores.
+2026-09-14T11:52:05 prefetch.3.0.10: 1) Downloading 'ERR1811903'...
+2026-09-14T11:52:05 prefetch.3.0.10: SRA Normalized Format file is being retrieved, if this is different from your preference, it may be due to current file availability.
+2026-09-14T11:52:05 prefetch.3.0.10:  Downloading via HTTPS...
+2026-09-14T12:05:22 prefetch.3.0.10:  HTTPS download succeed
+2026-09-14T12:05:48 prefetch.3.0.10:  'ERR1811903' is valid
+2026-09-14T12:05:48 prefetch.3.0.10: 1) 'ERR1811903' was downloaded successfully
+2026-09-14T12:05:48 prefetch.3.0.10: 'ERR1811903' has 0 unresolved dependencies
+spots read      : 111,209,624
+reads read      : 222,419,248
+reads written   : 222,419,248
+ERR1811903: 111209624 read pairs extracted, mate counts match.
+=== ERR1811903 download done Mon Sep 14 15:25:51 CEST 2026 ===
+SKIP download ERR1811904 (Sample_17): fastq already present at /scratch/USERNAME/Athal/fastq
+To execute Trimmomatic run: java -jar $EBROOTTRIMMOMATIC/trimmomatic-0.39.jar
+
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Athal/TAIR10ref/STAR_index_TAIR10 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Athal/STARmap1/ERR1811903_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Athal/trimmomatic/ERR1811903_1P.fq.gz /scratch/USERNAME/Athal/trimmomatic/ERR1811903_2P.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 14 19:56:37 ..... started STAR run
+Sep 14 19:56:37 ..... loading genome
+Sep 14 19:56:37 ..... started mapping
+Sep 14 21:50:46 ..... finished mapping
+Sep 14 21:50:46 ..... started sorting BAM
+Sep 14 21:51:53 ..... finished successfully
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Athal/TAIR10ref/STAR_index_TAIR10 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Athal/STARmap1_F/ERR1811903_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Athal/trimmomatic/ERR1811903_1U.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 14 21:51:53 ..... started STAR run
+Sep 14 21:51:53 ..... loading genome
+Sep 14 21:51:54 ..... started mapping
+Sep 14 21:53:00 ..... finished mapping
+Sep 14 21:53:00 ..... started sorting BAM
+Sep 14 21:53:03 ..... finished successfully
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Athal/TAIR10ref/STAR_index_TAIR10 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Athal/STARmap1_R/ERR1811903_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Athal/trimmomatic/ERR1811903_2U.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 14 21:53:03 ..... started STAR run
+Sep 14 21:53:03 ..... loading genome
+Sep 14 21:53:04 ..... started mapping
+Sep 14 21:54:25 ..... finished mapping
+Sep 14 21:54:25 ..... started sorting BAM
+Sep 14 21:54:25 ..... finished successfully
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Athal/TAIR10ref/STAR_index_TAIR10 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Athal/STARmap1/ERR1811904_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Athal/trimmomatic/ERR1811904_1P.fq.gz /scratch/USERNAME/Athal/trimmomatic/ERR1811904_2P.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 14 21:54:26 ..... started STAR run
+Sep 14 21:54:26 ..... loading genome
+Sep 14 21:54:26 ..... started mapping
+Sep 14 23:23:55 ..... finished mapping
+Sep 14 23:23:56 ..... started sorting BAM
+Sep 14 23:25:08 ..... finished successfully
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Athal/TAIR10ref/STAR_index_TAIR10 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Athal/STARmap1_F/ERR1811904_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Athal/trimmomatic/ERR1811904_1U.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 14 23:25:09 ..... started STAR run
+Sep 14 23:25:09 ..... loading genome
+Sep 14 23:25:09 ..... started mapping
+Sep 14 23:26:01 ..... finished mapping
+Sep 14 23:26:01 ..... started sorting BAM
+Sep 14 23:26:04 ..... finished successfully
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Athal/TAIR10ref/STAR_index_TAIR10 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Athal/STARmap1_R/ERR1811904_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Athal/trimmomatic/ERR1811904_2U.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 14 23:26:04 ..... started STAR run
+Sep 14 23:26:04 ..... loading genome
+Sep 14 23:26:05 ..... started mapping
+Sep 14 23:27:24 ..... finished mapping
+Sep 14 23:27:24 ..... started sorting BAM
+Sep 14 23:27:24 ..... finished successfully
+Loading bio/Subread/2.1.1-GCC-13.2.0
+  Loading requirement: compiler/GCCcore/13.2.0 lib/zlib/1.2.13-GCCcore-13.2.0
+    tools/binutils/2.40-GCCcore-13.2.0 compiler/GCC/13.2.0
+
+        ==========     _____ _    _ ____  _____  ______          _____  
+        =====         / ____| |  | |  _ \|  __ \|  ____|   /\   |  __ \ 
+          =====      | (___ | |  | | |_) | |__) | |__     /  \  | |  | |
+            ====      \___ \| |  | |  _ <|  _  /|  __|   / /\ \ | |  | |
+              ====    ____) | |__| | |_) | | \ \| |____ / ____ \| |__| |
+        ==========   |_____/ \____/|____/|_|  \_\______/_/    \_\_____/
+	  v2.1.1
+
+//========================== featureCounts setting ===========================\\
+||                                                                            ||
+||             Input files : 1 BAM file                                       ||
+||                                                                            ||
+||                           ERR1811903_Aligned.sortedByCoord.out.bam         ||
+||                                                                            ||
+||             Output file : ERR1811903.count                                 ||
+||                 Summary : ERR1811903.count.summary                         ||
+||              Paired-end : yes                                              ||
+||        Count read pairs : no                                               ||
+||              Annotation : Arabidopsis_thaliana.TAIR10.63.gff3 (GTF)        ||
+||      Dir for temp files : /scratch/USERNAME/Athal/STARmap1/fC              ||
+||                                                                            ||
+||                 Threads : 24                                               ||
+||                   Level : meta-feature level                               ||
+||      Multimapping reads : not counted                                      ||
+|| Multi-overlapping reads : not counted                                      ||
+||   Min overlapping bases : 1                                                ||
+||                                                                            ||
+\\============================================================================//
+
+//================================= Running ==================================\\
+||                                                                            ||
+|| Load annotation file Arabidopsis_thaliana.TAIR10.63.gff3 ...               ||
+||    Features : 27655                                                        ||
+||    Meta-features : 27655                                                   ||
+||    Chromosomes/contigs : 7                                                 ||
+||                                                                            ||
+|| Process BAM file ERR1811903_Aligned.sortedByCoord.out.bam...               ||
+||    Paired-end reads are included.                                          ||
+||    The reads are assigned on the single-end mode.                          ||
+||    Total alignments : 156836969                                            ||
+||    Successfully assigned alignments : 134082450 (85.5%)                    ||
+||    Running time : 0.08 minutes                                             ||
+||                                                                            ||
+|| Write the final count table.                                               ||
+|| Write the read assignment summary.                                         ||
+||                                                                            ||
+|| Summary of counting results can be found in file "/scratch/USERNAME/Athal  ||
+|| /STARmap1/fC/ERR1811903.count.summary"                                     ||
+||                                                                            ||
+\\============================================================================//
+
+
+        ==========     _____ _    _ ____  _____  ______          _____  
+        =====         / ____| |  | |  _ \|  __ \|  ____|   /\   |  __ \ 
+          =====      | (___ | |  | | |_) | |__) | |__     /  \  | |  | |
+            ====      \___ \| |  | |  _ <|  _  /|  __|   / /\ \ | |  | |
+              ====    ____) | |__| | |_) | | \ \| |____ / ____ \| |__| |
+        ==========   |_____/ \____/|____/|_|  \_\______/_/    \_\_____/
+	  v2.1.1
+
+//========================== featureCounts setting ===========================\\
+||                                                                            ||
+||             Input files : 1 BAM file                                       ||
+||                                                                            ||
+||                           ERR1811903_Aligned.sortedByCoord.out.bam         ||
+||                                                                            ||
+||             Output file : ERR1811903.count                                 ||
+||                 Summary : ERR1811903.count.summary                         ||
+||              Paired-end : no                                               ||
+||        Count read pairs : no                                               ||
+||              Annotation : Arabidopsis_thaliana.TAIR10.63.gff3 (GTF)        ||
+||      Dir for temp files : /scratch/USERNAME/Athal/STARmap1_F/fC            ||
+||                                                                            ||
+||                 Threads : 24                                               ||
+||                   Level : meta-feature level                               ||
+||      Multimapping reads : not counted                                      ||
+|| Multi-overlapping reads : not counted                                      ||
+||   Min overlapping bases : 1                                                ||
+||                                                                            ||
+\\============================================================================//
+
+//================================= Running ==================================\\
+||                                                                            ||
+|| Load annotation file Arabidopsis_thaliana.TAIR10.63.gff3 ...               ||
+||    Features : 27655                                                        ||
+||    Meta-features : 27655                                                   ||
+||    Chromosomes/contigs : 7                                                 ||
+||                                                                            ||
+|| Process BAM file ERR1811903_Aligned.sortedByCoord.out.bam...               ||
+||    Single-end reads are included.                                          ||
+||    Total alignments : 6147870                                              ||
+||    Successfully assigned alignments : 4983495 (81.1%)                      ||
+||    Running time : 0.01 minutes                                             ||
+||                                                                            ||
+|| Write the final count table.                                               ||
+|| Write the read assignment summary.                                         ||
+||                                                                            ||
+|| Summary of counting results can be found in file "/scratch/USERNAME/Athal  ||
+|| /STARmap1_F/fC/ERR1811903.count.summary"                                   ||
+||                                                                            ||
+\\============================================================================//
+
+
+        ==========     _____ _    _ ____  _____  ______          _____  
+        =====         / ____| |  | |  _ \|  __ \|  ____|   /\   |  __ \ 
+          =====      | (___ | |  | | |_) | |__) | |__     /  \  | |  | |
+            ====      \___ \| |  | |  _ <|  _  /|  __|   / /\ \ | |  | |
+              ====    ____) | |__| | |_) | | \ \| |____ / ____ \| |__| |
+        ==========   |_____/ \____/|____/|_|  \_\______/_/    \_\_____/
+	  v2.1.1
+
+//========================== featureCounts setting ===========================\\
+||                                                                            ||
+||             Input files : 1 BAM file                                       ||
+||                                                                            ||
+||                           ERR1811903_Aligned.sortedByCoord.out.bam         ||
+||                                                                            ||
+||             Output file : ERR1811903.count                                 ||
+||                 Summary : ERR1811903.count.summary                         ||
+||              Paired-end : no                                               ||
+||        Count read pairs : no                                               ||
+||              Annotation : Arabidopsis_thaliana.TAIR10.63.gff3 (GTF)        ||
+||      Dir for temp files : /scratch/USERNAME/Athal/STARmap1_R/fC            ||
+||                                                                            ||
+||                 Threads : 24                                               ||
+||                   Level : meta-feature level                               ||
+||      Multimapping reads : not counted                                      ||
+|| Multi-overlapping reads : not counted                                      ||
+||   Min overlapping bases : 1                                                ||
+||                                                                            ||
+\\============================================================================//
+
+//================================= Running ==================================\\
+||                                                                            ||
+|| Load annotation file Arabidopsis_thaliana.TAIR10.63.gff3 ...               ||
+||    Features : 27655                                                        ||
+||    Meta-features : 27655                                                   ||
+||    Chromosomes/contigs : 7                                                 ||
+||                                                                            ||
+|| Process BAM file ERR1811903_Aligned.sortedByCoord.out.bam...               ||
+||    Single-end reads are included.                                          ||
+||    Total alignments : 860644                                               ||
+||    Successfully assigned alignments : 639081 (74.3%)                       ||
+||    Running time : 0.00 minutes                                             ||
+||                                                                            ||
+|| Write the final count table.                                               ||
+|| Write the read assignment summary.                                         ||
+||                                                                            ||
+|| Summary of counting results can be found in file "/scratch/USERNAME/Athal  ||
+|| /STARmap1_R/fC/ERR1811903.count.summary"                                   ||
+||                                                                            ||
+\\============================================================================//
+
+
+        ==========     _____ _    _ ____  _____  ______          _____  
+        =====         / ____| |  | |  _ \|  __ \|  ____|   /\   |  __ \ 
+          =====      | (___ | |  | | |_) | |__) | |__     /  \  | |  | |
+            ====      \___ \| |  | |  _ <|  _  /|  __|   / /\ \ | |  | |
+              ====    ____) | |__| | |_) | | \ \| |____ / ____ \| |__| |
+        ==========   |_____/ \____/|____/|_|  \_\______/_/    \_\_____/
+	  v2.1.1
+
+//========================== featureCounts setting ===========================\\
+||                                                                            ||
+||             Input files : 1 BAM file                                       ||
+||                                                                            ||
+||                           ERR1811904_Aligned.sortedByCoord.out.bam         ||
+||                                                                            ||
+||             Output file : ERR1811904.count                                 ||
+||                 Summary : ERR1811904.count.summary                         ||
+||              Paired-end : yes                                              ||
+||        Count read pairs : no                                               ||
+||              Annotation : Arabidopsis_thaliana.TAIR10.63.gff3 (GTF)        ||
+||      Dir for temp files : /scratch/USERNAME/Athal/STARmap1/fC              ||
+||                                                                            ||
+||                 Threads : 24                                               ||
+||                   Level : meta-feature level                               ||
+||      Multimapping reads : not counted                                      ||
+|| Multi-overlapping reads : not counted                                      ||
+||   Min overlapping bases : 1                                                ||
+||                                                                            ||
+\\============================================================================//
+
+//================================= Running ==================================\\
+||                                                                            ||
+|| Load annotation file Arabidopsis_thaliana.TAIR10.63.gff3 ...               ||
+||    Features : 27655                                                        ||
+||    Meta-features : 27655                                                   ||
+||    Chromosomes/contigs : 7                                                 ||
+||                                                                            ||
+|| Process BAM file ERR1811904_Aligned.sortedByCoord.out.bam...               ||
+||    Paired-end reads are included.                                          ||
+||    The reads are assigned on the single-end mode.                          ||
+||    Total alignments : 170490435                                            ||
+||    Successfully assigned alignments : 140820270 (82.6%)                    ||
+||    Running time : 0.09 minutes                                             ||
+||                                                                            ||
+|| Write the final count table.                                               ||
+|| Write the read assignment summary.                                         ||
+||                                                                            ||
+|| Summary of counting results can be found in file "/scratch/USERNAME/Athal  ||
+|| /STARmap1/fC/ERR1811904.count.summary"                                     ||
+||                                                                            ||
+\\============================================================================//
+
+
+        ==========     _____ _    _ ____  _____  ______          _____  
+        =====         / ____| |  | |  _ \|  __ \|  ____|   /\   |  __ \ 
+          =====      | (___ | |  | | |_) | |__) | |__     /  \  | |  | |
+            ====      \___ \| |  | |  _ <|  _  /|  __|   / /\ \ | |  | |
+              ====    ____) | |__| | |_) | | \ \| |____ / ____ \| |__| |
+        ==========   |_____/ \____/|____/|_|  \_\______/_/    \_\_____/
+	  v2.1.1
+
+//========================== featureCounts setting ===========================\\
+||                                                                            ||
+||             Input files : 1 BAM file                                       ||
+||                                                                            ||
+||                           ERR1811904_Aligned.sortedByCoord.out.bam         ||
+||                                                                            ||
+||             Output file : ERR1811904.count                                 ||
+||                 Summary : ERR1811904.count.summary                         ||
+||              Paired-end : no                                               ||
+||        Count read pairs : no                                               ||
+||              Annotation : Arabidopsis_thaliana.TAIR10.63.gff3 (GTF)        ||
+||      Dir for temp files : /scratch/USERNAME/Athal/STARmap1_F/fC            ||
+||                                                                            ||
+||                 Threads : 24                                               ||
+||                   Level : meta-feature level                               ||
+||      Multimapping reads : not counted                                      ||
+|| Multi-overlapping reads : not counted                                      ||
+||   Min overlapping bases : 1                                                ||
+||                                                                            ||
+\\============================================================================//
+
+//================================= Running ==================================\\
+||                                                                            ||
+|| Load annotation file Arabidopsis_thaliana.TAIR10.63.gff3 ...               ||
+||    Features : 27655                                                        ||
+||    Meta-features : 27655                                                   ||
+||    Chromosomes/contigs : 7                                                 ||
+||                                                                            ||
+|| Process BAM file ERR1811904_Aligned.sortedByCoord.out.bam...               ||
+||    Single-end reads are included.                                          ||
+||    Total alignments : 6286728                                              ||
+||    Successfully assigned alignments : 4899312 (77.9%)                      ||
+||    Running time : 0.01 minutes                                             ||
+||                                                                            ||
+|| Write the final count table.                                               ||
+|| Write the read assignment summary.                                         ||
+||                                                                            ||
+|| Summary of counting results can be found in file "/scratch/USERNAME/Athal  ||
+|| /STARmap1_F/fC/ERR1811904.count.summary"                                   ||
+||                                                                            ||
+\\============================================================================//
+
+
+        ==========     _____ _    _ ____  _____  ______          _____  
+        =====         / ____| |  | |  _ \|  __ \|  ____|   /\   |  __ \ 
+          =====      | (___ | |  | | |_) | |__) | |__     /  \  | |  | |
+            ====      \___ \| |  | |  _ <|  _  /|  __|   / /\ \ | |  | |
+              ====    ____) | |__| | |_) | | \ \| |____ / ____ \| |__| |
+        ==========   |_____/ \____/|____/|_|  \_\______/_/    \_\_____/
+	  v2.1.1
+
+//========================== featureCounts setting ===========================\\
+||                                                                            ||
+||             Input files : 1 BAM file                                       ||
+||                                                                            ||
+||                           ERR1811904_Aligned.sortedByCoord.out.bam         ||
+||                                                                            ||
+||             Output file : ERR1811904.count                                 ||
+||                 Summary : ERR1811904.count.summary                         ||
+||              Paired-end : no                                               ||
+||        Count read pairs : no                                               ||
+||              Annotation : Arabidopsis_thaliana.TAIR10.63.gff3 (GTF)        ||
+||      Dir for temp files : /scratch/USERNAME/Athal/STARmap1_R/fC            ||
+||                                                                            ||
+||                 Threads : 24                                               ||
+||                   Level : meta-feature level                               ||
+||      Multimapping reads : not counted                                      ||
+|| Multi-overlapping reads : not counted                                      ||
+||   Min overlapping bases : 1                                                ||
+||                                                                            ||
+\\============================================================================//
+
+//================================= Running ==================================\\
+||                                                                            ||
+|| Load annotation file Arabidopsis_thaliana.TAIR10.63.gff3 ...               ||
+||    Features : 27655                                                        ||
+||    Meta-features : 27655                                                   ||
+||    Chromosomes/contigs : 7                                                 ||
+||                                                                            ||
+|| Process BAM file ERR1811904_Aligned.sortedByCoord.out.bam...               ||
+||    Single-end reads are included.                                          ||
+||    Total alignments : 837154                                               ||
+||    Successfully assigned alignments : 572386 (68.4%)                       ||
+||    Running time : 0.00 minutes                                             ||
+||                                                                            ||
+|| Write the final count table.                                               ||
+|| Write the read assignment summary.                                         ||
+||                                                                            ||
+|| Summary of counting results can be found in file "/scratch/USERNAME/Athal  ||
+|| /STARmap1_R/fC/ERR1811904.count.summary"                                   ||
+||                                                                            ||
+\\============================================================================//
+
+Expected samples: 3. both=3 Fonly=3 Ronly=3.
+Done. Fastq: /scratch/USERNAME/Athal/fastq/. Trimmed: /scratch/USERNAME/Athal/trimmomatic/. Counts: /scratch/USERNAME/Athal/STARmap1/fC/, /scratch/USERNAME/Athal/STARmap1_F/fC/, /scratch/USERNAME/Athal/STARmap1_R/fC/.
+Next: scp the new .count/.count.summary files back to a STAGING location first (e.g. fC_rerun_sample15_16_17/), NOT directly over
+the existing local fC/STAR_{both,Fonly,Ronly}/ERR1811902.count -- diff read totals against the current (2026-09-08) local copy before
+replacing it, since that file is currently the only surviving record of the original (pre-deletion) sample-15 run.

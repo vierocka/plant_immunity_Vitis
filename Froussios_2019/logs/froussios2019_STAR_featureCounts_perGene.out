@@ -1,0 +1,159 @@
+Loading bio/Subread/2.1.1-GCC-13.2.0
+  Loading requirement: compiler/GCCcore/13.2.0 lib/zlib/1.2.13-GCCcore-13.2.0
+    tools/binutils/2.40-GCCcore-13.2.0 compiler/GCC/13.2.0
+
+        ==========     _____ _    _ ____  _____  ______          _____  
+        =====         / ____| |  | |  _ \|  __ \|  ____|   /\   |  __ \ 
+          =====      | (___ | |  | | |_) | |__) | |__     /  \  | |  | |
+            ====      \___ \| |  | |  _ <|  _  /|  __|   / /\ \ | |  | |
+              ====    ____) | |__| | |_) | | \ \| |____ / ____ \| |__| |
+        ==========   |_____/ \____/|____/|_|  \_\______/_/    \_\_____/
+	  v2.1.1
+
+//========================== featureCounts setting ===========================\\
+||                                                                            ||
+||             Input files : 14 BAM files                                     ||
+||                                                                            ||
+||                           ERR1811888_Aligned.sortedByCoord.out.bam         ||
+||                           ERR1811889_Aligned.sortedByCoord.out.bam         ||
+||                           ERR1811890_Aligned.sortedByCoord.out.bam         ||
+||                           ERR1811891_Aligned.sortedByCoord.out.bam         ||
+||                           ERR1811892_Aligned.sortedByCoord.out.bam         ||
+||                           ERR1811893_Aligned.sortedByCoord.out.bam         ||
+||                           ERR1811894_Aligned.sortedByCoord.out.bam         ||
+||                           ERR1811900_Aligned.sortedByCoord.out.bam         ||
+||                           ERR1811901_Aligned.sortedByCoord.out.bam         ||
+||                           ERR1811895_Aligned.sortedByCoord.out.bam         ||
+||                           ERR1811896_Aligned.sortedByCoord.out.bam         ||
+||                           ERR1811897_Aligned.sortedByCoord.out.bam         ||
+||                           ERR1811898_Aligned.sortedByCoord.out.bam         ||
+||                           ERR1811899_Aligned.sortedByCoord.out.bam         ||
+||                                                                            ||
+||             Output file : froussios2019_samples_from1_to14_perGene.cou ... ||
+||                 Summary : froussios2019_samples_from1_to14_perGene.cou ... ||
+||              Paired-end : yes                                              ||
+||        Count read pairs : no                                               ||
+||              Annotation : Arabidopsis_thaliana.TAIR10.63.gff3 (GTF)        ||
+||      Dir for temp files : /scratch/USERNAME/Athal                          ||
+||                                                                            ||
+||                 Threads : 32                                               ||
+||                   Level : meta-feature level                               ||
+||      Multimapping reads : not counted                                      ||
+|| Multi-overlapping reads : not counted                                      ||
+||   Min overlapping bases : 1                                                ||
+||                                                                            ||
+\\============================================================================//
+
+//================================= Running ==================================\\
+||                                                                            ||
+|| Load annotation file Arabidopsis_thaliana.TAIR10.63.gff3 ...               ||
+||    Features : 27655                                                        ||
+||    Meta-features : 27655                                                   ||
+||    Chromosomes/contigs : 7                                                 ||
+||                                                                            ||
+|| Process BAM file ERR1811888_Aligned.sortedByCoord.out.bam...               ||
+||    Paired-end reads are included.                                          ||
+||    The reads are assigned on the single-end mode.                          ||
+||    Total alignments : 146548560                                            ||
+||    Successfully assigned alignments : 129905171 (88.6%)                    ||
+||    Running time : 0.08 minutes                                             ||
+||                                                                            ||
+|| Process BAM file ERR1811889_Aligned.sortedByCoord.out.bam...               ||
+||    Paired-end reads are included.                                          ||
+||    The reads are assigned on the single-end mode.                          ||
+||    Total alignments : 142656390                                            ||
+||    Successfully assigned alignments : 129953205 (91.1%)                    ||
+||    Running time : 0.07 minutes                                             ||
+||                                                                            ||
+|| Process BAM file ERR1811890_Aligned.sortedByCoord.out.bam...               ||
+||    Paired-end reads are included.                                          ||
+||    The reads are assigned on the single-end mode.                          ||
+||    Total alignments : 141263476                                            ||
+||    Successfully assigned alignments : 126203933 (89.3%)                    ||
+||    Running time : 0.08 minutes                                             ||
+||                                                                            ||
+|| Process BAM file ERR1811891_Aligned.sortedByCoord.out.bam...               ||
+||    Paired-end reads are included.                                          ||
+||    The reads are assigned on the single-end mode.                          ||
+||    Total alignments : 68409368                                             ||
+||    Successfully assigned alignments : 42900599 (62.7%)                     ||
+||    Running time : 0.04 minutes                                             ||
+||                                                                            ||
+|| Process BAM file ERR1811892_Aligned.sortedByCoord.out.bam...               ||
+||    Paired-end reads are included.                                          ||
+||    The reads are assigned on the single-end mode.                          ||
+||    Total alignments : 166937574                                            ||
+||    Successfully assigned alignments : 149691023 (89.7%)                    ||
+||    Running time : 0.09 minutes                                             ||
+||                                                                            ||
+|| Process BAM file ERR1811893_Aligned.sortedByCoord.out.bam...               ||
+||    Paired-end reads are included.                                          ||
+||    The reads are assigned on the single-end mode.                          ||
+||    Total alignments : 155681746                                            ||
+||    Successfully assigned alignments : 139512532 (89.6%)                    ||
+||    Running time : 0.08 minutes                                             ||
+||                                                                            ||
+|| Process BAM file ERR1811894_Aligned.sortedByCoord.out.bam...               ||
+||    Paired-end reads are included.                                          ||
+||    The reads are assigned on the single-end mode.                          ||
+||    Total alignments : 112023976                                            ||
+||    Successfully assigned alignments : 99799134 (89.1%)                     ||
+||    Running time : 0.06 minutes                                             ||
+||                                                                            ||
+|| Process BAM file ERR1811900_Aligned.sortedByCoord.out.bam...               ||
+||    Paired-end reads are included.                                          ||
+||    The reads are assigned on the single-end mode.                          ||
+||    Total alignments : 159445618                                            ||
+||    Successfully assigned alignments : 148490655 (93.1%)                    ||
+||    Running time : 0.09 minutes                                             ||
+||                                                                            ||
+|| Process BAM file ERR1811901_Aligned.sortedByCoord.out.bam...               ||
+||    Paired-end reads are included.                                          ||
+||    The reads are assigned on the single-end mode.                          ||
+||    Total alignments : 140413466                                            ||
+||    Successfully assigned alignments : 130099793 (92.7%)                    ||
+||    Running time : 0.08 minutes                                             ||
+||                                                                            ||
+|| Process BAM file ERR1811895_Aligned.sortedByCoord.out.bam...               ||
+||    Paired-end reads are included.                                          ||
+||    The reads are assigned on the single-end mode.                          ||
+||    Total alignments : 178985294                                            ||
+||    Successfully assigned alignments : 166102792 (92.8%)                    ||
+||    Running time : 0.09 minutes                                             ||
+||                                                                            ||
+|| Process BAM file ERR1811896_Aligned.sortedByCoord.out.bam...               ||
+||    Paired-end reads are included.                                          ||
+||    The reads are assigned on the single-end mode.                          ||
+||    Total alignments : 163976240                                            ||
+||    Successfully assigned alignments : 152419690 (93.0%)                    ||
+||    Running time : 0.09 minutes                                             ||
+||                                                                            ||
+|| Process BAM file ERR1811897_Aligned.sortedByCoord.out.bam...               ||
+||    Paired-end reads are included.                                          ||
+||    The reads are assigned on the single-end mode.                          ||
+||    Total alignments : 198919678                                            ||
+||    Successfully assigned alignments : 184184784 (92.6%)                    ||
+||    Running time : 0.11 minutes                                             ||
+||                                                                            ||
+|| Process BAM file ERR1811898_Aligned.sortedByCoord.out.bam...               ||
+||    Paired-end reads are included.                                          ||
+||    The reads are assigned on the single-end mode.                          ||
+||    Total alignments : 82569330                                             ||
+||    Successfully assigned alignments : 63179531 (76.5%)                     ||
+||    Running time : 0.05 minutes                                             ||
+||                                                                            ||
+|| Process BAM file ERR1811899_Aligned.sortedByCoord.out.bam...               ||
+||    Paired-end reads are included.                                          ||
+||    The reads are assigned on the single-end mode.                          ||
+||    Total alignments : 184620078                                            ||
+||    Successfully assigned alignments : 171476858 (92.9%)                    ||
+||    Running time : 0.10 minutes                                             ||
+||                                                                            ||
+|| Write the final count table.                                               ||
+|| Write the read assignment summary.                                         ||
+||                                                                            ||
+|| Summary of counting results can be found in file "/scratch/USERNAME/Athal  ||
+|| /froussios2019_samples_from1_to14_perGene.counts.tsv.summary"              ||
+||                                                                            ||
+\\============================================================================//
+

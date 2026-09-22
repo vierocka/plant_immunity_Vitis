@@ -1,0 +1,15 @@
+Status	/scratch/USERNAME/Athal/ERR1811888_Sample_1/ERR1811888_Aligned.sortedByCoord.out.bam	/scratch/USERNAME/Athal/ERR1811889_Sample_2/ERR1811889_Aligned.sortedByCoord.out.bam	/scratch/USERNAME/Athal/ERR1811890_Sample_3/ERR1811890_Aligned.sortedByCoord.out.bam	/scratch/USERNAME/Athal/ERR1811891_Sample_4/ERR1811891_Aligned.sortedByCoord.out.bam	/scratch/USERNAME/Athal/ERR1811892_Sample_5/ERR1811892_Aligned.sortedByCoord.out.bam	/scratch/USERNAME/Athal/ERR1811893_Sample_6/ERR1811893_Aligned.sortedByCoord.out.bam	/scratch/USERNAME/Athal/ERR1811894_Sample_7/ERR1811894_Aligned.sortedByCoord.out.bam	/scratch/USERNAME/Athal/ERR1811900_Sample_8/ERR1811900_Aligned.sortedByCoord.out.bam	/scratch/USERNAME/Athal/ERR1811901_Sample_9/ERR1811901_Aligned.sortedByCoord.out.bam	/scratch/USERNAME/Athal/ERR1811895_Sample_10/ERR1811895_Aligned.sortedByCoord.out.bam	/scratch/USERNAME/Athal/ERR1811896_Sample_11/ERR1811896_Aligned.sortedByCoord.out.bam	/scratch/USERNAME/Athal/ERR1811897_Sample_12/ERR1811897_Aligned.sortedByCoord.out.bam	/scratch/USERNAME/Athal/ERR1811898_Sample_13/ERR1811898_Aligned.sortedByCoord.out.bam	/scratch/USERNAME/Athal/ERR1811899_Sample_14/ERR1811899_Aligned.sortedByCoord.out.bam
+Assigned	129905171	129953205	126203933	42900599	149691023	139512532	99799134	148490655	130099793	166102792	152419690	184184784	63179531	171476858
+Unassigned_Unmapped	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_Read_Type	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_Singleton	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_MappingQuality	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_Chimera	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_FragmentLength	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_Duplicate	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_MultiMapping	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_Secondary	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_NonSplit	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_NoFeatures	14884325	11053058	13353578	24942855	15230762	14275076	10909008	9033072	8605052	11008193	9859491	12347929	18647482	11138673
+Unassigned_Overlapping_Length	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_Ambiguity	1759064	1650127	1705965	565914	2015789	1894138	1315834	1921891	1708621	1874309	1697059	2386965	742317	2004547

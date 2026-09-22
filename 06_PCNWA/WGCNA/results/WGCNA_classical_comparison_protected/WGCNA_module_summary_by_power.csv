@@ -1,0 +1,5 @@
+"power","n_modules_excl_grey","n_genes_total","n_genes_assigned_to_a_module","pct_genes_assigned","median_module_size","largest_module_size"
+1,25,26169,23189,88.6124804157591,391,7412
+8,53,26169,24900,95.1507508884558,165,5499
+12,62,26169,25224,96.3888570445947,164.5,6252
+20,58,26169,22119,84.5236730482632,169.5,5618

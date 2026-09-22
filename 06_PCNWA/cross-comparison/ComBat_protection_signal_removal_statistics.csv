@@ -1,0 +1,6 @@
+"comparison","statistic","p_value","median_effect"
+"precorrection_vs_protected (paired Wilcoxon)",20987343,0,0.0399963829075687
+"precorrection_vs_unprotected (paired Wilcoxon)",109699029,0,0.0129097041000519
+"protected_vs_unprotected (paired Wilcoxon)",337087208,0,0.0276144723789543
+"extra_loss_vs_protected_R2 (Spearman rho: does stronger real signal survive unprotected ComBat better?)",0.024444081092767,7.66369321350413e-05,NA
+"extra_loss_DE_panel_vs_nonDE_panel (Wilcoxon rank-sum)",36217991,3.13502232661644e-21,-0.00421039367213785

@@ -1,0 +1,2 @@
+"tested_genes","current_union_genes","historical_union_genes","overlap_genes","expected_overlap_random","fraction_historical_in_current","fraction_current_in_historical","hypergeometric_enrichment_pvalue","hypergeometric_log10_pvalue","median_rank_historical_overlap","median_rank_percentile_historical_overlap","wilcoxon_rank_pvalue_historical_stronger"
+26169,9459,3553,3403,1284.26103404792,0.957782155924571,0.359763188497727,0,-1460.18293399793,3168,0.334919124643197,3.58404433605817e-219

@@ -1,0 +1,201 @@
+Warning message:
+In DESeqDataSet(se, design = design, ignoreRank) :
+  some variables in design formula are characters, converting to factors
+estimating size factors
+estimating dispersions
+gene-wise dispersion estimates
+mean-dispersion relationship
+final dispersion estimates
+fitting model and testing
+Found 104 genes with uniform expression within a single batch (all zeros); these will not be adjusted for batch.
+Found2batches
+Adjusting for11covariate(s) or covariate level(s)
+Standardizing Data across genes
+Fitting L/S model and finding priors
+Finding parametric adjustments
+Adjusting the Data
+
+Genes in expr_adj: 26169 
+=== Skipping Susceptible 0 hpi (already done) ===
+=== Skipping Susceptible 6 hpi (already done) ===
+=== Skipping Susceptible 24 hpi (already done) ===
+===  Rpv12 - 0 hpi ===
+  0hpi noise=0.005 done in 165.8s
+  0hpi noise=0.010 done in 169.7s
+  0hpi noise=0.020 done in 165.9s
+  0hpi noise=0.050 done in 161.1s
+  0hpi noise=0.100 done in 168.2s
+===  Rpv12 - 6 hpi ===
+  6hpi noise=0.005 done in 161.6s
+  6hpi noise=0.010 done in 169.1s
+  6hpi noise=0.020 done in 170.4s
+  6hpi noise=0.050 done in 165.6s
+  6hpi noise=0.100 done in 168.7s
+===  Rpv12 - 24 hpi ===
+  24hpi noise=0.005 done in 159.2s
+  24hpi noise=0.010 done in 165.2s
+  24hpi noise=0.020 done in 160.6s
+  24hpi noise=0.050 done in 160.2s
+  24hpi noise=0.100 done in 162.6s
+===  Rpv12_1 - 0 hpi ===
+  0hpi noise=0.005 done in 175.4s
+  0hpi noise=0.010 done in 162.5s
+  0hpi noise=0.020 done in 166.8s
+  0hpi noise=0.050 done in 178.6s
+  0hpi noise=0.100 done in 158.8s
+===  Rpv12_1 - 6 hpi ===
+  6hpi noise=0.005 done in 158.2s
+  6hpi noise=0.010 done in 158.4s
+  6hpi noise=0.020 done in 162.3s
+  6hpi noise=0.050 done in 172.1s
+  6hpi noise=0.100 done in 182.3s
+===  Rpv12_1 - 24 hpi ===
+  24hpi noise=0.005 done in 172.8s
+  24hpi noise=0.010 done in 168.4s
+  24hpi noise=0.020 done in 165.9s
+  24hpi noise=0.050 done in 171.6s
+  24hpi noise=0.100 done in 168.3s
+===  Rpv12_1_3 - 0 hpi ===
+  0hpi noise=0.005 done in 165.2s
+  0hpi noise=0.010 done in 162.3s
+  0hpi noise=0.020 done in 166.6s
+  0hpi noise=0.050 done in 168.2s
+  0hpi noise=0.100 done in 166.0s
+===  Rpv12_1_3 - 6 hpi ===
+  6hpi noise=0.005 done in 169.6s
+  6hpi noise=0.010 done in 162.6s
+  6hpi noise=0.020 done in 162.0s
+  6hpi noise=0.050 done in 162.5s
+  6hpi noise=0.100 done in 161.8s
+===  Rpv12_1_3 - 24 hpi ===
+  24hpi noise=0.005 done in 165.5s
+  24hpi noise=0.010 done in 163.2s
+  24hpi noise=0.020 done in 162.0s
+  24hpi noise=0.050 done in 162.0s
+  24hpi noise=0.100 done in 158.1s
+
+=== Summary: AggrDiv and %genes-for-75% by genotype x timepoint x noise level ===
+      genotype timepoint noise AggrDiv.mean   AggrDiv.sd
+1        Rpv12      0hpi 0.005 1.756266e-05 3.002378e-07
+2      Rpv12_1      0hpi 0.005 1.755941e-05 2.959568e-07
+3    Rpv12_1_3      0hpi 0.005 1.755866e-05 2.991940e-07
+4  Susceptible      0hpi 0.005 1.755845e-05 2.982966e-07
+5        Rpv12     24hpi 0.005 1.756015e-05 2.957218e-07
+6      Rpv12_1     24hpi 0.005 1.756052e-05 2.994398e-07
+7    Rpv12_1_3     24hpi 0.005 1.756349e-05 2.981009e-07
+8  Susceptible     24hpi 0.005 1.756475e-05 2.925936e-07
+9        Rpv12      6hpi 0.005 1.756177e-05 2.942610e-07
+10     Rpv12_1      6hpi 0.005 1.755851e-05 3.005711e-07
+11   Rpv12_1_3      6hpi 0.005 1.755728e-05 2.964351e-07
+12 Susceptible      6hpi 0.005 1.756539e-05 2.979764e-07
+13       Rpv12      0hpi 0.010 7.022806e-05 1.187234e-06
+14     Rpv12_1      0hpi 0.010 7.023781e-05 1.182122e-06
+15   Rpv12_1_3      0hpi 0.010 7.024975e-05 1.192194e-06
+16 Susceptible      0hpi 0.010 7.022791e-05 1.182019e-06
+17       Rpv12     24hpi 0.010 7.024311e-05 1.203103e-06
+18     Rpv12_1     24hpi 0.010 7.023174e-05 1.189551e-06
+19   Rpv12_1_3     24hpi 0.010 7.022824e-05 1.210858e-06
+20 Susceptible     24hpi 0.010 7.025098e-05 1.189128e-06
+21       Rpv12      6hpi 0.010 7.024251e-05 1.186030e-06
+22     Rpv12_1      6hpi 0.010 7.025656e-05 1.173504e-06
+23   Rpv12_1_3      6hpi 0.010 7.024349e-05 1.170845e-06
+24 Susceptible      6hpi 0.010 7.024430e-05 1.181045e-06
+25       Rpv12      0hpi 0.020 2.809454e-04 4.713646e-06
+26     Rpv12_1      0hpi 0.020 2.810513e-04 4.778699e-06
+27   Rpv12_1_3      0hpi 0.020 2.809427e-04 4.743797e-06
+28 Susceptible      0hpi 0.020 2.809865e-04 4.738261e-06
+29       Rpv12     24hpi 0.020 2.809733e-04 4.744009e-06
+30     Rpv12_1     24hpi 0.020 2.810031e-04 4.729008e-06
+31   Rpv12_1_3     24hpi 0.020 2.809234e-04 4.801533e-06
+32 Susceptible     24hpi 0.020 2.809221e-04 4.810584e-06
+33       Rpv12      6hpi 0.020 2.809356e-04 4.740053e-06
+34     Rpv12_1      6hpi 0.020 2.809497e-04 4.693676e-06
+35   Rpv12_1_3      6hpi 0.020 2.809846e-04 4.793502e-06
+36 Susceptible      6hpi 0.020 2.810569e-04 4.795575e-06
+37       Rpv12      0hpi 0.050 1.755702e-03 2.967938e-05
+38     Rpv12_1      0hpi 0.050 1.756160e-03 2.981025e-05
+39   Rpv12_1_3      0hpi 0.050 1.755975e-03 2.984907e-05
+40 Susceptible      0hpi 0.050 1.756220e-03 3.002580e-05
+41       Rpv12     24hpi 0.050 1.756169e-03 2.959200e-05
+42     Rpv12_1     24hpi 0.050 1.756492e-03 2.992952e-05
+43   Rpv12_1_3     24hpi 0.050 1.756251e-03 2.987209e-05
+44 Susceptible     24hpi 0.050 1.756390e-03 2.988389e-05
+45       Rpv12      6hpi 0.050 1.756661e-03 2.995587e-05
+46     Rpv12_1      6hpi 0.050 1.756215e-03 2.965407e-05
+47   Rpv12_1_3      6hpi 0.050 1.756357e-03 3.022919e-05
+48 Susceptible      6hpi 0.050 1.755996e-03 2.995068e-05
+49       Rpv12      0hpi 0.100 7.024424e-03 1.200332e-04
+50     Rpv12_1      0hpi 0.100 7.026206e-03 1.186069e-04
+51   Rpv12_1_3      0hpi 0.100 7.023277e-03 1.193401e-04
+52 Susceptible      0hpi 0.100 7.025904e-03 1.198825e-04
+53       Rpv12     24hpi 0.100 7.023118e-03 1.204432e-04
+54     Rpv12_1     24hpi 0.100 7.024456e-03 1.194934e-04
+55   Rpv12_1_3     24hpi 0.100 7.025480e-03 1.181853e-04
+56 Susceptible     24hpi 0.100 7.024458e-03 1.183173e-04
+57       Rpv12      6hpi 0.100 7.023167e-03 1.190832e-04
+58     Rpv12_1      6hpi 0.100 7.022866e-03 1.193107e-04
+59   Rpv12_1_3      6hpi 0.100 7.024448e-03 1.187074e-04
+60 Susceptible      6hpi 0.100 7.024250e-03 1.182911e-04
+   pct_genes_for_75pct.mean pct_genes_for_75pct.sd
+1                11.9692889              0.2038788
+2                11.9730865              0.2014613
+3                11.9745092              0.2042050
+4                11.9720177              0.2010597
+5                11.9733265              0.2023430
+6                11.9713845              0.2042783
+7                11.9722129              0.2039620
+8                11.9705640              0.2024561
+9                11.9749100              0.2005325
+10               11.9718461              0.2030633
+11               11.9726279              0.2037142
+12               11.9685112              0.2018721
+13               11.9744545              0.2024313
+14               11.9725886              0.2032293
+15               11.9712377              0.2017990
+16               11.9744652              0.2029857
+17               11.9705082              0.2026319
+18               11.9717559              0.2033420
+19               11.9747403              0.2050677
+20               11.9716978              0.2043339
+21               11.9712733              0.2018558
+22               11.9722263              0.2015346
+23               11.9702579              0.2019012
+24               11.9719481              0.2010248
+25               11.9738030              0.1988649
+26               11.9703653              0.2044272
+27               11.9713837              0.2022515
+28               11.9732187              0.2021479
+29               11.9723841              0.2003836
+30               11.9729256              0.2025466
+31               11.9750426              0.2023093
+32               11.9773358              0.2052767
+33               11.9743456              0.2006638
+34               11.9750739              0.1993728
+35               11.9708544              0.2022606
+36               11.9714120              0.2038369
+37               11.9759097              0.2023507
+38               11.9727326              0.2036133
+39               11.9738427              0.2013523
+40               11.9714494              0.2022763
+41               11.9735038              0.2018389
+42               11.9697436              0.2040540
+43               11.9711800              0.2037491
+44               11.9684757              0.2033888
+45               11.9693190              0.2043036
+46               11.9688024              0.2033259
+47               11.9705059              0.2042645
+48               11.9729298              0.2036275
+49               11.9724827              0.2008028
+50               11.9689235              0.2032407
+51               11.9726145              0.2025394
+52               11.9729978              0.2022656
+53               11.9746502              0.2056955
+54               11.9722905              0.2010508
+55               11.9728862              0.2013459
+56               11.9708262              0.2048718
+57               11.9738236              0.2028465
+58               11.9725454              0.2032141
+59               11.9727139              0.2026532
+60               11.9733054              0.2006083
+
+Done. Outputs in: 03_AED/AED_check_results/noise_test

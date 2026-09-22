@@ -1,0 +1,1993 @@
+#node	identifier	category	term ID	term description
+ACD6	3702.Q8LPS2	GO Process	GO:0002831	Regulation of response to biotic stimulus
+ACD6	3702.Q8LPS2	GO Process	GO:0002833	Positive regulation of response to biotic stimulus
+ACD6	3702.Q8LPS2	GO Process	GO:0006807	Nitrogen compound metabolic process
+ACD6	3702.Q8LPS2	GO Process	GO:0006950	Response to stress
+ACD6	3702.Q8LPS2	GO Process	GO:0006952	Defense response
+ACD6	3702.Q8LPS2	GO Process	GO:0008152	Metabolic process
+ACD6	3702.Q8LPS2	GO Process	GO:0008219	Cell death
+ACD6	3702.Q8LPS2	GO Process	GO:0009266	Response to temperature stimulus
+ACD6	3702.Q8LPS2	GO Process	GO:0009314	Response to radiation
+ACD6	3702.Q8LPS2	GO Process	GO:0009409	Response to cold
+ACD6	3702.Q8LPS2	GO Process	GO:0009416	Response to light stimulus
+ACD6	3702.Q8LPS2	GO Process	GO:0009605	Response to external stimulus
+ACD6	3702.Q8LPS2	GO Process	GO:0009607	Response to biotic stimulus
+ACD6	3702.Q8LPS2	GO Process	GO:0009615	Response to virus
+ACD6	3702.Q8LPS2	GO Process	GO:0009617	Response to bacterium
+ACD6	3702.Q8LPS2	GO Process	GO:0009628	Response to abiotic stimulus
+ACD6	3702.Q8LPS2	GO Process	GO:0009751	Response to salicylic acid
+ACD6	3702.Q8LPS2	GO Process	GO:0009966	Regulation of signal transduction
+ACD6	3702.Q8LPS2	GO Process	GO:0009987	Cellular process
+ACD6	3702.Q8LPS2	GO Process	GO:0010033	Response to organic substance
+ACD6	3702.Q8LPS2	GO Process	GO:0010646	Regulation of cell communication
+ACD6	3702.Q8LPS2	GO Process	GO:0014070	Response to organic cyclic compound
+ACD6	3702.Q8LPS2	GO Process	GO:0016567	Protein ubiquitination
+ACD6	3702.Q8LPS2	GO Process	GO:0019538	Protein metabolic process
+ACD6	3702.Q8LPS2	GO Process	GO:0023051	Regulation of signaling
+ACD6	3702.Q8LPS2	GO Process	GO:0031347	Regulation of defense response
+ACD6	3702.Q8LPS2	GO Process	GO:0031349	Positive regulation of defense response
+ACD6	3702.Q8LPS2	GO Process	GO:0032101	Regulation of response to external stimulus
+ACD6	3702.Q8LPS2	GO Process	GO:0032103	Positive regulation of response to external stimulus
+ACD6	3702.Q8LPS2	GO Process	GO:0032446	Protein modification by small protein conjugation
+ACD6	3702.Q8LPS2	GO Process	GO:0036211	Protein modification process
+ACD6	3702.Q8LPS2	GO Process	GO:0042221	Response to chemical
+ACD6	3702.Q8LPS2	GO Process	GO:0042742	Defense response to bacterium
+ACD6	3702.Q8LPS2	GO Process	GO:0043170	Macromolecule metabolic process
+ACD6	3702.Q8LPS2	GO Process	GO:0043207	Response to external biotic stimulus
+ACD6	3702.Q8LPS2	GO Process	GO:0043412	Macromolecule modification
+ACD6	3702.Q8LPS2	GO Process	GO:0044238	Primary metabolic process
+ACD6	3702.Q8LPS2	GO Process	GO:0044419	Biological process involved in interspecies interaction between organisms
+ACD6	3702.Q8LPS2	GO Process	GO:0048518	Positive regulation of biological process
+ACD6	3702.Q8LPS2	GO Process	GO:0048583	Regulation of response to stimulus
+ACD6	3702.Q8LPS2	GO Process	GO:0048584	Positive regulation of response to stimulus
+ACD6	3702.Q8LPS2	GO Process	GO:0050789	Regulation of biological process
+ACD6	3702.Q8LPS2	GO Process	GO:0050794	Regulation of cellular process
+ACD6	3702.Q8LPS2	GO Process	GO:0050826	Response to freezing
+ACD6	3702.Q8LPS2	GO Process	GO:0050896	Response to stimulus
+ACD6	3702.Q8LPS2	GO Process	GO:0051707	Response to other organism
+ACD6	3702.Q8LPS2	GO Process	GO:0051716	Cellular response to stimulus
+ACD6	3702.Q8LPS2	GO Process	GO:0065007	Biological regulation
+ACD6	3702.Q8LPS2	GO Process	GO:0070647	Protein modification by small protein conjugation or removal
+ACD6	3702.Q8LPS2	GO Process	GO:0070887	Cellular response to chemical stimulus
+ACD6	3702.Q8LPS2	GO Process	GO:0071310	Cellular response to organic substance
+ACD6	3702.Q8LPS2	GO Process	GO:0071407	Cellular response to organic cyclic compound
+ACD6	3702.Q8LPS2	GO Process	GO:0071446	Cellular response to salicylic acid stimulus
+ACD6	3702.Q8LPS2	GO Process	GO:0071704	Organic substance metabolic process
+ACD6	3702.Q8LPS2	GO Process	GO:0080134	Regulation of response to stress
+ACD6	3702.Q8LPS2	GO Process	GO:0098542	Defense response to other organism
+ACD6	3702.Q8LPS2	GO Process	GO:1900150	Regulation of defense response to fungus
+ACD6	3702.Q8LPS2	GO Process	GO:1900424	Regulation of defense response to bacterium
+ACD6	3702.Q8LPS2	GO Process	GO:1900426	Positive regulation of defense response to bacterium
+ACD6	3702.Q8LPS2	GO Process	GO:1901564	Organonitrogen compound metabolic process
+ACD6	3702.Q8LPS2	GO Process	GO:1901700	Response to oxygen-containing compound
+ACD6	3702.Q8LPS2	GO Process	GO:1901701	Cellular response to oxygen-containing compound
+ACD6	3702.Q8LPS2	GO Process	GO:1902288	Regulation of defense response to oomycetes
+ACD6	3702.Q8LPS2	GO Process	GO:1902290	Positive regulation of defense response to oomycetes
+ACD6	3702.Q8LPS2	GO Process	GO:2000031	Regulation of salicylic acid mediated signaling pathway
+ACD6	3702.Q8LPS2	GO Component	GO:0005622	Intracellular anatomical structure
+ACD6	3702.Q8LPS2	GO Component	GO:0005737	Cytoplasm
+ACD6	3702.Q8LPS2	GO Component	GO:0005783	Endoplasmic reticulum
+ACD6	3702.Q8LPS2	GO Component	GO:0005789	Endoplasmic reticulum membrane
+ACD6	3702.Q8LPS2	GO Component	GO:0005886	Plasma membrane
+ACD6	3702.Q8LPS2	GO Component	GO:0005887	Integral component of plasma membrane
+ACD6	3702.Q8LPS2	GO Component	GO:0012505	Endomembrane system
+ACD6	3702.Q8LPS2	GO Component	GO:0016020	Membrane
+ACD6	3702.Q8LPS2	GO Component	GO:0016021	Integral component of membrane
+ACD6	3702.Q8LPS2	GO Component	GO:0030176	Integral component of endoplasmic reticulum membrane
+ACD6	3702.Q8LPS2	GO Component	GO:0031090	Organelle membrane
+ACD6	3702.Q8LPS2	GO Component	GO:0031224	Intrinsic component of membrane
+ACD6	3702.Q8LPS2	GO Component	GO:0031226	Intrinsic component of plasma membrane
+ACD6	3702.Q8LPS2	GO Component	GO:0031227	Intrinsic component of endoplasmic reticulum membrane
+ACD6	3702.Q8LPS2	GO Component	GO:0031300	Intrinsic component of organelle membrane
+ACD6	3702.Q8LPS2	GO Component	GO:0031301	Integral component of organelle membrane
+ACD6	3702.Q8LPS2	GO Component	GO:0031984	Organelle subcompartment
+ACD6	3702.Q8LPS2	GO Component	GO:0042175	Nuclear outer membrane-endoplasmic reticulum membrane network
+ACD6	3702.Q8LPS2	GO Component	GO:0043226	Organelle
+ACD6	3702.Q8LPS2	GO Component	GO:0043227	Membrane-bounded organelle
+ACD6	3702.Q8LPS2	GO Component	GO:0043229	Intracellular organelle
+ACD6	3702.Q8LPS2	GO Component	GO:0043231	Intracellular membrane-bounded organelle
+ACD6	3702.Q8LPS2	GO Component	GO:0071944	Cell periphery
+ACD6	3702.Q8LPS2	GO Component	GO:0098827	Endoplasmic reticulum subcompartment
+ACD6	3702.Q8LPS2	GO Component	GO:0110165	Cellular anatomical entity
+ACD6	3702.Q8LPS2	STRING clusters	CL:25998	Mixed, incl. WRKY transcription factor, plant, and Jasmonic acid signaling pathway
+ACD6	3702.Q8LPS2	STRING clusters	CL:25999	Mixed, incl. Jasmonic acid signaling pathway, and alpha-Linolenic acid metabolism
+ACD6	3702.Q8LPS2	STRING clusters	CL:26107	Mixed, incl. Regulation of systemic acquired resistance, and Systemic acquired resistance
+ACD6	3702.Q8LPS2	STRING clusters	CL:26108	Mixed, incl. Regulatory protein NPR, central domain, and NPR1 interacting
+ACD6	3702.Q8LPS2	STRING clusters	CL:26110	Mixed, incl. Regulatory protein NPR, central domain, and Response to xenobiotic stimulus
+ACD6	3702.Q8LPS2	STRING clusters	CL:26112	Mixed, incl. Regulatory protein NPR, and Cullin
+ACD6	3702.Q8LPS2	COMPARTMENTS	GOCC:0005622	Intracellular
+ACD6	3702.Q8LPS2	COMPARTMENTS	GOCC:0005737	Cytoplasm
+ACD6	3702.Q8LPS2	COMPARTMENTS	GOCC:0005783	Endoplasmic reticulum
+ACD6	3702.Q8LPS2	COMPARTMENTS	GOCC:0005789	Endoplasmic reticulum membrane
+ACD6	3702.Q8LPS2	COMPARTMENTS	GOCC:0005886	Plasma membrane
+ACD6	3702.Q8LPS2	COMPARTMENTS	GOCC:0005887	Integral component of plasma membrane
+ACD6	3702.Q8LPS2	COMPARTMENTS	GOCC:0012505	Endomembrane system
+ACD6	3702.Q8LPS2	COMPARTMENTS	GOCC:0016020	Membrane
+ACD6	3702.Q8LPS2	COMPARTMENTS	GOCC:0016021	Integral component of membrane
+ACD6	3702.Q8LPS2	COMPARTMENTS	GOCC:0030176	Integral component of endoplasmic reticulum membrane
+ACD6	3702.Q8LPS2	COMPARTMENTS	GOCC:0031090	Organelle membrane
+ACD6	3702.Q8LPS2	COMPARTMENTS	GOCC:0031224	Intrinsic component of membrane
+ACD6	3702.Q8LPS2	COMPARTMENTS	GOCC:0031226	Intrinsic component of plasma membrane
+ACD6	3702.Q8LPS2	COMPARTMENTS	GOCC:0031227	Intrinsic component of endoplasmic reticulum membrane
+ACD6	3702.Q8LPS2	COMPARTMENTS	GOCC:0031300	Intrinsic component of organelle membrane
+ACD6	3702.Q8LPS2	COMPARTMENTS	GOCC:0031301	Integral component of organelle membrane
+ACD6	3702.Q8LPS2	COMPARTMENTS	GOCC:0031984	Organelle subcompartment
+ACD6	3702.Q8LPS2	COMPARTMENTS	GOCC:0042175	Nuclear outer membrane-endoplasmic reticulum membrane network
+ACD6	3702.Q8LPS2	COMPARTMENTS	GOCC:0043226	Organelle
+ACD6	3702.Q8LPS2	COMPARTMENTS	GOCC:0043227	Membrane-bounded organelle
+ACD6	3702.Q8LPS2	COMPARTMENTS	GOCC:0043229	Intracellular organelle
+ACD6	3702.Q8LPS2	COMPARTMENTS	GOCC:0043231	Intracellular membrane-bounded organelle
+ACD6	3702.Q8LPS2	COMPARTMENTS	GOCC:0071944	Cell periphery
+ACD6	3702.Q8LPS2	COMPARTMENTS	GOCC:0098827	Endoplasmic reticulum subcompartment
+ACD6	3702.Q8LPS2	COMPARTMENTS	GOCC:0110165	Cellular anatomical entity
+ACD6	3702.Q8LPS2	UniProt Keywords	KW-0025	Alternative splicing
+ACD6	3702.Q8LPS2	UniProt Keywords	KW-0040	ANK repeat
+ACD6	3702.Q8LPS2	UniProt Keywords	KW-0256	Endoplasmic reticulum
+ACD6	3702.Q8LPS2	UniProt Keywords	KW-0472	Membrane
+ACD6	3702.Q8LPS2	UniProt Keywords	KW-0611	Plant defense
+ACD6	3702.Q8LPS2	UniProt Keywords	KW-0677	Repeat
+ACD6	3702.Q8LPS2	UniProt Keywords	KW-0812	Transmembrane
+ACD6	3702.Q8LPS2	UniProt Keywords	KW-0832	Ubl conjugation
+ACD6	3702.Q8LPS2	UniProt Keywords	KW-1003	Cell membrane
+ACD6	3702.Q8LPS2	UniProt Keywords	KW-1133	Transmembrane helix
+ACD6	3702.Q8LPS2	Pfam	PF13962	Domain of unknown function
+ACD6	3702.Q8LPS2	InterPro	IPR002110	Ankyrin repeat
+ACD6	3702.Q8LPS2	InterPro	IPR026961	PGG domain
+ACD6	3702.Q8LPS2	InterPro	IPR036770	Ankyrin repeat-containing domain superfamily
+ACD6	3702.Q8LPS2	SMART	SM00248	Ankyrin repeats
+BAK1	3702.Q94F62	GO Process	GO:0006468	Protein phosphorylation
+BAK1	3702.Q94F62	GO Process	GO:0006793	Phosphorus metabolic process
+BAK1	3702.Q94F62	GO Process	GO:0006796	Phosphate-containing compound metabolic process
+BAK1	3702.Q94F62	GO Process	GO:0006807	Nitrogen compound metabolic process
+BAK1	3702.Q94F62	GO Process	GO:0006950	Response to stress
+BAK1	3702.Q94F62	GO Process	GO:0006952	Defense response
+BAK1	3702.Q94F62	GO Process	GO:0007154	Cell communication
+BAK1	3702.Q94F62	GO Process	GO:0007165	Signal transduction
+BAK1	3702.Q94F62	GO Process	GO:0007166	Cell surface receptor signaling pathway
+BAK1	3702.Q94F62	GO Process	GO:0007167	Enzyme-linked receptor protein signaling pathway
+BAK1	3702.Q94F62	GO Process	GO:0007178	Transmembrane receptor protein serine/threonine kinase signaling pathway
+BAK1	3702.Q94F62	GO Process	GO:0008152	Metabolic process
+BAK1	3702.Q94F62	GO Process	GO:0009987	Cellular process
+BAK1	3702.Q94F62	GO Process	GO:0016310	Phosphorylation
+BAK1	3702.Q94F62	GO Process	GO:0018108	Peptidyl-tyrosine phosphorylation
+BAK1	3702.Q94F62	GO Process	GO:0018193	Peptidyl-amino acid modification
+BAK1	3702.Q94F62	GO Process	GO:0018212	Peptidyl-tyrosine modification
+BAK1	3702.Q94F62	GO Process	GO:0019538	Protein metabolic process
+BAK1	3702.Q94F62	GO Process	GO:0023052	Signaling
+BAK1	3702.Q94F62	GO Process	GO:0036211	Protein modification process
+BAK1	3702.Q94F62	GO Process	GO:0043170	Macromolecule metabolic process
+BAK1	3702.Q94F62	GO Process	GO:0043412	Macromolecule modification
+BAK1	3702.Q94F62	GO Process	GO:0044237	Cellular metabolic process
+BAK1	3702.Q94F62	GO Process	GO:0044238	Primary metabolic process
+BAK1	3702.Q94F62	GO Process	GO:0050789	Regulation of biological process
+BAK1	3702.Q94F62	GO Process	GO:0050794	Regulation of cellular process
+BAK1	3702.Q94F62	GO Process	GO:0050896	Response to stimulus
+BAK1	3702.Q94F62	GO Process	GO:0051716	Cellular response to stimulus
+BAK1	3702.Q94F62	GO Process	GO:0065007	Biological regulation
+BAK1	3702.Q94F62	GO Process	GO:0071704	Organic substance metabolic process
+BAK1	3702.Q94F62	GO Process	GO:1901564	Organonitrogen compound metabolic process
+BAK1	3702.Q94F62	GO Function	GO:0000166	Nucleotide binding
+BAK1	3702.Q94F62	GO Function	GO:0003824	Catalytic activity
+BAK1	3702.Q94F62	GO Function	GO:0004672	Protein kinase activity
+BAK1	3702.Q94F62	GO Function	GO:0004674	Protein serine/threonine kinase activity
+BAK1	3702.Q94F62	GO Function	GO:0004675	Transmembrane receptor protein serine/threonine kinase activity
+BAK1	3702.Q94F62	GO Function	GO:0004713	Protein tyrosine kinase activity
+BAK1	3702.Q94F62	GO Function	GO:0004714	Transmembrane receptor protein tyrosine kinase activity
+BAK1	3702.Q94F62	GO Function	GO:0004888	Transmembrane signaling receptor activity
+BAK1	3702.Q94F62	GO Function	GO:0005102	Signaling receptor binding
+BAK1	3702.Q94F62	GO Function	GO:0005488	Binding
+BAK1	3702.Q94F62	GO Function	GO:0005515	Protein binding
+BAK1	3702.Q94F62	GO Function	GO:0005524	ATP binding
+BAK1	3702.Q94F62	GO Function	GO:0016301	Kinase activity
+BAK1	3702.Q94F62	GO Function	GO:0016740	Transferase activity
+BAK1	3702.Q94F62	GO Function	GO:0016772	Transferase activity, transferring phosphorus-containing groups
+BAK1	3702.Q94F62	GO Function	GO:0016773	Phosphotransferase activity, alcohol group as acceptor
+BAK1	3702.Q94F62	GO Function	GO:0017076	Purine nucleotide binding
+BAK1	3702.Q94F62	GO Function	GO:0019199	Transmembrane receptor protein kinase activity
+BAK1	3702.Q94F62	GO Function	GO:0030554	Adenyl nucleotide binding
+BAK1	3702.Q94F62	GO Function	GO:0032553	Ribonucleotide binding
+BAK1	3702.Q94F62	GO Function	GO:0032555	Purine ribonucleotide binding
+BAK1	3702.Q94F62	GO Function	GO:0032559	Adenyl ribonucleotide binding
+BAK1	3702.Q94F62	GO Function	GO:0033612	Receptor serine/threonine kinase binding
+BAK1	3702.Q94F62	GO Function	GO:0035639	Purine ribonucleoside triphosphate binding
+BAK1	3702.Q94F62	GO Function	GO:0036094	Small molecule binding
+BAK1	3702.Q94F62	GO Function	GO:0038023	Signaling receptor activity
+BAK1	3702.Q94F62	GO Function	GO:0042802	Identical protein binding
+BAK1	3702.Q94F62	GO Function	GO:0043167	Ion binding
+BAK1	3702.Q94F62	GO Function	GO:0043168	Anion binding
+BAK1	3702.Q94F62	GO Function	GO:0060089	Molecular transducer activity
+BAK1	3702.Q94F62	GO Function	GO:0097159	Organic cyclic compound binding
+BAK1	3702.Q94F62	GO Function	GO:0097367	Carbohydrate derivative binding
+BAK1	3702.Q94F62	GO Function	GO:0106310	Protein serine kinase activity
+BAK1	3702.Q94F62	GO Function	GO:0140096	Catalytic activity, acting on a protein
+BAK1	3702.Q94F62	GO Function	GO:1901265	Nucleoside phosphate binding
+BAK1	3702.Q94F62	GO Function	GO:1901363	Heterocyclic compound binding
+BAK1	3702.Q94F62	GO Component	GO:0005622	Intracellular anatomical structure
+BAK1	3702.Q94F62	GO Component	GO:0005737	Cytoplasm
+BAK1	3702.Q94F62	GO Component	GO:0005768	Endosome
+BAK1	3702.Q94F62	GO Component	GO:0005886	Plasma membrane
+BAK1	3702.Q94F62	GO Component	GO:0010008	Endosome membrane
+BAK1	3702.Q94F62	GO Component	GO:0012505	Endomembrane system
+BAK1	3702.Q94F62	GO Component	GO:0012506	Vesicle membrane
+BAK1	3702.Q94F62	GO Component	GO:0016020	Membrane
+BAK1	3702.Q94F62	GO Component	GO:0016021	Integral component of membrane
+BAK1	3702.Q94F62	GO Component	GO:0030659	Cytoplasmic vesicle membrane
+BAK1	3702.Q94F62	GO Component	GO:0031090	Organelle membrane
+BAK1	3702.Q94F62	GO Component	GO:0031224	Intrinsic component of membrane
+BAK1	3702.Q94F62	GO Component	GO:0031410	Cytoplasmic vesicle
+BAK1	3702.Q94F62	GO Component	GO:0031982	Vesicle
+BAK1	3702.Q94F62	GO Component	GO:0043226	Organelle
+BAK1	3702.Q94F62	GO Component	GO:0043227	Membrane-bounded organelle
+BAK1	3702.Q94F62	GO Component	GO:0043229	Intracellular organelle
+BAK1	3702.Q94F62	GO Component	GO:0043231	Intracellular membrane-bounded organelle
+BAK1	3702.Q94F62	GO Component	GO:0071944	Cell periphery
+BAK1	3702.Q94F62	GO Component	GO:0097708	Intracellular vesicle
+BAK1	3702.Q94F62	GO Component	GO:0098588	Bounding membrane of organelle
+BAK1	3702.Q94F62	GO Component	GO:0110165	Cellular anatomical entity
+BAK1	3702.Q94F62	STRING clusters	CL:22145	Mixed, incl. Immune system process, and PUB protein, U-box domain, plant
+BAK1	3702.Q94F62	STRING clusters	CL:22146	Mixed, incl. Immune system process, and PUB protein, U-box domain, plant
+BAK1	3702.Q94F62	STRING clusters	CL:22147	Mixed, incl. LysM domain, and Elicitor peptide
+BAK1	3702.Q94F62	STRING clusters	CL:22148	Mixed, incl. LysM domain, and Elicitor peptide
+BAK1	3702.Q94F62	STRING clusters	CL:22149	Mixed, incl. LysM domain, and Elicitor peptide
+BAK1	3702.Q94F62	STRING clusters	CL:22151	Mixed, incl. LysM domain, and Elicitor peptide
+BAK1	3702.Q94F62	STRING clusters	CL:22152	Mixed, incl. LysM domain, and Detection of biotic stimulus
+BAK1	3702.Q94F62	STRING clusters	CL:22153	Mixed, incl. Detection of bacterium, and Elongation factor Tu, domain 2
+BAK1	3702.Q94F62	STRING clusters	CL:22156	Detection of bacterium, and Elongation factor Tu, domain 2
+BAK1	3702.Q94F62	KEGG	ath04016	MAPK signaling pathway - plant
+BAK1	3702.Q94F62	KEGG	ath04075	Plant hormone signal transduction
+BAK1	3702.Q94F62	KEGG	ath04626	Plant-pathogen interaction
+BAK1	3702.Q94F62	COMPARTMENTS	GOCC:0005886	Plasma membrane
+BAK1	3702.Q94F62	COMPARTMENTS	GOCC:0005887	Integral component of plasma membrane
+BAK1	3702.Q94F62	COMPARTMENTS	GOCC:0016020	Membrane
+BAK1	3702.Q94F62	COMPARTMENTS	GOCC:0016021	Integral component of membrane
+BAK1	3702.Q94F62	COMPARTMENTS	GOCC:0031224	Intrinsic component of membrane
+BAK1	3702.Q94F62	COMPARTMENTS	GOCC:0031226	Intrinsic component of plasma membrane
+BAK1	3702.Q94F62	COMPARTMENTS	GOCC:0032991	Protein-containing complex
+BAK1	3702.Q94F62	COMPARTMENTS	GOCC:0043235	Receptor complex
+BAK1	3702.Q94F62	COMPARTMENTS	GOCC:0044214	Spanning component of plasma membrane
+BAK1	3702.Q94F62	COMPARTMENTS	GOCC:0071944	Cell periphery
+BAK1	3702.Q94F62	COMPARTMENTS	GOCC:0089717	Spanning component of membrane
+BAK1	3702.Q94F62	COMPARTMENTS	GOCC:0097136	Bcl-2 family protein complex
+BAK1	3702.Q94F62	COMPARTMENTS	GOCC:0097145	BAK complex
+BAK1	3702.Q94F62	COMPARTMENTS	GOCC:0110165	Cellular anatomical entity
+BAK1	3702.Q94F62	UniProt Keywords	KW-0025	Alternative splicing
+BAK1	3702.Q94F62	UniProt Keywords	KW-0067	ATP-binding
+BAK1	3702.Q94F62	UniProt Keywords	KW-0325	Glycoprotein
+BAK1	3702.Q94F62	UniProt Keywords	KW-0418	Kinase
+BAK1	3702.Q94F62	UniProt Keywords	KW-0433	Leucine-rich repeat
+BAK1	3702.Q94F62	UniProt Keywords	KW-0472	Membrane
+BAK1	3702.Q94F62	UniProt Keywords	KW-0547	Nucleotide-binding
+BAK1	3702.Q94F62	UniProt Keywords	KW-0597	Phosphoprotein
+BAK1	3702.Q94F62	UniProt Keywords	KW-0611	Plant defense
+BAK1	3702.Q94F62	UniProt Keywords	KW-0675	Receptor
+BAK1	3702.Q94F62	UniProt Keywords	KW-0677	Repeat
+BAK1	3702.Q94F62	UniProt Keywords	KW-0723	Serine/threonine-protein kinase
+BAK1	3702.Q94F62	UniProt Keywords	KW-0732	Signal
+BAK1	3702.Q94F62	UniProt Keywords	KW-0808	Transferase
+BAK1	3702.Q94F62	UniProt Keywords	KW-0812	Transmembrane
+BAK1	3702.Q94F62	UniProt Keywords	KW-0829	Tyrosine-protein kinase
+BAK1	3702.Q94F62	UniProt Keywords	KW-0967	Endosome
+BAK1	3702.Q94F62	UniProt Keywords	KW-1003	Cell membrane
+BAK1	3702.Q94F62	UniProt Keywords	KW-1015	Disulfide bond
+BAK1	3702.Q94F62	UniProt Keywords	KW-1133	Transmembrane helix
+BAK1	3702.Q94F62	Pfam	PF00560	Leucine Rich Repeat
+BAK1	3702.Q94F62	Pfam	PF08263	Leucine rich repeat N-terminal domain
+BAK1	3702.Q94F62	Pfam	PF13855	Leucine rich repeat
+BAK1	3702.Q94F62	InterPro	IPR000719	Protein kinase domain
+BAK1	3702.Q94F62	InterPro	IPR001611	Leucine-rich repeat
+BAK1	3702.Q94F62	InterPro	IPR008271	Serine/threonine-protein kinase, active site
+BAK1	3702.Q94F62	InterPro	IPR011009	Protein kinase-like domain superfamily
+BAK1	3702.Q94F62	InterPro	IPR013210	Leucine-rich repeat-containing N-terminal, plant-type
+BAK1	3702.Q94F62	InterPro	IPR017441	Protein kinase, ATP binding site
+BAK1	3702.Q94F62	InterPro	IPR032675	Leucine-rich repeat domain superfamily
+EDS1	3702.Q9SU72	GO Process	GO:0000302	Response to reactive oxygen species
+EDS1	3702.Q9SU72	GO Process	GO:0000304	Response to singlet oxygen
+EDS1	3702.Q9SU72	GO Process	GO:0001666	Response to hypoxia
+EDS1	3702.Q9SU72	GO Process	GO:0002376	Immune system process
+EDS1	3702.Q9SU72	GO Process	GO:0006629	Lipid metabolic process
+EDS1	3702.Q9SU72	GO Process	GO:0006950	Response to stress
+EDS1	3702.Q9SU72	GO Process	GO:0006952	Defense response
+EDS1	3702.Q9SU72	GO Process	GO:0006955	Immune response
+EDS1	3702.Q9SU72	GO Process	GO:0006979	Response to oxidative stress
+EDS1	3702.Q9SU72	GO Process	GO:0007154	Cell communication
+EDS1	3702.Q9SU72	GO Process	GO:0007165	Signal transduction
+EDS1	3702.Q9SU72	GO Process	GO:0007275	Multicellular organism development
+EDS1	3702.Q9SU72	GO Process	GO:0008152	Metabolic process
+EDS1	3702.Q9SU72	GO Process	GO:0008219	Cell death
+EDS1	3702.Q9SU72	GO Process	GO:0009605	Response to external stimulus
+EDS1	3702.Q9SU72	GO Process	GO:0009607	Response to biotic stimulus
+EDS1	3702.Q9SU72	GO Process	GO:0009617	Response to bacterium
+EDS1	3702.Q9SU72	GO Process	GO:0009626	Plant-type hypersensitive response
+EDS1	3702.Q9SU72	GO Process	GO:0009627	Systemic acquired resistance
+EDS1	3702.Q9SU72	GO Process	GO:0009628	Response to abiotic stimulus
+EDS1	3702.Q9SU72	GO Process	GO:0009653	Anatomical structure morphogenesis
+EDS1	3702.Q9SU72	GO Process	GO:0009751	Response to salicylic acid
+EDS1	3702.Q9SU72	GO Process	GO:0009838	Abscission
+EDS1	3702.Q9SU72	GO Process	GO:0009862	Systemic acquired resistance, salicylic acid mediated signaling pathway
+EDS1	3702.Q9SU72	GO Process	GO:0009863	Salicylic acid mediated signaling pathway
+EDS1	3702.Q9SU72	GO Process	GO:0009987	Cellular process
+EDS1	3702.Q9SU72	GO Process	GO:0010033	Response to organic substance
+EDS1	3702.Q9SU72	GO Process	GO:0010035	Response to inorganic substance
+EDS1	3702.Q9SU72	GO Process	GO:0010310	Regulation of hydrogen peroxide metabolic process
+EDS1	3702.Q9SU72	GO Process	GO:0010618	Aerenchyma formation
+EDS1	3702.Q9SU72	GO Process	GO:0010941	Regulation of cell death
+EDS1	3702.Q9SU72	GO Process	GO:0010942	Positive regulation of cell death
+EDS1	3702.Q9SU72	GO Process	GO:0012501	Programmed cell death
+EDS1	3702.Q9SU72	GO Process	GO:0014070	Response to organic cyclic compound
+EDS1	3702.Q9SU72	GO Process	GO:0019222	Regulation of metabolic process
+EDS1	3702.Q9SU72	GO Process	GO:0023052	Signaling
+EDS1	3702.Q9SU72	GO Process	GO:0031323	Regulation of cellular metabolic process
+EDS1	3702.Q9SU72	GO Process	GO:0032501	Multicellular organismal process
+EDS1	3702.Q9SU72	GO Process	GO:0032502	Developmental process
+EDS1	3702.Q9SU72	GO Process	GO:0033554	Cellular response to stress
+EDS1	3702.Q9SU72	GO Process	GO:0034050	Programmed cell death induced by symbiont
+EDS1	3702.Q9SU72	GO Process	GO:0036293	Response to decreased oxygen levels
+EDS1	3702.Q9SU72	GO Process	GO:0042221	Response to chemical
+EDS1	3702.Q9SU72	GO Process	GO:0042742	Defense response to bacterium
+EDS1	3702.Q9SU72	GO Process	GO:0043207	Response to external biotic stimulus
+EDS1	3702.Q9SU72	GO Process	GO:0044238	Primary metabolic process
+EDS1	3702.Q9SU72	GO Process	GO:0044403	Biological process involved in symbiotic interaction
+EDS1	3702.Q9SU72	GO Process	GO:0044419	Biological process involved in interspecies interaction between organisms
+EDS1	3702.Q9SU72	GO Process	GO:0045087	Innate immune response
+EDS1	3702.Q9SU72	GO Process	GO:0048518	Positive regulation of biological process
+EDS1	3702.Q9SU72	GO Process	GO:0048522	Positive regulation of cellular process
+EDS1	3702.Q9SU72	GO Process	GO:0048646	Anatomical structure formation involved in morphogenesis
+EDS1	3702.Q9SU72	GO Process	GO:0048856	Anatomical structure development
+EDS1	3702.Q9SU72	GO Process	GO:0050789	Regulation of biological process
+EDS1	3702.Q9SU72	GO Process	GO:0050794	Regulation of cellular process
+EDS1	3702.Q9SU72	GO Process	GO:0050829	Defense response to Gram-negative bacterium
+EDS1	3702.Q9SU72	GO Process	GO:0050896	Response to stimulus
+EDS1	3702.Q9SU72	GO Process	GO:0051702	Biological process involved in interaction with symbiont
+EDS1	3702.Q9SU72	GO Process	GO:0051707	Response to other organism
+EDS1	3702.Q9SU72	GO Process	GO:0051716	Cellular response to stimulus
+EDS1	3702.Q9SU72	GO Process	GO:0060866	Leaf abscission
+EDS1	3702.Q9SU72	GO Process	GO:0065007	Biological regulation
+EDS1	3702.Q9SU72	GO Process	GO:0070482	Response to oxygen levels
+EDS1	3702.Q9SU72	GO Process	GO:0070887	Cellular response to chemical stimulus
+EDS1	3702.Q9SU72	GO Process	GO:0071310	Cellular response to organic substance
+EDS1	3702.Q9SU72	GO Process	GO:0071407	Cellular response to organic cyclic compound
+EDS1	3702.Q9SU72	GO Process	GO:0071446	Cellular response to salicylic acid stimulus
+EDS1	3702.Q9SU72	GO Process	GO:0071704	Organic substance metabolic process
+EDS1	3702.Q9SU72	GO Process	GO:0098542	Defense response to other organism
+EDS1	3702.Q9SU72	GO Process	GO:1901700	Response to oxygen-containing compound
+EDS1	3702.Q9SU72	GO Process	GO:1901701	Cellular response to oxygen-containing compound
+EDS1	3702.Q9SU72	GO Process	GO:2000377	Regulation of reactive oxygen species metabolic process
+EDS1	3702.Q9SU72	GO Function	GO:0003824	Catalytic activity
+EDS1	3702.Q9SU72	GO Function	GO:0005488	Binding
+EDS1	3702.Q9SU72	GO Function	GO:0005515	Protein binding
+EDS1	3702.Q9SU72	GO Function	GO:0016298	Lipase activity
+EDS1	3702.Q9SU72	GO Function	GO:0016787	Hydrolase activity
+EDS1	3702.Q9SU72	GO Function	GO:0016788	Hydrolase activity, acting on ester bonds
+EDS1	3702.Q9SU72	GO Function	GO:0042802	Identical protein binding
+EDS1	3702.Q9SU72	GO Function	GO:0042803	Protein homodimerization activity
+EDS1	3702.Q9SU72	GO Function	GO:0046983	Protein dimerization activity
+EDS1	3702.Q9SU72	GO Component	GO:0005622	Intracellular anatomical structure
+EDS1	3702.Q9SU72	GO Component	GO:0005634	Nucleus
+EDS1	3702.Q9SU72	GO Component	GO:0005737	Cytoplasm
+EDS1	3702.Q9SU72	GO Component	GO:0005783	Endoplasmic reticulum
+EDS1	3702.Q9SU72	GO Component	GO:0005829	Cytosol
+EDS1	3702.Q9SU72	GO Component	GO:0009507	Chloroplast
+EDS1	3702.Q9SU72	GO Component	GO:0009536	Plastid
+EDS1	3702.Q9SU72	GO Component	GO:0012505	Endomembrane system
+EDS1	3702.Q9SU72	GO Component	GO:0032991	Protein-containing complex
+EDS1	3702.Q9SU72	GO Component	GO:0043226	Organelle
+EDS1	3702.Q9SU72	GO Component	GO:0043227	Membrane-bounded organelle
+EDS1	3702.Q9SU72	GO Component	GO:0043229	Intracellular organelle
+EDS1	3702.Q9SU72	GO Component	GO:0043231	Intracellular membrane-bounded organelle
+EDS1	3702.Q9SU72	GO Component	GO:0106093	EDS1 disease-resistance complex
+EDS1	3702.Q9SU72	GO Component	GO:0110165	Cellular anatomical entity
+EDS1	3702.Q9SU72	STRING clusters	CL:22145	Mixed, incl. Immune system process, and PUB protein, U-box domain, plant
+EDS1	3702.Q9SU72	STRING clusters	CL:22146	Mixed, incl. Immune system process, and PUB protein, U-box domain, plant
+EDS1	3702.Q9SU72	STRING clusters	CL:22272	Mixed, incl. Plant-type hypersensitive response, and NAD+ nucleosidase activity
+EDS1	3702.Q9SU72	STRING clusters	CL:22273	Mixed, incl. Plant-type hypersensitive response, and NAD+ nucleosidase activity
+EDS1	3702.Q9SU72	STRING clusters	CL:22275	Mixed, incl. Plant-type hypersensitive response, and NAD+ nucleosidase activity
+EDS1	3702.Q9SU72	STRING clusters	CL:22276	Mixed, incl. EDS1, EP domain, and Virus X resistance protein-like, coiled-coil domain
+EDS1	3702.Q9SU72	STRING clusters	CL:22278	Mixed, incl. EDS1, EP domain, and Ligase activity, forming phosphoric ester bonds
+EDS1	3702.Q9SU72	STRING clusters	CL:22280	Mixed, incl. EDS1, EP domain, and Ligase activity, forming phosphoric ester bonds
+EDS1	3702.Q9SU72	KEGG	ath04626	Plant-pathogen interaction
+EDS1	3702.Q9SU72	COMPARTMENTS	GOCC:0005622	Intracellular
+EDS1	3702.Q9SU72	COMPARTMENTS	GOCC:0005634	Nucleus
+EDS1	3702.Q9SU72	COMPARTMENTS	GOCC:0005737	Cytoplasm
+EDS1	3702.Q9SU72	COMPARTMENTS	GOCC:0005829	Cytosol
+EDS1	3702.Q9SU72	COMPARTMENTS	GOCC:0005886	Plasma membrane
+EDS1	3702.Q9SU72	COMPARTMENTS	GOCC:0005887	Integral component of plasma membrane
+EDS1	3702.Q9SU72	COMPARTMENTS	GOCC:0009507	Chloroplast
+EDS1	3702.Q9SU72	COMPARTMENTS	GOCC:0009536	Plastid
+EDS1	3702.Q9SU72	COMPARTMENTS	GOCC:0016020	Membrane
+EDS1	3702.Q9SU72	COMPARTMENTS	GOCC:0016021	Integral component of membrane
+EDS1	3702.Q9SU72	COMPARTMENTS	GOCC:0031224	Intrinsic component of membrane
+EDS1	3702.Q9SU72	COMPARTMENTS	GOCC:0031226	Intrinsic component of plasma membrane
+EDS1	3702.Q9SU72	COMPARTMENTS	GOCC:0032991	Protein-containing complex
+EDS1	3702.Q9SU72	COMPARTMENTS	GOCC:0043226	Organelle
+EDS1	3702.Q9SU72	COMPARTMENTS	GOCC:0043227	Membrane-bounded organelle
+EDS1	3702.Q9SU72	COMPARTMENTS	GOCC:0043229	Intracellular organelle
+EDS1	3702.Q9SU72	COMPARTMENTS	GOCC:0043231	Intracellular membrane-bounded organelle
+EDS1	3702.Q9SU72	COMPARTMENTS	GOCC:0043235	Receptor complex
+EDS1	3702.Q9SU72	COMPARTMENTS	GOCC:0045323	interleukin-1 receptor complex
+EDS1	3702.Q9SU72	COMPARTMENTS	GOCC:0071944	Cell periphery
+EDS1	3702.Q9SU72	COMPARTMENTS	GOCC:0098796	Membrane protein complex
+EDS1	3702.Q9SU72	COMPARTMENTS	GOCC:0098797	Plasma membrane protein complex
+EDS1	3702.Q9SU72	COMPARTMENTS	GOCC:0098802	Plasma membrane signaling receptor complex
+EDS1	3702.Q9SU72	COMPARTMENTS	GOCC:0106093	EDS1 disease-resistance complex
+EDS1	3702.Q9SU72	COMPARTMENTS	GOCC:0110165	Cellular anatomical entity
+EDS1	3702.Q9SU72	UniProt Keywords	KW-0007	Acetylation
+EDS1	3702.Q9SU72	UniProt Keywords	KW-0025	Alternative splicing
+EDS1	3702.Q9SU72	UniProt Keywords	KW-0175	Coiled coil
+EDS1	3702.Q9SU72	UniProt Keywords	KW-0256	Endoplasmic reticulum
+EDS1	3702.Q9SU72	UniProt Keywords	KW-0378	Hydrolase
+EDS1	3702.Q9SU72	UniProt Keywords	KW-0492	Microsome
+EDS1	3702.Q9SU72	UniProt Keywords	KW-0539	Nucleus
+EDS1	3702.Q9SU72	UniProt Keywords	KW-0611	Plant defense
+EDS1	3702.Q9SU72	UniProt Keywords	KW-0963	Cytoplasm
+EDS1	3702.Q9SU72	Pfam	PF01764	Lipase (class 3)
+EDS1	3702.Q9SU72	InterPro	IPR002921	Fungal lipase-like domain
+EDS1	3702.Q9SU72	InterPro	IPR029058	Alpha/Beta hydrolase fold
+EDS1	3702.Q9SU72	InterPro	IPR041266	EDS1, EP domain
+EDS1	3702.Q9SU72	InterPro	IPR044214	EDS1-like
+F19I3.16	3702.O64757	GO Process	GO:0002239	Response to oomycetes
+F19I3.16	3702.O64757	GO Process	GO:0006950	Response to stress
+F19I3.16	3702.O64757	GO Process	GO:0006952	Defense response
+F19I3.16	3702.O64757	GO Process	GO:0009605	Response to external stimulus
+F19I3.16	3702.O64757	GO Process	GO:0009607	Response to biotic stimulus
+F19I3.16	3702.O64757	GO Process	GO:0009620	Response to fungus
+F19I3.16	3702.O64757	GO Process	GO:0043207	Response to external biotic stimulus
+F19I3.16	3702.O64757	GO Process	GO:0044419	Biological process involved in interspecies interaction between organisms
+F19I3.16	3702.O64757	GO Process	GO:0050832	Defense response to fungus
+F19I3.16	3702.O64757	GO Process	GO:0050896	Response to stimulus
+F19I3.16	3702.O64757	GO Process	GO:0051707	Response to other organism
+F19I3.16	3702.O64757	GO Process	GO:0098542	Defense response to other organism
+F19I3.16	3702.O64757	STRING clusters	CL:34446	Mixed, incl. Major intrinsic protein, and Aldo/keto reductase family
+F19I3.16	3702.O64757	STRING clusters	CL:34448	Mixed, incl. Major intrinsic protein, and Aldo/keto reductase family
+F19I3.16	3702.O64757	STRING clusters	CL:34449	Mixed, incl. Major intrinsic protein, and Aldo/keto reductase family
+F19I3.16	3702.O64757	STRING clusters	CL:34450	Mixed, incl. Major intrinsic protein, and Aldo/keto reductase family
+F19I3.16	3702.O64757	STRING clusters	CL:34617	Mixed, incl. Anion exchange, and Active borate transmembrane transporter activity
+F19I3.16	3702.O64757	STRING clusters	CL:34618	Mixed, incl. Anion exchange, and Active borate transmembrane transporter activity
+F19I3.16	3702.O64757	STRING clusters	CL:34621	Mixed, incl. Anion exchange, and Active borate transmembrane transporter activity
+F19I3.16	3702.O64757	STRING clusters	CL:34622	Anion exchange, and NB-ARC domain
+F19I3.16	3702.O64757	COMPARTMENTS	GOCC:0110165	Cellular anatomical entity
+F19I3.16	3702.O64757	UniProt Keywords	KW-0433	Leucine-rich repeat
+F19I3.16	3702.O64757	UniProt Keywords	KW-0677	Repeat
+F19I3.16	3702.O64757	UniProt Keywords	KW-0732	Signal
+F19I3.16	3702.O64757	Pfam	PF00560	Leucine Rich Repeat
+F19I3.16	3702.O64757	Pfam	PF08263	Leucine rich repeat N-terminal domain
+F19I3.16	3702.O64757	InterPro	IPR001611	Leucine-rich repeat
+F19I3.16	3702.O64757	InterPro	IPR003591	Leucine-rich repeat, typical subtype
+F19I3.16	3702.O64757	InterPro	IPR013210	Leucine-rich repeat-containing N-terminal, plant-type
+F19I3.16	3702.O64757	InterPro	IPR032675	Leucine-rich repeat domain superfamily
+F19I3.16	3702.O64757	SMART	SM00370	Leucine-rich repeats, outliers
+FER	3702.Q9SCZ4	GO Process	GO:0000003	Reproduction
+FER	3702.Q9SCZ4	GO Process	GO:0000160	Phosphorelay signal transduction system
+FER	3702.Q9SCZ4	GO Process	GO:0001558	Regulation of cell growth
+FER	3702.Q9SCZ4	GO Process	GO:0006468	Protein phosphorylation
+FER	3702.Q9SCZ4	GO Process	GO:0006793	Phosphorus metabolic process
+FER	3702.Q9SCZ4	GO Process	GO:0006796	Phosphate-containing compound metabolic process
+FER	3702.Q9SCZ4	GO Process	GO:0006807	Nitrogen compound metabolic process
+FER	3702.Q9SCZ4	GO Process	GO:0006950	Response to stress
+FER	3702.Q9SCZ4	GO Process	GO:0006952	Defense response
+FER	3702.Q9SCZ4	GO Process	GO:0007154	Cell communication
+FER	3702.Q9SCZ4	GO Process	GO:0007165	Signal transduction
+FER	3702.Q9SCZ4	GO Process	GO:0007275	Multicellular organism development
+FER	3702.Q9SCZ4	GO Process	GO:0007623	Circadian rhythm
+FER	3702.Q9SCZ4	GO Process	GO:0008152	Metabolic process
+FER	3702.Q9SCZ4	GO Process	GO:0009605	Response to external stimulus
+FER	3702.Q9SCZ4	GO Process	GO:0009607	Response to biotic stimulus
+FER	3702.Q9SCZ4	GO Process	GO:0009620	Response to fungus
+FER	3702.Q9SCZ4	GO Process	GO:0009719	Response to endogenous stimulus
+FER	3702.Q9SCZ4	GO Process	GO:0009723	Response to ethylene
+FER	3702.Q9SCZ4	GO Process	GO:0009725	Response to hormone
+FER	3702.Q9SCZ4	GO Process	GO:0009737	Response to abscisic acid
+FER	3702.Q9SCZ4	GO Process	GO:0009738	Abscisic acid-activated signaling pathway
+FER	3702.Q9SCZ4	GO Process	GO:0009741	Response to brassinosteroid
+FER	3702.Q9SCZ4	GO Process	GO:0009742	Brassinosteroid mediated signaling pathway
+FER	3702.Q9SCZ4	GO Process	GO:0009755	Hormone-mediated signaling pathway
+FER	3702.Q9SCZ4	GO Process	GO:0009787	Regulation of abscisic acid-activated signaling pathway
+FER	3702.Q9SCZ4	GO Process	GO:0009788	Negative regulation of abscisic acid-activated signaling pathway
+FER	3702.Q9SCZ4	GO Process	GO:0009791	Post-embryonic development
+FER	3702.Q9SCZ4	GO Process	GO:0009856	Pollination
+FER	3702.Q9SCZ4	GO Process	GO:0009873	Ethylene-activated signaling pathway
+FER	3702.Q9SCZ4	GO Process	GO:0009966	Regulation of signal transduction
+FER	3702.Q9SCZ4	GO Process	GO:0009968	Negative regulation of signal transduction
+FER	3702.Q9SCZ4	GO Process	GO:0009987	Cellular process
+FER	3702.Q9SCZ4	GO Process	GO:0010033	Response to organic substance
+FER	3702.Q9SCZ4	GO Process	GO:0010118	Stomatal movement
+FER	3702.Q9SCZ4	GO Process	GO:0010468	Regulation of gene expression
+FER	3702.Q9SCZ4	GO Process	GO:0010483	Pollen tube reception
+FER	3702.Q9SCZ4	GO Process	GO:0010646	Regulation of cell communication
+FER	3702.Q9SCZ4	GO Process	GO:0010648	Negative regulation of cell communication
+FER	3702.Q9SCZ4	GO Process	GO:0014070	Response to organic cyclic compound
+FER	3702.Q9SCZ4	GO Process	GO:0016310	Phosphorylation
+FER	3702.Q9SCZ4	GO Process	GO:0018108	Peptidyl-tyrosine phosphorylation
+FER	3702.Q9SCZ4	GO Process	GO:0018193	Peptidyl-amino acid modification
+FER	3702.Q9SCZ4	GO Process	GO:0018212	Peptidyl-tyrosine modification
+FER	3702.Q9SCZ4	GO Process	GO:0019222	Regulation of metabolic process
+FER	3702.Q9SCZ4	GO Process	GO:0019538	Protein metabolic process
+FER	3702.Q9SCZ4	GO Process	GO:0022414	Reproductive process
+FER	3702.Q9SCZ4	GO Process	GO:0022622	Root system development
+FER	3702.Q9SCZ4	GO Process	GO:0023051	Regulation of signaling
+FER	3702.Q9SCZ4	GO Process	GO:0023052	Signaling
+FER	3702.Q9SCZ4	GO Process	GO:0023057	Negative regulation of signaling
+FER	3702.Q9SCZ4	GO Process	GO:0030308	Negative regulation of cell growth
+FER	3702.Q9SCZ4	GO Process	GO:0032501	Multicellular organismal process
+FER	3702.Q9SCZ4	GO Process	GO:0032502	Developmental process
+FER	3702.Q9SCZ4	GO Process	GO:0032870	Cellular response to hormone stimulus
+FER	3702.Q9SCZ4	GO Process	GO:0032922	Circadian regulation of gene expression
+FER	3702.Q9SCZ4	GO Process	GO:0033993	Response to lipid
+FER	3702.Q9SCZ4	GO Process	GO:0035556	Intracellular signal transduction
+FER	3702.Q9SCZ4	GO Process	GO:0036211	Protein modification process
+FER	3702.Q9SCZ4	GO Process	GO:0040008	Regulation of growth
+FER	3702.Q9SCZ4	GO Process	GO:0042221	Response to chemical
+FER	3702.Q9SCZ4	GO Process	GO:0043170	Macromolecule metabolic process
+FER	3702.Q9SCZ4	GO Process	GO:0043207	Response to external biotic stimulus
+FER	3702.Q9SCZ4	GO Process	GO:0043401	Steroid hormone mediated signaling pathway
+FER	3702.Q9SCZ4	GO Process	GO:0043412	Macromolecule modification
+FER	3702.Q9SCZ4	GO Process	GO:0044237	Cellular metabolic process
+FER	3702.Q9SCZ4	GO Process	GO:0044238	Primary metabolic process
+FER	3702.Q9SCZ4	GO Process	GO:0044419	Biological process involved in interspecies interaction between organisms
+FER	3702.Q9SCZ4	GO Process	GO:0044706	Multi-multicellular organism process
+FER	3702.Q9SCZ4	GO Process	GO:0045926	Negative regulation of growth
+FER	3702.Q9SCZ4	GO Process	GO:0046777	Protein autophosphorylation
+FER	3702.Q9SCZ4	GO Process	GO:0048364	Root development
+FER	3702.Q9SCZ4	GO Process	GO:0048511	Rhythmic process
+FER	3702.Q9SCZ4	GO Process	GO:0048519	Negative regulation of biological process
+FER	3702.Q9SCZ4	GO Process	GO:0048523	Negative regulation of cellular process
+FER	3702.Q9SCZ4	GO Process	GO:0048545	Response to steroid hormone
+FER	3702.Q9SCZ4	GO Process	GO:0048583	Regulation of response to stimulus
+FER	3702.Q9SCZ4	GO Process	GO:0048585	Negative regulation of response to stimulus
+FER	3702.Q9SCZ4	GO Process	GO:0048731	System development
+FER	3702.Q9SCZ4	GO Process	GO:0048856	Anatomical structure development
+FER	3702.Q9SCZ4	GO Process	GO:0050789	Regulation of biological process
+FER	3702.Q9SCZ4	GO Process	GO:0050794	Regulation of cellular process
+FER	3702.Q9SCZ4	GO Process	GO:0050832	Defense response to fungus
+FER	3702.Q9SCZ4	GO Process	GO:0050896	Response to stimulus
+FER	3702.Q9SCZ4	GO Process	GO:0051128	Regulation of cellular component organization
+FER	3702.Q9SCZ4	GO Process	GO:0051703	Biological process involved in intraspecies interaction between organisms
+FER	3702.Q9SCZ4	GO Process	GO:0051707	Response to other organism
+FER	3702.Q9SCZ4	GO Process	GO:0051716	Cellular response to stimulus
+FER	3702.Q9SCZ4	GO Process	GO:0060255	Regulation of macromolecule metabolic process
+FER	3702.Q9SCZ4	GO Process	GO:0065007	Biological regulation
+FER	3702.Q9SCZ4	GO Process	GO:0070887	Cellular response to chemical stimulus
+FER	3702.Q9SCZ4	GO Process	GO:0071215	Cellular response to abscisic acid stimulus
+FER	3702.Q9SCZ4	GO Process	GO:0071310	Cellular response to organic substance
+FER	3702.Q9SCZ4	GO Process	GO:0071367	Cellular response to brassinosteroid stimulus
+FER	3702.Q9SCZ4	GO Process	GO:0071369	Cellular response to ethylene stimulus
+FER	3702.Q9SCZ4	GO Process	GO:0071383	Cellular response to steroid hormone stimulus
+FER	3702.Q9SCZ4	GO Process	GO:0071396	Cellular response to lipid
+FER	3702.Q9SCZ4	GO Process	GO:0071407	Cellular response to organic cyclic compound
+FER	3702.Q9SCZ4	GO Process	GO:0071495	Cellular response to endogenous stimulus
+FER	3702.Q9SCZ4	GO Process	GO:0071704	Organic substance metabolic process
+FER	3702.Q9SCZ4	GO Process	GO:0097305	Response to alcohol
+FER	3702.Q9SCZ4	GO Process	GO:0097306	Cellular response to alcohol
+FER	3702.Q9SCZ4	GO Process	GO:0098542	Defense response to other organism
+FER	3702.Q9SCZ4	GO Process	GO:0099402	Plant organ development
+FER	3702.Q9SCZ4	GO Process	GO:1901419	Regulation of response to alcohol
+FER	3702.Q9SCZ4	GO Process	GO:1901420	Negative regulation of response to alcohol
+FER	3702.Q9SCZ4	GO Process	GO:1901564	Organonitrogen compound metabolic process
+FER	3702.Q9SCZ4	GO Process	GO:1901700	Response to oxygen-containing compound
+FER	3702.Q9SCZ4	GO Process	GO:1901701	Cellular response to oxygen-containing compound
+FER	3702.Q9SCZ4	GO Process	GO:1905957	Regulation of cellular response to alcohol
+FER	3702.Q9SCZ4	GO Process	GO:1905958	Negative regulation of cellular response to alcohol
+FER	3702.Q9SCZ4	GO Function	GO:0000166	Nucleotide binding
+FER	3702.Q9SCZ4	GO Function	GO:0003824	Catalytic activity
+FER	3702.Q9SCZ4	GO Function	GO:0004672	Protein kinase activity
+FER	3702.Q9SCZ4	GO Function	GO:0004674	Protein serine/threonine kinase activity
+FER	3702.Q9SCZ4	GO Function	GO:0004713	Protein tyrosine kinase activity
+FER	3702.Q9SCZ4	GO Function	GO:0004714	Transmembrane receptor protein tyrosine kinase activity
+FER	3702.Q9SCZ4	GO Function	GO:0004888	Transmembrane signaling receptor activity
+FER	3702.Q9SCZ4	GO Function	GO:0005488	Binding
+FER	3702.Q9SCZ4	GO Function	GO:0005524	ATP binding
+FER	3702.Q9SCZ4	GO Function	GO:0016301	Kinase activity
+FER	3702.Q9SCZ4	GO Function	GO:0016740	Transferase activity
+FER	3702.Q9SCZ4	GO Function	GO:0016772	Transferase activity, transferring phosphorus-containing groups
+FER	3702.Q9SCZ4	GO Function	GO:0016773	Phosphotransferase activity, alcohol group as acceptor
+FER	3702.Q9SCZ4	GO Function	GO:0017076	Purine nucleotide binding
+FER	3702.Q9SCZ4	GO Function	GO:0019199	Transmembrane receptor protein kinase activity
+FER	3702.Q9SCZ4	GO Function	GO:0030554	Adenyl nucleotide binding
+FER	3702.Q9SCZ4	GO Function	GO:0032553	Ribonucleotide binding
+FER	3702.Q9SCZ4	GO Function	GO:0032555	Purine ribonucleotide binding
+FER	3702.Q9SCZ4	GO Function	GO:0032559	Adenyl ribonucleotide binding
+FER	3702.Q9SCZ4	GO Function	GO:0035639	Purine ribonucleoside triphosphate binding
+FER	3702.Q9SCZ4	GO Function	GO:0036094	Small molecule binding
+FER	3702.Q9SCZ4	GO Function	GO:0038023	Signaling receptor activity
+FER	3702.Q9SCZ4	GO Function	GO:0043167	Ion binding
+FER	3702.Q9SCZ4	GO Function	GO:0043168	Anion binding
+FER	3702.Q9SCZ4	GO Function	GO:0060089	Molecular transducer activity
+FER	3702.Q9SCZ4	GO Function	GO:0097159	Organic cyclic compound binding
+FER	3702.Q9SCZ4	GO Function	GO:0097367	Carbohydrate derivative binding
+FER	3702.Q9SCZ4	GO Function	GO:0106310	Protein serine kinase activity
+FER	3702.Q9SCZ4	GO Function	GO:0140096	Catalytic activity, acting on a protein
+FER	3702.Q9SCZ4	GO Function	GO:1901265	Nucleoside phosphate binding
+FER	3702.Q9SCZ4	GO Function	GO:1901363	Heterocyclic compound binding
+FER	3702.Q9SCZ4	GO Component	GO:0005618	Cell wall
+FER	3702.Q9SCZ4	GO Component	GO:0005886	Plasma membrane
+FER	3702.Q9SCZ4	GO Component	GO:0005911	Cell-cell junction
+FER	3702.Q9SCZ4	GO Component	GO:0009506	Plasmodesma
+FER	3702.Q9SCZ4	GO Component	GO:0016020	Membrane
+FER	3702.Q9SCZ4	GO Component	GO:0016021	Integral component of membrane
+FER	3702.Q9SCZ4	GO Component	GO:0030054	Cell junction
+FER	3702.Q9SCZ4	GO Component	GO:0030312	External encapsulating structure
+FER	3702.Q9SCZ4	GO Component	GO:0031224	Intrinsic component of membrane
+FER	3702.Q9SCZ4	GO Component	GO:0043680	Filiform apparatus
+FER	3702.Q9SCZ4	GO Component	GO:0055044	Symplast
+FER	3702.Q9SCZ4	GO Component	GO:0070161	Anchoring junction
+FER	3702.Q9SCZ4	GO Component	GO:0071944	Cell periphery
+FER	3702.Q9SCZ4	GO Component	GO:0110165	Cellular anatomical entity
+FER	3702.Q9SCZ4	STRING clusters	CL:21425	Mixed, incl. Receptor-like protein kinase ANXUR1-like, and Rapid ALkalinization Factor
+FER	3702.Q9SCZ4	STRING clusters	CL:21426	Mixed, incl. Malectin domain, and GPI-anchored protein LORELEI-like
+FER	3702.Q9SCZ4	STRING clusters	CL:21427	Mixed, incl. GPI-anchored protein LORELEI-like, and Receptor-like protein kinase ANXUR1-like
+FER	3702.Q9SCZ4	STRING clusters	CL:21428	Mixed, incl. GPI-anchored protein LORELEI-like, and Receptor-like protein kinase ANXUR1-like
+FER	3702.Q9SCZ4	STRING clusters	CL:21430	Mixed, incl. GPI-anchored protein LORELEI-like, and Pollen tube reception
+FER	3702.Q9SCZ4	COMPARTMENTS	GOCC:0005618	Cell wall
+FER	3702.Q9SCZ4	COMPARTMENTS	GOCC:0005886	Plasma membrane
+FER	3702.Q9SCZ4	COMPARTMENTS	GOCC:0016020	Membrane
+FER	3702.Q9SCZ4	COMPARTMENTS	GOCC:0030312	External encapsulating structure
+FER	3702.Q9SCZ4	COMPARTMENTS	GOCC:0043680	Filiform apparatus
+FER	3702.Q9SCZ4	COMPARTMENTS	GOCC:0071944	Cell periphery
+FER	3702.Q9SCZ4	COMPARTMENTS	GOCC:0110165	Cellular anatomical entity
+FER	3702.Q9SCZ4	UniProt Keywords	KW-0067	ATP-binding
+FER	3702.Q9SCZ4	UniProt Keywords	KW-0217	Developmental protein
+FER	3702.Q9SCZ4	UniProt Keywords	KW-0278	Fertilization
+FER	3702.Q9SCZ4	UniProt Keywords	KW-0325	Glycoprotein
+FER	3702.Q9SCZ4	UniProt Keywords	KW-0418	Kinase
+FER	3702.Q9SCZ4	UniProt Keywords	KW-0472	Membrane
+FER	3702.Q9SCZ4	UniProt Keywords	KW-0547	Nucleotide-binding
+FER	3702.Q9SCZ4	UniProt Keywords	KW-0597	Phosphoprotein
+FER	3702.Q9SCZ4	UniProt Keywords	KW-0675	Receptor
+FER	3702.Q9SCZ4	UniProt Keywords	KW-0723	Serine/threonine-protein kinase
+FER	3702.Q9SCZ4	UniProt Keywords	KW-0732	Signal
+FER	3702.Q9SCZ4	UniProt Keywords	KW-0808	Transferase
+FER	3702.Q9SCZ4	UniProt Keywords	KW-0812	Transmembrane
+FER	3702.Q9SCZ4	UniProt Keywords	KW-0936	Ethylene signaling pathway
+FER	3702.Q9SCZ4	UniProt Keywords	KW-0938	Abscisic acid signaling pathway
+FER	3702.Q9SCZ4	UniProt Keywords	KW-1003	Cell membrane
+FER	3702.Q9SCZ4	UniProt Keywords	KW-1070	Brassinosteroid signaling pathway
+FER	3702.Q9SCZ4	UniProt Keywords	KW-1133	Transmembrane helix
+FER	3702.Q9SCZ4	Pfam	PF11721	Malectin domain
+FER	3702.Q9SCZ4	InterPro	IPR000719	Protein kinase domain
+FER	3702.Q9SCZ4	InterPro	IPR001245	Serine-threonine/tyrosine-protein kinase, catalytic domain
+FER	3702.Q9SCZ4	InterPro	IPR008271	Serine/threonine-protein kinase, active site
+FER	3702.Q9SCZ4	InterPro	IPR011009	Protein kinase-like domain superfamily
+FER	3702.Q9SCZ4	InterPro	IPR017441	Protein kinase, ATP binding site
+FER	3702.Q9SCZ4	InterPro	IPR024788	Malectin-like domain
+FER	3702.Q9SCZ4	InterPro	IPR046957	Receptor-like protein kinase FERONIA-like
+GSO2	3702.Q9FIZ3	GO Process	GO:0006468	Protein phosphorylation
+GSO2	3702.Q9FIZ3	GO Process	GO:0006793	Phosphorus metabolic process
+GSO2	3702.Q9FIZ3	GO Process	GO:0006796	Phosphate-containing compound metabolic process
+GSO2	3702.Q9FIZ3	GO Process	GO:0006807	Nitrogen compound metabolic process
+GSO2	3702.Q9FIZ3	GO Process	GO:0007275	Multicellular organism development
+GSO2	3702.Q9FIZ3	GO Process	GO:0007389	Pattern specification process
+GSO2	3702.Q9FIZ3	GO Process	GO:0008152	Metabolic process
+GSO2	3702.Q9FIZ3	GO Process	GO:0009553	Embryo sac development
+GSO2	3702.Q9FIZ3	GO Process	GO:0009653	Anatomical structure morphogenesis
+GSO2	3702.Q9FIZ3	GO Process	GO:0009798	Axis specification
+GSO2	3702.Q9FIZ3	GO Process	GO:0009987	Cellular process
+GSO2	3702.Q9FIZ3	GO Process	GO:0010453	Regulation of cell fate commitment
+GSO2	3702.Q9FIZ3	GO Process	GO:0016043	Cellular component organization
+GSO2	3702.Q9FIZ3	GO Process	GO:0016310	Phosphorylation
+GSO2	3702.Q9FIZ3	GO Process	GO:0019538	Protein metabolic process
+GSO2	3702.Q9FIZ3	GO Process	GO:0022603	Regulation of anatomical structure morphogenesis
+GSO2	3702.Q9FIZ3	GO Process	GO:0032501	Multicellular organismal process
+GSO2	3702.Q9FIZ3	GO Process	GO:0032502	Developmental process
+GSO2	3702.Q9FIZ3	GO Process	GO:0036211	Protein modification process
+GSO2	3702.Q9FIZ3	GO Process	GO:0042659	Regulation of cell fate specification
+GSO2	3702.Q9FIZ3	GO Process	GO:0043170	Macromolecule metabolic process
+GSO2	3702.Q9FIZ3	GO Process	GO:0043412	Macromolecule modification
+GSO2	3702.Q9FIZ3	GO Process	GO:0044237	Cellular metabolic process
+GSO2	3702.Q9FIZ3	GO Process	GO:0044238	Primary metabolic process
+GSO2	3702.Q9FIZ3	GO Process	GO:0045229	External encapsulating structure organization
+GSO2	3702.Q9FIZ3	GO Process	GO:0048229	Gametophyte development
+GSO2	3702.Q9FIZ3	GO Process	GO:0048731	System development
+GSO2	3702.Q9FIZ3	GO Process	GO:0048856	Anatomical structure development
+GSO2	3702.Q9FIZ3	GO Process	GO:0050789	Regulation of biological process
+GSO2	3702.Q9FIZ3	GO Process	GO:0050793	Regulation of developmental process
+GSO2	3702.Q9FIZ3	GO Process	GO:0050794	Regulation of cellular process
+GSO2	3702.Q9FIZ3	GO Process	GO:0051302	Regulation of cell division
+GSO2	3702.Q9FIZ3	GO Process	GO:0065001	Specification of axis polarity
+GSO2	3702.Q9FIZ3	GO Process	GO:0065007	Biological regulation
+GSO2	3702.Q9FIZ3	GO Process	GO:0071554	Cell wall organization or biogenesis
+GSO2	3702.Q9FIZ3	GO Process	GO:0071555	Cell wall organization
+GSO2	3702.Q9FIZ3	GO Process	GO:0071704	Organic substance metabolic process
+GSO2	3702.Q9FIZ3	GO Process	GO:0071840	Cellular component organization or biogenesis
+GSO2	3702.Q9FIZ3	GO Process	GO:0090708	Specification of plant organ axis polarity
+GSO2	3702.Q9FIZ3	GO Process	GO:0099402	Plant organ development
+GSO2	3702.Q9FIZ3	GO Process	GO:1901564	Organonitrogen compound metabolic process
+GSO2	3702.Q9FIZ3	GO Process	GO:1905392	Plant organ morphogenesis
+GSO2	3702.Q9FIZ3	GO Process	GO:1905421	Regulation of plant organ morphogenesis
+GSO2	3702.Q9FIZ3	GO Process	GO:2000067	Regulation of root morphogenesis
+GSO2	3702.Q9FIZ3	GO Process	GO:2000280	Regulation of root development
+GSO2	3702.Q9FIZ3	GO Function	GO:0000166	Nucleotide binding
+GSO2	3702.Q9FIZ3	GO Function	GO:0003824	Catalytic activity
+GSO2	3702.Q9FIZ3	GO Function	GO:0004672	Protein kinase activity
+GSO2	3702.Q9FIZ3	GO Function	GO:0004674	Protein serine/threonine kinase activity
+GSO2	3702.Q9FIZ3	GO Function	GO:0005488	Binding
+GSO2	3702.Q9FIZ3	GO Function	GO:0005524	ATP binding
+GSO2	3702.Q9FIZ3	GO Function	GO:0016301	Kinase activity
+GSO2	3702.Q9FIZ3	GO Function	GO:0016740	Transferase activity
+GSO2	3702.Q9FIZ3	GO Function	GO:0016772	Transferase activity, transferring phosphorus-containing groups
+GSO2	3702.Q9FIZ3	GO Function	GO:0016773	Phosphotransferase activity, alcohol group as acceptor
+GSO2	3702.Q9FIZ3	GO Function	GO:0017076	Purine nucleotide binding
+GSO2	3702.Q9FIZ3	GO Function	GO:0030554	Adenyl nucleotide binding
+GSO2	3702.Q9FIZ3	GO Function	GO:0032553	Ribonucleotide binding
+GSO2	3702.Q9FIZ3	GO Function	GO:0032555	Purine ribonucleotide binding
+GSO2	3702.Q9FIZ3	GO Function	GO:0032559	Adenyl ribonucleotide binding
+GSO2	3702.Q9FIZ3	GO Function	GO:0035639	Purine ribonucleoside triphosphate binding
+GSO2	3702.Q9FIZ3	GO Function	GO:0036094	Small molecule binding
+GSO2	3702.Q9FIZ3	GO Function	GO:0043167	Ion binding
+GSO2	3702.Q9FIZ3	GO Function	GO:0043168	Anion binding
+GSO2	3702.Q9FIZ3	GO Function	GO:0097159	Organic cyclic compound binding
+GSO2	3702.Q9FIZ3	GO Function	GO:0097367	Carbohydrate derivative binding
+GSO2	3702.Q9FIZ3	GO Function	GO:0106310	Protein serine kinase activity
+GSO2	3702.Q9FIZ3	GO Function	GO:0140096	Catalytic activity, acting on a protein
+GSO2	3702.Q9FIZ3	GO Function	GO:1901265	Nucleoside phosphate binding
+GSO2	3702.Q9FIZ3	GO Function	GO:1901363	Heterocyclic compound binding
+GSO2	3702.Q9FIZ3	GO Component	GO:0005618	Cell wall
+GSO2	3702.Q9FIZ3	GO Component	GO:0005886	Plasma membrane
+GSO2	3702.Q9FIZ3	GO Component	GO:0009505	Plant-type cell wall
+GSO2	3702.Q9FIZ3	GO Component	GO:0009531	Secondary cell wall
+GSO2	3702.Q9FIZ3	GO Component	GO:0016020	Membrane
+GSO2	3702.Q9FIZ3	GO Component	GO:0016021	Integral component of membrane
+GSO2	3702.Q9FIZ3	GO Component	GO:0030312	External encapsulating structure
+GSO2	3702.Q9FIZ3	GO Component	GO:0031224	Intrinsic component of membrane
+GSO2	3702.Q9FIZ3	GO Component	GO:0048226	Casparian strip
+GSO2	3702.Q9FIZ3	GO Component	GO:0071944	Cell periphery
+GSO2	3702.Q9FIZ3	GO Component	GO:0110165	Cellular anatomical entity
+GSO2	3702.Q9FIZ3	STRING clusters	CL:32789	Mixed, incl. Transition metal ion transport, and Ion influx/efflux at host-pathogen interface
+GSO2	3702.Q9FIZ3	STRING clusters	CL:32790	Mixed, incl. Transition metal ion transport, and Ion influx/efflux at host-pathogen interface
+GSO2	3702.Q9FIZ3	STRING clusters	CL:33060	Mostly uncharacterized, incl. Protein of unknown function DUF4079, and Regulation of red or far-red light signaling pathway
+GSO2	3702.Q9FIZ3	STRING clusters	CL:33099	Mixed, incl. Regulation of cell fate specification, and Seed morphogenesis
+GSO2	3702.Q9FIZ3	COMPARTMENTS	GOCC:0005618	Cell wall
+GSO2	3702.Q9FIZ3	COMPARTMENTS	GOCC:0009505	Plant-type cell wall
+GSO2	3702.Q9FIZ3	COMPARTMENTS	GOCC:0009531	Secondary cell wall
+GSO2	3702.Q9FIZ3	COMPARTMENTS	GOCC:0030312	External encapsulating structure
+GSO2	3702.Q9FIZ3	COMPARTMENTS	GOCC:0048226	Casparian strip
+GSO2	3702.Q9FIZ3	COMPARTMENTS	GOCC:0071944	Cell periphery
+GSO2	3702.Q9FIZ3	COMPARTMENTS	GOCC:0110165	Cellular anatomical entity
+GSO2	3702.Q9FIZ3	UniProt Keywords	KW-0025	Alternative splicing
+GSO2	3702.Q9FIZ3	UniProt Keywords	KW-0067	ATP-binding
+GSO2	3702.Q9FIZ3	UniProt Keywords	KW-0217	Developmental protein
+GSO2	3702.Q9FIZ3	UniProt Keywords	KW-0325	Glycoprotein
+GSO2	3702.Q9FIZ3	UniProt Keywords	KW-0418	Kinase
+GSO2	3702.Q9FIZ3	UniProt Keywords	KW-0433	Leucine-rich repeat
+GSO2	3702.Q9FIZ3	UniProt Keywords	KW-0472	Membrane
+GSO2	3702.Q9FIZ3	UniProt Keywords	KW-0547	Nucleotide-binding
+GSO2	3702.Q9FIZ3	UniProt Keywords	KW-0597	Phosphoprotein
+GSO2	3702.Q9FIZ3	UniProt Keywords	KW-0675	Receptor
+GSO2	3702.Q9FIZ3	UniProt Keywords	KW-0677	Repeat
+GSO2	3702.Q9FIZ3	UniProt Keywords	KW-0723	Serine/threonine-protein kinase
+GSO2	3702.Q9FIZ3	UniProt Keywords	KW-0732	Signal
+GSO2	3702.Q9FIZ3	UniProt Keywords	KW-0808	Transferase
+GSO2	3702.Q9FIZ3	UniProt Keywords	KW-0812	Transmembrane
+GSO2	3702.Q9FIZ3	UniProt Keywords	KW-0961	Cell wall biogenesis/degradation
+GSO2	3702.Q9FIZ3	UniProt Keywords	KW-1003	Cell membrane
+GSO2	3702.Q9FIZ3	UniProt Keywords	KW-1133	Transmembrane helix
+GSO2	3702.Q9FIZ3	Pfam	PF08263	Leucine rich repeat N-terminal domain
+GSO2	3702.Q9FIZ3	Pfam	PF13855	Leucine rich repeat
+GSO2	3702.Q9FIZ3	InterPro	IPR000719	Protein kinase domain
+GSO2	3702.Q9FIZ3	InterPro	IPR001611	Leucine-rich repeat
+GSO2	3702.Q9FIZ3	InterPro	IPR003591	Leucine-rich repeat, typical subtype
+GSO2	3702.Q9FIZ3	InterPro	IPR008271	Serine/threonine-protein kinase, active site
+GSO2	3702.Q9FIZ3	InterPro	IPR011009	Protein kinase-like domain superfamily
+GSO2	3702.Q9FIZ3	InterPro	IPR013210	Leucine-rich repeat-containing N-terminal, plant-type
+GSO2	3702.Q9FIZ3	InterPro	IPR017441	Protein kinase, ATP binding site
+GSO2	3702.Q9FIZ3	InterPro	IPR032675	Leucine-rich repeat domain superfamily
+GSO2	3702.Q9FIZ3	SMART	SM00370	Leucine-rich repeats, outliers
+LAZ5	3702.O48573	GO Process	GO:0002376	Immune system process
+LAZ5	3702.O48573	GO Process	GO:0006950	Response to stress
+LAZ5	3702.O48573	GO Process	GO:0006952	Defense response
+LAZ5	3702.O48573	GO Process	GO:0006955	Immune response
+LAZ5	3702.O48573	GO Process	GO:0007154	Cell communication
+LAZ5	3702.O48573	GO Process	GO:0007165	Signal transduction
+LAZ5	3702.O48573	GO Process	GO:0008219	Cell death
+LAZ5	3702.O48573	GO Process	GO:0009605	Response to external stimulus
+LAZ5	3702.O48573	GO Process	GO:0009607	Response to biotic stimulus
+LAZ5	3702.O48573	GO Process	GO:0009615	Response to virus
+LAZ5	3702.O48573	GO Process	GO:0009626	Plant-type hypersensitive response
+LAZ5	3702.O48573	GO Process	GO:0009987	Cellular process
+LAZ5	3702.O48573	GO Process	GO:0012501	Programmed cell death
+LAZ5	3702.O48573	GO Process	GO:0023052	Signaling
+LAZ5	3702.O48573	GO Process	GO:0033554	Cellular response to stress
+LAZ5	3702.O48573	GO Process	GO:0034050	Programmed cell death induced by symbiont
+LAZ5	3702.O48573	GO Process	GO:0043207	Response to external biotic stimulus
+LAZ5	3702.O48573	GO Process	GO:0044403	Biological process involved in symbiotic interaction
+LAZ5	3702.O48573	GO Process	GO:0044419	Biological process involved in interspecies interaction between organisms
+LAZ5	3702.O48573	GO Process	GO:0045087	Innate immune response
+LAZ5	3702.O48573	GO Process	GO:0050789	Regulation of biological process
+LAZ5	3702.O48573	GO Process	GO:0050794	Regulation of cellular process
+LAZ5	3702.O48573	GO Process	GO:0050896	Response to stimulus
+LAZ5	3702.O48573	GO Process	GO:0051607	Defense response to virus
+LAZ5	3702.O48573	GO Process	GO:0051702	Biological process involved in interaction with symbiont
+LAZ5	3702.O48573	GO Process	GO:0051707	Response to other organism
+LAZ5	3702.O48573	GO Process	GO:0051716	Cellular response to stimulus
+LAZ5	3702.O48573	GO Process	GO:0065007	Biological regulation
+LAZ5	3702.O48573	GO Process	GO:0098542	Defense response to other organism
+LAZ5	3702.O48573	GO Process	GO:0140546	Defense response to symbiont
+LAZ5	3702.O48573	GO Function	GO:0000166	Nucleotide binding
+LAZ5	3702.O48573	GO Function	GO:0003824	Catalytic activity
+LAZ5	3702.O48573	GO Function	GO:0003953	NAD+ nucleosidase activity
+LAZ5	3702.O48573	GO Function	GO:0005488	Binding
+LAZ5	3702.O48573	GO Function	GO:0005524	ATP binding
+LAZ5	3702.O48573	GO Function	GO:0016787	Hydrolase activity
+LAZ5	3702.O48573	GO Function	GO:0016798	Hydrolase activity, acting on glycosyl bonds
+LAZ5	3702.O48573	GO Function	GO:0016799	Hydrolase activity, hydrolyzing N-glycosyl compounds
+LAZ5	3702.O48573	GO Function	GO:0017076	Purine nucleotide binding
+LAZ5	3702.O48573	GO Function	GO:0030554	Adenyl nucleotide binding
+LAZ5	3702.O48573	GO Function	GO:0032553	Ribonucleotide binding
+LAZ5	3702.O48573	GO Function	GO:0032555	Purine ribonucleotide binding
+LAZ5	3702.O48573	GO Function	GO:0032559	Adenyl ribonucleotide binding
+LAZ5	3702.O48573	GO Function	GO:0035639	Purine ribonucleoside triphosphate binding
+LAZ5	3702.O48573	GO Function	GO:0036094	Small molecule binding
+LAZ5	3702.O48573	GO Function	GO:0043167	Ion binding
+LAZ5	3702.O48573	GO Function	GO:0043168	Anion binding
+LAZ5	3702.O48573	GO Function	GO:0043531	ADP binding
+LAZ5	3702.O48573	GO Function	GO:0050135	NAD(P)+ nucleosidase activity
+LAZ5	3702.O48573	GO Function	GO:0061809	NAD+ nucleotidase, cyclic ADP-ribose generating
+LAZ5	3702.O48573	GO Function	GO:0097159	Organic cyclic compound binding
+LAZ5	3702.O48573	GO Function	GO:0097367	Carbohydrate derivative binding
+LAZ5	3702.O48573	GO Function	GO:1901265	Nucleoside phosphate binding
+LAZ5	3702.O48573	GO Function	GO:1901363	Heterocyclic compound binding
+LAZ5	3702.O48573	STRING clusters	CL:45925	Mostly uncharacterized, incl. Tetraspani, plant, and DNA-binding transcription factor activity, RNA polymerase II-specific
+LAZ5	3702.O48573	STRING clusters	CL:45926	Mostly uncharacterized, incl. Tetraspani, plant, and Homeobox-leucine zipper protein GLABRA2/ANL2/PDF2/ATML1-like
+LAZ5	3702.O48573	STRING clusters	CL:46033	Mixed, incl. Tetraspani, plant, and Mlo family
+LAZ5	3702.O48573	Reactome	MAP-168249	Innate Immune System
+LAZ5	3702.O48573	Reactome	MAP-168256	Immune System
+LAZ5	3702.O48573	Reactome	MAP-6798695	Neutrophil degranulation
+LAZ5	3702.O48573	COMPARTMENTS	GOCC:0005622	Intracellular
+LAZ5	3702.O48573	COMPARTMENTS	GOCC:0005634	Nucleus
+LAZ5	3702.O48573	COMPARTMENTS	GOCC:0012505	Endomembrane system
+LAZ5	3702.O48573	COMPARTMENTS	GOCC:0043226	Organelle
+LAZ5	3702.O48573	COMPARTMENTS	GOCC:0043227	Membrane-bounded organelle
+LAZ5	3702.O48573	COMPARTMENTS	GOCC:0043229	Intracellular organelle
+LAZ5	3702.O48573	COMPARTMENTS	GOCC:0043231	Intracellular membrane-bounded organelle
+LAZ5	3702.O48573	COMPARTMENTS	GOCC:0110165	Cellular anatomical entity
+LAZ5	3702.O48573	UniProt Keywords	KW-0067	ATP-binding
+LAZ5	3702.O48573	UniProt Keywords	KW-0378	Hydrolase
+LAZ5	3702.O48573	UniProt Keywords	KW-0433	Leucine-rich repeat
+LAZ5	3702.O48573	UniProt Keywords	KW-0520	NAD
+LAZ5	3702.O48573	UniProt Keywords	KW-0547	Nucleotide-binding
+LAZ5	3702.O48573	UniProt Keywords	KW-0611	Plant defense
+LAZ5	3702.O48573	UniProt Keywords	KW-0677	Repeat
+LAZ5	3702.O48573	Pfam	PF00931	NB-ARC domain
+LAZ5	3702.O48573	Pfam	PF07725	Leucine Rich Repeat
+LAZ5	3702.O48573	InterPro	IPR000157	Toll/interleukin-1 receptor homology (TIR) domain
+LAZ5	3702.O48573	InterPro	IPR002182	NB-ARC
+LAZ5	3702.O48573	InterPro	IPR011713	Leucine-rich repeat 3
+LAZ5	3702.O48573	InterPro	IPR027417	P-loop containing nucleoside triphosphate hydrolase
+LAZ5	3702.O48573	InterPro	IPR032675	Leucine-rich repeat domain superfamily
+LAZ5	3702.O48573	InterPro	IPR035897	Toll/interleukin-1 receptor homology (TIR) domain superfamily
+LAZ5	3702.O48573	InterPro	IPR042197	Apoptotic protease-activating factors, helical domain
+LAZ5	3702.O48573	InterPro	IPR044974	Disease resistance protein, plants
+LAZ5	3702.O48573	InterPro	IPR045344	C-JID domain
+LAZ5	3702.O48573	SMART	SM00255	Toll - interleukin 1 - resistance
+MDIS2	3702.C0LGQ4	GO Process	GO:0006468	Protein phosphorylation
+MDIS2	3702.C0LGQ4	GO Process	GO:0006793	Phosphorus metabolic process
+MDIS2	3702.C0LGQ4	GO Process	GO:0006796	Phosphate-containing compound metabolic process
+MDIS2	3702.C0LGQ4	GO Process	GO:0006807	Nitrogen compound metabolic process
+MDIS2	3702.C0LGQ4	GO Process	GO:0007275	Multicellular organism development
+MDIS2	3702.C0LGQ4	GO Process	GO:0008152	Metabolic process
+MDIS2	3702.C0LGQ4	GO Process	GO:0009653	Anatomical structure morphogenesis
+MDIS2	3702.C0LGQ4	GO Process	GO:0009888	Tissue development
+MDIS2	3702.C0LGQ4	GO Process	GO:0009987	Cellular process
+MDIS2	3702.C0LGQ4	GO Process	GO:0010015	Root morphogenesis
+MDIS2	3702.C0LGQ4	GO Process	GO:0010053	Root epidermal cell differentiation
+MDIS2	3702.C0LGQ4	GO Process	GO:0010054	Trichoblast differentiation
+MDIS2	3702.C0LGQ4	GO Process	GO:0016310	Phosphorylation
+MDIS2	3702.C0LGQ4	GO Process	GO:0019538	Protein metabolic process
+MDIS2	3702.C0LGQ4	GO Process	GO:0021700	Developmental maturation
+MDIS2	3702.C0LGQ4	GO Process	GO:0022622	Root system development
+MDIS2	3702.C0LGQ4	GO Process	GO:0030154	Cell differentiation
+MDIS2	3702.C0LGQ4	GO Process	GO:0032501	Multicellular organismal process
+MDIS2	3702.C0LGQ4	GO Process	GO:0032502	Developmental process
+MDIS2	3702.C0LGQ4	GO Process	GO:0036211	Protein modification process
+MDIS2	3702.C0LGQ4	GO Process	GO:0043170	Macromolecule metabolic process
+MDIS2	3702.C0LGQ4	GO Process	GO:0043412	Macromolecule modification
+MDIS2	3702.C0LGQ4	GO Process	GO:0044237	Cellular metabolic process
+MDIS2	3702.C0LGQ4	GO Process	GO:0044238	Primary metabolic process
+MDIS2	3702.C0LGQ4	GO Process	GO:0048364	Root development
+MDIS2	3702.C0LGQ4	GO Process	GO:0048468	Cell development
+MDIS2	3702.C0LGQ4	GO Process	GO:0048469	Cell maturation
+MDIS2	3702.C0LGQ4	GO Process	GO:0048731	System development
+MDIS2	3702.C0LGQ4	GO Process	GO:0048764	Trichoblast maturation
+MDIS2	3702.C0LGQ4	GO Process	GO:0048765	Root hair cell differentiation
+MDIS2	3702.C0LGQ4	GO Process	GO:0048856	Anatomical structure development
+MDIS2	3702.C0LGQ4	GO Process	GO:0048869	Cellular developmental process
+MDIS2	3702.C0LGQ4	GO Process	GO:0071695	Anatomical structure maturation
+MDIS2	3702.C0LGQ4	GO Process	GO:0071704	Organic substance metabolic process
+MDIS2	3702.C0LGQ4	GO Process	GO:0090558	Plant epidermis development
+MDIS2	3702.C0LGQ4	GO Process	GO:0090627	Plant epidermal cell differentiation
+MDIS2	3702.C0LGQ4	GO Process	GO:0099402	Plant organ development
+MDIS2	3702.C0LGQ4	GO Process	GO:1901564	Organonitrogen compound metabolic process
+MDIS2	3702.C0LGQ4	GO Process	GO:1905392	Plant organ morphogenesis
+MDIS2	3702.C0LGQ4	GO Function	GO:0000166	Nucleotide binding
+MDIS2	3702.C0LGQ4	GO Function	GO:0003824	Catalytic activity
+MDIS2	3702.C0LGQ4	GO Function	GO:0004672	Protein kinase activity
+MDIS2	3702.C0LGQ4	GO Function	GO:0004674	Protein serine/threonine kinase activity
+MDIS2	3702.C0LGQ4	GO Function	GO:0005488	Binding
+MDIS2	3702.C0LGQ4	GO Function	GO:0005524	ATP binding
+MDIS2	3702.C0LGQ4	GO Function	GO:0016301	Kinase activity
+MDIS2	3702.C0LGQ4	GO Function	GO:0016740	Transferase activity
+MDIS2	3702.C0LGQ4	GO Function	GO:0016772	Transferase activity, transferring phosphorus-containing groups
+MDIS2	3702.C0LGQ4	GO Function	GO:0016773	Phosphotransferase activity, alcohol group as acceptor
+MDIS2	3702.C0LGQ4	GO Function	GO:0017076	Purine nucleotide binding
+MDIS2	3702.C0LGQ4	GO Function	GO:0030554	Adenyl nucleotide binding
+MDIS2	3702.C0LGQ4	GO Function	GO:0032553	Ribonucleotide binding
+MDIS2	3702.C0LGQ4	GO Function	GO:0032555	Purine ribonucleotide binding
+MDIS2	3702.C0LGQ4	GO Function	GO:0032559	Adenyl ribonucleotide binding
+MDIS2	3702.C0LGQ4	GO Function	GO:0035639	Purine ribonucleoside triphosphate binding
+MDIS2	3702.C0LGQ4	GO Function	GO:0036094	Small molecule binding
+MDIS2	3702.C0LGQ4	GO Function	GO:0043167	Ion binding
+MDIS2	3702.C0LGQ4	GO Function	GO:0043168	Anion binding
+MDIS2	3702.C0LGQ4	GO Function	GO:0097159	Organic cyclic compound binding
+MDIS2	3702.C0LGQ4	GO Function	GO:0097367	Carbohydrate derivative binding
+MDIS2	3702.C0LGQ4	GO Function	GO:0106310	Protein serine kinase activity
+MDIS2	3702.C0LGQ4	GO Function	GO:0140096	Catalytic activity, acting on a protein
+MDIS2	3702.C0LGQ4	GO Function	GO:1901265	Nucleoside phosphate binding
+MDIS2	3702.C0LGQ4	GO Function	GO:1901363	Heterocyclic compound binding
+MDIS2	3702.C0LGQ4	GO Component	GO:0012505	Endomembrane system
+MDIS2	3702.C0LGQ4	GO Component	GO:0016020	Membrane
+MDIS2	3702.C0LGQ4	GO Component	GO:0016021	Integral component of membrane
+MDIS2	3702.C0LGQ4	GO Component	GO:0031224	Intrinsic component of membrane
+MDIS2	3702.C0LGQ4	GO Component	GO:0042995	Cell projection
+MDIS2	3702.C0LGQ4	GO Component	GO:0090406	Pollen tube
+MDIS2	3702.C0LGQ4	GO Component	GO:0110165	Cellular anatomical entity
+MDIS2	3702.C0LGQ4	GO Component	GO:0120025	Plasma membrane bounded cell projection
+MDIS2	3702.C0LGQ4	STRING clusters	CL:30133	Mostly uncharacterized, incl. Structural constituent of cell wall, and Trichoblast differentiation
+MDIS2	3702.C0LGQ4	STRING clusters	CL:30135	Mostly uncharacterized, incl. Structural constituent of cell wall, and Trichoblast differentiation
+MDIS2	3702.C0LGQ4	STRING clusters	CL:30136	Mostly uncharacterized, incl. Structural constituent of cell wall, and Trichoblast differentiation
+MDIS2	3702.C0LGQ4	STRING clusters	CL:30137	Mostly uncharacterized, incl. Structural constituent of cell wall, and Trichoblast differentiation
+MDIS2	3702.C0LGQ4	STRING clusters	CL:30139	Mixed, incl. Structural constituent of cell wall, and Trichoblast differentiation
+MDIS2	3702.C0LGQ4	STRING clusters	CL:30140	Mixed, incl. Structural constituent of cell wall, and Trichoblast differentiation
+MDIS2	3702.C0LGQ4	STRING clusters	CL:30142	Mixed, incl. Structural constituent of cell wall, and Trichoblast differentiation
+MDIS2	3702.C0LGQ4	STRING clusters	CL:30143	Mixed, incl. Structural constituent of cell wall, and Trichoblast differentiation
+MDIS2	3702.C0LGQ4	STRING clusters	CL:30297	Mixed, incl. Serpin domain, and Icosanoid biosynthetic process
+MDIS2	3702.C0LGQ4	STRING clusters	CL:30322	Mixed, incl. Inositol polyphosphate 5-phosphatase, plant, and COBRA, plant
+MDIS2	3702.C0LGQ4	Reactome	MAP-162582	Signal Transduction
+MDIS2	3702.C0LGQ4	Reactome	MAP-194315	Signaling by Rho GTPases
+MDIS2	3702.C0LGQ4	Reactome	MAP-9012999	RHO GTPase cycle
+MDIS2	3702.C0LGQ4	Reactome	MAP-9716542	Signaling by Rho GTPases, Miro GTPases and RHOBTB3
+MDIS2	3702.C0LGQ4	COMPARTMENTS	GOCC:0012505	Endomembrane system
+MDIS2	3702.C0LGQ4	COMPARTMENTS	GOCC:0042995	Cell projection
+MDIS2	3702.C0LGQ4	COMPARTMENTS	GOCC:0090406	Pollen tube
+MDIS2	3702.C0LGQ4	COMPARTMENTS	GOCC:0110165	Cellular anatomical entity
+MDIS2	3702.C0LGQ4	COMPARTMENTS	GOCC:0120025	Plasma membrane bounded cell projection
+MDIS2	3702.C0LGQ4	UniProt Keywords	KW-0067	ATP-binding
+MDIS2	3702.C0LGQ4	UniProt Keywords	KW-0325	Glycoprotein
+MDIS2	3702.C0LGQ4	UniProt Keywords	KW-0418	Kinase
+MDIS2	3702.C0LGQ4	UniProt Keywords	KW-0433	Leucine-rich repeat
+MDIS2	3702.C0LGQ4	UniProt Keywords	KW-0472	Membrane
+MDIS2	3702.C0LGQ4	UniProt Keywords	KW-0547	Nucleotide-binding
+MDIS2	3702.C0LGQ4	UniProt Keywords	KW-0675	Receptor
+MDIS2	3702.C0LGQ4	UniProt Keywords	KW-0677	Repeat
+MDIS2	3702.C0LGQ4	UniProt Keywords	KW-0723	Serine/threonine-protein kinase
+MDIS2	3702.C0LGQ4	UniProt Keywords	KW-0732	Signal
+MDIS2	3702.C0LGQ4	UniProt Keywords	KW-0808	Transferase
+MDIS2	3702.C0LGQ4	UniProt Keywords	KW-0812	Transmembrane
+MDIS2	3702.C0LGQ4	UniProt Keywords	KW-1133	Transmembrane helix
+MDIS2	3702.C0LGQ4	Pfam	PF00069	Protein kinase domain
+MDIS2	3702.C0LGQ4	Pfam	PF00560	Leucine Rich Repeat
+MDIS2	3702.C0LGQ4	Pfam	PF08263	Leucine rich repeat N-terminal domain
+MDIS2	3702.C0LGQ4	InterPro	IPR000719	Protein kinase domain
+MDIS2	3702.C0LGQ4	InterPro	IPR001245	Serine-threonine/tyrosine-protein kinase, catalytic domain
+MDIS2	3702.C0LGQ4	InterPro	IPR011009	Protein kinase-like domain superfamily
+MDIS2	3702.C0LGQ4	InterPro	IPR013210	Leucine-rich repeat-containing N-terminal, plant-type
+MDIS2	3702.C0LGQ4	InterPro	IPR032675	Leucine-rich repeat domain superfamily
+MIK2	3702.Q8VZG8	GO Process	GO:0000003	Reproduction
+MIK2	3702.Q8VZG8	GO Process	GO:0003006	Developmental process involved in reproduction
+MIK2	3702.Q8VZG8	GO Process	GO:0006468	Protein phosphorylation
+MIK2	3702.Q8VZG8	GO Process	GO:0006793	Phosphorus metabolic process
+MIK2	3702.Q8VZG8	GO Process	GO:0006796	Phosphate-containing compound metabolic process
+MIK2	3702.Q8VZG8	GO Process	GO:0006807	Nitrogen compound metabolic process
+MIK2	3702.Q8VZG8	GO Process	GO:0006935	Chemotaxis
+MIK2	3702.Q8VZG8	GO Process	GO:0007154	Cell communication
+MIK2	3702.Q8VZG8	GO Process	GO:0007165	Signal transduction
+MIK2	3702.Q8VZG8	GO Process	GO:0008152	Metabolic process
+MIK2	3702.Q8VZG8	GO Process	GO:0009605	Response to external stimulus
+MIK2	3702.Q8VZG8	GO Process	GO:0009719	Response to endogenous stimulus
+MIK2	3702.Q8VZG8	GO Process	GO:0009725	Response to hormone
+MIK2	3702.Q8VZG8	GO Process	GO:0009755	Hormone-mediated signaling pathway
+MIK2	3702.Q8VZG8	GO Process	GO:0009856	Pollination
+MIK2	3702.Q8VZG8	GO Process	GO:0009987	Cellular process
+MIK2	3702.Q8VZG8	GO Process	GO:0010033	Response to organic substance
+MIK2	3702.Q8VZG8	GO Process	GO:0010183	Pollen tube guidance
+MIK2	3702.Q8VZG8	GO Process	GO:0016310	Phosphorylation
+MIK2	3702.Q8VZG8	GO Process	GO:0019538	Protein metabolic process
+MIK2	3702.Q8VZG8	GO Process	GO:0022414	Reproductive process
+MIK2	3702.Q8VZG8	GO Process	GO:0023052	Signaling
+MIK2	3702.Q8VZG8	GO Process	GO:0032501	Multicellular organismal process
+MIK2	3702.Q8VZG8	GO Process	GO:0032502	Developmental process
+MIK2	3702.Q8VZG8	GO Process	GO:0032870	Cellular response to hormone stimulus
+MIK2	3702.Q8VZG8	GO Process	GO:0036211	Protein modification process
+MIK2	3702.Q8VZG8	GO Process	GO:0040011	Locomotion
+MIK2	3702.Q8VZG8	GO Process	GO:0042221	Response to chemical
+MIK2	3702.Q8VZG8	GO Process	GO:0042330	Taxis
+MIK2	3702.Q8VZG8	GO Process	GO:0043170	Macromolecule metabolic process
+MIK2	3702.Q8VZG8	GO Process	GO:0043412	Macromolecule modification
+MIK2	3702.Q8VZG8	GO Process	GO:0044237	Cellular metabolic process
+MIK2	3702.Q8VZG8	GO Process	GO:0044238	Primary metabolic process
+MIK2	3702.Q8VZG8	GO Process	GO:0044706	Multi-multicellular organism process
+MIK2	3702.Q8VZG8	GO Process	GO:0048856	Anatomical structure development
+MIK2	3702.Q8VZG8	GO Process	GO:0048868	Pollen tube development
+MIK2	3702.Q8VZG8	GO Process	GO:0050789	Regulation of biological process
+MIK2	3702.Q8VZG8	GO Process	GO:0050794	Regulation of cellular process
+MIK2	3702.Q8VZG8	GO Process	GO:0050896	Response to stimulus
+MIK2	3702.Q8VZG8	GO Process	GO:0050918	Positive chemotaxis
+MIK2	3702.Q8VZG8	GO Process	GO:0051716	Cellular response to stimulus
+MIK2	3702.Q8VZG8	GO Process	GO:0065007	Biological regulation
+MIK2	3702.Q8VZG8	GO Process	GO:0070887	Cellular response to chemical stimulus
+MIK2	3702.Q8VZG8	GO Process	GO:0071310	Cellular response to organic substance
+MIK2	3702.Q8VZG8	GO Process	GO:0071495	Cellular response to endogenous stimulus
+MIK2	3702.Q8VZG8	GO Process	GO:0071704	Organic substance metabolic process
+MIK2	3702.Q8VZG8	GO Process	GO:1901564	Organonitrogen compound metabolic process
+MIK2	3702.Q8VZG8	GO Function	GO:0000166	Nucleotide binding
+MIK2	3702.Q8VZG8	GO Function	GO:0003824	Catalytic activity
+MIK2	3702.Q8VZG8	GO Function	GO:0004672	Protein kinase activity
+MIK2	3702.Q8VZG8	GO Function	GO:0004674	Protein serine/threonine kinase activity
+MIK2	3702.Q8VZG8	GO Function	GO:0005488	Binding
+MIK2	3702.Q8VZG8	GO Function	GO:0005524	ATP binding
+MIK2	3702.Q8VZG8	GO Function	GO:0016301	Kinase activity
+MIK2	3702.Q8VZG8	GO Function	GO:0016740	Transferase activity
+MIK2	3702.Q8VZG8	GO Function	GO:0016772	Transferase activity, transferring phosphorus-containing groups
+MIK2	3702.Q8VZG8	GO Function	GO:0016773	Phosphotransferase activity, alcohol group as acceptor
+MIK2	3702.Q8VZG8	GO Function	GO:0017076	Purine nucleotide binding
+MIK2	3702.Q8VZG8	GO Function	GO:0030554	Adenyl nucleotide binding
+MIK2	3702.Q8VZG8	GO Function	GO:0032553	Ribonucleotide binding
+MIK2	3702.Q8VZG8	GO Function	GO:0032555	Purine ribonucleotide binding
+MIK2	3702.Q8VZG8	GO Function	GO:0032559	Adenyl ribonucleotide binding
+MIK2	3702.Q8VZG8	GO Function	GO:0035639	Purine ribonucleoside triphosphate binding
+MIK2	3702.Q8VZG8	GO Function	GO:0036094	Small molecule binding
+MIK2	3702.Q8VZG8	GO Function	GO:0043167	Ion binding
+MIK2	3702.Q8VZG8	GO Function	GO:0043168	Anion binding
+MIK2	3702.Q8VZG8	GO Function	GO:0097159	Organic cyclic compound binding
+MIK2	3702.Q8VZG8	GO Function	GO:0097367	Carbohydrate derivative binding
+MIK2	3702.Q8VZG8	GO Function	GO:0106310	Protein serine kinase activity
+MIK2	3702.Q8VZG8	GO Function	GO:0140096	Catalytic activity, acting on a protein
+MIK2	3702.Q8VZG8	GO Function	GO:1901265	Nucleoside phosphate binding
+MIK2	3702.Q8VZG8	GO Function	GO:1901363	Heterocyclic compound binding
+MIK2	3702.Q8VZG8	GO Component	GO:0005886	Plasma membrane
+MIK2	3702.Q8VZG8	GO Component	GO:0005911	Cell-cell junction
+MIK2	3702.Q8VZG8	GO Component	GO:0009506	Plasmodesma
+MIK2	3702.Q8VZG8	GO Component	GO:0016020	Membrane
+MIK2	3702.Q8VZG8	GO Component	GO:0016021	Integral component of membrane
+MIK2	3702.Q8VZG8	GO Component	GO:0030054	Cell junction
+MIK2	3702.Q8VZG8	GO Component	GO:0031224	Intrinsic component of membrane
+MIK2	3702.Q8VZG8	GO Component	GO:0042995	Cell projection
+MIK2	3702.Q8VZG8	GO Component	GO:0055044	Symplast
+MIK2	3702.Q8VZG8	GO Component	GO:0070161	Anchoring junction
+MIK2	3702.Q8VZG8	GO Component	GO:0071944	Cell periphery
+MIK2	3702.Q8VZG8	GO Component	GO:0090406	Pollen tube
+MIK2	3702.Q8VZG8	GO Component	GO:0110165	Cellular anatomical entity
+MIK2	3702.Q8VZG8	GO Component	GO:0120025	Plasma membrane bounded cell projection
+MIK2	3702.Q8VZG8	STRING clusters	CL:38932	Mixed, incl. Prolamin-like, and Knottins
+MIK2	3702.Q8VZG8	STRING clusters	CL:38934	Mixed, incl. Prolamin-like, and Knottins
+MIK2	3702.Q8VZG8	STRING clusters	CL:38935	Mixed, incl. Knottins, and Taxis
+MIK2	3702.Q8VZG8	STRING clusters	CL:38936	Mixed, incl. Taxis, and Prolamin-like domain
+MIK2	3702.Q8VZG8	STRING clusters	CL:38937	Taxis, and Regulation of pollen tube growth
+MIK2	3702.Q8VZG8	STRING clusters	CL:38939	Mixed, incl. Protein LURE 1.1-1.6, defensin-like domain, and Pollen receptor-like kinase 1-6/SFR4-like
+MIK2	3702.Q8VZG8	COMPARTMENTS	GOCC:0042995	Cell projection
+MIK2	3702.Q8VZG8	COMPARTMENTS	GOCC:0090406	Pollen tube
+MIK2	3702.Q8VZG8	COMPARTMENTS	GOCC:0110165	Cellular anatomical entity
+MIK2	3702.Q8VZG8	COMPARTMENTS	GOCC:0120025	Plasma membrane bounded cell projection
+MIK2	3702.Q8VZG8	UniProt Keywords	KW-0025	Alternative splicing
+MIK2	3702.Q8VZG8	UniProt Keywords	KW-0067	ATP-binding
+MIK2	3702.Q8VZG8	UniProt Keywords	KW-0325	Glycoprotein
+MIK2	3702.Q8VZG8	UniProt Keywords	KW-0418	Kinase
+MIK2	3702.Q8VZG8	UniProt Keywords	KW-0433	Leucine-rich repeat
+MIK2	3702.Q8VZG8	UniProt Keywords	KW-0472	Membrane
+MIK2	3702.Q8VZG8	UniProt Keywords	KW-0547	Nucleotide-binding
+MIK2	3702.Q8VZG8	UniProt Keywords	KW-0597	Phosphoprotein
+MIK2	3702.Q8VZG8	UniProt Keywords	KW-0675	Receptor
+MIK2	3702.Q8VZG8	UniProt Keywords	KW-0677	Repeat
+MIK2	3702.Q8VZG8	UniProt Keywords	KW-0723	Serine/threonine-protein kinase
+MIK2	3702.Q8VZG8	UniProt Keywords	KW-0732	Signal
+MIK2	3702.Q8VZG8	UniProt Keywords	KW-0808	Transferase
+MIK2	3702.Q8VZG8	UniProt Keywords	KW-0812	Transmembrane
+MIK2	3702.Q8VZG8	UniProt Keywords	KW-1003	Cell membrane
+MIK2	3702.Q8VZG8	UniProt Keywords	KW-1133	Transmembrane helix
+MIK2	3702.Q8VZG8	Pfam	PF08263	Leucine rich repeat N-terminal domain
+MIK2	3702.Q8VZG8	InterPro	IPR000719	Protein kinase domain
+MIK2	3702.Q8VZG8	InterPro	IPR001611	Leucine-rich repeat
+MIK2	3702.Q8VZG8	InterPro	IPR003591	Leucine-rich repeat, typical subtype
+MIK2	3702.Q8VZG8	InterPro	IPR008266	Tyrosine-protein kinase, active site
+MIK2	3702.Q8VZG8	InterPro	IPR011009	Protein kinase-like domain superfamily
+MIK2	3702.Q8VZG8	InterPro	IPR013210	Leucine-rich repeat-containing N-terminal, plant-type
+MIK2	3702.Q8VZG8	InterPro	IPR017441	Protein kinase, ATP binding site
+MIK2	3702.Q8VZG8	InterPro	IPR032675	Leucine-rich repeat domain superfamily
+MIK2	3702.Q8VZG8	SMART	SM00370	Leucine-rich repeats, outliers
+MVA3.30	3702.Q9FN83	GO Process	GO:0006950	Response to stress
+MVA3.30	3702.Q9FN83	GO Process	GO:0006952	Defense response
+MVA3.30	3702.Q9FN83	GO Process	GO:0007154	Cell communication
+MVA3.30	3702.Q9FN83	GO Process	GO:0007165	Signal transduction
+MVA3.30	3702.Q9FN83	GO Process	GO:0009987	Cellular process
+MVA3.30	3702.Q9FN83	GO Process	GO:0023052	Signaling
+MVA3.30	3702.Q9FN83	GO Process	GO:0050789	Regulation of biological process
+MVA3.30	3702.Q9FN83	GO Process	GO:0050794	Regulation of cellular process
+MVA3.30	3702.Q9FN83	GO Process	GO:0050896	Response to stimulus
+MVA3.30	3702.Q9FN83	GO Process	GO:0051716	Cellular response to stimulus
+MVA3.30	3702.Q9FN83	GO Process	GO:0065007	Biological regulation
+MVA3.30	3702.Q9FN83	GO Function	GO:0000166	Nucleotide binding
+MVA3.30	3702.Q9FN83	GO Function	GO:0005488	Binding
+MVA3.30	3702.Q9FN83	GO Function	GO:0017076	Purine nucleotide binding
+MVA3.30	3702.Q9FN83	GO Function	GO:0030554	Adenyl nucleotide binding
+MVA3.30	3702.Q9FN83	GO Function	GO:0032553	Ribonucleotide binding
+MVA3.30	3702.Q9FN83	GO Function	GO:0032555	Purine ribonucleotide binding
+MVA3.30	3702.Q9FN83	GO Function	GO:0032559	Adenyl ribonucleotide binding
+MVA3.30	3702.Q9FN83	GO Function	GO:0036094	Small molecule binding
+MVA3.30	3702.Q9FN83	GO Function	GO:0043167	Ion binding
+MVA3.30	3702.Q9FN83	GO Function	GO:0043168	Anion binding
+MVA3.30	3702.Q9FN83	GO Function	GO:0043531	ADP binding
+MVA3.30	3702.Q9FN83	GO Function	GO:0097159	Organic cyclic compound binding
+MVA3.30	3702.Q9FN83	GO Function	GO:0097367	Carbohydrate derivative binding
+MVA3.30	3702.Q9FN83	GO Function	GO:1901265	Nucleoside phosphate binding
+MVA3.30	3702.Q9FN83	GO Function	GO:1901363	Heterocyclic compound binding
+MVA3.30	3702.Q9FN83	STRING clusters	CL:41975	Mostly uncharacterized, incl. Exostosin-like, and Peptidase C14, caspase domain
+MVA3.30	3702.Q9FN83	STRING clusters	CL:41976	Mostly uncharacterized, incl. Exostosin-like, and Peptidase C14, caspase domain
+MVA3.30	3702.Q9FN83	STRING clusters	CL:41977	Mixed, incl. Exostosin-like, and Peptidase C14, caspase domain
+MVA3.30	3702.Q9FN83	STRING clusters	CL:41978	Mostly uncharacterized, incl. Peptidase C14, caspase domain, and Exostosin family
+MVA3.30	3702.Q9FN83	STRING clusters	CL:42054	Mostly uncharacterized, incl. Fn3-like domain, and rRNA-processing protein Efg1
+MVA3.30	3702.Q9FN83	STRING clusters	CL:42057	Mixed, incl. Fn3-like domain, and ANTH domain
+MVA3.30	3702.Q9FN83	Reactome	MAP-168249	Innate Immune System
+MVA3.30	3702.Q9FN83	Reactome	MAP-168256	Immune System
+MVA3.30	3702.Q9FN83	Reactome	MAP-6798695	Neutrophil degranulation
+MVA3.30	3702.Q9FN83	COMPARTMENTS	GOCC:0005622	Intracellular
+MVA3.30	3702.Q9FN83	COMPARTMENTS	GOCC:0005634	Nucleus
+MVA3.30	3702.Q9FN83	COMPARTMENTS	GOCC:0012505	Endomembrane system
+MVA3.30	3702.Q9FN83	COMPARTMENTS	GOCC:0043226	Organelle
+MVA3.30	3702.Q9FN83	COMPARTMENTS	GOCC:0043227	Membrane-bounded organelle
+MVA3.30	3702.Q9FN83	COMPARTMENTS	GOCC:0043229	Intracellular organelle
+MVA3.30	3702.Q9FN83	COMPARTMENTS	GOCC:0043231	Intracellular membrane-bounded organelle
+MVA3.30	3702.Q9FN83	COMPARTMENTS	GOCC:0110165	Cellular anatomical entity
+MVA3.30	3702.Q9FN83	UniProt Keywords	KW-0433	Leucine-rich repeat
+MVA3.30	3702.Q9FN83	UniProt Keywords	KW-0677	Repeat
+MVA3.30	3702.Q9FN83	Pfam	PF00931	NB-ARC domain
+MVA3.30	3702.Q9FN83	Pfam	PF07725	Leucine Rich Repeat
+MVA3.30	3702.Q9FN83	InterPro	IPR000157	Toll/interleukin-1 receptor homology (TIR) domain
+MVA3.30	3702.Q9FN83	InterPro	IPR002182	NB-ARC
+MVA3.30	3702.Q9FN83	InterPro	IPR003591	Leucine-rich repeat, typical subtype
+MVA3.30	3702.Q9FN83	InterPro	IPR011713	Leucine-rich repeat 3
+MVA3.30	3702.Q9FN83	InterPro	IPR027417	P-loop containing nucleoside triphosphate hydrolase
+MVA3.30	3702.Q9FN83	InterPro	IPR032675	Leucine-rich repeat domain superfamily
+MVA3.30	3702.Q9FN83	InterPro	IPR035897	Toll/interleukin-1 receptor homology (TIR) domain superfamily
+MVA3.30	3702.Q9FN83	InterPro	IPR036390	Winged helix DNA-binding domain superfamily
+MVA3.30	3702.Q9FN83	InterPro	IPR042197	Apoptotic protease-activating factors, helical domain
+MVA3.30	3702.Q9FN83	InterPro	IPR044974	Disease resistance protein, plants
+MVA3.30	3702.Q9FN83	InterPro	IPR045344	C-JID domain
+MVA3.30	3702.Q9FN83	SMART	SM00255	Toll - interleukin 1 - resistance
+MVA3.30	3702.Q9FN83	SMART	SM00370	Leucine-rich repeats, outliers
+PAD4	3702.Q9S745	GO Process	GO:0000160	Phosphorelay signal transduction system
+PAD4	3702.Q9S745	GO Process	GO:0001666	Response to hypoxia
+PAD4	3702.Q9S745	GO Process	GO:0002213	Defense response to insect
+PAD4	3702.Q9S745	GO Process	GO:0002376	Immune system process
+PAD4	3702.Q9S745	GO Process	GO:0002831	Regulation of response to biotic stimulus
+PAD4	3702.Q9S745	GO Process	GO:0002833	Positive regulation of response to biotic stimulus
+PAD4	3702.Q9S745	GO Process	GO:0006629	Lipid metabolic process
+PAD4	3702.Q9S745	GO Process	GO:0006950	Response to stress
+PAD4	3702.Q9S745	GO Process	GO:0006952	Defense response
+PAD4	3702.Q9S745	GO Process	GO:0006955	Immune response
+PAD4	3702.Q9S745	GO Process	GO:0007154	Cell communication
+PAD4	3702.Q9S745	GO Process	GO:0007165	Signal transduction
+PAD4	3702.Q9S745	GO Process	GO:0007275	Multicellular organism development
+PAD4	3702.Q9S745	GO Process	GO:0008152	Metabolic process
+PAD4	3702.Q9S745	GO Process	GO:0008219	Cell death
+PAD4	3702.Q9S745	GO Process	GO:0009056	Catabolic process
+PAD4	3702.Q9S745	GO Process	GO:0009314	Response to radiation
+PAD4	3702.Q9S745	GO Process	GO:0009411	Response to UV
+PAD4	3702.Q9S745	GO Process	GO:0009416	Response to light stimulus
+PAD4	3702.Q9S745	GO Process	GO:0009605	Response to external stimulus
+PAD4	3702.Q9S745	GO Process	GO:0009607	Response to biotic stimulus
+PAD4	3702.Q9S745	GO Process	GO:0009617	Response to bacterium
+PAD4	3702.Q9S745	GO Process	GO:0009625	Response to insect
+PAD4	3702.Q9S745	GO Process	GO:0009626	Plant-type hypersensitive response
+PAD4	3702.Q9S745	GO Process	GO:0009627	Systemic acquired resistance
+PAD4	3702.Q9S745	GO Process	GO:0009628	Response to abiotic stimulus
+PAD4	3702.Q9S745	GO Process	GO:0009653	Anatomical structure morphogenesis
+PAD4	3702.Q9S745	GO Process	GO:0009719	Response to endogenous stimulus
+PAD4	3702.Q9S745	GO Process	GO:0009723	Response to ethylene
+PAD4	3702.Q9S745	GO Process	GO:0009725	Response to hormone
+PAD4	3702.Q9S745	GO Process	GO:0009743	Response to carbohydrate
+PAD4	3702.Q9S745	GO Process	GO:0009751	Response to salicylic acid
+PAD4	3702.Q9S745	GO Process	GO:0009755	Hormone-mediated signaling pathway
+PAD4	3702.Q9S745	GO Process	GO:0009838	Abscission
+PAD4	3702.Q9S745	GO Process	GO:0009862	Systemic acquired resistance, salicylic acid mediated signaling pathway
+PAD4	3702.Q9S745	GO Process	GO:0009863	Salicylic acid mediated signaling pathway
+PAD4	3702.Q9S745	GO Process	GO:0009873	Ethylene-activated signaling pathway
+PAD4	3702.Q9S745	GO Process	GO:0009889	Regulation of biosynthetic process
+PAD4	3702.Q9S745	GO Process	GO:0009891	Positive regulation of biosynthetic process
+PAD4	3702.Q9S745	GO Process	GO:0009893	Positive regulation of metabolic process
+PAD4	3702.Q9S745	GO Process	GO:0009966	Regulation of signal transduction
+PAD4	3702.Q9S745	GO Process	GO:0009967	Positive regulation of signal transduction
+PAD4	3702.Q9S745	GO Process	GO:0009968	Negative regulation of signal transduction
+PAD4	3702.Q9S745	GO Process	GO:0009987	Cellular process
+PAD4	3702.Q9S745	GO Process	GO:0010033	Response to organic substance
+PAD4	3702.Q9S745	GO Process	GO:0010104	Regulation of ethylene-activated signaling pathway
+PAD4	3702.Q9S745	GO Process	GO:0010105	Negative regulation of ethylene-activated signaling pathway
+PAD4	3702.Q9S745	GO Process	GO:0010150	Leaf senescence
+PAD4	3702.Q9S745	GO Process	GO:0010225	Response to UV-C
+PAD4	3702.Q9S745	GO Process	GO:0010310	Regulation of hydrogen peroxide metabolic process
+PAD4	3702.Q9S745	GO Process	GO:0010337	Regulation of salicylic acid metabolic process
+PAD4	3702.Q9S745	GO Process	GO:0010353	Response to trehalose
+PAD4	3702.Q9S745	GO Process	GO:0010565	Regulation of cellular ketone metabolic process
+PAD4	3702.Q9S745	GO Process	GO:0010618	Aerenchyma formation
+PAD4	3702.Q9S745	GO Process	GO:0010646	Regulation of cell communication
+PAD4	3702.Q9S745	GO Process	GO:0010647	Positive regulation of cell communication
+PAD4	3702.Q9S745	GO Process	GO:0010648	Negative regulation of cell communication
+PAD4	3702.Q9S745	GO Process	GO:0010941	Regulation of cell death
+PAD4	3702.Q9S745	GO Process	GO:0010942	Positive regulation of cell death
+PAD4	3702.Q9S745	GO Process	GO:0012501	Programmed cell death
+PAD4	3702.Q9S745	GO Process	GO:0014070	Response to organic cyclic compound
+PAD4	3702.Q9S745	GO Process	GO:0016042	Lipid catabolic process
+PAD4	3702.Q9S745	GO Process	GO:0019222	Regulation of metabolic process
+PAD4	3702.Q9S745	GO Process	GO:0023051	Regulation of signaling
+PAD4	3702.Q9S745	GO Process	GO:0023052	Signaling
+PAD4	3702.Q9S745	GO Process	GO:0023056	Positive regulation of signaling
+PAD4	3702.Q9S745	GO Process	GO:0023057	Negative regulation of signaling
+PAD4	3702.Q9S745	GO Process	GO:0031323	Regulation of cellular metabolic process
+PAD4	3702.Q9S745	GO Process	GO:0031325	Positive regulation of cellular metabolic process
+PAD4	3702.Q9S745	GO Process	GO:0031326	Regulation of cellular biosynthetic process
+PAD4	3702.Q9S745	GO Process	GO:0031328	Positive regulation of cellular biosynthetic process
+PAD4	3702.Q9S745	GO Process	GO:0031347	Regulation of defense response
+PAD4	3702.Q9S745	GO Process	GO:0031348	Negative regulation of defense response
+PAD4	3702.Q9S745	GO Process	GO:0031349	Positive regulation of defense response
+PAD4	3702.Q9S745	GO Process	GO:0032101	Regulation of response to external stimulus
+PAD4	3702.Q9S745	GO Process	GO:0032103	Positive regulation of response to external stimulus
+PAD4	3702.Q9S745	GO Process	GO:0032501	Multicellular organismal process
+PAD4	3702.Q9S745	GO Process	GO:0032502	Developmental process
+PAD4	3702.Q9S745	GO Process	GO:0032870	Cellular response to hormone stimulus
+PAD4	3702.Q9S745	GO Process	GO:0033554	Cellular response to stress
+PAD4	3702.Q9S745	GO Process	GO:0034050	Programmed cell death induced by symbiont
+PAD4	3702.Q9S745	GO Process	GO:0034285	Response to disaccharide
+PAD4	3702.Q9S745	GO Process	GO:0035556	Intracellular signal transduction
+PAD4	3702.Q9S745	GO Process	GO:0036293	Response to decreased oxygen levels
+PAD4	3702.Q9S745	GO Process	GO:0042221	Response to chemical
+PAD4	3702.Q9S745	GO Process	GO:0042742	Defense response to bacterium
+PAD4	3702.Q9S745	GO Process	GO:0042762	Regulation of sulfur metabolic process
+PAD4	3702.Q9S745	GO Process	GO:0043207	Response to external biotic stimulus
+PAD4	3702.Q9S745	GO Process	GO:0043455	Regulation of secondary metabolic process
+PAD4	3702.Q9S745	GO Process	GO:0044238	Primary metabolic process
+PAD4	3702.Q9S745	GO Process	GO:0044403	Biological process involved in symbiotic interaction
+PAD4	3702.Q9S745	GO Process	GO:0044419	Biological process involved in interspecies interaction between organisms
+PAD4	3702.Q9S745	GO Process	GO:0045087	Innate immune response
+PAD4	3702.Q9S745	GO Process	GO:0048366	Leaf development
+PAD4	3702.Q9S745	GO Process	GO:0048367	Shoot system development
+PAD4	3702.Q9S745	GO Process	GO:0048518	Positive regulation of biological process
+PAD4	3702.Q9S745	GO Process	GO:0048519	Negative regulation of biological process
+PAD4	3702.Q9S745	GO Process	GO:0048522	Positive regulation of cellular process
+PAD4	3702.Q9S745	GO Process	GO:0048523	Negative regulation of cellular process
+PAD4	3702.Q9S745	GO Process	GO:0048583	Regulation of response to stimulus
+PAD4	3702.Q9S745	GO Process	GO:0048584	Positive regulation of response to stimulus
+PAD4	3702.Q9S745	GO Process	GO:0048585	Negative regulation of response to stimulus
+PAD4	3702.Q9S745	GO Process	GO:0048646	Anatomical structure formation involved in morphogenesis
+PAD4	3702.Q9S745	GO Process	GO:0048731	System development
+PAD4	3702.Q9S745	GO Process	GO:0048827	Phyllome development
+PAD4	3702.Q9S745	GO Process	GO:0048856	Anatomical structure development
+PAD4	3702.Q9S745	GO Process	GO:0050789	Regulation of biological process
+PAD4	3702.Q9S745	GO Process	GO:0050794	Regulation of cellular process
+PAD4	3702.Q9S745	GO Process	GO:0050829	Defense response to Gram-negative bacterium
+PAD4	3702.Q9S745	GO Process	GO:0050896	Response to stimulus
+PAD4	3702.Q9S745	GO Process	GO:0051171	Regulation of nitrogen compound metabolic process
+PAD4	3702.Q9S745	GO Process	GO:0051173	Positive regulation of nitrogen compound metabolic process
+PAD4	3702.Q9S745	GO Process	GO:0051176	Positive regulation of sulfur metabolic process
+PAD4	3702.Q9S745	GO Process	GO:0051702	Biological process involved in interaction with symbiont
+PAD4	3702.Q9S745	GO Process	GO:0051707	Response to other organism
+PAD4	3702.Q9S745	GO Process	GO:0051716	Cellular response to stimulus
+PAD4	3702.Q9S745	GO Process	GO:0052318	Regulation of phytoalexin metabolic process
+PAD4	3702.Q9S745	GO Process	GO:0052319	Regulation of phytoalexin biosynthetic process
+PAD4	3702.Q9S745	GO Process	GO:0052320	Positive regulation of phytoalexin metabolic process
+PAD4	3702.Q9S745	GO Process	GO:0052322	Positive regulation of phytoalexin biosynthetic process
+PAD4	3702.Q9S745	GO Process	GO:0060866	Leaf abscission
+PAD4	3702.Q9S745	GO Process	GO:0062012	Regulation of small molecule metabolic process
+PAD4	3702.Q9S745	GO Process	GO:0065007	Biological regulation
+PAD4	3702.Q9S745	GO Process	GO:0070297	Regulation of phosphorelay signal transduction system
+PAD4	3702.Q9S745	GO Process	GO:0070298	Negative regulation of phosphorelay signal transduction system
+PAD4	3702.Q9S745	GO Process	GO:0070482	Response to oxygen levels
+PAD4	3702.Q9S745	GO Process	GO:0070887	Cellular response to chemical stimulus
+PAD4	3702.Q9S745	GO Process	GO:0071310	Cellular response to organic substance
+PAD4	3702.Q9S745	GO Process	GO:0071322	Cellular response to carbohydrate stimulus
+PAD4	3702.Q9S745	GO Process	GO:0071324	Cellular response to disaccharide stimulus
+PAD4	3702.Q9S745	GO Process	GO:0071327	Cellular response to trehalose stimulus
+PAD4	3702.Q9S745	GO Process	GO:0071369	Cellular response to ethylene stimulus
+PAD4	3702.Q9S745	GO Process	GO:0071407	Cellular response to organic cyclic compound
+PAD4	3702.Q9S745	GO Process	GO:0071446	Cellular response to salicylic acid stimulus
+PAD4	3702.Q9S745	GO Process	GO:0071495	Cellular response to endogenous stimulus
+PAD4	3702.Q9S745	GO Process	GO:0071704	Organic substance metabolic process
+PAD4	3702.Q9S745	GO Process	GO:0080134	Regulation of response to stress
+PAD4	3702.Q9S745	GO Process	GO:0080142	Regulation of salicylic acid biosynthetic process
+PAD4	3702.Q9S745	GO Process	GO:0080151	Positive regulation of salicylic acid mediated signaling pathway
+PAD4	3702.Q9S745	GO Process	GO:0090693	Plant organ senescence
+PAD4	3702.Q9S745	GO Process	GO:0098542	Defense response to other organism
+PAD4	3702.Q9S745	GO Process	GO:0099402	Plant organ development
+PAD4	3702.Q9S745	GO Process	GO:1900367	Positive regulation of defense response to insect
+PAD4	3702.Q9S745	GO Process	GO:1900376	Regulation of secondary metabolite biosynthetic process
+PAD4	3702.Q9S745	GO Process	GO:1900378	Positive regulation of secondary metabolite biosynthetic process
+PAD4	3702.Q9S745	GO Process	GO:1900424	Regulation of defense response to bacterium
+PAD4	3702.Q9S745	GO Process	GO:1900426	Positive regulation of defense response to bacterium
+PAD4	3702.Q9S745	GO Process	GO:1901182	Regulation of camalexin biosynthetic process
+PAD4	3702.Q9S745	GO Process	GO:1901183	Positive regulation of camalexin biosynthetic process
+PAD4	3702.Q9S745	GO Process	GO:1901575	Organic substance catabolic process
+PAD4	3702.Q9S745	GO Process	GO:1901700	Response to oxygen-containing compound
+PAD4	3702.Q9S745	GO Process	GO:1901701	Cellular response to oxygen-containing compound
+PAD4	3702.Q9S745	GO Process	GO:1902531	Regulation of intracellular signal transduction
+PAD4	3702.Q9S745	GO Process	GO:1902532	Negative regulation of intracellular signal transduction
+PAD4	3702.Q9S745	GO Process	GO:2000022	Regulation of jasmonic acid mediated signaling pathway
+PAD4	3702.Q9S745	GO Process	GO:2000031	Regulation of salicylic acid mediated signaling pathway
+PAD4	3702.Q9S745	GO Process	GO:2000068	Regulation of defense response to insect
+PAD4	3702.Q9S745	GO Process	GO:2000377	Regulation of reactive oxygen species metabolic process
+PAD4	3702.Q9S745	GO Function	GO:0003824	Catalytic activity
+PAD4	3702.Q9S745	GO Function	GO:0016298	Lipase activity
+PAD4	3702.Q9S745	GO Function	GO:0016740	Transferase activity
+PAD4	3702.Q9S745	GO Function	GO:0016787	Hydrolase activity
+PAD4	3702.Q9S745	GO Function	GO:0016788	Hydrolase activity, acting on ester bonds
+PAD4	3702.Q9S745	GO Component	GO:0005622	Intracellular anatomical structure
+PAD4	3702.Q9S745	GO Component	GO:0005634	Nucleus
+PAD4	3702.Q9S745	GO Component	GO:0005737	Cytoplasm
+PAD4	3702.Q9S745	GO Component	GO:0005829	Cytosol
+PAD4	3702.Q9S745	GO Component	GO:0032991	Protein-containing complex
+PAD4	3702.Q9S745	GO Component	GO:0043226	Organelle
+PAD4	3702.Q9S745	GO Component	GO:0043227	Membrane-bounded organelle
+PAD4	3702.Q9S745	GO Component	GO:0043229	Intracellular organelle
+PAD4	3702.Q9S745	GO Component	GO:0043231	Intracellular membrane-bounded organelle
+PAD4	3702.Q9S745	GO Component	GO:0106093	EDS1 disease-resistance complex
+PAD4	3702.Q9S745	GO Component	GO:0110165	Cellular anatomical entity
+PAD4	3702.Q9S745	STRING clusters	CL:22145	Mixed, incl. Immune system process, and PUB protein, U-box domain, plant
+PAD4	3702.Q9S745	STRING clusters	CL:22146	Mixed, incl. Immune system process, and PUB protein, U-box domain, plant
+PAD4	3702.Q9S745	STRING clusters	CL:22272	Mixed, incl. Plant-type hypersensitive response, and NAD+ nucleosidase activity
+PAD4	3702.Q9S745	STRING clusters	CL:22273	Mixed, incl. Plant-type hypersensitive response, and NAD+ nucleosidase activity
+PAD4	3702.Q9S745	STRING clusters	CL:22275	Mixed, incl. Plant-type hypersensitive response, and NAD+ nucleosidase activity
+PAD4	3702.Q9S745	STRING clusters	CL:22276	Mixed, incl. EDS1, EP domain, and Virus X resistance protein-like, coiled-coil domain
+PAD4	3702.Q9S745	STRING clusters	CL:22278	Mixed, incl. EDS1, EP domain, and Ligase activity, forming phosphoric ester bonds
+PAD4	3702.Q9S745	STRING clusters	CL:22280	Mixed, incl. EDS1, EP domain, and Ligase activity, forming phosphoric ester bonds
+PAD4	3702.Q9S745	COMPARTMENTS	GOCC:0005622	Intracellular
+PAD4	3702.Q9S745	COMPARTMENTS	GOCC:0005634	Nucleus
+PAD4	3702.Q9S745	COMPARTMENTS	GOCC:0005737	Cytoplasm
+PAD4	3702.Q9S745	COMPARTMENTS	GOCC:0005829	Cytosol
+PAD4	3702.Q9S745	COMPARTMENTS	GOCC:0005886	Plasma membrane
+PAD4	3702.Q9S745	COMPARTMENTS	GOCC:0005887	Integral component of plasma membrane
+PAD4	3702.Q9S745	COMPARTMENTS	GOCC:0016020	Membrane
+PAD4	3702.Q9S745	COMPARTMENTS	GOCC:0016021	Integral component of membrane
+PAD4	3702.Q9S745	COMPARTMENTS	GOCC:0031224	Intrinsic component of membrane
+PAD4	3702.Q9S745	COMPARTMENTS	GOCC:0031226	Intrinsic component of plasma membrane
+PAD4	3702.Q9S745	COMPARTMENTS	GOCC:0032991	Protein-containing complex
+PAD4	3702.Q9S745	COMPARTMENTS	GOCC:0043226	Organelle
+PAD4	3702.Q9S745	COMPARTMENTS	GOCC:0043227	Membrane-bounded organelle
+PAD4	3702.Q9S745	COMPARTMENTS	GOCC:0043229	Intracellular organelle
+PAD4	3702.Q9S745	COMPARTMENTS	GOCC:0043231	Intracellular membrane-bounded organelle
+PAD4	3702.Q9S745	COMPARTMENTS	GOCC:0043235	Receptor complex
+PAD4	3702.Q9S745	COMPARTMENTS	GOCC:0045323	interleukin-1 receptor complex
+PAD4	3702.Q9S745	COMPARTMENTS	GOCC:0071944	Cell periphery
+PAD4	3702.Q9S745	COMPARTMENTS	GOCC:0098796	Membrane protein complex
+PAD4	3702.Q9S745	COMPARTMENTS	GOCC:0098797	Plasma membrane protein complex
+PAD4	3702.Q9S745	COMPARTMENTS	GOCC:0098802	Plasma membrane signaling receptor complex
+PAD4	3702.Q9S745	COMPARTMENTS	GOCC:0106093	EDS1 disease-resistance complex
+PAD4	3702.Q9S745	COMPARTMENTS	GOCC:0110165	Cellular anatomical entity
+PAD4	3702.Q9S745	UniProt Keywords	KW-0378	Hydrolase
+PAD4	3702.Q9S745	UniProt Keywords	KW-0381	Hypersensitive response
+PAD4	3702.Q9S745	UniProt Keywords	KW-0442	Lipid degradation
+PAD4	3702.Q9S745	UniProt Keywords	KW-0443	Lipid metabolism
+PAD4	3702.Q9S745	UniProt Keywords	KW-0539	Nucleus
+PAD4	3702.Q9S745	UniProt Keywords	KW-0611	Plant defense
+PAD4	3702.Q9S745	UniProt Keywords	KW-0808	Transferase
+PAD4	3702.Q9S745	UniProt Keywords	KW-0936	Ethylene signaling pathway
+PAD4	3702.Q9S745	UniProt Keywords	KW-0963	Cytoplasm
+PAD4	3702.Q9S745	UniProt Keywords	KW-1184	Jasmonic acid signaling pathway
+PAD4	3702.Q9S745	Pfam	PF01764	Lipase (class 3)
+PAD4	3702.Q9S745	InterPro	IPR002921	Fungal lipase-like domain
+PAD4	3702.Q9S745	InterPro	IPR029058	Alpha/Beta hydrolase fold
+PAD4	3702.Q9S745	InterPro	IPR041266	EDS1, EP domain
+RCH2	3702.Q9LHP4	GO Process	GO:0006468	Protein phosphorylation
+RCH2	3702.Q9LHP4	GO Process	GO:0006793	Phosphorus metabolic process
+RCH2	3702.Q9LHP4	GO Process	GO:0006796	Phosphate-containing compound metabolic process
+RCH2	3702.Q9LHP4	GO Process	GO:0006807	Nitrogen compound metabolic process
+RCH2	3702.Q9LHP4	GO Process	GO:0007275	Multicellular organism development
+RCH2	3702.Q9LHP4	GO Process	GO:0008152	Metabolic process
+RCH2	3702.Q9LHP4	GO Process	GO:0009653	Anatomical structure morphogenesis
+RCH2	3702.Q9LHP4	GO Process	GO:0009888	Tissue development
+RCH2	3702.Q9LHP4	GO Process	GO:0009987	Cellular process
+RCH2	3702.Q9LHP4	GO Process	GO:0010015	Root morphogenesis
+RCH2	3702.Q9LHP4	GO Process	GO:0010073	Meristem maintenance
+RCH2	3702.Q9LHP4	GO Process	GO:0010074	Maintenance of meristem identity
+RCH2	3702.Q9LHP4	GO Process	GO:0010075	Regulation of meristem growth
+RCH2	3702.Q9LHP4	GO Process	GO:0010078	Maintenance of root meristem identity
+RCH2	3702.Q9LHP4	GO Process	GO:0010082	Regulation of root meristem growth
+RCH2	3702.Q9LHP4	GO Process	GO:0010449	Root meristem growth
+RCH2	3702.Q9LHP4	GO Process	GO:0016310	Phosphorylation
+RCH2	3702.Q9LHP4	GO Process	GO:0019538	Protein metabolic process
+RCH2	3702.Q9LHP4	GO Process	GO:0019827	Stem cell population maintenance
+RCH2	3702.Q9LHP4	GO Process	GO:0022622	Root system development
+RCH2	3702.Q9LHP4	GO Process	GO:0032501	Multicellular organismal process
+RCH2	3702.Q9LHP4	GO Process	GO:0032502	Developmental process
+RCH2	3702.Q9LHP4	GO Process	GO:0035266	Meristem growth
+RCH2	3702.Q9LHP4	GO Process	GO:0036211	Protein modification process
+RCH2	3702.Q9LHP4	GO Process	GO:0040007	Growth
+RCH2	3702.Q9LHP4	GO Process	GO:0040008	Regulation of growth
+RCH2	3702.Q9LHP4	GO Process	GO:0043170	Macromolecule metabolic process
+RCH2	3702.Q9LHP4	GO Process	GO:0043412	Macromolecule modification
+RCH2	3702.Q9LHP4	GO Process	GO:0044237	Cellular metabolic process
+RCH2	3702.Q9LHP4	GO Process	GO:0044238	Primary metabolic process
+RCH2	3702.Q9LHP4	GO Process	GO:0048364	Root development
+RCH2	3702.Q9LHP4	GO Process	GO:0048507	Meristem development
+RCH2	3702.Q9LHP4	GO Process	GO:0048589	Developmental growth
+RCH2	3702.Q9LHP4	GO Process	GO:0048638	Regulation of developmental growth
+RCH2	3702.Q9LHP4	GO Process	GO:0048731	System development
+RCH2	3702.Q9LHP4	GO Process	GO:0048856	Anatomical structure development
+RCH2	3702.Q9LHP4	GO Process	GO:0050789	Regulation of biological process
+RCH2	3702.Q9LHP4	GO Process	GO:0050793	Regulation of developmental process
+RCH2	3702.Q9LHP4	GO Process	GO:0065007	Biological regulation
+RCH2	3702.Q9LHP4	GO Process	GO:0071704	Organic substance metabolic process
+RCH2	3702.Q9LHP4	GO Process	GO:0098727	Maintenance of cell number
+RCH2	3702.Q9LHP4	GO Process	GO:0099402	Plant organ development
+RCH2	3702.Q9LHP4	GO Process	GO:1901564	Organonitrogen compound metabolic process
+RCH2	3702.Q9LHP4	GO Process	GO:1905392	Plant organ morphogenesis
+RCH2	3702.Q9LHP4	GO Process	GO:2000280	Regulation of root development
+RCH2	3702.Q9LHP4	GO Function	GO:0000166	Nucleotide binding
+RCH2	3702.Q9LHP4	GO Function	GO:0001653	Peptide receptor activity
+RCH2	3702.Q9LHP4	GO Function	GO:0003824	Catalytic activity
+RCH2	3702.Q9LHP4	GO Function	GO:0004672	Protein kinase activity
+RCH2	3702.Q9LHP4	GO Function	GO:0004674	Protein serine/threonine kinase activity
+RCH2	3702.Q9LHP4	GO Function	GO:0005488	Binding
+RCH2	3702.Q9LHP4	GO Function	GO:0005524	ATP binding
+RCH2	3702.Q9LHP4	GO Function	GO:0016301	Kinase activity
+RCH2	3702.Q9LHP4	GO Function	GO:0016740	Transferase activity
+RCH2	3702.Q9LHP4	GO Function	GO:0016772	Transferase activity, transferring phosphorus-containing groups
+RCH2	3702.Q9LHP4	GO Function	GO:0016773	Phosphotransferase activity, alcohol group as acceptor
+RCH2	3702.Q9LHP4	GO Function	GO:0017076	Purine nucleotide binding
+RCH2	3702.Q9LHP4	GO Function	GO:0030554	Adenyl nucleotide binding
+RCH2	3702.Q9LHP4	GO Function	GO:0032553	Ribonucleotide binding
+RCH2	3702.Q9LHP4	GO Function	GO:0032555	Purine ribonucleotide binding
+RCH2	3702.Q9LHP4	GO Function	GO:0032559	Adenyl ribonucleotide binding
+RCH2	3702.Q9LHP4	GO Function	GO:0033218	Amide binding
+RCH2	3702.Q9LHP4	GO Function	GO:0035639	Purine ribonucleoside triphosphate binding
+RCH2	3702.Q9LHP4	GO Function	GO:0036094	Small molecule binding
+RCH2	3702.Q9LHP4	GO Function	GO:0038023	Signaling receptor activity
+RCH2	3702.Q9LHP4	GO Function	GO:0042277	Peptide binding
+RCH2	3702.Q9LHP4	GO Function	GO:0043167	Ion binding
+RCH2	3702.Q9LHP4	GO Function	GO:0043168	Anion binding
+RCH2	3702.Q9LHP4	GO Function	GO:0060089	Molecular transducer activity
+RCH2	3702.Q9LHP4	GO Function	GO:0097159	Organic cyclic compound binding
+RCH2	3702.Q9LHP4	GO Function	GO:0097367	Carbohydrate derivative binding
+RCH2	3702.Q9LHP4	GO Function	GO:0106310	Protein serine kinase activity
+RCH2	3702.Q9LHP4	GO Function	GO:0140096	Catalytic activity, acting on a protein
+RCH2	3702.Q9LHP4	GO Function	GO:1901265	Nucleoside phosphate binding
+RCH2	3702.Q9LHP4	GO Function	GO:1901363	Heterocyclic compound binding
+RCH2	3702.Q9LHP4	GO Component	GO:0005886	Plasma membrane
+RCH2	3702.Q9LHP4	GO Component	GO:0016020	Membrane
+RCH2	3702.Q9LHP4	GO Component	GO:0016021	Integral component of membrane
+RCH2	3702.Q9LHP4	GO Component	GO:0031224	Intrinsic component of membrane
+RCH2	3702.Q9LHP4	GO Component	GO:0071944	Cell periphery
+RCH2	3702.Q9LHP4	GO Component	GO:0110165	Cellular anatomical entity
+RCH2	3702.Q9LHP4	STRING clusters	CL:37972	Mixed, incl. Leucine-rich repeat, and Bulb-type lectin domain
+RCH2	3702.Q9LHP4	STRING clusters	CL:38304	Mostly uncharacterized, incl. Flowering-promoting factor 1, and Exine
+RCH2	3702.Q9LHP4	STRING clusters	CL:38328	Mixed, incl. Exine, and Flowering-promoting factor 1
+RCH2	3702.Q9LHP4	COMPARTMENTS	GOCC:0005886	Plasma membrane
+RCH2	3702.Q9LHP4	COMPARTMENTS	GOCC:0016020	Membrane
+RCH2	3702.Q9LHP4	COMPARTMENTS	GOCC:0071944	Cell periphery
+RCH2	3702.Q9LHP4	COMPARTMENTS	GOCC:0110165	Cellular anatomical entity
+RCH2	3702.Q9LHP4	UniProt Keywords	KW-0067	ATP-binding
+RCH2	3702.Q9LHP4	UniProt Keywords	KW-0325	Glycoprotein
+RCH2	3702.Q9LHP4	UniProt Keywords	KW-0418	Kinase
+RCH2	3702.Q9LHP4	UniProt Keywords	KW-0433	Leucine-rich repeat
+RCH2	3702.Q9LHP4	UniProt Keywords	KW-0472	Membrane
+RCH2	3702.Q9LHP4	UniProt Keywords	KW-0547	Nucleotide-binding
+RCH2	3702.Q9LHP4	UniProt Keywords	KW-0597	Phosphoprotein
+RCH2	3702.Q9LHP4	UniProt Keywords	KW-0675	Receptor
+RCH2	3702.Q9LHP4	UniProt Keywords	KW-0677	Repeat
+RCH2	3702.Q9LHP4	UniProt Keywords	KW-0723	Serine/threonine-protein kinase
+RCH2	3702.Q9LHP4	UniProt Keywords	KW-0732	Signal
+RCH2	3702.Q9LHP4	UniProt Keywords	KW-0808	Transferase
+RCH2	3702.Q9LHP4	UniProt Keywords	KW-0812	Transmembrane
+RCH2	3702.Q9LHP4	UniProt Keywords	KW-0945	Host-virus interaction
+RCH2	3702.Q9LHP4	UniProt Keywords	KW-1003	Cell membrane
+RCH2	3702.Q9LHP4	UniProt Keywords	KW-1133	Transmembrane helix
+RCH2	3702.Q9LHP4	InterPro	IPR000719	Protein kinase domain
+RCH2	3702.Q9LHP4	InterPro	IPR001245	Serine-threonine/tyrosine-protein kinase, catalytic domain
+RCH2	3702.Q9LHP4	InterPro	IPR001611	Leucine-rich repeat
+RCH2	3702.Q9LHP4	InterPro	IPR003591	Leucine-rich repeat, typical subtype
+RCH2	3702.Q9LHP4	InterPro	IPR008271	Serine/threonine-protein kinase, active site
+RCH2	3702.Q9LHP4	InterPro	IPR011009	Protein kinase-like domain superfamily
+RCH2	3702.Q9LHP4	InterPro	IPR017441	Protein kinase, ATP binding site
+RCH2	3702.Q9LHP4	InterPro	IPR032675	Leucine-rich repeat domain superfamily
+RCH2	3702.Q9LHP4	SMART	SM00370	Leucine-rich repeats, outliers
+RLP34	3702.Q9SRL2	GO Component	GO:0005886	Plasma membrane
+RLP34	3702.Q9SRL2	GO Component	GO:0016020	Membrane
+RLP34	3702.Q9SRL2	GO Component	GO:0016021	Integral component of membrane
+RLP34	3702.Q9SRL2	GO Component	GO:0031224	Intrinsic component of membrane
+RLP34	3702.Q9SRL2	GO Component	GO:0071944	Cell periphery
+RLP34	3702.Q9SRL2	GO Component	GO:0110165	Cellular anatomical entity
+RLP34	3702.Q9SRL2	STRING clusters	CL:23523	Exocyst, and Purine nucleobase transmembrane transport
+RLP34	3702.Q9SRL2	STRING clusters	CL:23639	Mixed, incl. Carbonyl reductase [NADPH] 1-like, and Icosanoid biosynthetic process
+RLP34	3702.Q9SRL2	COMPARTMENTS	GOCC:0036194	Muscle cell projection
+RLP34	3702.Q9SRL2	COMPARTMENTS	GOCC:0042995	Cell projection
+RLP34	3702.Q9SRL2	COMPARTMENTS	GOCC:0110165	Cellular anatomical entity
+RLP34	3702.Q9SRL2	COMPARTMENTS	GOCC:0120025	Plasma membrane bounded cell projection
+RLP34	3702.Q9SRL2	UniProt Keywords	KW-0325	Glycoprotein
+RLP34	3702.Q9SRL2	UniProt Keywords	KW-0433	Leucine-rich repeat
+RLP34	3702.Q9SRL2	UniProt Keywords	KW-0472	Membrane
+RLP34	3702.Q9SRL2	UniProt Keywords	KW-0675	Receptor
+RLP34	3702.Q9SRL2	UniProt Keywords	KW-0677	Repeat
+RLP34	3702.Q9SRL2	UniProt Keywords	KW-0732	Signal
+RLP34	3702.Q9SRL2	UniProt Keywords	KW-0812	Transmembrane
+RLP34	3702.Q9SRL2	UniProt Keywords	KW-1003	Cell membrane
+RLP34	3702.Q9SRL2	UniProt Keywords	KW-1133	Transmembrane helix
+RLP34	3702.Q9SRL2	Pfam	PF00560	Leucine Rich Repeat
+RLP34	3702.Q9SRL2	Pfam	PF08263	Leucine rich repeat N-terminal domain
+RLP34	3702.Q9SRL2	Pfam	PF13855	Leucine rich repeat
+RLP34	3702.Q9SRL2	InterPro	IPR001611	Leucine-rich repeat
+RLP34	3702.Q9SRL2	InterPro	IPR003591	Leucine-rich repeat, typical subtype
+RLP34	3702.Q9SRL2	InterPro	IPR013210	Leucine-rich repeat-containing N-terminal, plant-type
+RLP34	3702.Q9SRL2	InterPro	IPR032675	Leucine-rich repeat domain superfamily
+RLP34	3702.Q9SRL2	InterPro	IPR046956	Receptor-like protein 23-like
+RLP34	3702.Q9SRL2	SMART	SM00370	Leucine-rich repeats, outliers
+SAG101	3702.Q4F883	GO Process	GO:0002230	Positive regulation of defense response to virus by host
+SAG101	3702.Q4F883	GO Process	GO:0002376	Immune system process
+SAG101	3702.Q4F883	GO Process	GO:0002831	Regulation of response to biotic stimulus
+SAG101	3702.Q4F883	GO Process	GO:0002833	Positive regulation of response to biotic stimulus
+SAG101	3702.Q4F883	GO Process	GO:0006629	Lipid metabolic process
+SAG101	3702.Q4F883	GO Process	GO:0006950	Response to stress
+SAG101	3702.Q4F883	GO Process	GO:0006952	Defense response
+SAG101	3702.Q4F883	GO Process	GO:0006955	Immune response
+SAG101	3702.Q4F883	GO Process	GO:0007154	Cell communication
+SAG101	3702.Q4F883	GO Process	GO:0007165	Signal transduction
+SAG101	3702.Q4F883	GO Process	GO:0007275	Multicellular organism development
+SAG101	3702.Q4F883	GO Process	GO:0007568	Aging
+SAG101	3702.Q4F883	GO Process	GO:0008152	Metabolic process
+SAG101	3702.Q4F883	GO Process	GO:0008219	Cell death
+SAG101	3702.Q4F883	GO Process	GO:0009056	Catabolic process
+SAG101	3702.Q4F883	GO Process	GO:0009605	Response to external stimulus
+SAG101	3702.Q4F883	GO Process	GO:0009607	Response to biotic stimulus
+SAG101	3702.Q4F883	GO Process	GO:0009617	Response to bacterium
+SAG101	3702.Q4F883	GO Process	GO:0009626	Plant-type hypersensitive response
+SAG101	3702.Q4F883	GO Process	GO:0009627	Systemic acquired resistance
+SAG101	3702.Q4F883	GO Process	GO:0009751	Response to salicylic acid
+SAG101	3702.Q4F883	GO Process	GO:0009838	Abscission
+SAG101	3702.Q4F883	GO Process	GO:0009862	Systemic acquired resistance, salicylic acid mediated signaling pathway
+SAG101	3702.Q4F883	GO Process	GO:0009863	Salicylic acid mediated signaling pathway
+SAG101	3702.Q4F883	GO Process	GO:0009987	Cellular process
+SAG101	3702.Q4F883	GO Process	GO:0010033	Response to organic substance
+SAG101	3702.Q4F883	GO Process	GO:0012501	Programmed cell death
+SAG101	3702.Q4F883	GO Process	GO:0014070	Response to organic cyclic compound
+SAG101	3702.Q4F883	GO Process	GO:0016042	Lipid catabolic process
+SAG101	3702.Q4F883	GO Process	GO:0023052	Signaling
+SAG101	3702.Q4F883	GO Process	GO:0031347	Regulation of defense response
+SAG101	3702.Q4F883	GO Process	GO:0031349	Positive regulation of defense response
+SAG101	3702.Q4F883	GO Process	GO:0032101	Regulation of response to external stimulus
+SAG101	3702.Q4F883	GO Process	GO:0032103	Positive regulation of response to external stimulus
+SAG101	3702.Q4F883	GO Process	GO:0032501	Multicellular organismal process
+SAG101	3702.Q4F883	GO Process	GO:0032502	Developmental process
+SAG101	3702.Q4F883	GO Process	GO:0033554	Cellular response to stress
+SAG101	3702.Q4F883	GO Process	GO:0034050	Programmed cell death induced by symbiont
+SAG101	3702.Q4F883	GO Process	GO:0042221	Response to chemical
+SAG101	3702.Q4F883	GO Process	GO:0042742	Defense response to bacterium
+SAG101	3702.Q4F883	GO Process	GO:0043207	Response to external biotic stimulus
+SAG101	3702.Q4F883	GO Process	GO:0044238	Primary metabolic process
+SAG101	3702.Q4F883	GO Process	GO:0044403	Biological process involved in symbiotic interaction
+SAG101	3702.Q4F883	GO Process	GO:0044419	Biological process involved in interspecies interaction between organisms
+SAG101	3702.Q4F883	GO Process	GO:0045087	Innate immune response
+SAG101	3702.Q4F883	GO Process	GO:0048518	Positive regulation of biological process
+SAG101	3702.Q4F883	GO Process	GO:0048583	Regulation of response to stimulus
+SAG101	3702.Q4F883	GO Process	GO:0048584	Positive regulation of response to stimulus
+SAG101	3702.Q4F883	GO Process	GO:0048856	Anatomical structure development
+SAG101	3702.Q4F883	GO Process	GO:0050688	Regulation of defense response to virus
+SAG101	3702.Q4F883	GO Process	GO:0050691	Regulation of defense response to virus by host
+SAG101	3702.Q4F883	GO Process	GO:0050789	Regulation of biological process
+SAG101	3702.Q4F883	GO Process	GO:0050793	Regulation of developmental process
+SAG101	3702.Q4F883	GO Process	GO:0050794	Regulation of cellular process
+SAG101	3702.Q4F883	GO Process	GO:0050829	Defense response to Gram-negative bacterium
+SAG101	3702.Q4F883	GO Process	GO:0050896	Response to stimulus
+SAG101	3702.Q4F883	GO Process	GO:0051094	Positive regulation of developmental process
+SAG101	3702.Q4F883	GO Process	GO:0051702	Biological process involved in interaction with symbiont
+SAG101	3702.Q4F883	GO Process	GO:0051707	Response to other organism
+SAG101	3702.Q4F883	GO Process	GO:0051716	Cellular response to stimulus
+SAG101	3702.Q4F883	GO Process	GO:0060866	Leaf abscission
+SAG101	3702.Q4F883	GO Process	GO:0065007	Biological regulation
+SAG101	3702.Q4F883	GO Process	GO:0070887	Cellular response to chemical stimulus
+SAG101	3702.Q4F883	GO Process	GO:0071310	Cellular response to organic substance
+SAG101	3702.Q4F883	GO Process	GO:0071407	Cellular response to organic cyclic compound
+SAG101	3702.Q4F883	GO Process	GO:0071446	Cellular response to salicylic acid stimulus
+SAG101	3702.Q4F883	GO Process	GO:0071704	Organic substance metabolic process
+SAG101	3702.Q4F883	GO Process	GO:0080134	Regulation of response to stress
+SAG101	3702.Q4F883	GO Process	GO:0098542	Defense response to other organism
+SAG101	3702.Q4F883	GO Process	GO:1900055	Regulation of leaf senescence
+SAG101	3702.Q4F883	GO Process	GO:1900057	Positive regulation of leaf senescence
+SAG101	3702.Q4F883	GO Process	GO:1900424	Regulation of defense response to bacterium
+SAG101	3702.Q4F883	GO Process	GO:1900426	Positive regulation of defense response to bacterium
+SAG101	3702.Q4F883	GO Process	GO:1901575	Organic substance catabolic process
+SAG101	3702.Q4F883	GO Process	GO:1901700	Response to oxygen-containing compound
+SAG101	3702.Q4F883	GO Process	GO:1901701	Cellular response to oxygen-containing compound
+SAG101	3702.Q4F883	GO Process	GO:1902288	Regulation of defense response to oomycetes
+SAG101	3702.Q4F883	GO Process	GO:1902290	Positive regulation of defense response to oomycetes
+SAG101	3702.Q4F883	GO Function	GO:0003824	Catalytic activity
+SAG101	3702.Q4F883	GO Function	GO:0016787	Hydrolase activity
+SAG101	3702.Q4F883	GO Function	GO:0016788	Hydrolase activity, acting on ester bonds
+SAG101	3702.Q4F883	GO Function	GO:0052689	Carboxylic ester hydrolase activity
+SAG101	3702.Q4F883	GO Function	GO:0080030	Methyl indole-3-acetate esterase activity
+SAG101	3702.Q4F883	GO Component	GO:0005622	Intracellular anatomical structure
+SAG101	3702.Q4F883	GO Component	GO:0005634	Nucleus
+SAG101	3702.Q4F883	GO Component	GO:0005737	Cytoplasm
+SAG101	3702.Q4F883	GO Component	GO:0016020	Membrane
+SAG101	3702.Q4F883	GO Component	GO:0016021	Integral component of membrane
+SAG101	3702.Q4F883	GO Component	GO:0031224	Intrinsic component of membrane
+SAG101	3702.Q4F883	GO Component	GO:0032991	Protein-containing complex
+SAG101	3702.Q4F883	GO Component	GO:0043226	Organelle
+SAG101	3702.Q4F883	GO Component	GO:0043227	Membrane-bounded organelle
+SAG101	3702.Q4F883	GO Component	GO:0043229	Intracellular organelle
+SAG101	3702.Q4F883	GO Component	GO:0043231	Intracellular membrane-bounded organelle
+SAG101	3702.Q4F883	GO Component	GO:0106093	EDS1 disease-resistance complex
+SAG101	3702.Q4F883	GO Component	GO:0110165	Cellular anatomical entity
+SAG101	3702.Q4F883	STRING clusters	CL:22145	Mixed, incl. Immune system process, and PUB protein, U-box domain, plant
+SAG101	3702.Q4F883	STRING clusters	CL:22146	Mixed, incl. Immune system process, and PUB protein, U-box domain, plant
+SAG101	3702.Q4F883	STRING clusters	CL:22272	Mixed, incl. Plant-type hypersensitive response, and NAD+ nucleosidase activity
+SAG101	3702.Q4F883	STRING clusters	CL:22273	Mixed, incl. Plant-type hypersensitive response, and NAD+ nucleosidase activity
+SAG101	3702.Q4F883	STRING clusters	CL:22275	Mixed, incl. Plant-type hypersensitive response, and NAD+ nucleosidase activity
+SAG101	3702.Q4F883	STRING clusters	CL:22276	Mixed, incl. EDS1, EP domain, and Virus X resistance protein-like, coiled-coil domain
+SAG101	3702.Q4F883	STRING clusters	CL:22278	Mixed, incl. EDS1, EP domain, and Ligase activity, forming phosphoric ester bonds
+SAG101	3702.Q4F883	STRING clusters	CL:22280	Mixed, incl. EDS1, EP domain, and Ligase activity, forming phosphoric ester bonds
+SAG101	3702.Q4F883	COMPARTMENTS	GOCC:0005622	Intracellular
+SAG101	3702.Q4F883	COMPARTMENTS	GOCC:0005634	Nucleus
+SAG101	3702.Q4F883	COMPARTMENTS	GOCC:0005737	Cytoplasm
+SAG101	3702.Q4F883	COMPARTMENTS	GOCC:0032991	Protein-containing complex
+SAG101	3702.Q4F883	COMPARTMENTS	GOCC:0043226	Organelle
+SAG101	3702.Q4F883	COMPARTMENTS	GOCC:0043227	Membrane-bounded organelle
+SAG101	3702.Q4F883	COMPARTMENTS	GOCC:0043229	Intracellular organelle
+SAG101	3702.Q4F883	COMPARTMENTS	GOCC:0043231	Intracellular membrane-bounded organelle
+SAG101	3702.Q4F883	COMPARTMENTS	GOCC:0106093	EDS1 disease-resistance complex
+SAG101	3702.Q4F883	COMPARTMENTS	GOCC:0110165	Cellular anatomical entity
+SAG101	3702.Q4F883	UniProt Keywords	KW-0025	Alternative splicing
+SAG101	3702.Q4F883	UniProt Keywords	KW-0378	Hydrolase
+SAG101	3702.Q4F883	UniProt Keywords	KW-0442	Lipid degradation
+SAG101	3702.Q4F883	UniProt Keywords	KW-0443	Lipid metabolism
+SAG101	3702.Q4F883	UniProt Keywords	KW-0472	Membrane
+SAG101	3702.Q4F883	UniProt Keywords	KW-0539	Nucleus
+SAG101	3702.Q4F883	UniProt Keywords	KW-0611	Plant defense
+SAG101	3702.Q4F883	UniProt Keywords	KW-0732	Signal
+SAG101	3702.Q4F883	UniProt Keywords	KW-0812	Transmembrane
+SAG101	3702.Q4F883	UniProt Keywords	KW-0963	Cytoplasm
+SAG101	3702.Q4F883	UniProt Keywords	KW-1133	Transmembrane helix
+SAG101	3702.Q4F883	Pfam	PF01764	Lipase (class 3)
+SAG101	3702.Q4F883	InterPro	IPR002921	Fungal lipase-like domain
+SAG101	3702.Q4F883	InterPro	IPR029058	Alpha/Beta hydrolase fold
+SAG101	3702.Q4F883	InterPro	IPR041266	EDS1, EP domain
+SAG101	3702.Q4F883	InterPro	IPR044603	Senescence-associated carboxylesterase 101-like
+SARD4	3702.Q9FLY0	GO Process	GO:0002831	Regulation of response to biotic stimulus
+SARD4	3702.Q9FLY0	GO Process	GO:0002833	Positive regulation of response to biotic stimulus
+SARD4	3702.Q9FLY0	GO Process	GO:0006082	Organic acid metabolic process
+SARD4	3702.Q9FLY0	GO Process	GO:0006807	Nitrogen compound metabolic process
+SARD4	3702.Q9FLY0	GO Process	GO:0006950	Response to stress
+SARD4	3702.Q9FLY0	GO Process	GO:0006952	Defense response
+SARD4	3702.Q9FLY0	GO Process	GO:0008152	Metabolic process
+SARD4	3702.Q9FLY0	GO Process	GO:0009058	Biosynthetic process
+SARD4	3702.Q9FLY0	GO Process	GO:0009605	Response to external stimulus
+SARD4	3702.Q9FLY0	GO Process	GO:0009607	Response to biotic stimulus
+SARD4	3702.Q9FLY0	GO Process	GO:0009627	Systemic acquired resistance
+SARD4	3702.Q9FLY0	GO Process	GO:0009987	Cellular process
+SARD4	3702.Q9FLY0	GO Process	GO:0010112	Regulation of systemic acquired resistance
+SARD4	3702.Q9FLY0	GO Process	GO:0016053	Organic acid biosynthetic process
+SARD4	3702.Q9FLY0	GO Process	GO:0018130	Heterocycle biosynthetic process
+SARD4	3702.Q9FLY0	GO Process	GO:0019752	Carboxylic acid metabolic process
+SARD4	3702.Q9FLY0	GO Process	GO:0031347	Regulation of defense response
+SARD4	3702.Q9FLY0	GO Process	GO:0031349	Positive regulation of defense response
+SARD4	3702.Q9FLY0	GO Process	GO:0032101	Regulation of response to external stimulus
+SARD4	3702.Q9FLY0	GO Process	GO:0032103	Positive regulation of response to external stimulus
+SARD4	3702.Q9FLY0	GO Process	GO:0032787	Monocarboxylic acid metabolic process
+SARD4	3702.Q9FLY0	GO Process	GO:0043207	Response to external biotic stimulus
+SARD4	3702.Q9FLY0	GO Process	GO:0043436	Oxoacid metabolic process
+SARD4	3702.Q9FLY0	GO Process	GO:0044237	Cellular metabolic process
+SARD4	3702.Q9FLY0	GO Process	GO:0044249	Cellular biosynthetic process
+SARD4	3702.Q9FLY0	GO Process	GO:0044281	Small molecule metabolic process
+SARD4	3702.Q9FLY0	GO Process	GO:0044283	Small molecule biosynthetic process
+SARD4	3702.Q9FLY0	GO Process	GO:0044419	Biological process involved in interspecies interaction between organisms
+SARD4	3702.Q9FLY0	GO Process	GO:0046394	Carboxylic acid biosynthetic process
+SARD4	3702.Q9FLY0	GO Process	GO:0046483	Heterocycle metabolic process
+SARD4	3702.Q9FLY0	GO Process	GO:0048518	Positive regulation of biological process
+SARD4	3702.Q9FLY0	GO Process	GO:0048583	Regulation of response to stimulus
+SARD4	3702.Q9FLY0	GO Process	GO:0048584	Positive regulation of response to stimulus
+SARD4	3702.Q9FLY0	GO Process	GO:0050789	Regulation of biological process
+SARD4	3702.Q9FLY0	GO Process	GO:0050896	Response to stimulus
+SARD4	3702.Q9FLY0	GO Process	GO:0051707	Response to other organism
+SARD4	3702.Q9FLY0	GO Process	GO:0062034	L-pipecolic acid biosynthetic process
+SARD4	3702.Q9FLY0	GO Process	GO:0065007	Biological regulation
+SARD4	3702.Q9FLY0	GO Process	GO:0071704	Organic substance metabolic process
+SARD4	3702.Q9FLY0	GO Process	GO:0072330	Monocarboxylic acid biosynthetic process
+SARD4	3702.Q9FLY0	GO Process	GO:0080134	Regulation of response to stress
+SARD4	3702.Q9FLY0	GO Process	GO:0098542	Defense response to other organism
+SARD4	3702.Q9FLY0	GO Process	GO:1901360	Organic cyclic compound metabolic process
+SARD4	3702.Q9FLY0	GO Process	GO:1901362	Organic cyclic compound biosynthetic process
+SARD4	3702.Q9FLY0	GO Process	GO:1901564	Organonitrogen compound metabolic process
+SARD4	3702.Q9FLY0	GO Process	GO:1901566	Organonitrogen compound biosynthetic process
+SARD4	3702.Q9FLY0	GO Process	GO:1901576	Organic substance biosynthetic process
+SARD4	3702.Q9FLY0	GO Process	GO:1901672	Positive regulation of systemic acquired resistance
+SARD4	3702.Q9FLY0	GO Function	GO:0003824	Catalytic activity
+SARD4	3702.Q9FLY0	GO Function	GO:0016491	Oxidoreductase activity
+SARD4	3702.Q9FLY0	GO Function	GO:0016645	Oxidoreductase activity, acting on the CH-NH group of donors
+SARD4	3702.Q9FLY0	GO Function	GO:0016646	Oxidoreductase activity, acting on the CH-NH group of donors, NAD or NADP as acceptor
+SARD4	3702.Q9FLY0	GO Function	GO:0062046	Dehydropipecolic acid reductase
+SARD4	3702.Q9FLY0	GO Component	GO:0005622	Intracellular anatomical structure
+SARD4	3702.Q9FLY0	GO Component	GO:0005737	Cytoplasm
+SARD4	3702.Q9FLY0	GO Component	GO:0009507	Chloroplast
+SARD4	3702.Q9FLY0	GO Component	GO:0009536	Plastid
+SARD4	3702.Q9FLY0	GO Component	GO:0043226	Organelle
+SARD4	3702.Q9FLY0	GO Component	GO:0043227	Membrane-bounded organelle
+SARD4	3702.Q9FLY0	GO Component	GO:0043229	Intracellular organelle
+SARD4	3702.Q9FLY0	GO Component	GO:0043231	Intracellular membrane-bounded organelle
+SARD4	3702.Q9FLY0	GO Component	GO:0110165	Cellular anatomical entity
+SARD4	3702.Q9FLY0	STRING clusters	CL:25998	Mixed, incl. WRKY transcription factor, plant, and Jasmonic acid signaling pathway
+SARD4	3702.Q9FLY0	STRING clusters	CL:25999	Mixed, incl. Jasmonic acid signaling pathway, and alpha-Linolenic acid metabolism
+SARD4	3702.Q9FLY0	STRING clusters	CL:26107	Mixed, incl. Regulation of systemic acquired resistance, and Systemic acquired resistance
+SARD4	3702.Q9FLY0	STRING clusters	CL:26184	Mixed, incl. Salicylic acid biosynthetic process, and L-pipecolic acid biosynthetic process
+SARD4	3702.Q9FLY0	STRING clusters	CL:26187	L-pipecolic acid biosynthetic process, and Peptidase S33
+SARD4	3702.Q9FLY0	Reactome	MAP-1430728	Metabolism
+SARD4	3702.Q9FLY0	Reactome	MAP-71064	Lysine catabolism
+SARD4	3702.Q9FLY0	Reactome	MAP-71291	Metabolism of amino acids and derivatives
+SARD4	3702.Q9FLY0	COMPARTMENTS	GOCC:0005622	Intracellular
+SARD4	3702.Q9FLY0	COMPARTMENTS	GOCC:0005737	Cytoplasm
+SARD4	3702.Q9FLY0	COMPARTMENTS	GOCC:0009507	Chloroplast
+SARD4	3702.Q9FLY0	COMPARTMENTS	GOCC:0009536	Plastid
+SARD4	3702.Q9FLY0	COMPARTMENTS	GOCC:0043226	Organelle
+SARD4	3702.Q9FLY0	COMPARTMENTS	GOCC:0043227	Membrane-bounded organelle
+SARD4	3702.Q9FLY0	COMPARTMENTS	GOCC:0043229	Intracellular organelle
+SARD4	3702.Q9FLY0	COMPARTMENTS	GOCC:0043231	Intracellular membrane-bounded organelle
+SARD4	3702.Q9FLY0	COMPARTMENTS	GOCC:0110165	Cellular anatomical entity
+SARD4	3702.Q9FLY0	UniProt Keywords	KW-0150	Chloroplast
+SARD4	3702.Q9FLY0	UniProt Keywords	KW-0611	Plant defense
+SARD4	3702.Q9FLY0	UniProt Keywords	KW-0809	Transit peptide
+SARD4	3702.Q9FLY0	UniProt Keywords	KW-0934	Plastid
+SARD4	3702.Q9FLY0	Pfam	PF01488	Shikimate / quinate 5-dehydrogenase
+SARD4	3702.Q9FLY0	InterPro	IPR003462	Ornithine cyclodeaminase/mu-crystallin
+SARD4	3702.Q9FLY0	InterPro	IPR023401	Ornithine cyclodeaminase, N-terminal
+SARD4	3702.Q9FLY0	InterPro	IPR036291	NAD(P)-binding domain superfamily
+SOBIR1	3702.Q9SKB2	GO Process	GO:0006468	Protein phosphorylation
+SOBIR1	3702.Q9SKB2	GO Process	GO:0006793	Phosphorus metabolic process
+SOBIR1	3702.Q9SKB2	GO Process	GO:0006796	Phosphate-containing compound metabolic process
+SOBIR1	3702.Q9SKB2	GO Process	GO:0006807	Nitrogen compound metabolic process
+SOBIR1	3702.Q9SKB2	GO Process	GO:0006950	Response to stress
+SOBIR1	3702.Q9SKB2	GO Process	GO:0006952	Defense response
+SOBIR1	3702.Q9SKB2	GO Process	GO:0008152	Metabolic process
+SOBIR1	3702.Q9SKB2	GO Process	GO:0009987	Cellular process
+SOBIR1	3702.Q9SKB2	GO Process	GO:0010941	Regulation of cell death
+SOBIR1	3702.Q9SKB2	GO Process	GO:0010942	Positive regulation of cell death
+SOBIR1	3702.Q9SKB2	GO Process	GO:0016310	Phosphorylation
+SOBIR1	3702.Q9SKB2	GO Process	GO:0018108	Peptidyl-tyrosine phosphorylation
+SOBIR1	3702.Q9SKB2	GO Process	GO:0018193	Peptidyl-amino acid modification
+SOBIR1	3702.Q9SKB2	GO Process	GO:0018212	Peptidyl-tyrosine modification
+SOBIR1	3702.Q9SKB2	GO Process	GO:0019538	Protein metabolic process
+SOBIR1	3702.Q9SKB2	GO Process	GO:0031347	Regulation of defense response
+SOBIR1	3702.Q9SKB2	GO Process	GO:0031349	Positive regulation of defense response
+SOBIR1	3702.Q9SKB2	GO Process	GO:0036211	Protein modification process
+SOBIR1	3702.Q9SKB2	GO Process	GO:0043170	Macromolecule metabolic process
+SOBIR1	3702.Q9SKB2	GO Process	GO:0043412	Macromolecule modification
+SOBIR1	3702.Q9SKB2	GO Process	GO:0044237	Cellular metabolic process
+SOBIR1	3702.Q9SKB2	GO Process	GO:0044238	Primary metabolic process
+SOBIR1	3702.Q9SKB2	GO Process	GO:0048518	Positive regulation of biological process
+SOBIR1	3702.Q9SKB2	GO Process	GO:0048519	Negative regulation of biological process
+SOBIR1	3702.Q9SKB2	GO Process	GO:0048522	Positive regulation of cellular process
+SOBIR1	3702.Q9SKB2	GO Process	GO:0048583	Regulation of response to stimulus
+SOBIR1	3702.Q9SKB2	GO Process	GO:0048584	Positive regulation of response to stimulus
+SOBIR1	3702.Q9SKB2	GO Process	GO:0050789	Regulation of biological process
+SOBIR1	3702.Q9SKB2	GO Process	GO:0050793	Regulation of developmental process
+SOBIR1	3702.Q9SKB2	GO Process	GO:0050794	Regulation of cellular process
+SOBIR1	3702.Q9SKB2	GO Process	GO:0050896	Response to stimulus
+SOBIR1	3702.Q9SKB2	GO Process	GO:0051093	Negative regulation of developmental process
+SOBIR1	3702.Q9SKB2	GO Process	GO:0060860	Regulation of floral organ abscission
+SOBIR1	3702.Q9SKB2	GO Process	GO:0060862	Negative regulation of floral organ abscission
+SOBIR1	3702.Q9SKB2	GO Process	GO:0065007	Biological regulation
+SOBIR1	3702.Q9SKB2	GO Process	GO:0071704	Organic substance metabolic process
+SOBIR1	3702.Q9SKB2	GO Process	GO:0080134	Regulation of response to stress
+SOBIR1	3702.Q9SKB2	GO Process	GO:1901564	Organonitrogen compound metabolic process
+SOBIR1	3702.Q9SKB2	GO Process	GO:2000241	Regulation of reproductive process
+SOBIR1	3702.Q9SKB2	GO Process	GO:2000242	Negative regulation of reproductive process
+SOBIR1	3702.Q9SKB2	GO Function	GO:0000166	Nucleotide binding
+SOBIR1	3702.Q9SKB2	GO Function	GO:0003824	Catalytic activity
+SOBIR1	3702.Q9SKB2	GO Function	GO:0004672	Protein kinase activity
+SOBIR1	3702.Q9SKB2	GO Function	GO:0004674	Protein serine/threonine kinase activity
+SOBIR1	3702.Q9SKB2	GO Function	GO:0004713	Protein tyrosine kinase activity
+SOBIR1	3702.Q9SKB2	GO Function	GO:0004714	Transmembrane receptor protein tyrosine kinase activity
+SOBIR1	3702.Q9SKB2	GO Function	GO:0004888	Transmembrane signaling receptor activity
+SOBIR1	3702.Q9SKB2	GO Function	GO:0005488	Binding
+SOBIR1	3702.Q9SKB2	GO Function	GO:0005524	ATP binding
+SOBIR1	3702.Q9SKB2	GO Function	GO:0016301	Kinase activity
+SOBIR1	3702.Q9SKB2	GO Function	GO:0016740	Transferase activity
+SOBIR1	3702.Q9SKB2	GO Function	GO:0016772	Transferase activity, transferring phosphorus-containing groups
+SOBIR1	3702.Q9SKB2	GO Function	GO:0016773	Phosphotransferase activity, alcohol group as acceptor
+SOBIR1	3702.Q9SKB2	GO Function	GO:0017076	Purine nucleotide binding
+SOBIR1	3702.Q9SKB2	GO Function	GO:0019199	Transmembrane receptor protein kinase activity
+SOBIR1	3702.Q9SKB2	GO Function	GO:0030554	Adenyl nucleotide binding
+SOBIR1	3702.Q9SKB2	GO Function	GO:0032553	Ribonucleotide binding
+SOBIR1	3702.Q9SKB2	GO Function	GO:0032555	Purine ribonucleotide binding
+SOBIR1	3702.Q9SKB2	GO Function	GO:0032559	Adenyl ribonucleotide binding
+SOBIR1	3702.Q9SKB2	GO Function	GO:0035639	Purine ribonucleoside triphosphate binding
+SOBIR1	3702.Q9SKB2	GO Function	GO:0036094	Small molecule binding
+SOBIR1	3702.Q9SKB2	GO Function	GO:0038023	Signaling receptor activity
+SOBIR1	3702.Q9SKB2	GO Function	GO:0043167	Ion binding
+SOBIR1	3702.Q9SKB2	GO Function	GO:0043168	Anion binding
+SOBIR1	3702.Q9SKB2	GO Function	GO:0060089	Molecular transducer activity
+SOBIR1	3702.Q9SKB2	GO Function	GO:0097159	Organic cyclic compound binding
+SOBIR1	3702.Q9SKB2	GO Function	GO:0097367	Carbohydrate derivative binding
+SOBIR1	3702.Q9SKB2	GO Function	GO:0106310	Protein serine kinase activity
+SOBIR1	3702.Q9SKB2	GO Function	GO:0140096	Catalytic activity, acting on a protein
+SOBIR1	3702.Q9SKB2	GO Function	GO:1901265	Nucleoside phosphate binding
+SOBIR1	3702.Q9SKB2	GO Function	GO:1901363	Heterocyclic compound binding
+SOBIR1	3702.Q9SKB2	GO Component	GO:0005622	Intracellular anatomical structure
+SOBIR1	3702.Q9SKB2	GO Component	GO:0005737	Cytoplasm
+SOBIR1	3702.Q9SKB2	GO Component	GO:0005777	Peroxisome
+SOBIR1	3702.Q9SKB2	GO Component	GO:0005886	Plasma membrane
+SOBIR1	3702.Q9SKB2	GO Component	GO:0016020	Membrane
+SOBIR1	3702.Q9SKB2	GO Component	GO:0016021	Integral component of membrane
+SOBIR1	3702.Q9SKB2	GO Component	GO:0031224	Intrinsic component of membrane
+SOBIR1	3702.Q9SKB2	GO Component	GO:0042579	Microbody
+SOBIR1	3702.Q9SKB2	GO Component	GO:0043226	Organelle
+SOBIR1	3702.Q9SKB2	GO Component	GO:0043227	Membrane-bounded organelle
+SOBIR1	3702.Q9SKB2	GO Component	GO:0043229	Intracellular organelle
+SOBIR1	3702.Q9SKB2	GO Component	GO:0043231	Intracellular membrane-bounded organelle
+SOBIR1	3702.Q9SKB2	GO Component	GO:0071944	Cell periphery
+SOBIR1	3702.Q9SKB2	GO Component	GO:0110165	Cellular anatomical entity
+SOBIR1	3702.Q9SKB2	STRING clusters	CL:22145	Mixed, incl. Immune system process, and PUB protein, U-box domain, plant
+SOBIR1	3702.Q9SKB2	STRING clusters	CL:22146	Mixed, incl. Immune system process, and PUB protein, U-box domain, plant
+SOBIR1	3702.Q9SKB2	STRING clusters	CL:22147	Mixed, incl. LysM domain, and Elicitor peptide
+SOBIR1	3702.Q9SKB2	STRING clusters	CL:22148	Mixed, incl. LysM domain, and Elicitor peptide
+SOBIR1	3702.Q9SKB2	STRING clusters	CL:22149	Mixed, incl. LysM domain, and Elicitor peptide
+SOBIR1	3702.Q9SKB2	STRING clusters	CL:22151	Mixed, incl. LysM domain, and Elicitor peptide
+SOBIR1	3702.Q9SKB2	STRING clusters	CL:22152	Mixed, incl. LysM domain, and Detection of biotic stimulus
+SOBIR1	3702.Q9SKB2	STRING clusters	CL:22174	LysM domain
+SOBIR1	3702.Q9SKB2	STRING clusters	CL:22176	Detection of molecule of fungal origin, and Peptidoglycan binding
+SOBIR1	3702.Q9SKB2	COMPARTMENTS	GOCC:0005886	Plasma membrane
+SOBIR1	3702.Q9SKB2	COMPARTMENTS	GOCC:0016020	Membrane
+SOBIR1	3702.Q9SKB2	COMPARTMENTS	GOCC:0071944	Cell periphery
+SOBIR1	3702.Q9SKB2	COMPARTMENTS	GOCC:0110165	Cellular anatomical entity
+SOBIR1	3702.Q9SKB2	UniProt Keywords	KW-0067	ATP-binding
+SOBIR1	3702.Q9SKB2	UniProt Keywords	KW-0325	Glycoprotein
+SOBIR1	3702.Q9SKB2	UniProt Keywords	KW-0418	Kinase
+SOBIR1	3702.Q9SKB2	UniProt Keywords	KW-0433	Leucine-rich repeat
+SOBIR1	3702.Q9SKB2	UniProt Keywords	KW-0472	Membrane
+SOBIR1	3702.Q9SKB2	UniProt Keywords	KW-0547	Nucleotide-binding
+SOBIR1	3702.Q9SKB2	UniProt Keywords	KW-0611	Plant defense
+SOBIR1	3702.Q9SKB2	UniProt Keywords	KW-0675	Receptor
+SOBIR1	3702.Q9SKB2	UniProt Keywords	KW-0677	Repeat
+SOBIR1	3702.Q9SKB2	UniProt Keywords	KW-0723	Serine/threonine-protein kinase
+SOBIR1	3702.Q9SKB2	UniProt Keywords	KW-0732	Signal
+SOBIR1	3702.Q9SKB2	UniProt Keywords	KW-0808	Transferase
+SOBIR1	3702.Q9SKB2	UniProt Keywords	KW-0812	Transmembrane
+SOBIR1	3702.Q9SKB2	UniProt Keywords	KW-0829	Tyrosine-protein kinase
+SOBIR1	3702.Q9SKB2	UniProt Keywords	KW-1003	Cell membrane
+SOBIR1	3702.Q9SKB2	UniProt Keywords	KW-1133	Transmembrane helix
+SOBIR1	3702.Q9SKB2	Pfam	PF13855	Leucine rich repeat
+SOBIR1	3702.Q9SKB2	InterPro	IPR000719	Protein kinase domain
+SOBIR1	3702.Q9SKB2	InterPro	IPR001611	Leucine-rich repeat
+SOBIR1	3702.Q9SKB2	InterPro	IPR008271	Serine/threonine-protein kinase, active site
+SOBIR1	3702.Q9SKB2	InterPro	IPR011009	Protein kinase-like domain superfamily
+SOBIR1	3702.Q9SKB2	InterPro	IPR032675	Leucine-rich repeat domain superfamily
+WRKY51	3702.Q93WU9	GO Process	GO:0006355	Regulation of transcription, DNA-templated
+WRKY51	3702.Q93WU9	GO Process	GO:0006950	Response to stress
+WRKY51	3702.Q93WU9	GO Process	GO:0006952	Defense response
+WRKY51	3702.Q93WU9	GO Process	GO:0007154	Cell communication
+WRKY51	3702.Q93WU9	GO Process	GO:0007165	Signal transduction
+WRKY51	3702.Q93WU9	GO Process	GO:0009605	Response to external stimulus
+WRKY51	3702.Q93WU9	GO Process	GO:0009607	Response to biotic stimulus
+WRKY51	3702.Q93WU9	GO Process	GO:0009617	Response to bacterium
+WRKY51	3702.Q93WU9	GO Process	GO:0009620	Response to fungus
+WRKY51	3702.Q93WU9	GO Process	GO:0009719	Response to endogenous stimulus
+WRKY51	3702.Q93WU9	GO Process	GO:0009725	Response to hormone
+WRKY51	3702.Q93WU9	GO Process	GO:0009753	Response to jasmonic acid
+WRKY51	3702.Q93WU9	GO Process	GO:0009755	Hormone-mediated signaling pathway
+WRKY51	3702.Q93WU9	GO Process	GO:0009867	Jasmonic acid mediated signaling pathway
+WRKY51	3702.Q93WU9	GO Process	GO:0009889	Regulation of biosynthetic process
+WRKY51	3702.Q93WU9	GO Process	GO:0009987	Cellular process
+WRKY51	3702.Q93WU9	GO Process	GO:0010033	Response to organic substance
+WRKY51	3702.Q93WU9	GO Process	GO:0010468	Regulation of gene expression
+WRKY51	3702.Q93WU9	GO Process	GO:0010556	Regulation of macromolecule biosynthetic process
+WRKY51	3702.Q93WU9	GO Process	GO:0019219	Regulation of nucleobase-containing compound metabolic process
+WRKY51	3702.Q93WU9	GO Process	GO:0019222	Regulation of metabolic process
+WRKY51	3702.Q93WU9	GO Process	GO:0023052	Signaling
+WRKY51	3702.Q93WU9	GO Process	GO:0031323	Regulation of cellular metabolic process
+WRKY51	3702.Q93WU9	GO Process	GO:0031326	Regulation of cellular biosynthetic process
+WRKY51	3702.Q93WU9	GO Process	GO:0032870	Cellular response to hormone stimulus
+WRKY51	3702.Q93WU9	GO Process	GO:0033993	Response to lipid
+WRKY51	3702.Q93WU9	GO Process	GO:0042221	Response to chemical
+WRKY51	3702.Q93WU9	GO Process	GO:0042742	Defense response to bacterium
+WRKY51	3702.Q93WU9	GO Process	GO:0043207	Response to external biotic stimulus
+WRKY51	3702.Q93WU9	GO Process	GO:0044419	Biological process involved in interspecies interaction between organisms
+WRKY51	3702.Q93WU9	GO Process	GO:0050789	Regulation of biological process
+WRKY51	3702.Q93WU9	GO Process	GO:0050794	Regulation of cellular process
+WRKY51	3702.Q93WU9	GO Process	GO:0050832	Defense response to fungus
+WRKY51	3702.Q93WU9	GO Process	GO:0050896	Response to stimulus
+WRKY51	3702.Q93WU9	GO Process	GO:0051171	Regulation of nitrogen compound metabolic process
+WRKY51	3702.Q93WU9	GO Process	GO:0051252	Regulation of RNA metabolic process
+WRKY51	3702.Q93WU9	GO Process	GO:0051707	Response to other organism
+WRKY51	3702.Q93WU9	GO Process	GO:0051716	Cellular response to stimulus
+WRKY51	3702.Q93WU9	GO Process	GO:0060255	Regulation of macromolecule metabolic process
+WRKY51	3702.Q93WU9	GO Process	GO:0065007	Biological regulation
+WRKY51	3702.Q93WU9	GO Process	GO:0070542	Response to fatty acid
+WRKY51	3702.Q93WU9	GO Process	GO:0070887	Cellular response to chemical stimulus
+WRKY51	3702.Q93WU9	GO Process	GO:0071310	Cellular response to organic substance
+WRKY51	3702.Q93WU9	GO Process	GO:0071395	Cellular response to jasmonic acid stimulus
+WRKY51	3702.Q93WU9	GO Process	GO:0071396	Cellular response to lipid
+WRKY51	3702.Q93WU9	GO Process	GO:0071398	Cellular response to fatty acid
+WRKY51	3702.Q93WU9	GO Process	GO:0071495	Cellular response to endogenous stimulus
+WRKY51	3702.Q93WU9	GO Process	GO:0080090	Regulation of primary metabolic process
+WRKY51	3702.Q93WU9	GO Process	GO:0098542	Defense response to other organism
+WRKY51	3702.Q93WU9	GO Process	GO:1901700	Response to oxygen-containing compound
+WRKY51	3702.Q93WU9	GO Process	GO:1901701	Cellular response to oxygen-containing compound
+WRKY51	3702.Q93WU9	GO Process	GO:1903506	Regulation of nucleic acid-templated transcription
+WRKY51	3702.Q93WU9	GO Process	GO:2001141	Regulation of RNA biosynthetic process
+WRKY51	3702.Q93WU9	GO Function	GO:0003676	Nucleic acid binding
+WRKY51	3702.Q93WU9	GO Function	GO:0003677	DNA binding
+WRKY51	3702.Q93WU9	GO Function	GO:0003700	DNA-binding transcription factor activity
+WRKY51	3702.Q93WU9	GO Function	GO:0005488	Binding
+WRKY51	3702.Q93WU9	GO Function	GO:0043565	Sequence-specific DNA binding
+WRKY51	3702.Q93WU9	GO Function	GO:0097159	Organic cyclic compound binding
+WRKY51	3702.Q93WU9	GO Function	GO:0140110	Transcription regulator activity
+WRKY51	3702.Q93WU9	GO Function	GO:1901363	Heterocyclic compound binding
+WRKY51	3702.Q93WU9	GO Component	GO:0005622	Intracellular anatomical structure
+WRKY51	3702.Q93WU9	GO Component	GO:0005634	Nucleus
+WRKY51	3702.Q93WU9	GO Component	GO:0043226	Organelle
+WRKY51	3702.Q93WU9	GO Component	GO:0043227	Membrane-bounded organelle
+WRKY51	3702.Q93WU9	GO Component	GO:0043229	Intracellular organelle
+WRKY51	3702.Q93WU9	GO Component	GO:0043231	Intracellular membrane-bounded organelle
+WRKY51	3702.Q93WU9	GO Component	GO:0110165	Cellular anatomical entity
+WRKY51	3702.Q93WU9	STRING clusters	CL:25998	Mixed, incl. WRKY transcription factor, plant, and Jasmonic acid signaling pathway
+WRKY51	3702.Q93WU9	STRING clusters	CL:26212	WRKY transcription factor, plant, and BSD domain
+WRKY51	3702.Q93WU9	STRING clusters	CL:26214	WRKY transcription factor, plant, and Cotyledon boundary formation
+WRKY51	3702.Q93WU9	STRING clusters	CL:26216	WRKY transcription factor, plant, and 3xHMG-box protein HMGB6/HMGB13
+WRKY51	3702.Q93WU9	STRING clusters	CL:26218	WRKY transcription factor, plant, and 3xHMG-box protein HMGB6/HMGB13
+WRKY51	3702.Q93WU9	STRING clusters	CL:26220	WRKY transcription factor, plant, and 3xHMG-box protein HMGB6/HMGB13
+WRKY51	3702.Q93WU9	STRING clusters	CL:26221	WRKY transcription factor, plant, and 3xHMG-box protein HMGB6/HMGB13
+WRKY51	3702.Q93WU9	STRING clusters	CL:26223	WRKY transcription factor, plant
+WRKY51	3702.Q93WU9	UniProt Keywords	KW-0238	DNA-binding
+WRKY51	3702.Q93WU9	UniProt Keywords	KW-0539	Nucleus
+WRKY51	3702.Q93WU9	UniProt Keywords	KW-0611	Plant defense
+WRKY51	3702.Q93WU9	UniProt Keywords	KW-0804	Transcription
+WRKY51	3702.Q93WU9	UniProt Keywords	KW-0805	Transcription regulation
+WRKY51	3702.Q93WU9	InterPro	IPR003657	WRKY domain
+WRKY51	3702.Q93WU9	InterPro	IPR036576	WRKY domain superfamily
+WRKY51	3702.Q93WU9	InterPro	IPR044810	WRKY transcription factor, plant
+WRKY51	3702.Q93WU9	SMART	SM00774	DNA binding domain
+WRKY55	3702.Q9SHB5	GO Process	GO:0006355	Regulation of transcription, DNA-templated
+WRKY55	3702.Q9SHB5	GO Process	GO:0009889	Regulation of biosynthetic process
+WRKY55	3702.Q9SHB5	GO Process	GO:0010468	Regulation of gene expression
+WRKY55	3702.Q9SHB5	GO Process	GO:0010556	Regulation of macromolecule biosynthetic process
+WRKY55	3702.Q9SHB5	GO Process	GO:0019219	Regulation of nucleobase-containing compound metabolic process
+WRKY55	3702.Q9SHB5	GO Process	GO:0019222	Regulation of metabolic process
+WRKY55	3702.Q9SHB5	GO Process	GO:0031323	Regulation of cellular metabolic process
+WRKY55	3702.Q9SHB5	GO Process	GO:0031326	Regulation of cellular biosynthetic process
+WRKY55	3702.Q9SHB5	GO Process	GO:0050789	Regulation of biological process
+WRKY55	3702.Q9SHB5	GO Process	GO:0050794	Regulation of cellular process
+WRKY55	3702.Q9SHB5	GO Process	GO:0051171	Regulation of nitrogen compound metabolic process
+WRKY55	3702.Q9SHB5	GO Process	GO:0051252	Regulation of RNA metabolic process
+WRKY55	3702.Q9SHB5	GO Process	GO:0060255	Regulation of macromolecule metabolic process
+WRKY55	3702.Q9SHB5	GO Process	GO:0065007	Biological regulation
+WRKY55	3702.Q9SHB5	GO Process	GO:0080090	Regulation of primary metabolic process
+WRKY55	3702.Q9SHB5	GO Process	GO:1903506	Regulation of nucleic acid-templated transcription
+WRKY55	3702.Q9SHB5	GO Process	GO:2001141	Regulation of RNA biosynthetic process
+WRKY55	3702.Q9SHB5	GO Function	GO:0000976	Transcription cis-regulatory region binding
+WRKY55	3702.Q9SHB5	GO Function	GO:0001067	Transcription regulatory region nucleic acid binding
+WRKY55	3702.Q9SHB5	GO Function	GO:0003676	Nucleic acid binding
+WRKY55	3702.Q9SHB5	GO Function	GO:0003677	DNA binding
+WRKY55	3702.Q9SHB5	GO Function	GO:0003690	Double-stranded DNA binding
+WRKY55	3702.Q9SHB5	GO Function	GO:0003700	DNA-binding transcription factor activity
+WRKY55	3702.Q9SHB5	GO Function	GO:0005488	Binding
+WRKY55	3702.Q9SHB5	GO Function	GO:0043565	Sequence-specific DNA binding
+WRKY55	3702.Q9SHB5	GO Function	GO:0097159	Organic cyclic compound binding
+WRKY55	3702.Q9SHB5	GO Function	GO:0140110	Transcription regulator activity
+WRKY55	3702.Q9SHB5	GO Function	GO:1901363	Heterocyclic compound binding
+WRKY55	3702.Q9SHB5	GO Function	GO:1990837	Sequence-specific double-stranded DNA binding
+WRKY55	3702.Q9SHB5	GO Component	GO:0005622	Intracellular anatomical structure
+WRKY55	3702.Q9SHB5	GO Component	GO:0005634	Nucleus
+WRKY55	3702.Q9SHB5	GO Component	GO:0043226	Organelle
+WRKY55	3702.Q9SHB5	GO Component	GO:0043227	Membrane-bounded organelle
+WRKY55	3702.Q9SHB5	GO Component	GO:0043229	Intracellular organelle
+WRKY55	3702.Q9SHB5	GO Component	GO:0043231	Intracellular membrane-bounded organelle
+WRKY55	3702.Q9SHB5	GO Component	GO:0110165	Cellular anatomical entity
+WRKY55	3702.Q9SHB5	STRING clusters	CL:25998	Mixed, incl. WRKY transcription factor, plant, and Jasmonic acid signaling pathway
+WRKY55	3702.Q9SHB5	STRING clusters	CL:26212	WRKY transcription factor, plant, and BSD domain
+WRKY55	3702.Q9SHB5	STRING clusters	CL:26214	WRKY transcription factor, plant, and Cotyledon boundary formation
+WRKY55	3702.Q9SHB5	STRING clusters	CL:26216	WRKY transcription factor, plant, and 3xHMG-box protein HMGB6/HMGB13
+WRKY55	3702.Q9SHB5	COMPARTMENTS	GOCC:0005622	Intracellular
+WRKY55	3702.Q9SHB5	COMPARTMENTS	GOCC:0005634	Nucleus
+WRKY55	3702.Q9SHB5	COMPARTMENTS	GOCC:0043226	Organelle
+WRKY55	3702.Q9SHB5	COMPARTMENTS	GOCC:0043227	Membrane-bounded organelle
+WRKY55	3702.Q9SHB5	COMPARTMENTS	GOCC:0043229	Intracellular organelle
+WRKY55	3702.Q9SHB5	COMPARTMENTS	GOCC:0043231	Intracellular membrane-bounded organelle
+WRKY55	3702.Q9SHB5	COMPARTMENTS	GOCC:0110165	Cellular anatomical entity
+WRKY55	3702.Q9SHB5	UniProt Keywords	KW-0025	Alternative splicing
+WRKY55	3702.Q9SHB5	UniProt Keywords	KW-0238	DNA-binding
+WRKY55	3702.Q9SHB5	UniProt Keywords	KW-0539	Nucleus
+WRKY55	3702.Q9SHB5	UniProt Keywords	KW-0804	Transcription
+WRKY55	3702.Q9SHB5	UniProt Keywords	KW-0805	Transcription regulation
+WRKY55	3702.Q9SHB5	InterPro	IPR003657	WRKY domain
+WRKY55	3702.Q9SHB5	InterPro	IPR036576	WRKY domain superfamily
+WRKY55	3702.Q9SHB5	InterPro	IPR044810	WRKY transcription factor, plant
+WRKY55	3702.Q9SHB5	SMART	SM00774	DNA binding domain

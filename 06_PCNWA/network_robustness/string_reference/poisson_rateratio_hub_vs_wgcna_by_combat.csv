@@ -1,0 +1,2 @@
+"model","family","rate_ratio_hub_vs_WGCNA","ci_low","ci_high","p_value"
+"pooled (method + combat + reference)","quasipoisson (dispersion=15.50)",0.92347522258128,0.880461285393765,0.968590556869456,0.00841069336549868

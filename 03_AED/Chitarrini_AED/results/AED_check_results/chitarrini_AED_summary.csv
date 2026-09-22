@@ -1,0 +1,4 @@
+"contrast","note","AggrDiv","n_null_permutations","min_attainable_p","p_emp","p_adj_fdr"
+"0hpi_mock_only_temporal_drift","NOT an infection-response AED: both arms mock; tests background/temporal drift only, since no inoculated-0h sample exists",0.862221807888797,20,0.0476190476190476,0.0952380952380952,0.142857142857143
+"12hpi_proxy_for_6hpi","nearest available proxy for own study's 6hpi contrast; inoculated vs mock",0.203501933225455,20,0.0476190476190476,0.142857142857143,0.142857142857143
+"24hpi","direct match to own study's 24hpi contrast; inoculated vs mock",0.221470044883545,20,0.0476190476190476,0.0952380952380952,0.142857142857143

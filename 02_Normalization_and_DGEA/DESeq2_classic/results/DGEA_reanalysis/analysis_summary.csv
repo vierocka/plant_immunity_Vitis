@@ -1,0 +1,12 @@
+"item","value"
+"Genes after prefilter",26169
+"Samples",36
+"Design columns",13
+"Design rank",13
+"Single-batch condition cells",5
+"Cook's cutoff",3.0198747727798
+"Genes exceeding Cook's cutoff",328
+"Batch-Wald significant genes",12971
+"Batch-LRT significant genes",12537
+"Mixed-cell batch-by-condition interaction genes",2515
+"FSOS s-value threshold for leading signal",0.01

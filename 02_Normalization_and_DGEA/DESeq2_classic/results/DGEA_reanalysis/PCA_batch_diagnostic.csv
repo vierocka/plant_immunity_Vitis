@@ -1,0 +1,9 @@
+"matrix","PC","variance_percent","partial_R2_batch_given_condition","F_batch_given_condition","p_batch_given_condition"
+"VST_unadjusted","PC1",52.615,0.652614815301072,43.2089260367671,1.04598204805054e-06
+"VST_unadjusted","PC2",9.376,0.516962003823984,24.6153018646155,5.13314278860142e-05
+"VST_unadjusted","PC3",7.211,0.359288613757972,12.8975983475215,0.00154248515667542
+"VST_unadjusted","PC4",6.139,0.0050198851765356,0.116039865862851,0.73646182178146
+"VST_batch_adjusted_for_visualization","PC1",42.601,0,0,1
+"VST_batch_adjusted_for_visualization","PC2",10.863,1.51070000503614e-16,3.47461001158311e-15,0.999999953476328
+"VST_batch_adjusted_for_visualization","PC3",10.318,0,0,1
+"VST_batch_adjusted_for_visualization","PC4",7.735,0,0,1

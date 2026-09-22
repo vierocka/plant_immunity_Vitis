@@ -1,0 +1,12 @@
+"biotype","dataset","time_label","aligned_time_slot","SOBIR1_log2norm","SOBIR1_DE_status","GSO2_log2norm","GSO2_DE_status","LRR_RLP_548_log2norm","LRR_RLP_548_DE_status","LRR_RLP_416_log2norm","LRR_RLP_416_DE_status","RGI1_log2norm","RGI1_DE_status","RLP_log2norm","RLP_DE_status","EDS1_log2norm","EDS1_DE_status","ACD6_log2norm","ACD6_DE_status"
+"Chitarrini_Resistant_Mock","chitarrini","0h","slot0",13.08,NA,2.97,NA,1.01,NA,0.59,NA,0,NA,4.53,NA,8.55,NA,6.28,NA
+"Chitarrini_Resistant_Mock","chitarrini","12h","slot6",10.99,NA,1.12,NA,0.45,NA,0,NA,0,NA,3.23,NA,8.25,NA,7.04,NA
+"Chitarrini_Resistant_Mock","chitarrini","24h","slot24",12.16,NA,2.11,NA,0,NA,0.6,NA,1.29,NA,3.8,NA,8.25,NA,6.03,NA
+"Chitarrini_Resistant_Inoculated","chitarrini","12h","slot6",11.78,"ns",1.81,"ns",0.73,"ns",1.45,"ns",0.43,"ns",4.5,"ns",8.33,"ns",6.88,"ns"
+"Chitarrini_Resistant_Inoculated","chitarrini","24h","slot24",12.56,"ns",2.41,"ns",1.55,"ns",2.82,"ns",1.61,"ns",5.64,"ns",8.33,"ns",5.9,"ns"
+"Own_Susceptible","own","0hpi","slot0",12.26,NA,4.13,NA,4.38,NA,6.42,NA,5.48,NA,10.05,NA,7.46,NA,6.73,NA
+"Own_Susceptible","own","6hpi","slot6",12.52,NA,4.08,NA,3.8,NA,7.03,NA,5.01,NA,10.13,NA,7.83,NA,6.9,NA
+"Own_Susceptible","own","24hpi","slot24",13.39,NA,7.37,NA,6.73,NA,8.43,NA,6.81,NA,11.3,NA,9.28,NA,8.22,NA
+"Own_Rpv12_resistant","own","0hpi","slot0",13.71,"DE log2FC=1.74",8.72,"DE log2FC=5.40",7.36,"DE log2FC=3.91",9.37,"DE log2FC=3.62",7.46,"DE log2FC=2.75",13.64,"DE log2FC=4.79",9.45,"DE log2FC=2.69",10.9,"DE log2FC=4.73"
+"Own_Rpv12_resistant","own","6hpi","slot6",12.78,"ns",6.56,"DE log2FC=3.53",5.81,"DE log2FC=2.75",7.21,"ns",4.93,"ns",11.98,"DE log2FC=2.56",7.68,"ns",9.37,"DE log2FC=2.99"
+"Own_Rpv12_resistant","own","24hpi","slot24",12.61,"DE log2FC=-1.02",7.5,"ns",6.82,"ns",8.5,"ns",6.44,"ns",12.82,"ns",8.73,"ns",8.3,"ns"

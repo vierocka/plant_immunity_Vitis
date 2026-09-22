@@ -1,0 +1,3 @@
+"metric","partial_R2_batch_given_condition","F_batch_given_condition","p_batch_given_condition"
+"residual_RMS",0.000475356971863537,0.0109384100023171,0.917610356091252
+"residual_median_absolute",0.0135183395195691,0.315182553721947,0.579946908248367

@@ -1,0 +1,39 @@
+xargs: warning: options --max-lines and --replace/-I/-i are mutually exclusive, ignoring previous --max-lines value
+=== ERR1811889 (Sample_2) start Tue Aug 18 10:30:30 CEST 2026 ===
+=== ERR1811888 (Sample_1) start Tue Aug 18 10:30:30 CEST 2026 ===
+=== ERR1811891 (Sample_4) start Tue Aug 18 10:30:30 CEST 2026 ===
+=== ERR1811890 (Sample_3) start Tue Aug 18 10:30:30 CEST 2026 ===
+=== ERR1811893 (Sample_6) start Tue Aug 18 10:30:30 CEST 2026 ===
+=== ERR1811892 (Sample_5) start Tue Aug 18 10:30:30 CEST 2026 ===
+=== ERR1811894 (Sample_7) start Tue Aug 18 10:30:30 CEST 2026 ===
+=== ERR1811900 (Sample_8) start Tue Aug 18 10:30:30 CEST 2026 ===
+=== ERR1811894 done Tue Aug 18 14:26:55 CEST 2026, exit 0 ===
+=== ERR1811901 (Sample_9) start Tue Aug 18 14:26:55 CEST 2026 ===
+=== ERR1811891 done Tue Aug 18 14:50:03 CEST 2026, exit 0 ===
+=== ERR1811895 (Sample_10) start Tue Aug 18 14:50:03 CEST 2026 ===
+=== ERR1811889 done Tue Aug 18 15:13:10 CEST 2026, exit 0 ===
+=== ERR1811896 (Sample_11) start Tue Aug 18 15:13:10 CEST 2026 ===
+=== ERR1811890 done Tue Aug 18 15:26:09 CEST 2026, exit 0 ===
+=== ERR1811897 (Sample_12) start Tue Aug 18 15:26:09 CEST 2026 ===
+=== ERR1811888 done Tue Aug 18 15:29:18 CEST 2026, exit 0 ===
+=== ERR1811898 (Sample_13) start Tue Aug 18 15:29:18 CEST 2026 ===
+=== ERR1811893 done Tue Aug 18 15:37:52 CEST 2026, exit 0 ===
+=== ERR1811899 (Sample_14) start Tue Aug 18 15:37:52 CEST 2026 ===
+=== ERR1811892 done Tue Aug 18 15:59:06 CEST 2026, exit 0 ===
+=== ERR1811902 (Sample_15) start Tue Aug 18 15:59:06 CEST 2026 ===
+=== ERR1811900 done Tue Aug 18 16:07:16 CEST 2026, exit 0 ===
+=== ERR1811903 (Sample_16) start Tue Aug 18 16:07:16 CEST 2026 ===
+=== ERR1811901 done Tue Aug 18 17:09:34 CEST 2026, exit 0 ===
+=== ERR1811904 (Sample_17) start Tue Aug 18 17:09:34 CEST 2026 ===
+=== ERR1811898 done Tue Aug 18 17:31:11 CEST 2026, exit 0 ===
+=== ERR1811896 done Tue Aug 18 17:33:32 CEST 2026, exit 0 ===
+=== ERR1811895 done Tue Aug 18 17:34:42 CEST 2026, exit 0 ===
+=== ERR1811902 done Tue Aug 18 17:44:00 CEST 2026, exit 0 ===
+MD5 MISMATCH for ERR1811903 -- removing corrupted output
+=== ERR1811903 done Tue Aug 18 17:47:31 CEST 2026, exit 99 ===
+=== ERR1811899 done Tue Aug 18 17:49:06 CEST 2026, exit 0 ===
+=== ERR1811897 done Tue Aug 18 17:51:43 CEST 2026, exit 0 ===
+=== ERR1811904 done Tue Aug 18 18:13:18 CEST 2026, exit 0 ===
+Runs downloaded and MD5-verified: 16 / 17
+WARNING: expected all 17 runs to succeed -- check /scratch/USERNAME/Athal/download_joblog.tsv for non-zero exit_status rows before proceeding to alignment.
+Done. Fastqs in /scratch/USERNAME/Athal/fastq. Joblog: /scratch/USERNAME/Athal/download_joblog.tsv

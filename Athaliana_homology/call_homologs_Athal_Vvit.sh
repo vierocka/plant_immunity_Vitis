@@ -1,4 +1,4 @@
-cd /home/veve/Dropbox/MendelUni_Vinselect/reference/stringDB
+cd ~/Dropbox/MendelUni_Vinselect/reference/stringDB
 count=$(wc -l COG_withVitisVinifera_29760.list | cut -d" " -f1)
 for ((i=1; i<$(($count+1)); i++))
 do

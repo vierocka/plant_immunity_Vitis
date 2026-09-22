@@ -1,0 +1,84 @@
+bioproject	run_accession	sample_alias	library_name	experiment_title
+PRJNA862686	SRR20664575	DEV03_G3_rep2	DEV03_G3_rep2	Illumina HiSeq 3000 sequencing: RNA-seq of V. vinifera single berry development
+PRJNA862686	SRR20664577	DEV02_G2_rep3	DEV02_G2_rep3	Illumina HiSeq 3000 sequencing: RNA-seq of V. vinifera single berry development
+PRJNA862686	SRR20664579	DEV11_Sh11_rep3	DEV11_Sh11_rep3	Illumina HiSeq 3000 sequencing: RNA-seq of V. vinifera single berry development
+PRJNA862686	SRR20664586	DEV09_R9_rep3	DEV09_R9_rep3	Illumina HiSeq 3000 sequencing: RNA-seq of V. vinifera single berry development
+PRJNA862686	SRR20664587	DEV09_R9_rep2	DEV09_R9_rep2	Illumina HiSeq 3000 sequencing: RNA-seq of V. vinifera single berry development
+PRJNA862686	SRR20664588	DEV09_R9_rep1	DEV09_R9_rep1	Illumina HiSeq 3000 sequencing: RNA-seq of V. vinifera single berry development
+PRJNA862686	SRR20664589	DEV08_R8_rep3	DEV08_R8_rep3	Illumina HiSeq 3000 sequencing: RNA-seq of V. vinifera single berry development
+PRJNA862686	SRR20664596	DEV06_S6_rep3	DEV06_S6_rep3	Illumina HiSeq 3000 sequencing: RNA-seq of V. vinifera single berry development
+PRJNA862686	SRR20664597	DEV06_S6_rep2	DEV06_S6_rep2	Illumina HiSeq 3000 sequencing: RNA-seq of V. vinifera single berry development
+PRJNA862686	SRR20664599	DEV05_L5_rep3	DEV05_L5_rep3	Illumina HiSeq 3000 sequencing: RNA-seq of V. vinifera single berry development
+PRJNA862686	SRR20664573	DEV04_L4_rep1	DEV04_L4_rep1	Illumina HiSeq 3000 sequencing: RNA-seq of V. vinifera single berry development
+PRJNA862686	SRR20664576	DEV03_G3_rep1	DEV03_G3_rep1	Illumina HiSeq 3000 sequencing: RNA-seq of V. vinifera single berry development
+PRJNA862686	SRR20664578	DEV02_G2_rep2	DEV02_G2_rep2	Illumina HiSeq 3000 sequencing: RNA-seq of V. vinifera single berry development
+PRJNA862686	SRR20664590	DEV08_R8_rep2	DEV08_R8_rep2	Illumina HiSeq 3000 sequencing: RNA-seq of V. vinifera single berry development
+PRJNA862686	SRR20664591	DEV08_R8_rep1	DEV08_R8_rep1	Illumina HiSeq 3000 sequencing: RNA-seq of V. vinifera single berry development
+PRJNA862686	SRR20664594	DEV07_S7_rep2	DEV07_S7_rep2	Illumina HiSeq 3000 sequencing: RNA-seq of V. vinifera single berry development
+PRJNA862686	SRR20664600	DEV05_L5_rep2	DEV05_L5_rep2	Illumina HiSeq 3000 sequencing: RNA-seq of V. vinifera single berry development
+PRJNA862686	SRR20664602	DEV04_L4_rep3	DEV04_L4_rep3	Illumina HiSeq 3000 sequencing: RNA-seq of V. vinifera single berry development
+PRJNA862686	SRR20664604	DEV01_G1_rep2	DEV01_G1_rep2	Illumina HiSeq 3000 sequencing: RNA-seq of V. vinifera single berry development
+PRJNA862686	SRR20664574	DEV03_G3_rep3	DEV03_G3_rep3	Illumina HiSeq 3000 sequencing: RNA-seq of V. vinifera single berry development
+PRJNA862686	SRR20664580	DEV11_Sh11_rep2	DEV11_Sh11_rep2	Illumina HiSeq 3000 sequencing: RNA-seq of V. vinifera single berry development
+PRJNA862686	SRR20664581	DEV11_Sh11_rep1	DEV11_Sh11_rep1	Illumina HiSeq 3000 sequencing: RNA-seq of V. vinifera single berry development
+PRJNA862686	SRR20664582	DEV02_G2_rep1	DEV02_G2_rep1	Illumina HiSeq 3000 sequencing: RNA-seq of V. vinifera single berry development
+PRJNA862686	SRR20664583	DEV10_R10_rep3	DEV10_R10_rep3	Illumina HiSeq 3000 sequencing: RNA-seq of V. vinifera single berry development
+PRJNA862686	SRR20664584	DEV10_R10_rep2	DEV10_R10_rep2	Illumina HiSeq 3000 sequencing: RNA-seq of V. vinifera single berry development
+PRJNA862686	SRR20664585	DEV10_R10_rep1	DEV10_R10_rep1	Illumina HiSeq 3000 sequencing: RNA-seq of V. vinifera single berry development
+PRJNA862686	SRR20664592	DEV07_S7_rep3	DEV07_S7_rep3	Illumina HiSeq 3000 sequencing: RNA-seq of V. vinifera single berry development
+PRJNA862686	SRR20664593	DEV01_G1_rep3	DEV01_G1_rep3	Illumina HiSeq 3000 sequencing: RNA-seq of V. vinifera single berry development
+PRJNA862686	SRR20664595	DEV07_S7_rep1	DEV07_S7_rep1	Illumina HiSeq 3000 sequencing: RNA-seq of V. vinifera single berry development
+PRJNA862686	SRR20664598	DEV06_S6_rep1	DEV06_S6_rep1	Illumina HiSeq 3000 sequencing: RNA-seq of V. vinifera single berry development
+PRJNA862686	SRR20664601	DEV05_L5_rep1	DEV05_L5_rep1	Illumina HiSeq 3000 sequencing: RNA-seq of V. vinifera single berry development
+PRJNA862686	SRR20664603	DEV04_L4_rep2	DEV04_L4_rep2	Illumina HiSeq 3000 sequencing: RNA-seq of V. vinifera single berry development
+PRJNA862686	SRR20664605	DEV01_G1_rep1	DEV01_G1_rep1	Illumina HiSeq 3000 sequencing: RNA-seq of V. vinifera single berry development
+PRJNA1118503	SRR29258938	G5	G5-204-S23.R1	Illumina MiSeq sequencing: G5.T2_2
+PRJNA1118503	SRR29258940	G5	G5-208-S24.R1	Illumina MiSeq sequencing: G5.T2_1
+PRJNA1118503	SRR29258934	G5	G5-166-S26.R1	Illumina MiSeq sequencing: G5.T3_1
+PRJNA1118503	SRR29258939	G5	G5-205-S25.R1	Illumina MiSeq sequencing: G5.T3_2
+PRJNA1118503	SRR29258941	G5	G5-120-S19.R1	Illumina MiSeq sequencing: G5.T1_1
+PRJNA1118503	SRR29258935	G5	G5-25-S21.R1	Illumina MiSeq sequencing: G5.T1_2
+PRJNA1118503	SRR29258936	G5	G5-96-S27.R1	Illumina MiSeq sequencing: G5.T3_3
+PRJNA1118503	SRR29258937	G5	G5-121-S20.R1	Illumina MiSeq sequencing: G5.T1_3
+PRJNA1121615	SRR29330595	MV032-T2-S7-3	MV032-T2-S7-3	Illumina HiSeq 3000 sequencing: RNA-Seq of Microvine MV032 during ripening
+PRJNA1121615	SRR29330596	MV032-T2-S7-2	MV032-T2-S7-2	Illumina HiSeq 3000 sequencing: RNA-Seq of Microvine MV032 during ripening
+PRJNA1121615	SRR29330598	MV032-T1-S6-3	MV032-T1-S6-3	Illumina HiSeq 3000 sequencing: RNA-Seq of Microvine MV032 during ripening
+PRJNA1121615	SRR29330599	MV102-T6-SH11-3	MV102-T6-SH11-3	Illumina HiSeq 3000 sequencing: RNA-Seq of Microvine MV102 during ripening
+PRJNA1121615	SRR29330601	MV032-T1-S6-2	MV032-T1-S6-2	Illumina HiSeq 3000 sequencing: RNA-Seq of Microvine MV032 during ripening
+PRJNA1121615	SRR29330603	MV102-T5-R10-3	MV102-T5-R10-3	Illumina HiSeq 3000 sequencing: RNA-Seq of Microvine MV102 during ripening
+PRJNA1121615	SRR29330609	MV102-T3-R8-3	MV102-T3-R8-3	Illumina HiSeq 3000 sequencing: RNA-Seq of Microvine MV102 during ripening
+PRJNA1121615	SRR29330611	MV102-T3-R8-1	MV102-T3-R8-1	Illumina HiSeq 3000 sequencing: RNA-Seq of Microvine MV102 during ripening
+PRJNA1121615	SRR29330616	MV102-T1-S6-3	MV102-T1-S6-3	Illumina HiSeq 3000 sequencing: RNA-Seq of Microvine MV102 during ripening
+PRJNA1121615	SRR29330624	MV032-T6-SH11-2	MV032-T6-SH11-2	Illumina HiSeq 3000 sequencing: RNA-Seq of Microvine MV032 during ripening
+PRJNA1121615	SRR29330626	MV032-T5-R10-3	MV032-T5-R10-3	Illumina HiSeq 3000 sequencing: RNA-Seq of Microvine MV032 during ripening
+PRJNA1121615	SRR29330629	MV032-T4-R9-3	MV032-T4-R9-3	Illumina HiSeq 3000 sequencing: RNA-Seq of Microvine MV032 during ripening
+PRJNA1121615	SRR29330633	MV032-T3-R8-2	MV032-T3-R8-2	Illumina HiSeq 3000 sequencing: RNA-Seq of Microvine MV032 during ripening
+PRJNA1121615	SRR29330594	MV032-T3-R8-1	MV032-T3-R8-1	Illumina HiSeq 3000 sequencing: RNA-Seq of Microvine MV032 during ripening
+PRJNA1121615	SRR29330600	MV102-T6-SH11-2	MV102-T6-SH11-2	Illumina HiSeq 3000 sequencing: RNA-Seq of Microvine MV102 during ripening
+PRJNA1121615	SRR29330604	MV102-T5-R10-2	MV102-T5-R10-2	Illumina HiSeq 3000 sequencing: RNA-Seq of Microvine MV102 during ripening
+PRJNA1121615	SRR29330607	MV102-T4-R9-2	MV102-T4-R9-2	Illumina HiSeq 3000 sequencing: RNA-Seq of Microvine MV102 during ripening
+PRJNA1121615	SRR29330608	MV102-T4-R9-1	MV102-T4-R9-1	Illumina HiSeq 3000 sequencing: RNA-Seq of Microvine MV102 during ripening
+PRJNA1121615	SRR29330612	MV032-T1-S6-1	MV032-T1-S6-1	Illumina HiSeq 3000 sequencing: RNA-Seq of Microvine MV032 during ripening
+PRJNA1121615	SRR29330613	MV102-T2-S7-3	MV102-T2-S7-3	Illumina HiSeq 3000 sequencing: RNA-Seq of Microvine MV102 during ripening
+PRJNA1121615	SRR29330614	MV102-T2-S7-2	MV102-T2-S7-2	Illumina HiSeq 3000 sequencing: RNA-Seq of Microvine MV102 during ripening
+PRJNA1121615	SRR29330618	MV102-T1-S6-1	MV102-T1-S6-1	Illumina HiSeq 3000 sequencing: RNA-Seq of Microvine MV102 during ripening
+PRJNA1121615	SRR29330620	MV102-T0-L5-2	MV102-T0-L5-2	Illumina HiSeq 3000 sequencing: RNA-Seq of Microvine MV102 during ripening
+PRJNA1121615	SRR29330621	MV102-T0-L5-1	MV102-T0-L5-1	Illumina HiSeq 3000 sequencing: RNA-Seq of Microvine MV102 during ripening
+PRJNA1121615	SRR29330622	MV032-T6-SH11-3	MV032-T6-SH11-3	Illumina HiSeq 3000 sequencing: RNA-Seq of Microvine MV032 during ripening
+PRJNA1121615	SRR29330625	MV032-T6-SH11-1	MV032-T6-SH11-1	Illumina HiSeq 3000 sequencing: RNA-Seq of Microvine MV032 during ripening
+PRJNA1121615	SRR29330627	MV032-T5-R10-2	MV032-T5-R10-2	Illumina HiSeq 3000 sequencing: RNA-Seq of Microvine MV032 during ripening
+PRJNA1121615	SRR29330630	MV032-T4-R9-2	MV032-T4-R9-2	Illumina HiSeq 3000 sequencing: RNA-Seq of Microvine MV032 during ripening
+PRJNA1121615	SRR29330632	MV032-T3-R8-3	MV032-T3-R8-3	Illumina HiSeq 3000 sequencing: RNA-Seq of Microvine MV032 during ripening
+PRJNA1121615	SRR29330634	MV032-T0-L5-2	MV032-T0-L5-2	Illumina HiSeq 3000 sequencing: RNA-Seq of Microvine MV032 during ripening
+PRJNA1121615	SRR29330635	MV032-T0-L5-1	MV032-T0-L5-1	Illumina HiSeq 3000 sequencing: RNA-Seq of Microvine MV032 during ripening
+PRJNA1121615	SRR29330597	MV032-T2-S7-1	MV032-T2-S7-1	Illumina HiSeq 3000 sequencing: RNA-Seq of Microvine MV032 during ripening
+PRJNA1121615	SRR29330602	MV102-T6-SH11-1	MV102-T6-SH11-1	Illumina HiSeq 3000 sequencing: RNA-Seq of Microvine MV102 during ripening
+PRJNA1121615	SRR29330605	MV102-T5-R10-1	MV102-T5-R10-1	Illumina HiSeq 3000 sequencing: RNA-Seq of Microvine MV102 during ripening
+PRJNA1121615	SRR29330606	MV102-T4-R9-3	MV102-T4-R9-3	Illumina HiSeq 3000 sequencing: RNA-Seq of Microvine MV102 during ripening
+PRJNA1121615	SRR29330610	MV102-T3-R8-2	MV102-T3-R8-2	Illumina HiSeq 3000 sequencing: RNA-Seq of Microvine MV102 during ripening
+PRJNA1121615	SRR29330615	MV102-T2-S7-1	MV102-T2-S7-1	Illumina HiSeq 3000 sequencing: RNA-Seq of Microvine MV102 during ripening
+PRJNA1121615	SRR29330617	MV102-T1-S6-2	MV102-T1-S6-2	Illumina HiSeq 3000 sequencing: RNA-Seq of Microvine MV102 during ripening
+PRJNA1121615	SRR29330619	MV102-T0-L5-3	MV102-T0-L5-3	Illumina HiSeq 3000 sequencing: RNA-Seq of Microvine MV102 during ripening
+PRJNA1121615	SRR29330623	MV032-T0-L5-3	MV032-T0-L5-3	Illumina HiSeq 3000 sequencing: RNA-Seq of Microvine MV032 during ripening
+PRJNA1121615	SRR29330628	MV032-T5-R10-1	MV032-T5-R10-1	Illumina HiSeq 3000 sequencing: RNA-Seq of Microvine MV032 during ripening
+PRJNA1121615	SRR29330631	MV032-T4-R9-1	MV032-T4-R9-1	Illumina HiSeq 3000 sequencing: RNA-Seq of Microvine MV032 during ripening

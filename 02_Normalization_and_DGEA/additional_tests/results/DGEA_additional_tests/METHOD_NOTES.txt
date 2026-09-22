@@ -1,0 +1,9 @@
+Primary data: raw integer counts.
+Additive count-model design: ~ batch + condition.
+Formal effect test: H0 |log2FC| <= 1; BH FDR < 0.05.
+Standard DESeq2 strict tier additionally requires apeglm FSOS s-value < 0.01.
+Count consensus: DESeq2 strict call + edgeR robust QL/TREAT + at least one limma-voom/TREAT call + concordant directions.
+Batch interaction LRT is restricted to conditions represented in both batches and cannot validate single-batch conditions.
+Fully estimable high-confidence core additionally requires a batch-averaged cell-means threshold call, direction agreement, and no Cook/interaction flag.
+Welch tests use rlog + ComBat continuous values only for exploratory ordinary two-group contrasts; they are excluded from the count consensus.
+Hypergeometric network p-values are interpretable only if the eight-gene network was specified independently of these expression results.

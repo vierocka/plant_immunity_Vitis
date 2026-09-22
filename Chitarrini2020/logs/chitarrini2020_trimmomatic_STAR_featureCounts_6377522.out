@@ -1,0 +1,1140 @@
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+To execute Trimmomatic run: java -jar $EBROOTTRIMMOMATIC/trimmomatic-0.39.jar
+
+java.io.FileNotFoundException: /scratch/USERNAME/Vitis/Chitarrini2020/TruSeq3-PE.fa (No such file or directory)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:216)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+	at org.usadellab.trimmomatic.fasta.FastaParser.parse(FastaParser.java:54)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.loadSequences(IlluminaClippingTrimmer.java:110)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.makeIlluminaClippingTrimmer(IlluminaClippingTrimmer.java:71)
+	at org.usadellab.trimmomatic.trim.TrimmerFactory.makeTrimmer(TrimmerFactory.java:32)
+	at org.usadellab.trimmomatic.Trimmomatic.createTrimmers(Trimmomatic.java:59)
+	at org.usadellab.trimmomatic.TrimmomaticPE.run(TrimmomaticPE.java:552)
+	at org.usadellab.trimmomatic.Trimmomatic.main(Trimmomatic.java:80)
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Vitis/GGref/STAR_index_PN40024v4 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Vitis/Chitarrini2020/STARmap1/ERR2987432_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987432_1P.fq.gz /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987432_2P.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 04 15:06:40 ..... started STAR run
+Sep 04 15:06:41 ..... loading genome
+Sep 04 15:06:42 ..... started mapping
+Sep 04 15:07:47 ..... finished mapping
+Sep 04 15:07:47 ..... started sorting BAM
+Sep 04 15:08:16 ..... finished successfully
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Vitis/GGref/STAR_index_PN40024v4 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Vitis/Chitarrini2020/STARmap1_F/ERR2987432_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987432_1U.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 04 15:08:17 ..... started STAR run
+Sep 04 15:08:17 ..... loading genome
+Sep 04 15:08:18 ..... started mapping
+Sep 04 15:08:25 ..... finished mapping
+Sep 04 15:08:25 ..... started sorting BAM
+Sep 04 15:08:26 ..... finished successfully
+java.io.FileNotFoundException: /scratch/USERNAME/Vitis/Chitarrini2020/TruSeq3-PE.fa (No such file or directory)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:216)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+	at org.usadellab.trimmomatic.fasta.FastaParser.parse(FastaParser.java:54)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.loadSequences(IlluminaClippingTrimmer.java:110)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.makeIlluminaClippingTrimmer(IlluminaClippingTrimmer.java:71)
+	at org.usadellab.trimmomatic.trim.TrimmerFactory.makeTrimmer(TrimmerFactory.java:32)
+	at org.usadellab.trimmomatic.Trimmomatic.createTrimmers(Trimmomatic.java:59)
+	at org.usadellab.trimmomatic.TrimmomaticPE.run(TrimmomaticPE.java:552)
+	at org.usadellab.trimmomatic.Trimmomatic.main(Trimmomatic.java:80)
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Vitis/GGref/STAR_index_PN40024v4 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Vitis/Chitarrini2020/STARmap1/ERR2987443_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987443_1P.fq.gz /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987443_2P.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 04 16:00:13 ..... started STAR run
+Sep 04 16:00:13 ..... loading genome
+Sep 04 16:00:14 ..... started mapping
+Sep 04 16:01:11 ..... finished mapping
+Sep 04 16:01:11 ..... started sorting BAM
+Sep 04 16:01:35 ..... finished successfully
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Vitis/GGref/STAR_index_PN40024v4 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Vitis/Chitarrini2020/STARmap1_F/ERR2987443_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987443_1U.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 04 16:01:35 ..... started STAR run
+Sep 04 16:01:35 ..... loading genome
+Sep 04 16:01:37 ..... started mapping
+Sep 04 16:01:43 ..... finished mapping
+Sep 04 16:01:43 ..... started sorting BAM
+Sep 04 16:01:44 ..... finished successfully
+java.io.FileNotFoundException: /scratch/USERNAME/Vitis/Chitarrini2020/TruSeq3-PE.fa (No such file or directory)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:216)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+	at org.usadellab.trimmomatic.fasta.FastaParser.parse(FastaParser.java:54)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.loadSequences(IlluminaClippingTrimmer.java:110)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.makeIlluminaClippingTrimmer(IlluminaClippingTrimmer.java:71)
+	at org.usadellab.trimmomatic.trim.TrimmerFactory.makeTrimmer(TrimmerFactory.java:32)
+	at org.usadellab.trimmomatic.Trimmomatic.createTrimmers(Trimmomatic.java:59)
+	at org.usadellab.trimmomatic.TrimmomaticPE.run(TrimmomaticPE.java:552)
+	at org.usadellab.trimmomatic.Trimmomatic.main(Trimmomatic.java:80)
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Vitis/GGref/STAR_index_PN40024v4 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Vitis/Chitarrini2020/STARmap1/ERR2987454_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987454_1P.fq.gz /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987454_2P.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 04 16:30:27 ..... started STAR run
+Sep 04 16:30:27 ..... loading genome
+Sep 04 16:30:28 ..... started mapping
+Sep 04 16:31:05 ..... finished mapping
+Sep 04 16:31:06 ..... started sorting BAM
+Sep 04 16:31:19 ..... finished successfully
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Vitis/GGref/STAR_index_PN40024v4 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Vitis/Chitarrini2020/STARmap1_F/ERR2987454_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987454_1U.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 04 16:31:19 ..... started STAR run
+Sep 04 16:31:19 ..... loading genome
+Sep 04 16:31:20 ..... started mapping
+Sep 04 16:31:27 ..... finished mapping
+Sep 04 16:31:27 ..... started sorting BAM
+Sep 04 16:31:27 ..... finished successfully
+java.io.FileNotFoundException: /scratch/USERNAME/Vitis/Chitarrini2020/TruSeq3-PE.fa (No such file or directory)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:216)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+	at org.usadellab.trimmomatic.fasta.FastaParser.parse(FastaParser.java:54)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.loadSequences(IlluminaClippingTrimmer.java:110)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.makeIlluminaClippingTrimmer(IlluminaClippingTrimmer.java:71)
+	at org.usadellab.trimmomatic.trim.TrimmerFactory.makeTrimmer(TrimmerFactory.java:32)
+	at org.usadellab.trimmomatic.Trimmomatic.createTrimmers(Trimmomatic.java:59)
+	at org.usadellab.trimmomatic.TrimmomaticPE.run(TrimmomaticPE.java:552)
+	at org.usadellab.trimmomatic.Trimmomatic.main(Trimmomatic.java:80)
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Vitis/GGref/STAR_index_PN40024v4 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Vitis/Chitarrini2020/STARmap1/ERR2987435_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987435_1P.fq.gz /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987435_2P.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 04 17:30:52 ..... started STAR run
+Sep 04 17:30:52 ..... loading genome
+Sep 04 17:30:53 ..... started mapping
+Sep 04 17:32:08 ..... finished mapping
+Sep 04 17:32:09 ..... started sorting BAM
+Sep 04 17:32:35 ..... finished successfully
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Vitis/GGref/STAR_index_PN40024v4 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Vitis/Chitarrini2020/STARmap1_F/ERR2987435_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987435_1U.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 04 17:32:36 ..... started STAR run
+Sep 04 17:32:36 ..... loading genome
+Sep 04 17:32:37 ..... started mapping
+Sep 04 17:32:47 ..... finished mapping
+Sep 04 17:32:47 ..... started sorting BAM
+Sep 04 17:32:47 ..... finished successfully
+java.io.FileNotFoundException: /scratch/USERNAME/Vitis/Chitarrini2020/TruSeq3-PE.fa (No such file or directory)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:216)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+	at org.usadellab.trimmomatic.fasta.FastaParser.parse(FastaParser.java:54)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.loadSequences(IlluminaClippingTrimmer.java:110)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.makeIlluminaClippingTrimmer(IlluminaClippingTrimmer.java:71)
+	at org.usadellab.trimmomatic.trim.TrimmerFactory.makeTrimmer(TrimmerFactory.java:32)
+	at org.usadellab.trimmomatic.Trimmomatic.createTrimmers(Trimmomatic.java:59)
+	at org.usadellab.trimmomatic.TrimmomaticPE.run(TrimmomaticPE.java:552)
+	at org.usadellab.trimmomatic.Trimmomatic.main(Trimmomatic.java:80)
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Vitis/GGref/STAR_index_PN40024v4 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Vitis/Chitarrini2020/STARmap1/ERR2987446_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987446_1P.fq.gz /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987446_2P.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 04 18:18:48 ..... started STAR run
+Sep 04 18:18:48 ..... loading genome
+Sep 04 18:18:49 ..... started mapping
+Sep 04 18:19:42 ..... finished mapping
+Sep 04 18:19:43 ..... started sorting BAM
+Sep 04 18:20:04 ..... finished successfully
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Vitis/GGref/STAR_index_PN40024v4 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Vitis/Chitarrini2020/STARmap1_F/ERR2987446_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987446_1U.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 04 18:20:05 ..... started STAR run
+Sep 04 18:20:05 ..... loading genome
+Sep 04 18:20:06 ..... started mapping
+Sep 04 18:20:15 ..... finished mapping
+Sep 04 18:20:15 ..... started sorting BAM
+Sep 04 18:20:16 ..... finished successfully
+java.io.FileNotFoundException: /scratch/USERNAME/Vitis/Chitarrini2020/TruSeq3-PE.fa (No such file or directory)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:216)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+	at org.usadellab.trimmomatic.fasta.FastaParser.parse(FastaParser.java:54)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.loadSequences(IlluminaClippingTrimmer.java:110)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.makeIlluminaClippingTrimmer(IlluminaClippingTrimmer.java:71)
+	at org.usadellab.trimmomatic.trim.TrimmerFactory.makeTrimmer(TrimmerFactory.java:32)
+	at org.usadellab.trimmomatic.Trimmomatic.createTrimmers(Trimmomatic.java:59)
+	at org.usadellab.trimmomatic.TrimmomaticPE.run(TrimmomaticPE.java:552)
+	at org.usadellab.trimmomatic.Trimmomatic.main(Trimmomatic.java:80)
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Vitis/GGref/STAR_index_PN40024v4 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Vitis/Chitarrini2020/STARmap1/ERR2987457_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987457_1P.fq.gz /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987457_2P.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 04 18:45:57 ..... started STAR run
+Sep 04 18:45:57 ..... loading genome
+Sep 04 18:45:58 ..... started mapping
+Sep 04 18:46:30 ..... finished mapping
+Sep 04 18:46:30 ..... started sorting BAM
+Sep 04 18:46:41 ..... finished successfully
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Vitis/GGref/STAR_index_PN40024v4 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Vitis/Chitarrini2020/STARmap1_F/ERR2987457_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987457_1U.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 04 18:46:42 ..... started STAR run
+Sep 04 18:46:42 ..... loading genome
+Sep 04 18:46:43 ..... started mapping
+Sep 04 18:46:48 ..... finished mapping
+Sep 04 18:46:48 ..... started sorting BAM
+Sep 04 18:46:49 ..... finished successfully
+java.io.FileNotFoundException: /scratch/USERNAME/Vitis/Chitarrini2020/TruSeq3-PE.fa (No such file or directory)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:216)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+	at org.usadellab.trimmomatic.fasta.FastaParser.parse(FastaParser.java:54)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.loadSequences(IlluminaClippingTrimmer.java:110)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.makeIlluminaClippingTrimmer(IlluminaClippingTrimmer.java:71)
+	at org.usadellab.trimmomatic.trim.TrimmerFactory.makeTrimmer(TrimmerFactory.java:32)
+	at org.usadellab.trimmomatic.Trimmomatic.createTrimmers(Trimmomatic.java:59)
+	at org.usadellab.trimmomatic.TrimmomaticPE.run(TrimmomaticPE.java:552)
+	at org.usadellab.trimmomatic.Trimmomatic.main(Trimmomatic.java:80)
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Vitis/GGref/STAR_index_PN40024v4 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Vitis/Chitarrini2020/STARmap1/ERR2987436_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987436_1P.fq.gz /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987436_2P.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 04 19:36:50 ..... started STAR run
+Sep 04 19:36:50 ..... loading genome
+Sep 04 19:36:51 ..... started mapping
+Sep 04 19:37:56 ..... finished mapping
+Sep 04 19:37:57 ..... started sorting BAM
+Sep 04 19:38:26 ..... finished successfully
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Vitis/GGref/STAR_index_PN40024v4 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Vitis/Chitarrini2020/STARmap1_F/ERR2987436_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987436_1U.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 04 19:38:26 ..... started STAR run
+Sep 04 19:38:26 ..... loading genome
+Sep 04 19:38:27 ..... started mapping
+Sep 04 19:38:36 ..... finished mapping
+Sep 04 19:38:36 ..... started sorting BAM
+Sep 04 19:38:36 ..... finished successfully
+java.io.FileNotFoundException: /scratch/USERNAME/Vitis/Chitarrini2020/TruSeq3-PE.fa (No such file or directory)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:216)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+	at org.usadellab.trimmomatic.fasta.FastaParser.parse(FastaParser.java:54)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.loadSequences(IlluminaClippingTrimmer.java:110)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.makeIlluminaClippingTrimmer(IlluminaClippingTrimmer.java:71)
+	at org.usadellab.trimmomatic.trim.TrimmerFactory.makeTrimmer(TrimmerFactory.java:32)
+	at org.usadellab.trimmomatic.Trimmomatic.createTrimmers(Trimmomatic.java:59)
+	at org.usadellab.trimmomatic.TrimmomaticPE.run(TrimmomaticPE.java:552)
+	at org.usadellab.trimmomatic.Trimmomatic.main(Trimmomatic.java:80)
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Vitis/GGref/STAR_index_PN40024v4 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Vitis/Chitarrini2020/STARmap1/ERR2987447_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987447_1P.fq.gz /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987447_2P.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 04 20:20:35 ..... started STAR run
+Sep 04 20:20:35 ..... loading genome
+Sep 04 20:20:36 ..... started mapping
+Sep 04 20:21:26 ..... finished mapping
+Sep 04 20:21:27 ..... started sorting BAM
+Sep 04 20:21:47 ..... finished successfully
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Vitis/GGref/STAR_index_PN40024v4 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Vitis/Chitarrini2020/STARmap1_F/ERR2987447_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987447_1U.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 04 20:21:48 ..... started STAR run
+Sep 04 20:21:48 ..... loading genome
+Sep 04 20:21:49 ..... started mapping
+Sep 04 20:21:55 ..... finished mapping
+Sep 04 20:21:56 ..... started sorting BAM
+Sep 04 20:21:56 ..... finished successfully
+java.io.FileNotFoundException: /scratch/USERNAME/Vitis/Chitarrini2020/TruSeq3-PE.fa (No such file or directory)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:216)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+	at org.usadellab.trimmomatic.fasta.FastaParser.parse(FastaParser.java:54)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.loadSequences(IlluminaClippingTrimmer.java:110)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.makeIlluminaClippingTrimmer(IlluminaClippingTrimmer.java:71)
+	at org.usadellab.trimmomatic.trim.TrimmerFactory.makeTrimmer(TrimmerFactory.java:32)
+	at org.usadellab.trimmomatic.Trimmomatic.createTrimmers(Trimmomatic.java:59)
+	at org.usadellab.trimmomatic.TrimmomaticPE.run(TrimmomaticPE.java:552)
+	at org.usadellab.trimmomatic.Trimmomatic.main(Trimmomatic.java:80)
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Vitis/GGref/STAR_index_PN40024v4 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Vitis/Chitarrini2020/STARmap1/ERR2987458_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987458_1P.fq.gz /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987458_2P.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 04 20:59:08 ..... started STAR run
+Sep 04 20:59:08 ..... loading genome
+Sep 04 20:59:09 ..... started mapping
+Sep 04 20:59:59 ..... finished mapping
+Sep 04 20:59:59 ..... started sorting BAM
+Sep 04 21:00:17 ..... finished successfully
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Vitis/GGref/STAR_index_PN40024v4 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Vitis/Chitarrini2020/STARmap1_F/ERR2987458_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987458_1U.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 04 21:00:18 ..... started STAR run
+Sep 04 21:00:18 ..... loading genome
+Sep 04 21:00:19 ..... started mapping
+Sep 04 21:00:25 ..... finished mapping
+Sep 04 21:00:25 ..... started sorting BAM
+Sep 04 21:00:26 ..... finished successfully
+java.io.FileNotFoundException: /scratch/USERNAME/Vitis/Chitarrini2020/TruSeq3-PE.fa (No such file or directory)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:216)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+	at org.usadellab.trimmomatic.fasta.FastaParser.parse(FastaParser.java:54)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.loadSequences(IlluminaClippingTrimmer.java:110)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.makeIlluminaClippingTrimmer(IlluminaClippingTrimmer.java:71)
+	at org.usadellab.trimmomatic.trim.TrimmerFactory.makeTrimmer(TrimmerFactory.java:32)
+	at org.usadellab.trimmomatic.Trimmomatic.createTrimmers(Trimmomatic.java:59)
+	at org.usadellab.trimmomatic.TrimmomaticPE.run(TrimmomaticPE.java:552)
+	at org.usadellab.trimmomatic.Trimmomatic.main(Trimmomatic.java:80)
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Vitis/GGref/STAR_index_PN40024v4 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Vitis/Chitarrini2020/STARmap1/ERR2987437_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987437_1P.fq.gz /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987437_2P.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 04 21:27:48 ..... started STAR run
+Sep 04 21:27:48 ..... loading genome
+Sep 04 21:27:49 ..... started mapping
+Sep 04 21:28:58 ..... finished mapping
+Sep 04 21:28:59 ..... started sorting BAM
+Sep 04 21:29:14 ..... finished successfully
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Vitis/GGref/STAR_index_PN40024v4 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Vitis/Chitarrini2020/STARmap1_F/ERR2987437_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987437_1U.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 04 21:29:14 ..... started STAR run
+Sep 04 21:29:14 ..... loading genome
+Sep 04 21:29:16 ..... started mapping
+Sep 04 21:29:24 ..... finished mapping
+Sep 04 21:29:24 ..... started sorting BAM
+Sep 04 21:29:24 ..... finished successfully
+java.io.FileNotFoundException: /scratch/USERNAME/Vitis/Chitarrini2020/TruSeq3-PE.fa (No such file or directory)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:216)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+	at org.usadellab.trimmomatic.fasta.FastaParser.parse(FastaParser.java:54)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.loadSequences(IlluminaClippingTrimmer.java:110)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.makeIlluminaClippingTrimmer(IlluminaClippingTrimmer.java:71)
+	at org.usadellab.trimmomatic.trim.TrimmerFactory.makeTrimmer(TrimmerFactory.java:32)
+	at org.usadellab.trimmomatic.Trimmomatic.createTrimmers(Trimmomatic.java:59)
+	at org.usadellab.trimmomatic.TrimmomaticPE.run(TrimmomaticPE.java:552)
+	at org.usadellab.trimmomatic.Trimmomatic.main(Trimmomatic.java:80)
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Vitis/GGref/STAR_index_PN40024v4 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Vitis/Chitarrini2020/STARmap1/ERR2987448_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987448_1P.fq.gz /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987448_2P.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 04 21:58:41 ..... started STAR run
+Sep 04 21:58:41 ..... loading genome
+Sep 04 21:58:41 ..... started mapping
+Sep 04 22:01:14 ..... finished mapping
+Sep 04 22:01:15 ..... started sorting BAM
+Sep 04 22:01:28 ..... finished successfully
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Vitis/GGref/STAR_index_PN40024v4 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Vitis/Chitarrini2020/STARmap1_F/ERR2987448_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987448_1U.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 04 22:01:28 ..... started STAR run
+Sep 04 22:01:28 ..... loading genome
+Sep 04 22:01:29 ..... started mapping
+Sep 04 22:01:40 ..... finished mapping
+Sep 04 22:01:40 ..... started sorting BAM
+Sep 04 22:01:41 ..... finished successfully
+java.io.FileNotFoundException: /scratch/USERNAME/Vitis/Chitarrini2020/TruSeq3-PE.fa (No such file or directory)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:216)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+	at org.usadellab.trimmomatic.fasta.FastaParser.parse(FastaParser.java:54)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.loadSequences(IlluminaClippingTrimmer.java:110)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.makeIlluminaClippingTrimmer(IlluminaClippingTrimmer.java:71)
+	at org.usadellab.trimmomatic.trim.TrimmerFactory.makeTrimmer(TrimmerFactory.java:32)
+	at org.usadellab.trimmomatic.Trimmomatic.createTrimmers(Trimmomatic.java:59)
+	at org.usadellab.trimmomatic.TrimmomaticPE.run(TrimmomaticPE.java:552)
+	at org.usadellab.trimmomatic.Trimmomatic.main(Trimmomatic.java:80)
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Vitis/GGref/STAR_index_PN40024v4 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Vitis/Chitarrini2020/STARmap1/ERR2987459_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987459_1P.fq.gz /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987459_2P.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 04 22:45:03 ..... started STAR run
+Sep 04 22:45:03 ..... loading genome
+Sep 04 22:45:04 ..... started mapping
+Sep 04 22:46:30 ..... finished mapping
+Sep 04 22:46:31 ..... started sorting BAM
+Sep 04 22:46:54 ..... finished successfully
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Vitis/GGref/STAR_index_PN40024v4 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Vitis/Chitarrini2020/STARmap1_F/ERR2987459_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987459_1U.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 04 22:46:55 ..... started STAR run
+Sep 04 22:46:55 ..... loading genome
+Sep 04 22:46:56 ..... started mapping
+Sep 04 22:47:04 ..... finished mapping
+Sep 04 22:47:05 ..... started sorting BAM
+Sep 04 22:47:05 ..... finished successfully
+java.io.FileNotFoundException: /scratch/USERNAME/Vitis/Chitarrini2020/TruSeq3-PE.fa (No such file or directory)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:216)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+	at org.usadellab.trimmomatic.fasta.FastaParser.parse(FastaParser.java:54)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.loadSequences(IlluminaClippingTrimmer.java:110)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.makeIlluminaClippingTrimmer(IlluminaClippingTrimmer.java:71)
+	at org.usadellab.trimmomatic.trim.TrimmerFactory.makeTrimmer(TrimmerFactory.java:32)
+	at org.usadellab.trimmomatic.Trimmomatic.createTrimmers(Trimmomatic.java:59)
+	at org.usadellab.trimmomatic.TrimmomaticPE.run(TrimmomaticPE.java:552)
+	at org.usadellab.trimmomatic.Trimmomatic.main(Trimmomatic.java:80)
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Vitis/GGref/STAR_index_PN40024v4 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Vitis/Chitarrini2020/STARmap1/ERR2987438_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987438_1P.fq.gz /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987438_2P.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 04 23:27:15 ..... started STAR run
+Sep 04 23:27:15 ..... loading genome
+Sep 04 23:27:16 ..... started mapping
+Sep 04 23:28:31 ..... finished mapping
+Sep 04 23:28:32 ..... started sorting BAM
+Sep 04 23:28:54 ..... finished successfully
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Vitis/GGref/STAR_index_PN40024v4 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Vitis/Chitarrini2020/STARmap1_F/ERR2987438_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987438_1U.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 04 23:28:54 ..... started STAR run
+Sep 04 23:28:54 ..... loading genome
+Sep 04 23:28:55 ..... started mapping
+Sep 04 23:29:03 ..... finished mapping
+Sep 04 23:29:03 ..... started sorting BAM
+Sep 04 23:29:03 ..... finished successfully
+java.io.FileNotFoundException: /scratch/USERNAME/Vitis/Chitarrini2020/TruSeq3-PE.fa (No such file or directory)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:216)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+	at org.usadellab.trimmomatic.fasta.FastaParser.parse(FastaParser.java:54)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.loadSequences(IlluminaClippingTrimmer.java:110)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.makeIlluminaClippingTrimmer(IlluminaClippingTrimmer.java:71)
+	at org.usadellab.trimmomatic.trim.TrimmerFactory.makeTrimmer(TrimmerFactory.java:32)
+	at org.usadellab.trimmomatic.Trimmomatic.createTrimmers(Trimmomatic.java:59)
+	at org.usadellab.trimmomatic.TrimmomaticPE.run(TrimmomaticPE.java:552)
+	at org.usadellab.trimmomatic.Trimmomatic.main(Trimmomatic.java:80)
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Vitis/GGref/STAR_index_PN40024v4 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Vitis/Chitarrini2020/STARmap1/ERR2987449_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987449_1P.fq.gz /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987449_2P.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 05 00:05:59 ..... started STAR run
+Sep 05 00:05:59 ..... loading genome
+Sep 05 00:06:00 ..... started mapping
+Sep 05 00:06:42 ..... finished mapping
+Sep 05 00:06:42 ..... started sorting BAM
+Sep 05 00:06:59 ..... finished successfully
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Vitis/GGref/STAR_index_PN40024v4 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Vitis/Chitarrini2020/STARmap1_F/ERR2987449_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987449_1U.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 05 00:06:59 ..... started STAR run
+Sep 05 00:06:59 ..... loading genome
+Sep 05 00:07:00 ..... started mapping
+Sep 05 00:07:06 ..... finished mapping
+Sep 05 00:07:06 ..... started sorting BAM
+Sep 05 00:07:06 ..... finished successfully
+java.io.FileNotFoundException: /scratch/USERNAME/Vitis/Chitarrini2020/TruSeq3-PE.fa (No such file or directory)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:216)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+	at org.usadellab.trimmomatic.fasta.FastaParser.parse(FastaParser.java:54)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.loadSequences(IlluminaClippingTrimmer.java:110)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.makeIlluminaClippingTrimmer(IlluminaClippingTrimmer.java:71)
+	at org.usadellab.trimmomatic.trim.TrimmerFactory.makeTrimmer(TrimmerFactory.java:32)
+	at org.usadellab.trimmomatic.Trimmomatic.createTrimmers(Trimmomatic.java:59)
+	at org.usadellab.trimmomatic.TrimmomaticPE.run(TrimmomaticPE.java:552)
+	at org.usadellab.trimmomatic.Trimmomatic.main(Trimmomatic.java:80)
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Vitis/GGref/STAR_index_PN40024v4 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Vitis/Chitarrini2020/STARmap1/ERR2987460_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987460_1P.fq.gz /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987460_2P.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 05 00:42:22 ..... started STAR run
+Sep 05 00:42:22 ..... loading genome
+Sep 05 00:42:23 ..... started mapping
+Sep 05 00:43:46 ..... finished mapping
+Sep 05 00:43:46 ..... started sorting BAM
+Sep 05 00:44:05 ..... finished successfully
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Vitis/GGref/STAR_index_PN40024v4 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Vitis/Chitarrini2020/STARmap1_F/ERR2987460_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987460_1U.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 05 00:44:05 ..... started STAR run
+Sep 05 00:44:05 ..... loading genome
+Sep 05 00:44:06 ..... started mapping
+Sep 05 00:44:14 ..... finished mapping
+Sep 05 00:44:14 ..... started sorting BAM
+Sep 05 00:44:15 ..... finished successfully
+java.io.FileNotFoundException: /scratch/USERNAME/Vitis/Chitarrini2020/TruSeq3-PE.fa (No such file or directory)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:216)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+	at org.usadellab.trimmomatic.fasta.FastaParser.parse(FastaParser.java:54)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.loadSequences(IlluminaClippingTrimmer.java:110)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.makeIlluminaClippingTrimmer(IlluminaClippingTrimmer.java:71)
+	at org.usadellab.trimmomatic.trim.TrimmerFactory.makeTrimmer(TrimmerFactory.java:32)
+	at org.usadellab.trimmomatic.Trimmomatic.createTrimmers(Trimmomatic.java:59)
+	at org.usadellab.trimmomatic.TrimmomaticPE.run(TrimmomaticPE.java:552)
+	at org.usadellab.trimmomatic.Trimmomatic.main(Trimmomatic.java:80)
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Vitis/GGref/STAR_index_PN40024v4 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Vitis/Chitarrini2020/STARmap1/ERR2987439_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987439_1P.fq.gz /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987439_2P.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 05 01:05:59 ..... started STAR run
+Sep 05 01:05:59 ..... loading genome
+Sep 05 01:06:00 ..... started mapping
+Sep 05 01:06:25 ..... finished mapping
+Sep 05 01:06:25 ..... started sorting BAM
+Sep 05 01:06:35 ..... finished successfully
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Vitis/GGref/STAR_index_PN40024v4 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Vitis/Chitarrini2020/STARmap1_F/ERR2987439_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987439_1U.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 05 01:06:35 ..... started STAR run
+Sep 05 01:06:35 ..... loading genome
+Sep 05 01:06:36 ..... started mapping
+Sep 05 01:06:42 ..... finished mapping
+Sep 05 01:06:42 ..... started sorting BAM
+Sep 05 01:06:42 ..... finished successfully
+java.io.FileNotFoundException: /scratch/USERNAME/Vitis/Chitarrini2020/TruSeq3-PE.fa (No such file or directory)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:216)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+	at org.usadellab.trimmomatic.fasta.FastaParser.parse(FastaParser.java:54)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.loadSequences(IlluminaClippingTrimmer.java:110)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.makeIlluminaClippingTrimmer(IlluminaClippingTrimmer.java:71)
+	at org.usadellab.trimmomatic.trim.TrimmerFactory.makeTrimmer(TrimmerFactory.java:32)
+	at org.usadellab.trimmomatic.Trimmomatic.createTrimmers(Trimmomatic.java:59)
+	at org.usadellab.trimmomatic.TrimmomaticPE.run(TrimmomaticPE.java:552)
+	at org.usadellab.trimmomatic.Trimmomatic.main(Trimmomatic.java:80)
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Vitis/GGref/STAR_index_PN40024v4 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Vitis/Chitarrini2020/STARmap1/ERR2987450_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987450_1P.fq.gz /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987450_2P.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 05 01:45:46 ..... started STAR run
+Sep 05 01:45:46 ..... loading genome
+Sep 05 01:45:47 ..... started mapping
+Sep 05 01:46:26 ..... finished mapping
+Sep 05 01:46:27 ..... started sorting BAM
+Sep 05 01:46:43 ..... finished successfully
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Vitis/GGref/STAR_index_PN40024v4 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Vitis/Chitarrini2020/STARmap1_F/ERR2987450_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987450_1U.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 05 01:46:43 ..... started STAR run
+Sep 05 01:46:43 ..... loading genome
+Sep 05 01:46:44 ..... started mapping
+Sep 05 01:46:50 ..... finished mapping
+Sep 05 01:46:50 ..... started sorting BAM
+Sep 05 01:46:50 ..... finished successfully
+java.io.FileNotFoundException: /scratch/USERNAME/Vitis/Chitarrini2020/TruSeq3-PE.fa (No such file or directory)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:216)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+	at org.usadellab.trimmomatic.fasta.FastaParser.parse(FastaParser.java:54)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.loadSequences(IlluminaClippingTrimmer.java:110)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.makeIlluminaClippingTrimmer(IlluminaClippingTrimmer.java:71)
+	at org.usadellab.trimmomatic.trim.TrimmerFactory.makeTrimmer(TrimmerFactory.java:32)
+	at org.usadellab.trimmomatic.Trimmomatic.createTrimmers(Trimmomatic.java:59)
+	at org.usadellab.trimmomatic.TrimmomaticPE.run(TrimmomaticPE.java:552)
+	at org.usadellab.trimmomatic.Trimmomatic.main(Trimmomatic.java:80)
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Vitis/GGref/STAR_index_PN40024v4 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Vitis/Chitarrini2020/STARmap1/ERR2987461_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987461_1P.fq.gz /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987461_2P.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 05 02:26:10 ..... started STAR run
+Sep 05 02:26:10 ..... loading genome
+Sep 05 02:26:11 ..... started mapping
+Sep 05 02:26:52 ..... finished mapping
+Sep 05 02:26:52 ..... started sorting BAM
+Sep 05 02:27:09 ..... finished successfully
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Vitis/GGref/STAR_index_PN40024v4 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Vitis/Chitarrini2020/STARmap1_F/ERR2987461_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987461_1U.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 05 02:27:09 ..... started STAR run
+Sep 05 02:27:09 ..... loading genome
+Sep 05 02:27:10 ..... started mapping
+Sep 05 02:27:16 ..... finished mapping
+Sep 05 02:27:16 ..... started sorting BAM
+Sep 05 02:27:17 ..... finished successfully
+java.io.FileNotFoundException: /scratch/USERNAME/Vitis/Chitarrini2020/TruSeq3-PE.fa (No such file or directory)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:216)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+	at org.usadellab.trimmomatic.fasta.FastaParser.parse(FastaParser.java:54)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.loadSequences(IlluminaClippingTrimmer.java:110)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.makeIlluminaClippingTrimmer(IlluminaClippingTrimmer.java:71)
+	at org.usadellab.trimmomatic.trim.TrimmerFactory.makeTrimmer(TrimmerFactory.java:32)
+	at org.usadellab.trimmomatic.Trimmomatic.createTrimmers(Trimmomatic.java:59)
+	at org.usadellab.trimmomatic.TrimmomaticPE.run(TrimmomaticPE.java:552)
+	at org.usadellab.trimmomatic.Trimmomatic.main(Trimmomatic.java:80)
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Vitis/GGref/STAR_index_PN40024v4 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Vitis/Chitarrini2020/STARmap1/ERR2987440_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987440_1P.fq.gz /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987440_2P.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 05 02:46:07 ..... started STAR run
+Sep 05 02:46:07 ..... loading genome
+Sep 05 02:46:08 ..... started mapping
+Sep 05 02:46:55 ..... finished mapping
+Sep 05 02:46:56 ..... started sorting BAM
+Sep 05 02:47:06 ..... finished successfully
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Vitis/GGref/STAR_index_PN40024v4 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Vitis/Chitarrini2020/STARmap1_F/ERR2987440_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987440_1U.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 05 02:47:06 ..... started STAR run
+Sep 05 02:47:06 ..... loading genome
+Sep 05 02:47:08 ..... started mapping
+Sep 05 02:47:15 ..... finished mapping
+Sep 05 02:47:15 ..... started sorting BAM
+Sep 05 02:47:16 ..... finished successfully
+java.io.FileNotFoundException: /scratch/USERNAME/Vitis/Chitarrini2020/TruSeq3-PE.fa (No such file or directory)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:216)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+	at org.usadellab.trimmomatic.fasta.FastaParser.parse(FastaParser.java:54)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.loadSequences(IlluminaClippingTrimmer.java:110)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.makeIlluminaClippingTrimmer(IlluminaClippingTrimmer.java:71)
+	at org.usadellab.trimmomatic.trim.TrimmerFactory.makeTrimmer(TrimmerFactory.java:32)
+	at org.usadellab.trimmomatic.Trimmomatic.createTrimmers(Trimmomatic.java:59)
+	at org.usadellab.trimmomatic.TrimmomaticPE.run(TrimmomaticPE.java:552)
+	at org.usadellab.trimmomatic.Trimmomatic.main(Trimmomatic.java:80)
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Vitis/GGref/STAR_index_PN40024v4 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Vitis/Chitarrini2020/STARmap1/ERR2987451_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987451_1P.fq.gz /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987451_2P.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 05 03:26:06 ..... started STAR run
+Sep 05 03:26:06 ..... loading genome
+Sep 05 03:26:07 ..... started mapping
+Sep 05 03:27:29 ..... finished mapping
+Sep 05 03:27:29 ..... started sorting BAM
+Sep 05 03:27:50 ..... finished successfully
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Vitis/GGref/STAR_index_PN40024v4 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Vitis/Chitarrini2020/STARmap1_F/ERR2987451_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987451_1U.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 05 03:27:50 ..... started STAR run
+Sep 05 03:27:50 ..... loading genome
+Sep 05 03:27:51 ..... started mapping
+Sep 05 03:27:59 ..... finished mapping
+Sep 05 03:27:59 ..... started sorting BAM
+Sep 05 03:28:00 ..... finished successfully
+java.io.FileNotFoundException: /scratch/USERNAME/Vitis/Chitarrini2020/TruSeq3-PE.fa (No such file or directory)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:216)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+	at org.usadellab.trimmomatic.fasta.FastaParser.parse(FastaParser.java:54)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.loadSequences(IlluminaClippingTrimmer.java:110)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.makeIlluminaClippingTrimmer(IlluminaClippingTrimmer.java:71)
+	at org.usadellab.trimmomatic.trim.TrimmerFactory.makeTrimmer(TrimmerFactory.java:32)
+	at org.usadellab.trimmomatic.Trimmomatic.createTrimmers(Trimmomatic.java:59)
+	at org.usadellab.trimmomatic.TrimmomaticPE.run(TrimmomaticPE.java:552)
+	at org.usadellab.trimmomatic.Trimmomatic.main(Trimmomatic.java:80)
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Vitis/GGref/STAR_index_PN40024v4 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Vitis/Chitarrini2020/STARmap1/ERR2987462_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987462_1P.fq.gz /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987462_2P.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 05 03:51:21 ..... started STAR run
+Sep 05 03:51:21 ..... loading genome
+Sep 05 03:51:21 ..... started mapping
+Sep 05 03:51:47 ..... finished mapping
+Sep 05 03:51:47 ..... started sorting BAM
+Sep 05 03:51:57 ..... finished successfully
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Vitis/GGref/STAR_index_PN40024v4 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Vitis/Chitarrini2020/STARmap1_F/ERR2987462_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987462_1U.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 05 03:51:58 ..... started STAR run
+Sep 05 03:51:58 ..... loading genome
+Sep 05 03:51:59 ..... started mapping
+Sep 05 03:52:04 ..... finished mapping
+Sep 05 03:52:04 ..... started sorting BAM
+Sep 05 03:52:05 ..... finished successfully
+java.io.FileNotFoundException: /scratch/USERNAME/Vitis/Chitarrini2020/TruSeq3-PE.fa (No such file or directory)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:216)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+	at org.usadellab.trimmomatic.fasta.FastaParser.parse(FastaParser.java:54)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.loadSequences(IlluminaClippingTrimmer.java:110)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.makeIlluminaClippingTrimmer(IlluminaClippingTrimmer.java:71)
+	at org.usadellab.trimmomatic.trim.TrimmerFactory.makeTrimmer(TrimmerFactory.java:32)
+	at org.usadellab.trimmomatic.Trimmomatic.createTrimmers(Trimmomatic.java:59)
+	at org.usadellab.trimmomatic.TrimmomaticPE.run(TrimmomaticPE.java:552)
+	at org.usadellab.trimmomatic.Trimmomatic.main(Trimmomatic.java:80)
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Vitis/GGref/STAR_index_PN40024v4 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Vitis/Chitarrini2020/STARmap1/ERR2987441_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987441_1P.fq.gz /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987441_2P.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 05 04:26:40 ..... started STAR run
+Sep 05 04:26:40 ..... loading genome
+Sep 05 04:26:41 ..... started mapping
+Sep 05 04:27:57 ..... finished mapping
+Sep 05 04:27:58 ..... started sorting BAM
+Sep 05 04:28:16 ..... finished successfully
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Vitis/GGref/STAR_index_PN40024v4 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Vitis/Chitarrini2020/STARmap1_F/ERR2987441_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987441_1U.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 05 04:28:16 ..... started STAR run
+Sep 05 04:28:16 ..... loading genome
+Sep 05 04:28:17 ..... started mapping
+Sep 05 04:28:25 ..... finished mapping
+Sep 05 04:28:25 ..... started sorting BAM
+Sep 05 04:28:25 ..... finished successfully
+java.io.FileNotFoundException: /scratch/USERNAME/Vitis/Chitarrini2020/TruSeq3-PE.fa (No such file or directory)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:216)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+	at org.usadellab.trimmomatic.fasta.FastaParser.parse(FastaParser.java:54)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.loadSequences(IlluminaClippingTrimmer.java:110)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.makeIlluminaClippingTrimmer(IlluminaClippingTrimmer.java:71)
+	at org.usadellab.trimmomatic.trim.TrimmerFactory.makeTrimmer(TrimmerFactory.java:32)
+	at org.usadellab.trimmomatic.Trimmomatic.createTrimmers(Trimmomatic.java:59)
+	at org.usadellab.trimmomatic.TrimmomaticPE.run(TrimmomaticPE.java:552)
+	at org.usadellab.trimmomatic.Trimmomatic.main(Trimmomatic.java:80)
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Vitis/GGref/STAR_index_PN40024v4 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Vitis/Chitarrini2020/STARmap1/ERR2987452_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987452_1P.fq.gz /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987452_2P.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 05 04:58:16 ..... started STAR run
+Sep 05 04:58:16 ..... loading genome
+Sep 05 04:58:17 ..... started mapping
+Sep 05 04:59:23 ..... finished mapping
+Sep 05 04:59:23 ..... started sorting BAM
+Sep 05 04:59:38 ..... finished successfully
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Vitis/GGref/STAR_index_PN40024v4 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Vitis/Chitarrini2020/STARmap1_F/ERR2987452_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987452_1U.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 05 04:59:39 ..... started STAR run
+Sep 05 04:59:39 ..... loading genome
+Sep 05 04:59:40 ..... started mapping
+Sep 05 04:59:47 ..... finished mapping
+Sep 05 04:59:48 ..... started sorting BAM
+Sep 05 04:59:48 ..... finished successfully
+java.io.FileNotFoundException: /scratch/USERNAME/Vitis/Chitarrini2020/TruSeq3-PE.fa (No such file or directory)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:216)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+	at org.usadellab.trimmomatic.fasta.FastaParser.parse(FastaParser.java:54)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.loadSequences(IlluminaClippingTrimmer.java:110)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.makeIlluminaClippingTrimmer(IlluminaClippingTrimmer.java:71)
+	at org.usadellab.trimmomatic.trim.TrimmerFactory.makeTrimmer(TrimmerFactory.java:32)
+	at org.usadellab.trimmomatic.Trimmomatic.createTrimmers(Trimmomatic.java:59)
+	at org.usadellab.trimmomatic.TrimmomaticPE.run(TrimmomaticPE.java:552)
+	at org.usadellab.trimmomatic.Trimmomatic.main(Trimmomatic.java:80)
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Vitis/GGref/STAR_index_PN40024v4 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Vitis/Chitarrini2020/STARmap1/ERR2987463_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987463_1P.fq.gz /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987463_2P.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 05 05:32:23 ..... started STAR run
+Sep 05 05:32:23 ..... loading genome
+Sep 05 05:32:25 ..... started mapping
+Sep 05 05:33:42 ..... finished mapping
+Sep 05 05:33:43 ..... started sorting BAM
+Sep 05 05:33:59 ..... finished successfully
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Vitis/GGref/STAR_index_PN40024v4 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Vitis/Chitarrini2020/STARmap1_F/ERR2987463_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987463_1U.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 05 05:34:00 ..... started STAR run
+Sep 05 05:34:00 ..... loading genome
+Sep 05 05:34:01 ..... started mapping
+Sep 05 05:34:09 ..... finished mapping
+Sep 05 05:34:09 ..... started sorting BAM
+Sep 05 05:34:09 ..... finished successfully
+java.io.FileNotFoundException: /scratch/USERNAME/Vitis/Chitarrini2020/TruSeq3-PE.fa (No such file or directory)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:216)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+	at org.usadellab.trimmomatic.fasta.FastaParser.parse(FastaParser.java:54)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.loadSequences(IlluminaClippingTrimmer.java:110)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.makeIlluminaClippingTrimmer(IlluminaClippingTrimmer.java:71)
+	at org.usadellab.trimmomatic.trim.TrimmerFactory.makeTrimmer(TrimmerFactory.java:32)
+	at org.usadellab.trimmomatic.Trimmomatic.createTrimmers(Trimmomatic.java:59)
+	at org.usadellab.trimmomatic.TrimmomaticPE.run(TrimmomaticPE.java:552)
+	at org.usadellab.trimmomatic.Trimmomatic.main(Trimmomatic.java:80)
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Vitis/GGref/STAR_index_PN40024v4 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Vitis/Chitarrini2020/STARmap1/ERR2987442_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987442_1P.fq.gz /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987442_2P.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 05 06:16:10 ..... started STAR run
+Sep 05 06:16:10 ..... loading genome
+Sep 05 06:16:11 ..... started mapping
+Sep 05 06:16:57 ..... finished mapping
+Sep 05 06:16:58 ..... started sorting BAM
+Sep 05 06:17:15 ..... finished successfully
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Vitis/GGref/STAR_index_PN40024v4 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Vitis/Chitarrini2020/STARmap1_F/ERR2987442_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987442_1U.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 05 06:17:16 ..... started STAR run
+Sep 05 06:17:16 ..... loading genome
+Sep 05 06:17:17 ..... started mapping
+Sep 05 06:17:23 ..... finished mapping
+Sep 05 06:17:24 ..... started sorting BAM
+Sep 05 06:17:24 ..... finished successfully
+java.io.FileNotFoundException: /scratch/USERNAME/Vitis/Chitarrini2020/TruSeq3-PE.fa (No such file or directory)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:216)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+	at org.usadellab.trimmomatic.fasta.FastaParser.parse(FastaParser.java:54)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.loadSequences(IlluminaClippingTrimmer.java:110)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.makeIlluminaClippingTrimmer(IlluminaClippingTrimmer.java:71)
+	at org.usadellab.trimmomatic.trim.TrimmerFactory.makeTrimmer(TrimmerFactory.java:32)
+	at org.usadellab.trimmomatic.Trimmomatic.createTrimmers(Trimmomatic.java:59)
+	at org.usadellab.trimmomatic.TrimmomaticPE.run(TrimmomaticPE.java:552)
+	at org.usadellab.trimmomatic.Trimmomatic.main(Trimmomatic.java:80)
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Vitis/GGref/STAR_index_PN40024v4 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Vitis/Chitarrini2020/STARmap1/ERR2987453_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987453_1P.fq.gz /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987453_2P.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 05 06:47:50 ..... started STAR run
+Sep 05 06:47:50 ..... loading genome
+Sep 05 06:47:51 ..... started mapping
+Sep 05 06:50:13 ..... finished mapping
+Sep 05 06:50:13 ..... started sorting BAM
+Sep 05 06:50:27 ..... finished successfully
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Vitis/GGref/STAR_index_PN40024v4 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Vitis/Chitarrini2020/STARmap1_F/ERR2987453_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987453_1U.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 05 06:50:27 ..... started STAR run
+Sep 05 06:50:27 ..... loading genome
+Sep 05 06:50:28 ..... started mapping
+Sep 05 06:50:40 ..... finished mapping
+Sep 05 06:50:40 ..... started sorting BAM
+Sep 05 06:50:41 ..... finished successfully
+java.io.FileNotFoundException: /scratch/USERNAME/Vitis/Chitarrini2020/TruSeq3-PE.fa (No such file or directory)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:216)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+	at org.usadellab.trimmomatic.fasta.FastaParser.parse(FastaParser.java:54)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.loadSequences(IlluminaClippingTrimmer.java:110)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.makeIlluminaClippingTrimmer(IlluminaClippingTrimmer.java:71)
+	at org.usadellab.trimmomatic.trim.TrimmerFactory.makeTrimmer(TrimmerFactory.java:32)
+	at org.usadellab.trimmomatic.Trimmomatic.createTrimmers(Trimmomatic.java:59)
+	at org.usadellab.trimmomatic.TrimmomaticPE.run(TrimmomaticPE.java:552)
+	at org.usadellab.trimmomatic.Trimmomatic.main(Trimmomatic.java:80)
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Vitis/GGref/STAR_index_PN40024v4 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Vitis/Chitarrini2020/STARmap1/ERR2987464_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987464_1P.fq.gz /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987464_2P.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 05 07:17:48 ..... started STAR run
+Sep 05 07:17:48 ..... loading genome
+Sep 05 07:17:49 ..... started mapping
+Sep 05 07:18:18 ..... finished mapping
+Sep 05 07:18:18 ..... started sorting BAM
+Sep 05 07:18:30 ..... finished successfully
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Vitis/GGref/STAR_index_PN40024v4 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Vitis/Chitarrini2020/STARmap1_F/ERR2987464_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987464_1U.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 05 07:18:30 ..... started STAR run
+Sep 05 07:18:30 ..... loading genome
+Sep 05 07:18:31 ..... started mapping
+Sep 05 07:18:37 ..... finished mapping
+Sep 05 07:18:37 ..... started sorting BAM
+Sep 05 07:18:38 ..... finished successfully
+java.io.FileNotFoundException: /scratch/USERNAME/Vitis/Chitarrini2020/TruSeq3-PE.fa (No such file or directory)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:216)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+	at org.usadellab.trimmomatic.fasta.FastaParser.parse(FastaParser.java:54)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.loadSequences(IlluminaClippingTrimmer.java:110)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.makeIlluminaClippingTrimmer(IlluminaClippingTrimmer.java:71)
+	at org.usadellab.trimmomatic.trim.TrimmerFactory.makeTrimmer(TrimmerFactory.java:32)
+	at org.usadellab.trimmomatic.Trimmomatic.createTrimmers(Trimmomatic.java:59)
+	at org.usadellab.trimmomatic.TrimmomaticPE.run(TrimmomaticPE.java:552)
+	at org.usadellab.trimmomatic.Trimmomatic.main(Trimmomatic.java:80)
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Vitis/GGref/STAR_index_PN40024v4 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Vitis/Chitarrini2020/STARmap1/ERR2987433_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987433_1P.fq.gz /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987433_2P.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 05 07:59:21 ..... started STAR run
+Sep 05 07:59:21 ..... loading genome
+Sep 05 07:59:22 ..... started mapping
+Sep 05 08:00:55 ..... finished mapping
+Sep 05 08:00:55 ..... started sorting BAM
+Sep 05 08:01:18 ..... finished successfully
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Vitis/GGref/STAR_index_PN40024v4 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Vitis/Chitarrini2020/STARmap1_F/ERR2987433_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987433_1U.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 05 08:01:18 ..... started STAR run
+Sep 05 08:01:18 ..... loading genome
+Sep 05 08:01:19 ..... started mapping
+Sep 05 08:01:28 ..... finished mapping
+Sep 05 08:01:28 ..... started sorting BAM
+Sep 05 08:01:28 ..... finished successfully
+java.io.FileNotFoundException: /scratch/USERNAME/Vitis/Chitarrini2020/TruSeq3-PE.fa (No such file or directory)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:216)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+	at org.usadellab.trimmomatic.fasta.FastaParser.parse(FastaParser.java:54)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.loadSequences(IlluminaClippingTrimmer.java:110)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.makeIlluminaClippingTrimmer(IlluminaClippingTrimmer.java:71)
+	at org.usadellab.trimmomatic.trim.TrimmerFactory.makeTrimmer(TrimmerFactory.java:32)
+	at org.usadellab.trimmomatic.Trimmomatic.createTrimmers(Trimmomatic.java:59)
+	at org.usadellab.trimmomatic.TrimmomaticPE.run(TrimmomaticPE.java:552)
+	at org.usadellab.trimmomatic.Trimmomatic.main(Trimmomatic.java:80)
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Vitis/GGref/STAR_index_PN40024v4 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Vitis/Chitarrini2020/STARmap1/ERR2987444_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987444_1P.fq.gz /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987444_2P.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 05 08:31:27 ..... started STAR run
+Sep 05 08:31:27 ..... loading genome
+Sep 05 08:31:28 ..... started mapping
+Sep 05 08:32:35 ..... finished mapping
+Sep 05 08:32:36 ..... started sorting BAM
+Sep 05 08:32:52 ..... finished successfully
+Loading bio/STAR/2.7.10b-GCC-11.3.0
+  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
+    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
+    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
+    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
+    bio/HTSlib/1.15.1-GCC-11.3.0
+	STAR --runThreadN 24 --genomeDir /scratch/USERNAME/Vitis/GGref/STAR_index_PN40024v4 --outFilterType BySJout --outFilterMultimapNmax 10 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 12 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --outFileNamePrefix /scratch/USERNAME/Vitis/Chitarrini2020/STARmap1_F/ERR2987444_ --outReadsUnmapped Fastx --limitBAMsortRAM 12000000000 --outBAMsortingBinsN 20 --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c --readFilesIn /scratch/USERNAME/Vitis/Chitarrini2020/trimmomatic/ERR2987444_1U.fq.gz
+	STAR version: 2.7.10b   compiled: 2024-07-31T14:09:58+02:00 ramses4:/dev/shm/sborowsk/build/STAR/2.7.10b/GCC-11.3.0/STAR-2.7.10b/source
+Sep 05 08:32:52 ..... started STAR run
+Sep 05 08:32:52 ..... loading genome
+Sep 05 08:32:53 ..... started mapping
+Sep 05 08:33:01 ..... finished mapping
+Sep 05 08:33:01 ..... started sorting BAM
+Sep 05 08:33:01 ..... finished successfully
+Missing raw fastq for ERR2987455 -- check /scratch/USERNAME/Vitis/Chitarrini2020

@@ -1,0 +1,3 @@
+"file","sheet","genes","samples","first_gene","last_gene"
+"Rlogs_ComBat_condition_protected_26169genes_36samples.xlsx","rlog_condition_protected",26169,36,"Vitvi01g04000","Vitvi00g04882"
+"SizeFactor_log2_ComBat_condition_protected_26169genes_36samples.xlsx","sizefactor_log2_protected",26169,36,"Vitvi01g04000","Vitvi00g04882"

@@ -1,0 +1,13 @@
+"condition","B1","B2","represented_in_both_batches","additive_batch_assumption_required"
+"Rpv12.0",3,0,FALSE,TRUE
+"Rpv12.6",1,2,TRUE,FALSE
+"Rpv12.24",0,3,FALSE,TRUE
+"Rpv12.1.0",3,0,FALSE,TRUE
+"Rpv12.1.6",2,1,TRUE,FALSE
+"Rpv12.1.24",2,1,TRUE,FALSE
+"Rpv12.1.3.0",3,0,FALSE,TRUE
+"Rpv12.1.3.6",2,1,TRUE,FALSE
+"Rpv12.1.3.24",1,2,TRUE,FALSE
+"Susceptible.0",1,2,TRUE,FALSE
+"Susceptible.6",0,3,FALSE,TRUE
+"Susceptible.24",1,2,TRUE,FALSE

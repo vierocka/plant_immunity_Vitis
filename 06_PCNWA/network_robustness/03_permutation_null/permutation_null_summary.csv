@@ -1,0 +1,5 @@
+"combat","de_panel","n_observed_significant","null_mean","null_sd","null_max","null_95th_pctile","empirical_p_value"
+"unprotected","3553",155,0,0,0,0,0.00497512437810945
+"unprotected","9459",2165,0.035,0.232476291545296,2,0,0.00497512437810945
+"protected","3553",147,0,0,0,0,0.00497512437810945
+"protected","9459",2409,0.01,0.0997484272744117,1,0,0.00497512437810945

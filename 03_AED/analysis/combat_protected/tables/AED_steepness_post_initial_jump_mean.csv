@@ -1,0 +1,16 @@
+"series","slope_zscore_per_stage"
+"OwnStudy_within_Rpv12_1_3",0.42034880365086
+"within_G5_bonus",0.40976204202908
+"OwnStudy_within_Susceptible",0.28415467773345
+"OwnStudy_within_Rpv12",0.1343217749041
+"within_inoculated",0.092631362985655
+"cross_cultivar_MV102_vs_MV32",0.0673448273887984
+"cross_condition_inoculated_vs_mock",0.0341990832179783
+"OwnStudy_cross_genotype_Rpv12_1_3",0.0237406363668794
+"within_Syrah_background",0.00865337237612001
+"within_mock",-0.0372251445455599
+"within_MV32",-0.038532184532742
+"within_MV102",-0.044302202239186
+"OwnStudy_cross_genotype_Rpv12_1",-0.0808255308627017
+"OwnStudy_cross_genotype_Rpv12",-0.162438860932395
+"OwnStudy_within_Rpv12_1",-0.25874617731076

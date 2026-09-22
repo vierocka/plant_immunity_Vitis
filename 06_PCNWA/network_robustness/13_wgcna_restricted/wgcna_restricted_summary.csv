@@ -1,0 +1,5 @@
+"combat","de_panel","n_genes_input","n_modules_excl_grey","n_genes_assigned","pct_genes_assigned","median_module_size","largest_module_size"
+"unprotected","3553",3553,11,3415,96.1159583450605,127,2006
+"unprotected","9459",9459,27,9331,98.646791415583,136,3521
+"protected","3553",3553,10,3421,96.2848297213622,132,1974
+"protected","9459",9459,24,9285,98.1604820805582,175.5,3225

@@ -1,0 +1,5 @@
+"reference","family","rate_ratio_hub_vs_WGCNA","ci_low","ci_high","p_value"
+"ref_physical_any","poisson (dispersion=0.89, no overdispersion correction needed)",0.742742208015562,0.706400046625961,0.780954064489096,3.28263168941523e-31
+"ref_detailed_any","poisson (dispersion=0.02, no overdispersion correction needed)",0.966808415302283,0.951936018857992,0.981913167883555,1.97526221951335e-05
+"ref_detailed_700","poisson (dispersion=0.05, no overdispersion correction needed)",0.814911918766682,0.763739641933802,0.869512853446406,6.1816843011597e-10
+"ref_coexpression_above_median","poisson (dispersion=0.00, no overdispersion correction needed)",0.897067583641299,0.877297186475834,0.91728351808889,1.25408375190765e-21

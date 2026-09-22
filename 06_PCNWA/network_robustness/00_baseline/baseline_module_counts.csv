@@ -1,0 +1,5 @@
+"combat","de_panel","n_anchor_genes","n_significant_modules","median_module_size","max_module_size","expected_from_prior_analysis","matches_prior"
+"unprotected","3553",3553,155,74,1546,155,TRUE
+"unprotected","9459",9459,2165,124,2096,NA,NA
+"protected","3553",3553,147,72,1346,147,TRUE
+"protected","9459",9459,2409,107,1929,NA,NA

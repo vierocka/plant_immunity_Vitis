@@ -4,9 +4,9 @@ library(sva)
 library(Cairo)
 library(svglite)
 
-# set your working directory
+# set working directory to the repository root before running
 # load read counts from the CSV file
-VvitCounts <- read.csv("RawCounts.csv", header = TRUE, sep="\t")
+VvitCounts <- read.csv("data_files/RawCounts.csv", header = TRUE, sep="\t")
 VvitCountsMat <- as.matrix(VvitCounts[,c(2:37)])
 rownames(VvitCountsMat) <- VvitCounts[,1]
 dim(VvitCountsMat)
@@ -49,6 +49,7 @@ norm_counts_SF <- counts(dds, normalized=TRUE)
 norm_counts_SF[c(1:5),c(1:5)]
 norm_counts_SF_log2 <- log2(norm_counts_SF+1)
 ### size factor normalisation and batch correction using combat
+# mod=condition
 expr_adj_SF_CB <- ComBat(norm_counts_SF_log2, batch=as.factor(BatchOriginIDs))
 
 ### for comparison: raw reads with applied batch correction using combat
@@ -103,124 +104,169 @@ cor.test(PCArlog2c$x[,1], as.integer(colData[,2]), method = "spearman") # -0.141
 # Such batch-dependent differences in mapping statistics are common in multi-run RNA-seq datasets and, if uncorrected, can obscure genuine biological structure in expression profiles.
 # systematic technical variation #
 
-### size factor normalisation vs batch modelling vs combat
-par(mfrow=c(2,4), mar=c(2,2,1.5,1), cex.main=1, cex.lab=1.2, cex.axis=1, mgp=c(0.5,0.25,0))
-plot(PCArc$x[,1], PCArc$x[,2], col=BatchOrigiCol, pch=myExctPch, yaxt="n", xaxt="n", xlab="PC1 (60.75 %)", ylab="PC2 (14.99 %)", main="Raw Counts")
-legend(x=-7e05, y=-3.5e05, col=c("salmon","cornflowerblue"), pch = c(15,18), title = "Batch", legend = c("B1", "B2"), x.intersp = 0.3, y.intersp = 0.8, box.lwd = 0.15, cex = 0.75)
-text(x=-6e05, y=4e05, "rho=-0.640", cex = 1.5)
-plot(PCArcc$x[,1], PCArcc$x[,2], col=BatchOrigiCol, pch=myExctPch, yaxt="n", xaxt="n", xlab="PC1 (54.73 %)", ylab="PC2 (16.67 %)", main="Raw Counts +ComBat")
-text(x=-4e05, y=2.75e05, "rho=-0.200", cex = 1.5)
-plot(PCAsf$x[,1], PCAsf$x[,2], col=BatchOrigiCol, pch=myExctPch, yaxt="n", xaxt="n", xlab="PC1 (42.44 %)", ylab="PC2 (10 %)", main="SizeFactor normalization")
-text(x=-115, y=95, "rho=-0.597", cex = 1.5)
-plot(PCAsfc$x[,1], PCAsfc$x[,2], col=BatchOrigiCol, pch=myExctPch, yaxt="n", xaxt="n", xlab="PC1 (33.87 %)", ylab="PC2 (11.12 %)", main="SizeFactor normalization +ComBat")
-text(x=-87.5,  y=75, "rho=-0.104", cex = 1.5)
+# EXPLORATORY / SUPERSEDED: step-by-step base-R panels + the combined
+# PCA_all_methods_4x4.pdf figure below, replaced by Batch_test_combined_v2.R
+# (Supplementary Figure 2). Kept commented out for reference; see
+# exploratory_material/ for the saved output.
+# ### size factor normalisation vs batch modelling vs combat
+# par(mfrow=c(2,4), mar=c(2,2,1.5,1), cex.main=1, cex.lab=1.2, cex.axis=1, mgp=c(0.5,0.25,0))
+# plot(PCArc$x[,1], PCArc$x[,2], col=BatchOrigiCol, pch=myExctPch, yaxt="n", xaxt="n", xlab="PC1 (60.75 %)", ylab="PC2 (14.99 %)", main="Raw Counts")
+# legend(x=-7e05, y=-3.5e05, col=c("salmon","cornflowerblue"), pch = c(15,18), title = "Batch", legend = c("B1", "B2"), x.intersp = 0.3, y.intersp = 0.8, box.lwd = 0.15, cex = 0.75)
+# text(x=-6e05, y=4e05, "rho=-0.640", cex = 1.5)
+# plot(PCArcc$x[,1], PCArcc$x[,2], col=BatchOrigiCol, pch=myExctPch, yaxt="n", xaxt="n", xlab="PC1 (54.73 %)", ylab="PC2 (16.67 %)", main="Raw Counts +ComBat")
+# text(x=-4e05, y=2.75e05, "rho=-0.200", cex = 1.5)
+# plot(PCAsf$x[,1], PCAsf$x[,2], col=BatchOrigiCol, pch=myExctPch, yaxt="n", xaxt="n", xlab="PC1 (42.44 %)", ylab="PC2 (10 %)", main="SizeFactor normalization")
+# text(x=-115, y=95, "rho=-0.597", cex = 1.5)
+# plot(PCAsfc$x[,1], PCAsfc$x[,2], col=BatchOrigiCol, pch=myExctPch, yaxt="n", xaxt="n", xlab="PC1 (33.87 %)", ylab="PC2 (11.12 %)", main="SizeFactor normalization +ComBat")
+# text(x=-87.5,  y=75, "rho=-0.104", cex = 1.5)
 
-plot(PCArc$x[,1], PCArc$x[,2], col=myCol, pch=myPch, yaxt="n", xaxt="n", xlab="PC1 (60.75 %)", ylab="PC2 (14.99 %)", main="Raw Counts")
-legend(x=-8.05e05, y=5.25e05, col=c("goldenrod", "salmon","cornflowerblue", "dimgray"), pch=20, title = "Genotypes", legend = c("Rpv12", "Rpv12+1", "Rpv12+1+3", "susceptible"), x.intersp = 0.5, y.intersp = 0.8, box.lwd = 0.15, cex = 0.75, bty = "n")
-legend(x=-8.05e05, y=-3.25e05, col="black", pch=c(20,17,15), title = "Timing", legend = c("0 hpi", "6 hpi", "24 hpi"), x.intersp = 0.5, y.intersp = 0.8, box.lwd = 0.15, cex = 0.75, bty = "n")
-plot(PCArcc$x[,1], PCArcc$x[,2], col=myCol, pch=myPch, yaxt="n", xaxt="n", xlab="PC1 (54.73 %)", ylab="PC2 (16.67 %)", main="Raw Counts +ComBat")
-plot(PCAsf$x[,1], PCAsf$x[,2], col=myCol, pch=myPch, yaxt="n", xaxt="n", xlab="PC1 (42.44 %)", ylab="PC2 (10 %)", main="SizeFactor normalization")
-plot(PCAsfc$x[,1], PCAsfc$x[,2], col=myCol, pch=myPch, yaxt="n", xaxt="n", xlab="PC1 (33.87 %)", ylab="PC2 (11.12 %)", main="SizeFactor normalization +ComBat")
+# plot(PCArc$x[,1], PCArc$x[,2], col=myCol, pch=myPch, yaxt="n", xaxt="n", xlab="PC1 (60.75 %)", ylab="PC2 (14.99 %)", main="Raw Counts")
+# legend(x=-8.05e05, y=5.25e05, col=c("goldenrod", "salmon","cornflowerblue", "dimgray"), pch=20, title = "Genotypes", legend = c("Rpv12", "Rpv12+1", "Rpv12+1+3", "susceptible"), x.intersp = 0.5, y.intersp = 0.8, box.lwd = 0.15, cex = 0.75, bty = "n")
+# legend(x=-8.05e05, y=-3.25e05, col="black", pch=c(20,17,15), title = "Timing", legend = c("0 hpi", "6 hpi", "24 hpi"), x.intersp = 0.5, y.intersp = 0.8, box.lwd = 0.15, cex = 0.75, bty = "n")
+# plot(PCArcc$x[,1], PCArcc$x[,2], col=myCol, pch=myPch, yaxt="n", xaxt="n", xlab="PC1 (54.73 %)", ylab="PC2 (16.67 %)", main="Raw Counts +ComBat")
+# plot(PCAsf$x[,1], PCAsf$x[,2], col=myCol, pch=myPch, yaxt="n", xaxt="n", xlab="PC1 (42.44 %)", ylab="PC2 (10 %)", main="SizeFactor normalization")
+# plot(PCAsfc$x[,1], PCAsfc$x[,2], col=myCol, pch=myPch, yaxt="n", xaxt="n", xlab="PC1 (33.87 %)", ylab="PC2 (11.12 %)", main="SizeFactor normalization +ComBat")
 
-# rlog normalisation vs batch modelling vs  
-par(mfrow=c(2,4), mar=c(2,2,1.5,1), cex.main=1, cex.lab=1.2, cex.axis=1, mgp=c(0.5,0.25,0))
-plot(PCArlog$x[,1], PCArlog$x[,2], col=BatchOrigiCol, pch=myExctPch, yaxt="n", xaxt="n", xlab="PC1 (50.87 %)", ylab="PC2 (9.89 %)", main="rlog values, no batch modelling")
-legend(x=-100, y=57, col=c("salmon","cornflowerblue"), pch = c(15,18), title = "Batch", legend = c("B1", "B2"), x.intersp = 0.5, y.intersp = 0.8, box.lwd = 0.15, cex = 0.9, bty = "n")
-text(x=-60, y=40, "rho=-0.603", cex = 1.5)
-plot(PCArlogc$x[,1], PCArlogc$x[,2], col=BatchOrigiCol, pch=myExctPch, yaxt="n", xaxt="n", xlab="PC1 (42.54 %)", ylab="PC2 (11.41 %)", main="rlog values, no batch modelling +ComBat")
-text(x=-37.5, y=40, "rho=-0.137", cex = 1.5)
-plot(PCArlog2$x[,1], PCArlog2$x[,2], col=BatchOrigiCol, pch=myExctPch, yaxt="n", xaxt="n", xlab="PC1 (53.14 %)", ylab="PC2 (9.69 %)", main="rlog values, batch modelling")
-text(x=-70, y=50, "rho=-0.608", cex = 1.5)
-plot(PCArlog2c$x[,1], PCArlog2c$x[,2], col=BatchOrigiCol, pch=myExctPch, yaxt="n", xaxt="n", xlab="PC1 (45.07 %)", ylab="PC2 (11.06 %)", main="rlog values, batch modelling +ComBat")
-text(x=-42.5, y=45, "rho=-0.142", cex = 1.5)
+# # rlog normalisation vs batch modelling vs  
+# par(mfrow=c(2,4), mar=c(2,2,1.5,1), cex.main=1, cex.lab=1.2, cex.axis=1, mgp=c(0.5,0.25,0))
+# plot(PCArlog$x[,1], PCArlog$x[,2], col=BatchOrigiCol, pch=myExctPch, yaxt="n", xaxt="n", xlab="PC1 (50.87 %)", ylab="PC2 (9.89 %)", main="rlog values, no batch modelling")
+# legend(x=-100, y=57, col=c("salmon","cornflowerblue"), pch = c(15,18), title = "Batch", legend = c("B1", "B2"), x.intersp = 0.5, y.intersp = 0.8, box.lwd = 0.15, cex = 0.9, bty = "n")
+# text(x=-60, y=40, "rho=-0.603", cex = 1.5)
+# plot(PCArlogc$x[,1], PCArlogc$x[,2], col=BatchOrigiCol, pch=myExctPch, yaxt="n", xaxt="n", xlab="PC1 (42.54 %)", ylab="PC2 (11.41 %)", main="rlog values, no batch modelling +ComBat")
+# text(x=-37.5, y=40, "rho=-0.137", cex = 1.5)
+# plot(PCArlog2$x[,1], PCArlog2$x[,2], col=BatchOrigiCol, pch=myExctPch, yaxt="n", xaxt="n", xlab="PC1 (53.14 %)", ylab="PC2 (9.69 %)", main="rlog values, batch modelling")
+# text(x=-70, y=50, "rho=-0.608", cex = 1.5)
+# plot(PCArlog2c$x[,1], PCArlog2c$x[,2], col=BatchOrigiCol, pch=myExctPch, yaxt="n", xaxt="n", xlab="PC1 (45.07 %)", ylab="PC2 (11.06 %)", main="rlog values, batch modelling +ComBat")
+# text(x=-42.5, y=45, "rho=-0.142", cex = 1.5)
 
-plot(PCArlog$x[,1], PCArlog$x[,2], col=myCol, pch=myPch, yaxt="n", xaxt="n", xlab="PC1 (50.87 %)", ylab="PC2 (9.89 %)", main="rlog values, no batch modelling")
-legend(x=-102, y=55, col=c("goldenrod", "salmon","cornflowerblue", "dimgray"), pch=20, title = "Genotype", legend = c("Rpv12", "Rpv12+1", "Rpv12+1+3", "susceptible"), x.intersp = 0.5, y.intersp = 0.8, box.lwd = 0.15, cex = 0.9, bty = "n")
-legend(x=-102, y=-15, col="black", pch=c(20,17,15), title = "Timing", legend = c("0 hpi", "6 hpi", "24 hpi"), x.intersp = 0.5, y.intersp = 0.8, box.lwd = 0.15, cex = 0.9, bty = "n")
-plot(PCArlogc$x[,1], PCArlogc$x[,2], col=myCol, pch=myPch, yaxt="n", xaxt="n", xlab="PC1 (42.54 %)", ylab="PC2 (11.41 %)", main="rlog values, no batch modelling +ComBat")
-plot(PCArlog2$x[,1], PCArlog2$x[,2], col=myCol, pch=myPch, yaxt="n", xaxt="n", xlab="PC1 (53.14 %)", ylab="PC2 (9.69 %)", main="rlog values, batch modelling")
-plot(PCArlog2c$x[,1], PCArlog2c$x[,2], col=myCol, pch=myPch, yaxt="n", xaxt="n", xlab="PC1 (45.07 %)", ylab="PC2 (11.06 %)", main="rlog values, batch modelling +ComBat")
+# plot(PCArlog$x[,1], PCArlog$x[,2], col=myCol, pch=myPch, yaxt="n", xaxt="n", xlab="PC1 (50.87 %)", ylab="PC2 (9.89 %)", main="rlog values, no batch modelling")
+# legend(x=-102, y=55, col=c("goldenrod", "salmon","cornflowerblue", "dimgray"), pch=20, title = "Genotype", legend = c("Rpv12", "Rpv12+1", "Rpv12+1+3", "susceptible"), x.intersp = 0.5, y.intersp = 0.8, box.lwd = 0.15, cex = 0.9, bty = "n")
+# legend(x=-102, y=-15, col="black", pch=c(20,17,15), title = "Timing", legend = c("0 hpi", "6 hpi", "24 hpi"), x.intersp = 0.5, y.intersp = 0.8, box.lwd = 0.15, cex = 0.9, bty = "n")
+# plot(PCArlogc$x[,1], PCArlogc$x[,2], col=myCol, pch=myPch, yaxt="n", xaxt="n", xlab="PC1 (42.54 %)", ylab="PC2 (11.41 %)", main="rlog values, no batch modelling +ComBat")
+# plot(PCArlog2$x[,1], PCArlog2$x[,2], col=myCol, pch=myPch, yaxt="n", xaxt="n", xlab="PC1 (53.14 %)", ylab="PC2 (9.69 %)", main="rlog values, batch modelling")
+# plot(PCArlog2c$x[,1], PCArlog2c$x[,2], col=myCol, pch=myPch, yaxt="n", xaxt="n", xlab="PC1 (45.07 %)", ylab="PC2 (11.06 %)", main="rlog values, batch modelling +ComBat")
 
-### Combined 4x4 figure: all methods (rows 1-2 batch-colored, rows 3-4 genotype-colored)
-CairoPDF("PCA_all_methods_4x4.pdf", width=16, height=16)
-par(mfrow=c(4,4), mar=c(2,2,1.5,1), cex.main=0.9, cex.lab=1, cex.axis=0.9, mgp=c(0.5,0.25,0))
+# ### Combined 4x4 figure: all methods (rows 1-2 batch-colored, rows 3-4 genotype-colored)
+# CairoPDF("PCA_all_methods_4x4.pdf", width=16, height=16)
+# par(mfrow=c(4,4), mar=c(2,2,1.5,1), cex.main=0.9, cex.lab=1, cex.axis=0.9, mgp=c(0.5,0.25,0))
 
-# Row 1: batch-colored, raw counts and size-factor methods
-plot(PCArc$x[,1], PCArc$x[,2], col=BatchOrigiCol, pch=myExctPch, yaxt="n", xaxt="n",
-     xlab="PC1 (60.75%)", ylab="PC2 (14.99%)", main="Raw counts")
-legend(x=-7e05, y=-3.5e05, col=c("salmon","cornflowerblue"), pch=c(15,18),
-       title="Batch", legend=c("B1","B2"), x.intersp=0.3, y.intersp=0.8, box.lwd=0.15, cex=0.65)
-text(x=-6e05, y=4e05, bquote(rho == -0.640), cex=1.1)
+# # Row 1: batch-colored, raw counts and size-factor methods
+# plot(PCArc$x[,1], PCArc$x[,2], col=BatchOrigiCol, pch=myExctPch, yaxt="n", xaxt="n",
+#      xlab="PC1 (60.75%)", ylab="PC2 (14.99%)", main="Raw counts")
+# legend(x=-7e05, y=-3.5e05, col=c("salmon","cornflowerblue"), pch=c(15,18),
+#        title="Batch", legend=c("B1","B2"), x.intersp=0.3, y.intersp=0.8, box.lwd=0.15, cex=0.65)
+# text(x=-6e05, y=4e05, bquote(rho == -0.640), cex=1.1)
 
-plot(PCArcc$x[,1], PCArcc$x[,2], col=BatchOrigiCol, pch=myExctPch, yaxt="n", xaxt="n",
-     xlab="PC1 (54.73%)", ylab="PC2 (16.67%)", main="Raw counts +ComBat")
-text(x=-4e05, y=3e05, bquote(rho == -0.200), cex=1.1)
+# plot(PCArcc$x[,1], PCArcc$x[,2], col=BatchOrigiCol, pch=myExctPch, yaxt="n", xaxt="n",
+#      xlab="PC1 (54.73%)", ylab="PC2 (16.67%)", main="Raw counts +ComBat")
+# text(x=-4e05, y=3e05, bquote(rho == -0.200), cex=1.1)
 
-plot(PCAsf$x[,1], PCAsf$x[,2], col=BatchOrigiCol, pch=myExctPch, yaxt="n", xaxt="n",
-     xlab="PC1 (42.44%)", ylab="PC2 (10%)", main="Size factor normalization")
-text(x=-100, y=95, bquote(rho == -0.597), cex=1.1)
+# plot(PCAsf$x[,1], PCAsf$x[,2], col=BatchOrigiCol, pch=myExctPch, yaxt="n", xaxt="n",
+#      xlab="PC1 (42.44%)", ylab="PC2 (10%)", main="Size factor normalization")
+# text(x=-100, y=95, bquote(rho == -0.597), cex=1.1)
 
-plot(PCAsfc$x[,1], PCAsfc$x[,2], col=BatchOrigiCol, pch=myExctPch, yaxt="n", xaxt="n",
-     xlab="PC1 (33.87%)", ylab="PC2 (11.12%)", main="Size factor normalization +ComBat")
-text(x=-100, y=75, bquote(rho == -0.104), cex=1.1)
+# plot(PCAsfc$x[,1], PCAsfc$x[,2], col=BatchOrigiCol, pch=myExctPch, yaxt="n", xaxt="n",
+#      xlab="PC1 (33.87%)", ylab="PC2 (11.12%)", main="Size factor normalization +ComBat")
+# text(x=-100, y=75, bquote(rho == -0.104), cex=1.1)
 
-# Row 2: batch-colored, rlog methods
-plot(PCArlog$x[,1], PCArlog$x[,2], col=BatchOrigiCol, pch=myExctPch, yaxt="n", xaxt="n",
-     xlab="PC1 (50.87%)", ylab="PC2 (9.89%)", main="rlog, no batch modelling")
-legend(x=-95, y=60, col=c("salmon","cornflowerblue"), pch=c(15,18),
-       title="Batch", legend=c("B1","B2"), x.intersp=0.3, y.intersp=0.8, box.lwd=0.15, cex=0.65)
-text(x=-80, y=40, bquote(rho == -0.603), cex=1.1)
+# # Row 2: batch-colored, rlog methods
+# plot(PCArlog$x[,1], PCArlog$x[,2], col=BatchOrigiCol, pch=myExctPch, yaxt="n", xaxt="n",
+#      xlab="PC1 (50.87%)", ylab="PC2 (9.89%)", main="rlog, no batch modelling")
+# legend(x=-95, y=60, col=c("salmon","cornflowerblue"), pch=c(15,18),
+#        title="Batch", legend=c("B1","B2"), x.intersp=0.3, y.intersp=0.8, box.lwd=0.15, cex=0.65)
+# text(x=-80, y=40, bquote(rho == -0.603), cex=1.1)
 
-plot(PCArlogc$x[,1], PCArlogc$x[,2], col=BatchOrigiCol, pch=myExctPch,
-     xlab="PC1 (42.54%)", ylab="PC2 (11.41%)", main="rlog, no batch modelling +ComBat")
-text(x=-40, y=40, bquote(rho == -0.137), cex=1.1)
+# plot(PCArlogc$x[,1], PCArlogc$x[,2], col=BatchOrigiCol, pch=myExctPch,
+#      xlab="PC1 (42.54%)", ylab="PC2 (11.41%)", main="rlog, no batch modelling +ComBat")
+# text(x=-40, y=40, bquote(rho == -0.137), cex=1.1)
 
-plot(PCArlog2$x[,1], PCArlog2$x[,2], col=BatchOrigiCol, pch=myExctPch, yaxt="n", xaxt="n",
-     xlab="PC1 (53.14%)", ylab="PC2 (9.69%)", main="rlog, batch modelling")
-text(x=-80, y=55, bquote(rho == -0.608), cex=1.1)
+# plot(PCArlog2$x[,1], PCArlog2$x[,2], col=BatchOrigiCol, pch=myExctPch, yaxt="n", xaxt="n",
+#      xlab="PC1 (53.14%)", ylab="PC2 (9.69%)", main="rlog, batch modelling")
+# text(x=-80, y=55, bquote(rho == -0.608), cex=1.1)
 
-plot(PCArlog2c$x[,1], PCArlog2c$x[,2], col=BatchOrigiCol, pch=myExctPch, yaxt="n", xaxt="n",
-     xlab="PC1 (45.07%)", ylab="PC2 (11.06%)", main="rlog, batch modelling +ComBat")
-text(x=-40, y=45, bquote(rho == -0.142), cex=1.1)
+# plot(PCArlog2c$x[,1], PCArlog2c$x[,2], col=BatchOrigiCol, pch=myExctPch, yaxt="n", xaxt="n",
+#      xlab="PC1 (45.07%)", ylab="PC2 (11.06%)", main="rlog, batch modelling +ComBat")
+# text(x=-40, y=45, bquote(rho == -0.142), cex=1.1)
 
-# Row 3: genotype-colored, raw counts and size-factor methods
-plot(PCArc$x[,1], PCArc$x[,2], col=myCol, pch=myPch, yaxt="n", xaxt="n",
-     xlab="PC1 (60.75%)", ylab="PC2 (14.99%)", main="Raw counts")
-legend(x=-8.15e05, y=5.25e05, col=c("goldenrod","salmon","cornflowerblue","dimgray"), pch=20,
-       title="Genotypes", legend=c("Rpv12","Rpv12+1","Rpv12+1+3","susceptible"),
-       x.intersp=0.3, y.intersp=0.8, box.lwd=0.15, cex=0.65)
-legend(x=-8.15e05, y=-3.5e05, col="black", pch=c(20,17,15),
-       title="Timing", legend=c("0 hpi","6 hpi","24 hpi"),
-       x.intersp=-1, y.intersp=0.8, box.lwd=0.15, cex=0.65)
+# # Row 3: genotype-colored, raw counts and size-factor methods
+# plot(PCArc$x[,1], PCArc$x[,2], col=myCol, pch=myPch, yaxt="n", xaxt="n",
+#      xlab="PC1 (60.75%)", ylab="PC2 (14.99%)", main="Raw counts")
+# legend(x=-8.15e05, y=5.25e05, col=c("goldenrod","salmon","cornflowerblue","dimgray"), pch=20,
+#        title="Genotypes", legend=c("Rpv12","Rpv12+1","Rpv12+1+3","susceptible"),
+#        x.intersp=0.3, y.intersp=0.8, box.lwd=0.15, cex=0.65)
+# legend(x=-8.15e05, y=-3.5e05, col="black", pch=c(20,17,15),
+#        title="Timing", legend=c("0 hpi","6 hpi","24 hpi"),
+#        x.intersp=-1, y.intersp=0.8, box.lwd=0.15, cex=0.65)
 
-plot(PCArcc$x[,1], PCArcc$x[,2], col=myCol, pch=myPch, yaxt="n", xaxt="n",
-     xlab="PC1 (54.73%)", ylab="PC2 (16.67%)", main="Raw counts +ComBat")
+# plot(PCArcc$x[,1], PCArcc$x[,2], col=myCol, pch=myPch, yaxt="n", xaxt="n",
+#      xlab="PC1 (54.73%)", ylab="PC2 (16.67%)", main="Raw counts +ComBat")
 
-plot(PCAsf$x[,1], PCAsf$x[,2], col=myCol, pch=myPch, yaxt="n", xaxt="n",
-     xlab="PC1 (42.44%)", ylab="PC2 (10%)", main="Size factor normalization")
+# plot(PCAsf$x[,1], PCAsf$x[,2], col=myCol, pch=myPch, yaxt="n", xaxt="n",
+#      xlab="PC1 (42.44%)", ylab="PC2 (10%)", main="Size factor normalization")
 
-plot(PCAsfc$x[,1], PCAsfc$x[,2], col=myCol, pch=myPch, yaxt="n", xaxt="n",
-     xlab="PC1 (33.87%)", ylab="PC2 (11.12%)", main="Size factor normalization +ComBat")
+# plot(PCAsfc$x[,1], PCAsfc$x[,2], col=myCol, pch=myPch, yaxt="n", xaxt="n",
+#      xlab="PC1 (33.87%)", ylab="PC2 (11.12%)", main="Size factor normalization +ComBat")
 
-# Row 4: genotype-colored, rlog methods
-plot(PCArlog$x[,1], PCArlog$x[,2], col=myCol, pch=myPch, yaxt="n", xaxt="n",
-     xlab="PC1 (50.87%)", ylab="PC2 (9.89%)", main="rlog, no batch modelling")
-legend(x=-95, y=60, col=c("goldenrod","salmon","cornflowerblue","dimgray"), pch=20,
-       legend=c("Rpv12","Rpv12+1","Rpv12+1+3","susceptible"),
-       x.intersp=0.5, y.intersp=0.8, box.lwd=0.15, cex=0.65, bty="n")
-legend(x=-95, y=-15, col="black", pch=c(20,17,15),
-       title="Timing", legend=c("0 hpi","6 hpi","24 hpi"),
-       x.intersp=0.5, y.intersp=0.8, box.lwd=0.15, cex=0.65)
+# # Row 4: genotype-colored, rlog methods
+# plot(PCArlog$x[,1], PCArlog$x[,2], col=myCol, pch=myPch, yaxt="n", xaxt="n",
+#      xlab="PC1 (50.87%)", ylab="PC2 (9.89%)", main="rlog, no batch modelling")
+# legend(x=-95, y=60, col=c("goldenrod","salmon","cornflowerblue","dimgray"), pch=20,
+#        legend=c("Rpv12","Rpv12+1","Rpv12+1+3","susceptible"),
+#        x.intersp=0.5, y.intersp=0.8, box.lwd=0.15, cex=0.65, bty="n")
+# legend(x=-95, y=-15, col="black", pch=c(20,17,15),
+#        title="Timing", legend=c("0 hpi","6 hpi","24 hpi"),
+#        x.intersp=0.5, y.intersp=0.8, box.lwd=0.15, cex=0.65)
 
-plot(PCArlogc$x[,1], PCArlogc$x[,2], col=myCol, pch=myPch, yaxt="n", xaxt="n",
-     xlab="PC1 (42.54%)", ylab="PC2 (11.41%)", main="rlog, no batch modelling +ComBat")
+# plot(PCArlogc$x[,1], PCArlogc$x[,2], col=myCol, pch=myPch, yaxt="n", xaxt="n",
+#      xlab="PC1 (42.54%)", ylab="PC2 (11.41%)", main="rlog, no batch modelling +ComBat")
 
-plot(PCArlog2$x[,1], PCArlog2$x[,2], col=myCol, pch=myPch, yaxt="n", xaxt="n",
-     xlab="PC1 (53.14%)", ylab="PC2 (9.69%)", main="rlog, batch modelling")
+# plot(PCArlog2$x[,1], PCArlog2$x[,2], col=myCol, pch=myPch, yaxt="n", xaxt="n",
+#      xlab="PC1 (53.14%)", ylab="PC2 (9.69%)", main="rlog, batch modelling")
 
-plot(PCArlog2c$x[,1], PCArlog2c$x[,2], col=myCol, pch=myPch, yaxt="n", xaxt="n",
-     xlab="PC1 (45.07%)", ylab="PC2 (11.06%)", main="rlog, batch modelling +ComBat")
-dev.off()
+# plot(PCArlog2c$x[,1], PCArlog2c$x[,2], col=myCol, pch=myPch, yaxt="n", xaxt="n",
+#      xlab="PC1 (45.07%)", ylab="PC2 (11.06%)", main="rlog, batch modelling +ComBat")
+# dev.off()
+
+# AIM: check whether protecting condition during ComBat (mod=~condition)
+# leaves less batch signal in PC1-4 than unprotected ComBat above.
+# See exploratory_material/Heteroscedasticity_check_full_grid.R for the
+# analogous check on the mean-variance diagnostic.
+mod_condition <- model.matrix(~condition)
+
+expr_adj_RC_CB_mod <- ComBat(VvitCountsMat_red, batch = as.factor(BatchOriginIDs), mod = mod_condition)
+expr_adj_SF_CB_mod <- ComBat(norm_counts_SF_log2, batch = as.factor(BatchOriginIDs), mod = mod_condition)
+rlogs_CB_mod        <- ComBat(rlogs,  batch = as.factor(BatchOriginIDs), mod = mod_condition)
+rlogs2_CB_mod       <- ComBat(rlogs2, batch = as.factor(BatchOriginIDs), mod = mod_condition)
+
+PCArcc_mod    <- prcomp(t(expr_adj_RC_CB_mod))
+PCAsfc_mod    <- prcomp(t(expr_adj_SF_CB_mod))
+PCArlogc_mod  <- prcomp(t(rlogs_CB_mod))
+PCArlog2c_mod <- prcomp(t(rlogs2_CB_mod))
+
+mod_pca_list <- list(
+  "Raw counts +ComBat+mod"               = PCArcc_mod,
+  "SizeFactor +ComBat+mod"               = PCAsfc_mod,
+  "rlog, no batch modelling +ComBat+mod" = PCArlogc_mod,
+  "rlog, batch modelling +ComBat+mod"    = PCArlog2c_mod
+)
+
+pc_batch_cor <- do.call(rbind, lapply(names(mod_pca_list), function(nm) {
+  pca <- mod_pca_list[[nm]]
+  do.call(rbind, lapply(1:4, function(pc) {
+    ct <- cor.test(pca$x[, pc], as.integer(colData[, 2]), method = "spearman")
+    data.frame(matrix = nm, PC = pc, rho = unname(ct$estimate), p = ct$p.value)
+  }))
+}))
+pc_batch_cor
+# write.csv(pc_batch_cor, "PC1to4_vs_batch_mod_comparison.csv", row.names = FALSE)
+
+# save the condition-protected rlog+ComBat matrix; used downstream by 03_AED and 06_PCNWA
+rlogs_CB_mod_out <- data.frame(geneID = rownames(rlogs_CB_mod), rlogs_CB_mod, check.names = FALSE)
+write.table(
+  rlogs_CB_mod_out,
+  "data_files/Rlogs_ComBat_protected.csv",
+  sep = "\t", row.names = FALSE, quote = FALSE
+)
 
 ####### DECISION #######
 ## Aggregated Expression Divergence (AED): 

@@ -1,0 +1,15 @@
+Status	ERR2987432_Aligned.sortedByCoord.out.bam	ERR2987433_Aligned.sortedByCoord.out.bam	ERR2987435_Aligned.sortedByCoord.out.bam	ERR2987436_Aligned.sortedByCoord.out.bam	ERR2987437_Aligned.sortedByCoord.out.bam	ERR2987438_Aligned.sortedByCoord.out.bam	ERR2987439_Aligned.sortedByCoord.out.bam	ERR2987440_Aligned.sortedByCoord.out.bam	ERR2987441_Aligned.sortedByCoord.out.bam	ERR2987442_Aligned.sortedByCoord.out.bam	ERR2987443_Aligned.sortedByCoord.out.bam	ERR2987444_Aligned.sortedByCoord.out.bam	ERR2987446_Aligned.sortedByCoord.out.bam	ERR2987447_Aligned.sortedByCoord.out.bam	ERR2987448_Aligned.sortedByCoord.out.bam	ERR2987449_Aligned.sortedByCoord.out.bam	ERR2987450_Aligned.sortedByCoord.out.bam	ERR2987451_Aligned.sortedByCoord.out.bam	ERR2987452_Aligned.sortedByCoord.out.bam	ERR2987453_Aligned.sortedByCoord.out.bam	ERR2987454_Aligned.sortedByCoord.out.bam	ERR2987457_Aligned.sortedByCoord.out.bam	ERR2987458_Aligned.sortedByCoord.out.bam	ERR2987459_Aligned.sortedByCoord.out.bam	ERR2987460_Aligned.sortedByCoord.out.bam	ERR2987461_Aligned.sortedByCoord.out.bam	ERR2987462_Aligned.sortedByCoord.out.bam	ERR2987463_Aligned.sortedByCoord.out.bam	ERR2987464_Aligned.sortedByCoord.out.bam
+Assigned	60956023	42548590	79250076	64891685	35510900	46157697	28414134	24138165	44690997	52522470	66181814	39162572	60132067	56134872	31698901	47812787	49126298	49000067	36564045	33762008	38970055	34382277	50587153	53990829	45713755	51046693	30768490	42819034	35806262
+Unassigned_Unmapped	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_Read_Type	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_Singleton	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_MappingQuality	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_Chimera	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_FragmentLength	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_Duplicate	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_MultiMapping	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_Secondary	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_NonSplit	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_NoFeatures	13367024	9638694	5269377	4728198	2627900	7864099	1981329	1866063	2970103	4485633	6106634	2675646	4349512	3430533	2343617	4183947	4306566	4475951	3412690	2375210	1894879	2160530	2968901	5851960	3246042	3410226	2150109	2789023	2324651
+Unassigned_Overlapping_Length	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_Ambiguity	123893	133198	177869	164553	122320	161946	68121	88882	137350	114913	140216	129160	128305	133903	110300	111044	115300	182940	119289	110974	82610	67173	113842	185223	156255	112593	69375	127097	69745

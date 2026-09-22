@@ -1,0 +1,72 @@
+Warning message:
+In DESeqDataSet(se, design = design, ignoreRank) :
+  some variables in design formula are characters, converting to factors
+estimating size factors
+estimating dispersions
+gene-wise dispersion estimates
+mean-dispersion relationship
+final dispersion estimates
+fitting model and testing
+Found 104 genes with uniform expression within a single batch (all zeros); these will not be adjusted for batch.
+Found2batches
+Adjusting for11covariate(s) or covariate level(s)
+Standardizing Data across genes
+Fitting L/S model and finding priors
+Finding parametric adjustments
+Adjusting the Data
+
+Genes in expr_adj: 26169 
+=== Timepoint 0 hpi ===
+  0hpi noise=0.005 done in 162.5s
+  0hpi noise=0.010 done in 161.8s
+  0hpi noise=0.020 done in 169.0s
+  0hpi noise=0.050 done in 166.7s
+  0hpi noise=0.100 done in 171.5s
+=== Timepoint 6 hpi ===
+  6hpi noise=0.005 done in 166.0s
+  6hpi noise=0.010 done in 170.0s
+  6hpi noise=0.020 done in 174.9s
+  6hpi noise=0.050 done in 170.6s
+  6hpi noise=0.100 done in 189.8s
+=== Timepoint 24 hpi ===
+  24hpi noise=0.005 done in 179.6s
+  24hpi noise=0.010 done in 188.2s
+  24hpi noise=0.020 done in 180.0s
+  24hpi noise=0.050 done in 174.3s
+  24hpi noise=0.100 done in 184.5s
+
+=== Summary: AggrDiv and %genes-for-75% by timepoint x noise level ===
+   timepoint noise AggrDiv.mean   AggrDiv.sd pct_genes_for_75pct.mean
+1       0hpi 0.005 1.755845e-05 2.982966e-07               11.9720177
+2      24hpi 0.005 1.756475e-05 2.925936e-07               11.9705640
+3       6hpi 0.005 1.756539e-05 2.979764e-07               11.9685112
+4       0hpi 0.010 7.022791e-05 1.182019e-06               11.9744652
+5      24hpi 0.010 7.025098e-05 1.189128e-06               11.9716978
+6       6hpi 0.010 7.024430e-05 1.181045e-06               11.9719481
+7       0hpi 0.020 2.809865e-04 4.738261e-06               11.9732187
+8      24hpi 0.020 2.809221e-04 4.810584e-06               11.9773358
+9       6hpi 0.020 2.810569e-04 4.795575e-06               11.9714120
+10      0hpi 0.050 1.756220e-03 3.002580e-05               11.9714494
+11     24hpi 0.050 1.756390e-03 2.988389e-05               11.9684757
+12      6hpi 0.050 1.755996e-03 2.995068e-05               11.9729298
+13      0hpi 0.100 7.025904e-03 1.198825e-04               11.9729978
+14     24hpi 0.100 7.024458e-03 1.183173e-04               11.9708262
+15      6hpi 0.100 7.024250e-03 1.182911e-04               11.9733054
+   pct_genes_for_75pct.sd
+1               0.2010597
+2               0.2024561
+3               0.2018721
+4               0.2029857
+5               0.2043339
+6               0.2010248
+7               0.2021479
+8               0.2052767
+9               0.2038369
+10              0.2022763
+11              0.2033888
+12              0.2036275
+13              0.2022656
+14              0.2048718
+15              0.2006083
+
+Done. Outputs in: 03_AED/AED_check_results/noise_test

@@ -1,0 +1,4 @@
+"method","genes_entering_model","filtering","effect_scale","evidence_tier"
+"DESeq2_apeglm",26169,"Original row-sum filter; DESeq2 independent filtering per contrast","log2_fold_change","primary_count_model"
+"edgeR_QL_robust",23261,"Original row-sum filter followed by edgeR filterByExpr","log2_fold_change","concordance_sensitivity"
+"limma_voom",23261,"Original row-sum filter followed by edgeR filterByExpr","log2_fold_change","concordance_sensitivity"

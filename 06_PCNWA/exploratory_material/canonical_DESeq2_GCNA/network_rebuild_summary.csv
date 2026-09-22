@@ -1,0 +1,3 @@
+"matrix","canonical_anchor_genes","anchors_present","modules_with_at_least_3_partners","bonferroni_selected_modules"
+"protected_ComBat",9459,9459,7036,2409
+"unprotected_ComBat_exploratory",9459,9459,6745,2165

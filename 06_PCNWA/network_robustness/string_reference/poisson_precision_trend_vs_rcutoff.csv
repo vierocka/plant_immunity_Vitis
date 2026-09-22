@@ -1,0 +1,5 @@
+"reference","family","rate_ratio_per_0.01_rcutoff","p_value_trend"
+"ref_physical_any","quasipoisson (dispersion=1.85)",1.05086814914456,8.60922719176124e-06
+"ref_detailed_any","quasipoisson (dispersion=1.77)",1.02116811521015,8.24183087588384e-07
+"ref_detailed_700","poisson (dispersion=0.95, no overdispersion correction needed)",1.06367727863448,4.60152353153213e-50
+"ref_coexpression_above_median","quasipoisson (dispersion=1.59)",1.02923062884955,8.03024915832573e-07

@@ -1,0 +1,30 @@
+Citations to verify (found via live web search 2026-07-30, not yet read in full — check before citing in the manuscript). Full context and how they're used: qPCR_and_Chitarrini_validation_summary.md, section 9.
+
+1. Mine A, Seyfferth C, Kracher B, Berens ML, Becker D, Tsuda K (2018).
+   "The Defense Phytohormone Signaling Network Enables Rapid, High-Amplitude
+   Transcriptional Reprogramming during Effector-Triggered Immunity."
+   The Plant Cell 30(6):1199-1219.
+   https://doi.org/10.1105/tpc.17.00970
+
+   Used for: JA/ethylene/PAD4/SA hormone network accelerates early ETI
+   transcriptional reprogramming but does not change which genes are
+   activated (gene repertoire conserved regardless of resistance status,
+   only timing differs) -- supports "response to hormone" as a marker of a
+   broad, conserved early response layer.
+
+2. Liu X, Igarashi D, Hillmer RA, Stoddard T, Lu Y, Tsuda K, Myers CL,
+   Katagiri F (2024).
+   "Decomposition of dynamic transcriptomic responses during effector-
+   triggered immunity reveals conserved responses in two distinct plant
+   cell populations."
+   Plant Communications 5(8):100882.
+   https://doi.org/10.1016/j.xplc.2024.100882
+
+   Used for: reports conserved early transcriptional patterns across cell
+   populations/elicitor types, with divergence appearing later -- same
+   "early conserved, later divergent" structure argued for with the
+   Chitarrini 6h/12h (75% concordant) vs 24h (39%, below chance) result.
+
+Reminder (from the summary doc): both support "early response is broad,
+conserved, hormone/stress-driven" in general -- neither should be read as
+proof of P. viticola-specific recognition in this study's own comparison.

@@ -1,0 +1,4 @@
+"contrast","note"
+"24hpi","direct match to this study's own 24hpi contrast"
+"12hpi_proxy_for_6hpi","nearest available Chitarrini time point to this study's own 6hpi; no true 6h sample exists"
+"0hpi_mock_only_temporal_drift","NOT an infection-response test: both arms are mock (uninoculated); tests pure background/temporal drift between the two earliest mock time points, since no inoculated-0h sample exists"

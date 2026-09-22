@@ -1,0 +1,13 @@
+"item","value"
+"Samples",36
+"Genes after row-sum prefilter",26169
+"Additive design columns",13
+"Additive design rank",13
+"Single-batch conditions",5
+"Batch-mixed conditions",7
+"Standard contrasts fully batch-crossed",2
+"Time DID contrasts fully batch-crossed",0
+"Genes with mixed-cell batch-by-condition interaction FDR < 0.05",2515
+"Genes exceeding Cook's cutoff",328
+"Cook's cutoff",3.0198747727798
+"edgeR genes after filterByExpr",23261

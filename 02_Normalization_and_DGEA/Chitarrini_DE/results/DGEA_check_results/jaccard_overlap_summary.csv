@@ -1,0 +1,7 @@
+"chitarrini_contrast","comparison_target","n_chitarrini_DEGs","n_own_target_DEGs","n_own_target_DEGs_in_chitarrini_tested_universe","n_shared","jaccard","fraction_chitarrini_recovered_by_own","fraction_own_recovered_by_chitarrini"
+"24hpi","own_Rpv12_vs_susceptible_24hpi",78,2693,2552,37,0.0142691862707289,0.474358974358974,0.0144984326018809
+"24hpi","own_pooled_9459gene_DE_panel",78,9459,9082,64,0.00703605980650836,0.82051282051282,0.00704690596784849
+"12hpi_proxy_for_6hpi","own_Rpv12_vs_susceptible_6hpi",19,1503,1414,5,0.00350140056022409,0.263157894736842,0.00353606789250354
+"12hpi_proxy_for_6hpi","own_pooled_9459gene_DE_panel",19,9459,9082,13,0.00143045774647887,0.684210526315789,0.00143140277471922
+"0hpi_mock_only_temporal_drift","own_Rpv12_vs_susceptible_0hpi",2678,4124,3934,625,0.104392851177551,0.233383121732636,0.158871377732588
+"0hpi_mock_only_temporal_drift","own_pooled_9459gene_DE_panel",2678,9459,9082,1458,0.141525917297612,0.544436146377894,0.160537326580048

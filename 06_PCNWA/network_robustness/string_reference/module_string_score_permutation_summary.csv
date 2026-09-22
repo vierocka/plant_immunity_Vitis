@@ -1,0 +1,13 @@
+"score_type","method","combat","n_modules_total","n_modules_with_coverage","median_n_covered_pairs","frac_modules_p_lt_0.05","median_p","n_sig","binom_p_vs_5pct"
+"physical_ppi","hub_anchored","unprotected",155,66,0,0.303030303030303,0.611111111111111,20,4.13608965595877e-11
+"physical_ppi","hub_anchored","protected",147,61,0,0.262295081967213,0.477124183006536,16,3.56844488802169e-08
+"physical_ppi","WGCNA","unprotected",60,48,9,0.3125,0.296141574735021,15,6.87881808826906e-09
+"physical_ppi","WGCNA","protected",53,43,16,0.325581395348837,0.26865671641791,14,1.20187333951372e-08
+"detailed_coexpr","hub_anchored","unprotected",155,135,12,0.251851851851852,0.646766169154229,34,3.72767165934932e-15
+"detailed_coexpr","hub_anchored","protected",147,128,12,0.25,0.603532338308458,32,2.94951508025368e-14
+"detailed_coexpr","WGCNA","unprotected",60,60,160,0.15,0.716417910447761,9,0.0028486058021657
+"detailed_coexpr","WGCNA","protected",53,52,224,0.192307692307692,0.577114427860697,10,0.000222892779827295
+"detailed_combined","hub_anchored","unprotected",155,135,12,0.125925925925926,0.75,17,0.000435853729951572
+"detailed_combined","hub_anchored","protected",147,128,12,0.1015625,0.808457711442786,13,0.0120658551687557
+"detailed_combined","WGCNA","unprotected",60,60,160,0.233333333333333,0.77363184079602,14,1.18918432599502e-06
+"detailed_combined","WGCNA","protected",53,52,224,0.230769230769231,0.462686567164179,12,7.70081798148504e-06
