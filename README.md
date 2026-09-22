@@ -2,12 +2,12 @@
 
 Hádlík M., Baránek M., Baránková K., Kovacova V.
 
-Accepted, *Molecular Plant-Microbe Interactions* (manuscript MPMI-05-26-0042-R.R1).
+Under consideration, *Molecular Plant-Microbe Interactions* (manuscript MPMI-05-26-0042-R.R1).
 Preprint: [bioRxiv](https://www.biorxiv.org/content/10.1101/2025.11.27.690962v2)  
 Interactive app: [Grapevine Guardians — Unraveling Rpv Pyramidization's Impact on Immunity](https://vierakovacova.shinyapps.io/playing_with_immunity/)
 
 > **Note:** the title, abstract wording, and gene naming above reflect the
-> accepted journal proof (checked directly against the typeset PDF). The
+> current manuscript proof (checked directly against the typeset PDF). The
 > bioRxiv preprint linked above may still carry an earlier title/draft
 > text — not re-checked here.
 
@@ -280,7 +280,7 @@ Script: `VitisVinifera_shiny.R`
 
 ## Main figures
 
-Verified against the accepted journal proof (not the bioRxiv preprint,
+Verified against the current manuscript proof (not the bioRxiv preprint,
 which may still show an earlier version).
 
 | Figure | Content |
@@ -304,8 +304,8 @@ which may still show an earlier version).
 | **Supp. Figure 7** | Network density vs. (A) resistance-locus dosage, (B) infection timepoint — neither significant |
 | **Supp. Figure 8** | Chitarrini et al. (2020) reprocessed samples: pairwise rlog correlation + hierarchical clustering |
 
-> **Known manuscript issue** (verified directly against the accepted
-> proof, not any private correspondence): the in-text citation for the
+> **Known manuscript issue** (verified directly against the current
+> manuscript proof, not any private correspondence): the in-text citation for the
 > Group I-VI gene-group definitions says "Supplementary Figure 7," but
 > the Group I-VI content is actually Supplementary Figure 5's caption
 > (above) — SF7 is the network-density figure. Both figures are correct

@@ -21,8 +21,9 @@ from the private rebuttal letter, which is never cited here.
 
 ## Main figures
 
-**Cross-checked directly against the accepted journal proof** (typeset
-PDF, `MPMI-05-26-0042-R.R1_Proof_hi.pdf`) — this superseded an earlier,
+**Cross-checked directly against the current manuscript proof** (typeset
+PDF, `MPMI-05-26-0042-R.R1_Proof_hi.pdf`, manuscript under consideration
+at MPMI, not yet accepted) — this superseded an earlier,
 incorrect version of this table that had Figures 4 and 5 swapped, based
 on stale drafting notes.
 
@@ -35,8 +36,8 @@ on stale drafting notes.
 | Figure 5 | 18-gene log2FC heatmap (A) + STRING-db network (B) + summary table (C) | `06_PCNWA/combat_protected/scripts/Figure_4_rebuild_18genes.R` (legacy filename — was "Figure 4" under an earlier numbering; content now corresponds to the proof's Figure 5) | canonical DESeq2 apeglm results, STRING interactions (`06_PCNWA/string-db/results/`) | `06_PCNWA/combat_protected/figures/Figure_4_rebuild.{png,pdf,tiff}` | DESeq2 Wald test, BH-FDR (per-cell `*` significance markers); STRING combined-score >= 0.4 edge threshold (descriptive) | Present, not re-run — script content previously fixed/verified |
 
 **Note on script filenames**: `Figure_4_rebuild_18genes.R` and
-`Figure_5_rebuild.R` produce the content that the accepted proof numbers
-as Figures 5 and 4 respectively (i.e. swapped relative to their own
+`Figure_5_rebuild.R` produce the content that the current manuscript
+proof numbers as Figures 5 and 4 respectively (i.e. swapped relative to their own
 filenames) — a numbering change that happened during manuscript revision
 after these scripts were named. Not renamed in this pass to avoid
 touching working, tested scripts without re-running them; flagged here
@@ -87,7 +88,7 @@ so the mapping is unambiguous.
 
 ## Known open items (not resolved by this repository — private draft issue)
 
-- **Confirmed still present in the accepted journal proof** (checked
+- **Confirmed still present in the current manuscript proof** (checked
   directly against the current typeset PDF, not the rebuttal or any
   reviewer correspondence): the manuscript body's in-text citation for
   the Group I-VI pattern-sharing definitions says "Supplementary Figure
