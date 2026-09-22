@@ -8,6 +8,7 @@
 shiny_local/
 articles/
 publication/
+qPCR/
 
 # Preprint PDF (large binary, available via bioRxiv)
 bioxriv_ms_version.pdf
