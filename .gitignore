@@ -29,6 +29,11 @@ Thumbs.db
 # Large reference genome files, downloadable from their public source
 Froussios_2019/TAIR10ref/
 
+# Raw RAMSES SLURM job logs -- HPC filesystem paths, not needed to
+# reproduce results (the scripts that produced them are what matters)
+Froussios_2019/logs/
+Chitarrini2020/logs/
+
 # Incomplete network-robustness runs, not used in the manuscript
 06_PCNWA/network_robustness/06_bootstrap/bootstrap_unprotected_9459.csv
 

@@ -1,7 +1,0 @@
-Loading bio/STAR/2.7.10b-GCC-11.3.0
-  Loading requirement: compiler/GCCcore/11.3.0 lib/zlib/1.2.12-GCCcore-11.3.0
-    tools/binutils/2.38-GCCcore-11.3.0 compiler/GCC/11.3.0
-    tools/bzip2/1.0.8-GCCcore-11.3.0 tools/XZ/5.2.5-GCCcore-11.3.0
-    system/OpenSSL/1.1 tools/cURL/7.83.0-GCCcore-11.3.0
-    bio/HTSlib/1.15.1-GCC-11.3.0
-tail: cannot open '/scratch/USERNAME/Chitarrini2020_RNAseq/chitarrini_run_list.tsv' for reading: No such file or directory
