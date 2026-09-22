@@ -15,18 +15,15 @@ noise floor the study's own AggrDiv values are read against.
 
 ## Contents
 ```
+data/      froussios2019_samples_from1_to14_perGene.counts.tsv, froussios2019_run_list.tsv
 scripts/
 ├── AED_intra_inter_experiment.R     inter-experiment (ExpB vs ExpA) and
 │                                     intra-experiment split-half nulls
 └── AED_gene_concentration_extended.R gene-concentration decomposition
-
-results/   AED_check_results/ (copied) — summary, gene concentration,
+results/   AED_check_results/ — summary, gene concentration,
            per-split null distributions (35/20/1716 values)
 ```
 
-## Known path limitation
-Both scripts set `script_dir <- "."` — must be run with the original
-`../../Froussios_2019/` as the working directory. Kept here for
-provenance. `Froussios_2019/` itself holds a much larger body of unrelated
-work (read-degradation simulation, batch-effect deep-dives) not part of
-this AED cross-check — see that folder's own `NOTES.md`.
+Both scripts are standalone-runnable from this folder's `scripts/`
+(`Rscript AED_intra_inter_experiment.R`), reading from `../data/` and
+writing to `../results/AED_check_results/`.

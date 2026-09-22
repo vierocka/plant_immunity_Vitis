@@ -38,11 +38,12 @@ suppressPackageStartupMessages({
 })
 
 script_dir <- "."
-output_dir <- file.path(script_dir, "AED_check_results")
+data_dir <- file.path(script_dir, "..", "data")
+output_dir <- file.path(script_dir, "..", "results", "AED_check_results")
 dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
 
 ############################ LOAD COUNTS + METADATA #############################
-counts_file <- file.path(script_dir, "froussios2019_samples_from1_to14_perGene.counts.tsv")
+counts_file <- file.path(data_dir, "froussios2019_samples_from1_to14_perGene.counts.tsv")
 raw <- read.delim(counts_file, header = TRUE, check.names = FALSE, comment.char = "#")
 gene_ids <- raw$Geneid
 count_cols <- colnames(raw)[-(1:6)]
@@ -56,7 +57,7 @@ cat("Raw counts matrix:", nrow(counts_mat), "genes x", ncol(counts_mat), "sample
 stopifnot(nrow(counts_mat) > 25000, nrow(counts_mat) < 28500)  # sanity: gene-level, not exon-level (was 196,889 rows before the -g gene_id fix)
 stopifnot(ncol(counts_mat) == 14)  # Sample_1..Sample_14 as aligned
 
-run_list <- read.delim(file.path(script_dir, "froussios2019_run_list.tsv"), stringsAsFactors = FALSE)
+run_list <- read.delim(file.path(data_dir, "froussios2019_run_list.tsv"), stringsAsFactors = FALSE)
 stopifnot(nrow(run_list) == 17)  # full 17-sample design table, even though only 14 were aligned
 
 # The featureCounts BAM paths were "<rundir>_Sample_N/<run>_Aligned...bam" --

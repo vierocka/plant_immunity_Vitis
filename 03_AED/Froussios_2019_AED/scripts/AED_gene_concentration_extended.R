@@ -19,10 +19,12 @@ suppressPackageStartupMessages({
 })
 
 script_dir <- "."
-output_dir <- file.path(script_dir, "AED_check_results")
+data_dir <- file.path(script_dir, "..", "data")
+output_dir <- file.path(script_dir, "..", "results", "AED_check_results")
+dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
 
 ############################ LOAD COUNTS + METADATA (verbatim from parent) ######
-counts_file <- file.path(script_dir, "froussios2019_samples_from1_to14_perGene.counts.tsv")
+counts_file <- file.path(data_dir, "froussios2019_samples_from1_to14_perGene.counts.tsv")
 raw <- read.delim(counts_file, header = TRUE, check.names = FALSE, comment.char = "#")
 gene_ids <- raw$Geneid
 count_cols <- colnames(raw)[-(1:6)]
@@ -33,7 +35,7 @@ storage.mode(counts_mat) <- "integer"
 stopifnot(nrow(counts_mat) > 25000, nrow(counts_mat) < 28500)
 stopifnot(ncol(counts_mat) == 14)
 
-run_list <- read.delim(file.path(script_dir, "froussios2019_run_list.tsv"), stringsAsFactors = FALSE)
+run_list <- read.delim(file.path(data_dir, "froussios2019_run_list.tsv"), stringsAsFactors = FALSE)
 stopifnot(nrow(run_list) == 17)
 run_of_col <- colnames(counts_mat)
 stopifnot(all(run_of_col %in% run_list$run_accession))
