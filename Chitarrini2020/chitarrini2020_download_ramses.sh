@@ -77,10 +77,9 @@ export -f download_one
 
 echo -e "run_accession\texit_status" > "$JOBLOG"
 
-# plain bash job control, not xargs -I{} - avoids the field-mangling bug
-# caught and fixed in the Caglar2017 download script (2026-09-04): bash's
-# plain echo does not expand \t, and nested quoting through xargs corrupted
-# fields further. Use parameter expansion + & + wait -n instead.
+# plain bash job control, not xargs -I{} - avoids a field-mangling bug:
+# bash's plain echo does not expand \t, and nested quoting through xargs
+# corrupted fields further. Use parameter expansion + & + wait -n instead.
 MAX_JOBS=8
 tail -n +2 "$RUN_LIST" | \
   while IFS=$'\t' read -r run ftp md5; do
