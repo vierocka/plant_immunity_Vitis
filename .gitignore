@@ -33,6 +33,8 @@ Froussios_2019/TAIR10ref/
 # reproduce results (the scripts that produced them are what matters)
 Froussios_2019/logs/
 Chitarrini2020/logs/
+RUN1_RPV1_microvine_2024/*_Log.final.out
+RUN1_RPV1_microvine_2024/*.out
 
 # Incomplete network-robustness runs, not used in the manuscript
 06_PCNWA/network_robustness/06_bootstrap/bootstrap_unprotected_9459.csv
