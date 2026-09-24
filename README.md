@@ -115,36 +115,33 @@ Before touching expression values, we tested whether the two sequencing batches 
 
 ---
 
-### 3. Step 2 — Comparing 8 normalization strategies (`01_QC_and_Filtering/Batch_effects/`)
+### 3. Step 2 — Comparing normalization/batch-correction strategies (`01_QC_and_Filtering/Batch_effects/`)
 
 **Script: `batch_effects.R`**
 
-To choose the best normalization approach, we tested all 8 combinations of three decisions:
-- **Normalization**: raw counts / size-factor normalization / rlog
-- **Batch modelling**: with or without batch as a covariate in the DESeq2 GLM design
-- **ComBat correction**: with or without empirical Bayes batch correction (SVA package)
+Seven normalization/batch-correction combinations were compared (Supplementary Figure 2): raw counts; size-factor normalization; size-factor normalization + ComBat, with genotype x timepoint supplied as protected covariates or without protection; rlog transformation; and rlog + ComBat, again with or without condition-protection.
 
-Batch removal was quantified as the **Spearman correlation (ρ) between PC1 scores and batch assignment** — a high |ρ| means batch dominates the primary variance axis. Each PCA was run twice: colored by batch (to see technical structure) and by genotype × time (to see biological structure). All 16 plots are saved in `PCA_all_methods_4x4.pdf`.
+Batch removal was quantified as the **Spearman correlation (ρ) between PC1 scores and batch assignment** — a high |ρ| means batch dominates the primary variance axis. Each PCA was run twice: colored by batch (to see technical structure) and by genotype × time (to see biological structure).
 
-| Method | Spearman ρ (PC1 vs batch) | Biological structure visible? |
-|---|---|---|
-| Raw counts | −0.640 | No — batch dominates PC1 |
-| Raw counts + ComBat | −0.200 | Partial |
-| Size-factor normalization | −0.597 | No |
-| **Size-factor normalization + ComBat** | **−0.104** | **Yes — best for amplitude analyses** |
-| rlog, no batch modelling | −0.603 | No |
-| **rlog + ComBat** | **−0.137** | **Yes — best for correlation/network analyses** |
-| rlog + DESeq2 batch modelling | −0.608 | No — batch modelling alone insufficient |
-| rlog + DESeq2 batch modelling + ComBat | −0.142 | Yes, but risk of overcorrection |
+| Method | Spearman ρ (PC1 vs batch) |
+|---|---|
+| Raw counts | −0.640 |
+| Size-factor normalization | −0.597 |
+| Size-factor + ComBat, unprotected | −0.104 |
+| **Size-factor + ComBat, condition-protected** | **−0.035** |
+| rlog | −0.603 |
+| rlog + ComBat, unprotected | −0.137 |
+| **rlog + ComBat, condition-protected** | **−0.062** |
 
-**Key finding:** DESeq2's batch-as-covariate design did **not** effectively remove batch effects on its own (ρ ≈ −0.60 regardless). ComBat was required in all cases. This is a known limitation: DESeq2 adjusts for batch in the GLM but does not correct the expression values themselves.
+Condition-protected ComBat (genotype x timepoint supplied as covariates during batch-parameter estimation) most effectively removed batch structure in both normalization families and is the version used for all downstream analyses; both protected combinations preserved genotype-level biological separation.
 
 **Why two normalizations are used for different analyses:**
 
 | Analysis | Normalization | Reason |
 |---|---|---|
-| AED (expression divergence) | Size-factor + log₂ + ComBat | Preserves absolute expression amplitude; rlog shrinks large fold-changes |
-| PCA, DGEA, co-expression networks | rlog + ComBat | Variance stabilized; homoscedastic; optimal for correlation structure |
+| AED (expression divergence) | Size-factor + log₂ + condition-protected ComBat | Preserves absolute expression amplitude; rlog shrinks large fold-changes |
+| PCA, co-expression networks | rlog + condition-protected ComBat | Variance stabilized; homoscedastic; optimal for correlation structure |
+| DGEA (canonical DESeq2) | Raw integer counts, `~batch + condition` design | DESeq2's own negative-binomial GLM models batch as a design covariate directly; does not use the ComBat-corrected matrices above at all (see §7) |
 
 ---
 

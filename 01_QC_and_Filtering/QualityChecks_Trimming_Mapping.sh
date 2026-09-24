@@ -1,4 +1,10 @@
-### FastQC v0.12.1 - default settings
+## ILLUSTRATIVE — not a standalone-runnable script. Shows the exact command
+## lines used for QC/trimming/mapping/counting, one representative call per
+## step; on the HPC cluster these ran in a per-sample SLURM array job.
+## $myDir/$outDir/$myPath/$inDir/$starOut/$fCout/$ID are per-job path
+## variables set by that array job, not defined here.
+
+### FastQC v0.11.9 - default settings
 ## to check raw reads quality and set trimming
 ## run in a loop for read fq files (36 x2 files, followed by visual inspection)
 # code example:
@@ -16,7 +22,7 @@ trimmomatic PE -threads 8 -trimlog $outDir/$ID".log" -summary $outDir/$ID"_summa
 ## https://grapedia.org/files-download/
 ## https://academic.oup.com/g3journal/article/13/5/jkad067/7086178
 # code to build the reference database:
-cd $myPath/SW/STAR-2.7.10b/bin/Linux_x86_64
+cd $myPath/SW/STAR-2.7.4a/bin/Linux_x86_64
 ./STAR --runMode genomeGenerate --runThreadN 8 --genomeDir $myPath/reference/STARref --genomeSAindexNbases 12 --genomeFastaFiles $myPath/reference/Vitis_vinifera.fa
 ## run in a loop for all read pairs
 # code example to map filtered reads, with --BySJout option to stricter filter splice junctions based on splice junction quality and annotation support:
