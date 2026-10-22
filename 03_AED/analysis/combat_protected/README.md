@@ -1,9 +1,9 @@
 # analysis/combat_protected
 
-**AIM.** Aggregated Expression Divergence (AED/AggrDiv), computed on
+**AIM.** Aggregated Expression Divergence (AED), computed on
 condition-protected ComBat-corrected, size-factor-normalized expression —
 this project's primary, published correction for AED (manuscript Figure 2
-A/B, Supplementary Figure 3, Supplementary Table 2).
+A/B, Additional file 4: Figure S3, Additional file 5: Table S2).
 
 **MOTIVATION.** Protected ComBat is preferred here because AED depends on
 absolute magnitude, which unprotected ComBat risks distorting when a
@@ -14,7 +14,7 @@ condition cell is confined to a single batch (see
 `scripts/` — within-genotype temporal extension, gene-concentration
 decomposition, z-score comparability, self-inclusion sensitivity,
 steepness analysis, the noise negative control, the cross-study summary
-table, and the Figure 2 / Supplementary Figure 3 redesign scripts.
+table, and the Figure 2 / Additional file 4: Figure S3 redesign scripts.
 `tables/` — their outputs: per-test permutation nulls (220/20 values),
 gene-concentration and steepness tables, the 55-test/15-series summary
 (`AED_summary_table_all_studies.csv`), and the noise-negative-control raw

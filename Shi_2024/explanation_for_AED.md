@@ -1,3 +1,5 @@
+> **2026-10 update:** AED is now reported descriptively, without permutation p-values or significance calls (Additional file 5: Table S2). Statements below about significant AED tests describe the earlier analysis.
+
 % Explanation for the Shi2024 AED Cross-Check
 % Compiled 2026-08-17
 
@@ -66,10 +68,10 @@ flagged inline wherever it affects a specific result.
 The statistic and permutation-null design mirror this project's own `03_AED/`
 methodology exactly, for comparability:
 
-- **AggrDiv** = mean, across genes, of the squared difference between the "observed" group's
+- **AED** = mean, across genes, of the squared difference between the "observed" group's
   mean log2(DESeq2 size-factor-normalized counts + 1) and a fixed "reference" group's mean.
 - **Permutation null**: pool = union of the observed and reference sample columns; every
-  unique same-size resample of the pool is drawn (`combn()`), AggrDiv is recomputed for each
+  unique same-size resample of the pool is drawn (`combn()`), AED is recomputed for each
   against the same fixed reference mean, and a one-sided empirical p-value is calculated as
   (number of null draws ≥ observed + 1) / (number of null draws + 1).
 - **No ComBat correction** was applied within Shi2024: batches here are distinct BioProjects
@@ -80,7 +82,7 @@ methodology exactly, for comparability:
   null draw size was adjusted to match (2 instead of 3), rather than assuming every group has
   3 replicates.
 - **Self-check**: comparing an identical group against itself was verified to give
-  AggrDiv = 0 exactly, confirming the statistic's implementation before trusting any result.
+  AED = 0 exactly, confirming the statistic's implementation before trusting any result.
 
 # 3. T-index validation for the cross-cultivar comparison
 
@@ -141,7 +143,7 @@ every test performed. What varies test-to-test, and is genuinely informative, is
 into the tail the observed value sits, not whether it clears an arbitrary significance
 threshold.
 
-**Raw AggrDiv trajectories** (read with the comparability caveat in §6 in mind):
+**Raw AED trajectories** (read with the comparability caveat in §6 in mind):
 
 - **MV102** (T1→T6 vs its own T0): 1.21, 2.00, 2.87, 4.41, 4.96, 5.33 — monotonic increase.
 - **MV32** (T1→T6 vs its own T0): 0.92, 2.53, 3.07, 3.31, 5.74, 5.23 — increases but dips at
@@ -160,18 +162,18 @@ threshold.
 This was tested empirically rather than assumed. Every saved test already carries its own
 permutation null, drawn from that exact pool/batch/gene-set/replicate-size — the correct,
 already-available yardstick for cross-test comparison. Computing the Spearman correlation
-between each test's **raw** AggrDiv and its own null's median level, across all 55 tests
+between each test's **raw** AED and its own null's median level, across all 55 tests
 spanning Shi2024, Chitarrini2020, the own-study within-genotype extension, and the
 manuscript's own original cross-genotype tests (§8, §10):
 
-> **Spearman ρ(raw AggrDiv, own null median) = 0.947 (p ≈ 0, n = 55)**
+> **Spearman ρ(raw AED, own null median) = 0.947 (p ≈ 0, n = 55)**
 
 **This number was itself checked for a circularity problem and revised down.** Every saved
 null, by construction, contains the true observed obs-vs-ref combination verbatim as one of
 its own draws (the same self-inclusion mechanism used throughout this project's permutation
 tests, standard practice for empirical p-values — Phipson & Smyth 2010). For an empirical
 p-value that is the correct, conservative thing to do; but for using the null's median as an
-independent "noise floor" estimate, self-inclusion is a real problem — a large AggrDiv could
+independent "noise floor" estimate, self-inclusion is a real problem — a large AED could
 mechanically pull up its own null's median just by being one of only 6–20 draws, which would
 make part of the correlation circular. Removing the one self-matching draw from each
 null before recomputing the correlation (`AED_selfinclusion_sensitivity_check.R`) gives:
@@ -181,12 +183,12 @@ null before recomputing the correlation (`AED_selfinclusion_sensitivity_check.R`
 
 Both values are strong and highly significant — the comparability finding is not an
 artifact of self-inclusion — but **0.754 is the more defensible number to cite**; part of
-the raw correlation's apparent strength was mechanical. Either way, raw AggrDiv is
+the raw correlation's apparent strength was mechanical. Either way, raw AED is
 substantially explained by each test's own noise floor (gene-set size, per-batch
 sequencing depth, replicate count, and — visible now that the manuscript's own 220-value-
 null tests are included — the null's own sample size, since a much larger null resolves
 extremes more precisely than a 6–20-value one), not by an independent biological-magnitude
-component. Raw AggrDiv's roughly 34-fold range (0.20–6.95) collapses to a 5-fold range once
+component. Raw AED's roughly 34-fold range (0.20–6.95) collapses to a 5-fold range once
 expressed relative to each test's own null, as a z-score, or 2.5-fold as a fold-over-null-
 median — the
 z-scores themselves inherit a mild version of the same self-inclusion conservatism (their
@@ -263,7 +265,7 @@ movement). Same statistic, same condition-protected ComBat correction already es
 preferred for this dataset, run for each of the four genotypes (Susceptible, Rpv12, Rpv12+1,
 Rpv12+1+3) at 6hpi-vs-0hpi and 24hpi-vs-0hpi.
 
-Raw AggrDiv: Rpv12 (1.83, 1.77) > Rpv12+1 (1.52, 0.995) > Susceptible (0.35, 0.66) ≈
+Raw AED: Rpv12 (1.83, 1.77) > Rpv12+1 (1.52, 0.995) > Susceptible (0.35, 0.66) ≈
 Rpv12+1+3 (0.32, 0.54). Once corrected for each test's own noise floor (§6), Rpv12 and
 Rpv12+1 are essentially tied (z ≈ 2.7–2.9 and 2.5–2.7 respectively), and Rpv12+1+3 is not
 nearly as damped as its raw numbers suggested — it simply has the lowest noise floor of the
@@ -277,7 +279,7 @@ For every test in the Shi2024 battery, the own-study within-genotype extension, 
 main study's own original, published cross-genotype AED comparisons** (resistant genotype
 vs Susceptible, at each of 0/6/24hpi — the manuscript's actual headline AED result, added to
 this combined table on request; 45 tests in total), genes were ranked by their contribution
-to the total AggrDiv sum-of-squares, and the number needed to reach each of several
+to the total AED sum-of-squares, and the number needed to reach each of several
 cumulative thresholds was recorded:
 
 | Cumulative fraction of total divergence | % of genes needed (range across all 45 tests) |

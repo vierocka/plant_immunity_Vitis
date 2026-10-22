@@ -215,3 +215,193 @@ write.csv(sig_table, file.path(output_dir, "jaccard_overlap_significance_within_
 message("\nSignificance table written to: ", file.path(output_dir, "jaccard_overlap_significance_within_genotype.csv"))
 
 message("\nOutputs written to: ", output_dir)
+
+################## ADDED 2026-10-12: BATCH (AND PLANT) IN OWN TEMPORAL CONTRASTS ##################
+# The ~condition subset fits above ignore batch: Rpv12 0h = B1,B1,B1 and 24h = B2,B2,B2,
+# so own_Rpv12_24v0 is fully confounded with batch. Refit on all 36 samples:
+#   A: ~ batch + condition (canonical model; batch effect borrowed from batch-mixed conditions)
+#   B: A + plant (same 3 plants per genotype sampled at 0/6/24 hpi; replicate A/B/C = plant):
+#      ~ batch + genotype + genotype:plant + genotype:time (DESeq2 nested-individual design)
+# Standalone: run from the repo root; reads the saved chit_* results instead of refitting them.
+own_dir <- "02_Normalization_and_DGEA/Chitarrini_DE/results/DGEA_check_results"
+cnt <- read.delim("data_files/RawCounts.csv", check.names = FALSE)
+cnt <- as.matrix(cnt[, -1, drop = FALSE]) |> `rownames<-`(cnt[[1]])
+cnt <- cnt[rowSums(cnt) >= 15, ]
+meta <- read.csv("data_files/sample_metadata.csv")[match(colnames(cnt), read.csv("data_files/sample_metadata.csv")$sample_id), ]
+meta <- transform(meta,
+  genotype = factor(genotype, levels = c("Susceptible", "Rpv12", "Rpv12+1", "Rpv12+1+3")),
+  time = factor(time, levels = c(0, 6, 24)), plant = factor(replicate), batch = factor(batch),
+  condition = factor(paste(genotype, time, sep = ".")))
+tidy <- function(r, s, label) data.frame(gene = rownames(r), model_contrast = label,
+  log2FC_apeglm = s$log2FoldChange, padj = r$padj,
+  DE_primary = !is.na(r$padj) & r$padj < alpha & abs(s$log2FoldChange) > lfc_threshold)
+
+# A: canonical model; check it reproduces the canonical Rpv12 0h-vs-Susceptible call (4,124 DEGs)
+ddsA <- DESeqDataSetFromMatrix(cnt, meta, ~ batch + condition)
+ddsA$condition <- relevel(ddsA$condition, "Susceptible.0"); ddsA <- nbinomWaldTest(DESeq(ddsA))  # Wald refit as in DGEA_check_mod.R
+chk <- results(ddsA, name = "condition_Rpv12.0_vs_Susceptible.0", alpha = alpha)
+chk_s <- lfcShrink(ddsA, coef = "condition_Rpv12.0_vs_Susceptible.0", res = chk, type = "apeglm")
+# result 4127: padj identical to canonical; 15 genes flip at |apeglm log2FC| = 1 (8 in, 7 out; apeglm optimiser noise)
+message("check, canonical Rpv12 0h vs Susceptible DEGs (expected 4124): ", sum(tidy(chk, chk_s, "")$DE_primary))
+ddsA$condition <- relevel(ddsA$condition, "Rpv12.0"); ddsA <- nbinomWaldTest(ddsA)
+own_A <- lapply(c(`6v0` = "condition_Rpv12.6_vs_Rpv12.0", `24v0` = "condition_Rpv12.24_vs_Rpv12.0"), function(cf) {
+  r <- results(ddsA, name = cf, alpha = alpha); tidy(r, lfcShrink(ddsA, coef = cf, res = r, type = "apeglm"), cf) })
+
+# B: plant-nested model (21 coefficients, full rank; zero columns of the nested term dropped)
+mmB <- model.matrix(~ batch + genotype + genotype:plant + genotype:time, meta)
+mmB <- mmB[, colSums(mmB != 0) > 0]
+ddsB <- DESeqDataSetFromMatrix(cnt, meta, ~ batch + genotype + genotype:plant + genotype:time)
+ddsB <- DESeq(ddsB, full = mmB)
+own_B <- lapply(c(`6v0` = "genotypeRpv12.time6", `24v0` = "genotypeRpv12.time24"), function(cf) {
+  r <- results(ddsB, name = cf, alpha = alpha); tidy(r, lfcShrink(ddsB, coef = cf, res = r, type = "apeglm"), cf) })
+# plant effect genome-wide: LRT of genotype:plant (genes whose 3 plants differ consistently over time)
+lrt <- results(DESeq(ddsB, test = "LRT", full = mmB, reduced = mmB[, !grepl(":plant", colnames(mmB))]))
+message("genes with significant plant effect (LRT FDR<0.05): ", sum(lrt$padj < alpha, na.rm = TRUE), " of ", nrow(lrt))
+
+# overlap statistics vs Chitarrini (same universe/tests as the section above), for all three own models
+rd <- function(f) read.csv(file.path(own_dir, f))
+chit <- list(`6v0` = rd("chit_inoc12_v_mock0_all_genes.csv"), `24v0` = rd("chit_inoc24_v_mock0_all_genes.csv"))
+own_sub <- list(`6v0` = rd("own_Rpv12_6v0_all_genes.csv"), `24v0` = rd("own_Rpv12_24v0_all_genes.csv"))
+models <- list(subset_condition_only = own_sub, A_batch_condition = own_A, B_batch_plant_nested = own_B)
+ovl <- do.call(rbind, lapply(names(models), function(m) do.call(rbind, lapply(c("6v0", "24v0"), function(tc) {
+  o <- models[[m]][[tc]]; ch <- chit[[tc]]; U <- intersect(o$gene, ch$gene)
+  od <- intersect(o$gene[o$DE_primary], U); cd <- intersect(ch$gene[ch$DE_primary], U); sh <- intersect(od, cd)
+  sd <- sum(sign(setNames(o$log2FC_apeglm, o$gene)[sh]) == sign(setNames(ch$log2FC_apeglm, ch$gene)[sh]))
+  e <- length(od) * length(cd) / length(U)
+  data.frame(own_model = m, contrast = tc, universe_N = length(U), own_DEGs = length(od), chit_DEGs = length(cd),
+    shared = length(sh), expected = round(e, 1), fold = round(length(sh) / e, 2),
+    hypergeom_p = phyper(length(sh) - 1, length(od), length(U) - length(od), length(cd), lower.tail = FALSE),
+    same_direction = sd, direction_pct = round(100 * sd / length(sh), 1),
+    binom_p_above = binom.test(sd, length(sh), 0.5, "greater")$p.value,
+    binom_p_below = binom.test(sd, length(sh), 0.5, "less")$p.value) }))))
+print(ovl)
+write.csv(ovl, file.path(own_dir, "jaccard_overlap_significance_within_genotype_batch_models.csv"), row.names = FALSE)
+write.csv(do.call(rbind, c(unname(own_A), unname(own_B))),
+  file.path(own_dir, "own_Rpv12_temporal_contrasts_batch_models.csv"), row.names = FALSE)
+
+################## ADDED 2026-10-14: GO OF DIRECTION-CONCORDANT SHARED GENES (BATCH MODEL A) ##################
+# Replaces the STRING-web GO of the 110 subset-model genes (Arabidopsis symbols). Same idea, reproducible:
+# GO BP of the closest Arabidopsis homolog (TAIR GAF, geneontology.org, downloaded 2026-10-14; NOT annotations dropped),
+# topGO Fisher, classic + BH (STRING-like FDR) and weight01; universe = genes tested in both studies.
+# Standalone: run from the repo root after the 2026-10-12 section (reads its saved CSVs).
+suppressPackageStartupMessages(library(topGO))
+own_dir <- "02_Normalization_and_DGEA/Chitarrini_DE/results/DGEA_check_results"
+gaf <- read.delim("../reference/Arabidopsis_GO/tair.gaf.gz", comment.char = "!", header = FALSE, quote = "")
+gaf <- gaf[gaf$V9 == "P" & !grepl("NOT", gaf$V4), ]
+at2go <- split(gaf$V5, toupper(gaf$V2))
+ids <- read.delim("data_files/26169genes_with_AthalHomologs_allIDs_exprPatterns_TAIR10ids.csv", check.names = FALSE)
+ids <- ids[!duplicated(ids$PN40024_genotype_ENSMBL_ID) & toupper(ids$locus_tag) %in% names(at2go), ]
+g2go <- lapply(at2go[toupper(ids$locus_tag)], unique) |> setNames(ids$PN40024_genotype_ENSMBL_ID)
+rd <- function(f) read.csv(file.path(own_dir, f))
+chit <- list(`6v0` = rd("chit_inoc12_v_mock0_all_genes.csv"), `24v0` = rd("chit_inoc24_v_mock0_all_genes.csv"))
+ownA <- split(rd("own_Rpv12_temporal_contrasts_batch_models.csv"), ~ model_contrast)
+own <- list(A_6v0 = ownA$condition_Rpv12.6_vs_Rpv12.0, A_24v0 = ownA$condition_Rpv12.24_vs_Rpv12.0,
+  subset_6v0 = rd("own_Rpv12_6v0_all_genes.csv"))   # subset_6v0 = old 110-gene set, method cross-check
+go_tab <- do.call(rbind, lapply(names(own), function(m) {
+  o <- own[[m]]; ch <- chit[[sub(".*_", "", m)]]; U <- intersect(o$gene, ch$gene)
+  sh <- intersect(o$gene[o$DE_primary], ch$gene[ch$DE_primary])
+  conc <- sh[sign(setNames(o$log2FC_apeglm, o$gene)[sh]) == sign(setNames(ch$log2FC_apeglm, ch$gene)[sh])]
+  gd <- new("topGOdata", ontology = "BP", allGenes = factor(as.integer(U %in% conc), 0:1) |> setNames(U),
+    annot = annFUN.gene2GO, gene2GO = g2go, nodeSize = 10)
+  rc <- runTest(gd, algorithm = "classic", statistic = "fisher"); rw <- runTest(gd, algorithm = "weight01", statistic = "fisher")
+  t <- GenTable(gd, classic = rc, weight01 = rw, orderBy = "classic", topNodes = length(score(rc)), numChar = 80)
+  t$classic <- as.numeric(sub("<", "", t$classic)); t$weight01 <- as.numeric(sub("<", "", t$weight01))
+  t$FDR_classic <- p.adjust(t$classic, "BH")
+  up <- conc[setNames(o$log2FC_apeglm, o$gene)[conc] > 0]   # share of term genes going up in both studies
+  t$pct_up <- sapply(t$GO.ID, function(go) { g <- intersect(genesInTerm(gd, go)[[1]], conc); round(100 * mean(g %in% up)) })
+  cbind(set = m, n_concordant = length(conc), n_up = length(up), n_annotated = sum(conc %in% names(g2go)),
+    t[t$FDR_classic < 0.05 | t$weight01 < 0.01, ]) }))
+print(go_tab)
+write.csv(go_tab, file.path(own_dir, "GO_BP_concordant_shared_genes_batch_model.csv"), row.names = FALSE)
+
+################## ADDED 2026-10-14: SUPPLEMENTARY TABLE 9 REBUILD (BATCH MODEL A) ##################
+# Sheet 1 kept; sheet 2 relabelled (it always held inoculated 12/24 h vs MOCK 0 h, not time-matched mock);
+# sheets 3-4 rebuilt from model A (B and the old subset fit as sensitivity rows); sheet 5 = GO above.
+# Mock-drift row: own Rpv12-vs-Susceptible 0 hpi DEGs (canonical) vs Chitarrini mock 12 h vs mock 0 h.
+st9_in <- "../draft/Sections_by_VK/BMC_PlantBiology/Supplementary_tables/Additional_file_13_TableS8.xlsx"
+rx <- function(s) readxl::read_xlsx(st9_in, sheet = s, col_names = FALSE, col_types = "text", .name_repair = "minimal")
+note <- function(txt, df) { h <- as.data.frame(matrix("", 2, ncol(df), dimnames = list(NULL, names(df))))
+  h[1, 1] <- txt; rbind(h, setNames(as.data.frame(rbind(names(df))), names(df)), format(df, digits = 4, trim = TRUE)) }
+s1 <- rx(1); s2 <- rx(2)
+s2[1, 1] <- paste("DESeq2 results (apeglm-shrunken log2FC; DE_primary = padj<0.05 & |log2FC_apeglm|>1) for the two Chitarrini",
+  "contrasts used in the cross-study comparison: inoculated 12 h vs mock 0 h (nearest proxy for this study's 6 hpi) and",
+  "inoculated 24 h vs mock 0 h (matches this study's 24 hpi; both studies compare against the time-0 state).")
+s2[[1]] <- sub("^12hpi \\(proxy for 6 hpi\\)$", "inoc12h_vs_mock0h", sub("^24hpi$", "inoc24h_vs_mock0h", s2[[1]]))
+ann_nm <- setNames(ids$Athal.common.NAme, ids$PN40024_genotype_ENSMBL_ID)
+s3 <- do.call(rbind, lapply(c("6v0", "24v0"), function(tc) {
+  o <- own[[paste0("A_", tc)]]; ch <- chit[[tc]]
+  sh <- intersect(o$gene[o$DE_primary], ch$gene[ch$DE_primary])
+  ol <- setNames(o$log2FC_apeglm, o$gene)[sh]; cl <- setNames(ch$log2FC_apeglm, ch$gene)[sh]
+  data.frame(contrast = c(`6v0` = "own 6 vs 0 hpi | Chitarrini inoc 12 h vs mock 0 h", `24v0` = "own 24 vs 0 hpi | Chitarrini inoc 24 h vs mock 0 h")[[tc]],
+    gene = sh, annotation = unname(ann_nm[sh]), own_log2FC = round(ol, 3), chit_log2FC = round(cl, 3), same_direction = sign(ol) == sign(cl)) }))
+ov <- read.csv(file.path(own_dir, "jaccard_overlap_significance_within_genotype_batch_models.csv"))
+ov$own_model <- c(subset_condition_only = "old: 6-sample subset ~condition (no batch; superseded)",
+  A_batch_condition = "A: ~batch + condition, all 36 samples (reported)",
+  B_batch_plant_nested = "B: A + plant nested in genotype (sensitivity)")[ov$own_model]
+ov <- ov[order(match(substr(ov$own_model, 1, 1), c("A", "B", "o")), ov$contrast != "6v0"), ]  # A, B, old; 6 h first
+dr <- read.csv(file.path(own_dir, "chitarrini_DESeq2_0hpi_mock_only_temporal_drift_all_genes.csv"))
+o0 <- read.csv("02_Normalization_and_DGEA/DESeq2_classic/results/DGEA_Rpv12_vs_susceptible_0hpi_deseq2_NB_BE_model.csv")
+U <- dr$gene; od <- intersect(o0$gene[o0$DE_primary], U); cd <- dr$gene[dr$DE_primary]; n <- length(intersect(od, cd))
+ov <- rbind(ov, data.frame(own_model = "canonical Rpv12 vs Susceptible 0 hpi | Chitarrini mock 12 h vs mock 0 h (direction not comparable)",
+  contrast = "0h_vs_mockdrift", universe_N = length(U), own_DEGs = length(od), chit_DEGs = length(cd), shared = n,
+  expected = round(length(od) * length(cd) / length(U), 1), fold = round(n / (length(od) * length(cd) / length(U)), 2),
+  hypergeom_p = phyper(n - 1, length(od), length(U) - length(od), length(cd), lower.tail = FALSE),
+  same_direction = NA, direction_pct = NA, binom_p_above = NA, binom_p_below = NA))
+writexl::write_xlsx(list(
+  rlog_all_genes_all_samples = s1, DE_genes_2_contrasts = s2,
+  overlapping_genes = note(paste("Genes called DE in both this study's Rpv12 temporal contrast (DESeq2 ~batch + condition, all 36",
+    "libraries) and the matching Chitarrini contrast, within the genes tested in both studies; apeglm log2FC from each study."), s3),
+  overlap_and_significance = note(paste("Overlap enrichment (one-sided hypergeometric) and directional concordance (one-sided binomial vs 0.5)",
+    "of shared DE genes. Model A is reported in the text; model B adds plant (same three plants sampled at 0/6/24 hpi);",
+    "the old subset fit ignored batch (Rpv12 0 hpi = batch 1, 24 hpi = batch 2) and is shown only for traceability."), ov),
+  GO_concordant_genes = note(paste("GO biological-process enrichment of direction-concordant shared genes (closest Arabidopsis homolog,",
+    "TAIR GAF; topGO Fisher; universe = genes tested in both studies). pct_up = share of term genes up in both studies."), go_tab)),
+  file.path(own_dir, "Supplementary_Table_9.xlsx"), col_names = FALSE)
+
+################## ADDED 2026-10-16: DIRECTION AGREEMENT vs A BASELINE THAT KEEPS EACH STUDY'S UP/DOWN PROPORTIONS ##################
+# Reviewer: binomial vs 0.5 ignores unequal up/down proportions. Expected agreement = pU_own*pU_chit + pD_own*pD_chit;
+# test = one-sided Fisher exact test of the 2x2 sign table (own up/down x Chitarrini up/down) of shared DE genes.
+# Genes are not independent, so very small p-values are not taken literally. Standalone; rewrites ST9 sheet 4 only.
+own_dir <- "02_Normalization_and_DGEA/Chitarrini_DE/results/DGEA_check_results"
+rd <- function(f) read.csv(file.path(own_dir, f))
+chit <- list(`6v0` = rd("chit_inoc12_v_mock0_all_genes.csv"), `24v0` = rd("chit_inoc24_v_mock0_all_genes.csv"))
+bm <- rd("own_Rpv12_temporal_contrasts_batch_models.csv")
+models <- list(subset_condition_only = list(`6v0` = rd("own_Rpv12_6v0_all_genes.csv"), `24v0` = rd("own_Rpv12_24v0_all_genes.csv")),
+  A_batch_condition = list(`6v0` = bm[bm$model_contrast == "condition_Rpv12.6_vs_Rpv12.0", ], `24v0` = bm[bm$model_contrast == "condition_Rpv12.24_vs_Rpv12.0", ]),
+  B_batch_plant_nested = list(`6v0` = bm[bm$model_contrast == "genotypeRpv12.time6", ], `24v0` = bm[bm$model_contrast == "genotypeRpv12.time24", ]))
+dirt <- do.call(rbind, lapply(names(models), function(m) do.call(rbind, lapply(c("6v0", "24v0"), function(tc) {
+  o <- models[[m]][[tc]]; ch <- chit[[tc]]; U <- intersect(o$gene, ch$gene)
+  sh <- intersect(intersect(o$gene[o$DE_primary], U), ch$gene[ch$DE_primary])
+  so <- sign(setNames(o$log2FC_apeglm, o$gene)[sh]) > 0; sc <- sign(setNames(ch$log2FC_apeglm, ch$gene)[sh]) > 0
+  tab <- table(factor(so, c(TRUE, FALSE)), factor(sc, c(TRUE, FALSE))); ft <- fisher.test(tab, alternative = "greater")
+  data.frame(own_model = m, contrast = tc, shared = length(sh), same_direction = sum(so == sc),
+    direction_pct = round(100 * mean(so == sc), 1), expected_pct = round(100 * (mean(so) * mean(sc) + mean(!so) * mean(!sc)), 1),
+    both_up = tab[1, 1], own_up_chit_down = tab[1, 2], own_down_chit_up = tab[2, 1], both_down = tab[2, 2],
+    fisher_odds_ratio = unname(ft$estimate), fisher_p_greater = ft$p.value) }))))
+print(dirt)
+write.csv(dirt, file.path(own_dir, "direction_agreement_fisher_batch_models.csv"), row.names = FALSE)
+# ST9 sheet 4: binomial columns -> expected agreement + Fisher (other columns unchanged)
+ov <- read.csv(file.path(own_dir, "jaccard_overlap_significance_within_genotype_batch_models.csv"))
+ov <- merge(ov[, setdiff(names(ov), c("binom_p_above", "binom_p_below"))], dirt[, c("own_model", "contrast", "expected_pct", "fisher_odds_ratio", "fisher_p_greater")],
+  by = c("own_model", "contrast"), sort = FALSE)
+ov$own_model <- c(subset_condition_only = "old: 6-sample subset ~condition (no batch; superseded)",
+  A_batch_condition = "A: ~batch + condition, all 36 samples (reported)", B_batch_plant_nested = "B: A + plant nested in genotype (sensitivity)")[ov$own_model]
+ov <- ov[order(match(substr(ov$own_model, 1, 1), c("A", "B", "o")), ov$contrast != "6v0"), ]
+ov <- ov[!grepl("^old:", ov$own_model), ]   # 2026-10-22: superseded 6-sample subset fit removed from the table (kept in the CSVs)
+st9 <- "../draft/Sections_by_VK/BMC_PlantBiology/Supplementary_tables/Additional_file_13_TableS8.xlsx"
+sh <- readxl::excel_sheets(st9); old4 <- readxl::read_xlsx(st9, sheet = 4, col_names = FALSE, col_types = "text")
+last <- old4[nrow(old4), ]                                    # mock-drift row (no direction test) kept as is
+drift <- setNames(as.list(rep("", ncol(ov))), names(ov)); drift[names(ov)[1:9]] <- as.list(unlist(last[1, 1:9]))
+ov_txt <- rbind(format(ov, digits = 4, trim = TRUE), as.data.frame(drift))
+note4 <- paste("Overlap enrichment (one-sided hypergeometric) and direction agreement of shared DE genes. expected_pct = agreement",
+  "expected from each study's own up/down proportions; fisher_p_greater = one-sided Fisher exact test of the 2x2 sign table",
+  "(replaces the earlier binomial test against 50%). Genes are not independent, so very small p-values should not be read literally.",
+  "Model A is reported in the text; model B adds plant (same three plants sampled at 0/6/24 hpi). The last row compares this",
+  "study's Rpv12 vs susceptible DE genes at 0 hpi with the Chitarrini mock 12 h vs mock 0 h genes (overlap only; direction not comparable).")
+hdr <- as.data.frame(matrix("", 2, ncol(ov_txt), dimnames = list(NULL, names(ov_txt)))); hdr[1, 1] <- note4
+s4 <- rbind(hdr, setNames(as.data.frame(rbind(names(ov_txt))), names(ov_txt)), ov_txt)
+all <- lapply(seq_along(sh), function(i) if (i == 4) s4 else readxl::read_xlsx(st9, sheet = i, col_names = FALSE, col_types = "text", .name_repair = "minimal"))
+names(all) <- sh
+writexl::write_xlsx(all, st9, col_names = FALSE)
+
+# 2026-10-16: BMC file names = Additional files (old Supplementary numbering mapped in BMC_PlantBiology/citation_changes.txt)

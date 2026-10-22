@@ -4,12 +4,12 @@
 rebuild the module set at the top 1%, 0.5%, and 0.1% of all pairwise
 correlations (r >= 0.757, 0.8077, 0.8839) and compare.
 
-**MOTIVATION.** Supplementary Figure 6B: does the headline module count
+**MOTIVATION.** Additional file 15: Figure S7B: does the headline module count
 depend fragilely on the exact threshold, or is r = 0.8077 a representative
 point on a stable continuum? The r = 0.8077 build itself lives in
 `../scripts/` and `../results/` (the primary network); this folder holds
 only the two sensitivity thresholds (0.757, 0.8839) plus the shared
-Supplementary Figure 6 output.
+Additional file 15: Figure S7 output.
 
 ## Contents
 ```
@@ -23,7 +23,9 @@ Supplementary_Figure_6.pdf/.png
 ```
 
 ## Verified
-Manuscript: "7,585, 6,600, and 3,995 significant modules" at r = 0.757,
+Historical (pre-2026-10-22) manuscript text: "7,585, 6,600, and 3,995 significant modules" at r = 0.757,
 0.8077, 0.8839. This folder's two thresholds plus the primary build in
 `../scripts/GCNA_rebuild_9459panel_FDR_datadriven_rcutoff/` together
 reproduce that trio.
+
+**2026-10-22:** the manuscript now reports all candidate modules without the trait filter (8,485 / 7,299 / 4,252); see `../../network_robustness/15_candidate_modules/`.

@@ -125,3 +125,27 @@ print(pairs(emm, adjust = "tukey"))
 # time0 - time24     2.17 0.998 32   2.177  0.0906
 # time6 - time24     4.10 0.911 32   4.498  0.0002
 
+
+############################ MAPPING EFFICIENCY: ONE MODEL (2026-10-19) ############################
+# Replaces MoF_complex (Gaussian, arbitrary replicate labels as a factor) and the separate
+# unmapped-read quasibinomial test in scripts/transcriptional_noise.R (its reported "F = 0.44,
+# p = 0.63" was copied from the variance test). Uniquely mapped reads / input reads per library,
+# quasibinomial (proportion data), genotype term tested by F after batch and time point.
+mo <- read.delim("~/Dropbox/MendelUni_Vinselect/mapping_overview.csv"); mo <- mo[mo$sample != "sample", ]
+for (k in c("Ninput_reads", "UniqMap")) mo[[k]] <- as.numeric(mo[[k]])
+# sample code: replicate letter, genotype 1-4 (Rpv12, Rpv12+1, Rpv12+1+3, susceptible), time 1/2/4 = 0/6/24 hpi
+mo$genotype <- factor(c("Rpv12", "Rpv12+1", "Rpv12+1+3", "Susceptible")[as.integer(substr(mo$sample, 2, 2))],
+                      levels = c("Susceptible", "Rpv12", "Rpv12+1", "Rpv12+1+3"))
+mo$time <- factor(c("1" = 0, "2" = 6, "4" = 24)[substr(mo$sample, 3, 3)])
+mo$label <- paste(c("Rpv12", "Rpv12.1", "Rpv12.1.3", "Susceptible")[as.integer(substr(mo$sample, 2, 2))],
+                  as.character(mo$time), substr(mo$sample, 1, 1), sep = ".")
+Batch1 <- c("Rpv12.0.A","Rpv12.0.B","Rpv12.0.C","Rpv12.1.0.A","Rpv12.1.0.B","Rpv12.1.0.C","Rpv12.1.3.0.A","Rpv12.1.3.0.B","Rpv12.1.3.0.C","Susceptible.0.B","Rpv12.6.C","Rpv12.1.6.B","Rpv12.1.6.C","Rpv12.1.3.6.A","Rpv12.1.3.6.B","Rpv12.1.24.B","Rpv12.1.24.C","Rpv12.1.3.24.C","Susceptible.24.C")
+mo$batch <- factor(ifelse(mo$label %in% Batch1, "B1", "B2")); stopifnot(sum(mo$batch == "B1") == 19)
+uniq <- round(mo$Ninput_reads * mo$UniqMap / 100)
+m_map <- glm(cbind(uniq, mo$Ninput_reads - uniq) ~ batch + time + genotype, family = quasibinomial, data = mo)
+drop1(m_map, test = "F")
+#          Df Deviance F value    Pr(>F)
+# batch     1  5611290 17.9344 0.0002107 ***
+# time      2  6991606 14.7399  3.83e-05 ***
+# genotype  3  4221878  2.1043 0.1213795
+tapply(mo$UniqMap, mo$genotype, median) # Susceptible 90.38, Rpv12 92.06, Rpv12+1 93.20, Rpv12+1+3 94.26

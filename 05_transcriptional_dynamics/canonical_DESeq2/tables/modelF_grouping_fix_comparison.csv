@@ -1,0 +1,7 @@
+"rule","model","term","p","FDR"
+"category_only_2026-08-31","F","timing",6.75539675343776e-25,2.02661902603133e-24
+"category_only_2026-08-31","F","groups",1,1
+"category_only_2026-08-31","F","direction",0.288883063430758,0.433324595146137
+"identical_pattern","F","timing",1.39177721605014e-19,4.17533164815043e-19
+"identical_pattern","F","groups",1,1
+"identical_pattern","F","direction",0.120507622001594,0.180761433002392

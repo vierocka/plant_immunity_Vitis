@@ -57,13 +57,13 @@ differential gene expression tools perform in a complex eukaryote? A
 case study in Arabidopsis thaliana. *Bioinformatics*, 35, 3372-3377.
 Raw RNA-seq reads, ArrayExpress E-MTAB-5446 / ENA study ERP021226 (17
 runs, wild-type *Arabidopsis thaliana* Col-0, two independent sequencing
-experiments — used as a purely technical/batch AggrDiv noise-floor
+experiments — used as a purely technical/batch AED noise-floor
 reference, since these replicates carry no genotype or treatment
 difference at all).
 
 Reprocessed data (per-sample DESeq2 size factors, normalized expression
 values, differential transcription results) for all three datasets have
-been deposited in Zenodo under DOI 10.5281/zenodo.22212051.
+been deposited in Zenodo under DOI 10.5281/zenodo.23391397 (version 2; version 1: 10.5281/zenodo.22212051).
 
 ## Thanks
 

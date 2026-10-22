@@ -1,5 +1,17 @@
 # Co-transcriptional network robustness validation
 
+> **2026-10-22 — what the BMC manuscript uses:** scripts 15 and 16 on the current network (9,459 DE anchors,
+> rlog + condition-protected ComBat, r ≥ 0.757 / 0.8077 / 0.8839, ≥ 3 partners, **no module-trait test**).
+> - `15_candidate_modules_no_trait_filter.R` → `15_candidate_modules/`: 8,485 / 7,299 / 4,252 modules; module PC1
+>   variance 85% (WGCNA 61%); size-matched STRING score test: 13.7–17.5% of r ≥ 0.8077 modules p < 0.05.
+> - `16_string_edge_support_by_threshold.R`: STRING v12.0 (*Vitis*) support of network edges vs random pairs,
+>   score ≥ 400: all evidence 2.0 / 2.4 / 3.4-fold; experimental only 2.8 / 3.2 / 5.9-fold; without
+>   text-mining/database 2.6 / 3.1 / 4.9-fold (Additional file 15: Figure S7C).
+> - `tableS9_module_sheet.py` writes Additional file 16: Table S9, sheet Module_level_summary.
+> The module-trait test below (§2 steps 3–5, permutation null, "significant modules") is no longer used: the trait
+> comes from the same expression data, so the test is circular. Checks 1–5 below were run on the historical
+> 3,553-gene panel (r = 0.817) and are kept as a record.
+
 **Status: Checks 1-5 complete.** The bootstrap check (06) completed for 3
 of 4 conditions. See §5 for exact status.
 
@@ -302,7 +314,10 @@ reps at 0.5/1/2/5% per-gene noise: edge-set Jaccard overlap with the
 no-noise reference stays at **89-90% even at 5% noise** (99.4%->92.8-93.2%
 recall from 0.5%->5% noise, both the 3,553- and 9,459-gene panels). Rules out
 that the stability conclusions above are an artifact specific to the rlog
-transformation.
+transformation. (2026-10-19: the manuscript reports the primary matrix,
+rlog + condition-protected ComBat, 9,459 DEGs, r ≥ 0.8077: recall 99.6% /
+95.3% at 0.5% / 5% noise, Jaccard 0.993 / 0.929; the Pearson-residual
+values at r ≥ 0.8077 are 99.4% / 93.1%.)
 
 ### Check: bootstrap stability, hub-anchored method (06) — 3 of 4 conditions complete
 200x resample-with-replacement of the 36 samples. Checked 2026-09-22:

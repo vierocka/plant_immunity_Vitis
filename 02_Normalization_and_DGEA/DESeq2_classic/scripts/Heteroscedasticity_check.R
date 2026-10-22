@@ -1,12 +1,16 @@
 ############ DATA LOADING AND PREPARATION ####################
-myData <- read.table("data_files/Rlogs.csv", header = TRUE, sep="\t")
+# 2026-10-22: switched to the condition-protected ComBat matrices used in all analyses (was unprotected
+# Rlogs.csv / SizeFactorNorm_ComBat_36samples.csv). Printed results in comments below are from the old
+# matrices; current values: summary section at the end -> results/heteroscedasticity_summary_protected.csv
+# Run from repo root: Rscript 02_Normalization_and_DGEA/DESeq2_classic/scripts/Heteroscedasticity_check.R
+myData <- read.table("data_files/Rlogs_ComBat_protected.csv", header = TRUE, sep="\t")
 CBrlogs <- as.matrix(myData[,c(2:37)])
 
-myData2 <- read.csv("data_files/SizeFactorNorm_ComBat_36samples.csv")
+myData2 <- read.csv("data_files/SizeFactorNorm_ComBatConditionProtected_36samples.csv")
 SFcombat <- as.matrix(myData2[,c(2:37)])
 
 rownames(CBrlogs) <- myData[,1]
-rownames(SFcombat) <- myData2[,2]
+rownames(SFcombat) <- myData2[,1]   # protected file: gene IDs in column 1, samples in 2:37
 
 # define vectors for conditions (info: introduced loci and time points)
 condition <- as.factor(rep(c("Rpv12.0","Rpv12.6","Rpv12.24","Rpv12.1.0","Rpv12.1.6","Rpv12.1.24","Rpv12.1.3.0","Rpv12.1.3.6","Rpv12.1.3.24", "Susceptible.0","Susceptible.6","Susceptible.24"),3))
@@ -276,3 +280,19 @@ check_heteroscedasticity_Pearson(SFcombat, myResistance)
 # Rpv1.12.3       | r = -0.471 | slope = -0.0967
 # Susceptible     | r = -0.384 | slope = -0.1196
 
+
+
+############ SUMMARY, CONDITION-PROTECTED MATRICES (2026-10-22) ############
+# Mean-variance relationship per gene (global, and per genotype x time point condition, 3 libraries each).
+stopifnot(identical(rownames(CBrlogs), rownames(SFcombat)) || length(intersect(rownames(CBrlogs), rownames(SFcombat))) == nrow(CBrlogs))
+mv <- function(m, cond = NULL) {
+  if (is.null(cond)) { mu <- rowMeans(m); v <- apply(m, 1, var)
+    return(c(spearman = cor(mu, v, method = "spearman"), pearson = cor(mu, v), slope = unname(coef(lm(v ~ mu))[2]))) }
+  t(sapply(levels(as.factor(cond)), function(k) mv(m[, cond == k, drop = FALSE])))
+}
+sm <- rbind(data.frame(matrix = "rlog + protected ComBat", scope = "global", t(mv(CBrlogs))),
+            data.frame(matrix = "rlog + protected ComBat", scope = levels(condition), mv(CBrlogs, condition)),
+            data.frame(matrix = "size-factor + protected ComBat", scope = "global", t(mv(SFcombat))),
+            data.frame(matrix = "size-factor + protected ComBat", scope = levels(condition), mv(SFcombat, condition)))
+write.csv(sm, "02_Normalization_and_DGEA/DESeq2_classic/results/heteroscedasticity_summary_protected.csv", row.names = FALSE)
+print(aggregate(cbind(spearman, pearson, slope) ~ matrix + (scope == "global"), sm, function(x) round(range(x), 3)))

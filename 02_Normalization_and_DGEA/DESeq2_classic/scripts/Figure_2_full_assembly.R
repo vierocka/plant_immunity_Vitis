@@ -27,12 +27,12 @@ bottom_row <- p_pc12 + p_pc34 + plot_layout(guides = "collect", nrow = 1)
 
 final_fig2 <- top_row / bottom_row
 
-out_dir <- "../draft/Sections_by_VK/MPMI/Figures_main"
-CairoPNG(file.path(out_dir, "Figure_2_REDESIGN_DRAFT.png"), width = 4400, height = 4400, res = 300)
+out_dir <- "../draft/Sections_by_VK/BMC_PlantBiology/Figures_main"  # 2026-10-15: BMC submission folder
+CairoPNG(file.path(out_dir, "Figure_2.png"), width = 4400, height = 4400, res = 300)
 print(final_fig2)
 dev.off()
 
-cairo_pdf(file.path(out_dir, "Figure_2_REDESIGN_DRAFT.pdf"), width = 14.7, height = 14.7)
+cairo_pdf(file.path(out_dir, "Figure_2.pdf"), width = 14.7, height = 14.7)
 print(final_fig2)
 dev.off()
 

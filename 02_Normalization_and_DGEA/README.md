@@ -6,11 +6,12 @@ collaborator qPCR).
 
 | Folder | What it is |
 |---|---|
-| **DESeq2_classic/** | The manuscript-primary analysis: DESeq2 NB GLM, apeglm, batch/residual diagnostics, Figure 2 C/D, Figure 3, Supplementary Figure 4. 9,459-gene DE union. |
+| **DESeq2_classic/** | The manuscript-primary analysis: DESeq2 NB GLM, apeglm, batch/residual diagnostics, Figure 2 C/D, Figure 3, Additional file 7: Figure S4. 9,459-gene DE union. |
+| **Rpv12_vs_Rpv12+1/, Rpv12_vs_Rpv12+1+3/, Rpv12+1_vs_Rpv12+1+3/** | Direct DESeq2 comparisons between resistant genotypes at 0, 6 and 24 hpi (one CSV per time point), written by `DESeq2_classic/scripts/DGEA_resistant_pairwise.R`. |
 | **rlog_combat_ttest_exploration/** | The original method (per-gene t-tests, rlog+ComBat), superseded but kept for comparison. 3,553-gene DE union. |
 | **comparison_of_DESeq2_and_ttest/** | Gene-by-gene comparison of the two methods above — overlap, rank concordance, effect-size agreement. |
 | **additional_tests/** | Robustness checks on the canonical calls: leave-one-out, winsorization, multi-method (edgeR/limma-voom) consensus, network stability under noise. |
-| **Chitarrini_DE/** | DE-level replication in an independent Rpv12 dataset (Chitarrini et al. 2020). Supplementary Table 9, Supplementary Figure 8. |
+| **Chitarrini_DE/** | DE-level replication in an independent Rpv12 dataset (Chitarrini et al. 2020). Additional file 13: Table S8, Additional file 14: Figure S6. |
 | **qPCR/** | Cross-platform qPCR validation, 3 genes × 9 conditions, not in the manuscript body. |
 | **exploratory_material/** | Superseded or uncited draft material, kept for traceability. |
 

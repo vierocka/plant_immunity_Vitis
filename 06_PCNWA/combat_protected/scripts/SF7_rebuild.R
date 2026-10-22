@@ -16,11 +16,11 @@ suppressPackageStartupMessages({
   library(patchwork)
 })
 
-out_dir <- "../../draft/Sections_by_VK/MPMI/Supplementary_figures"
+out_dir <- "../draft/Sections_by_VK/BMC_PlantBiology/Supplementary_figures"   # 2026-10-22: BMC folder; run from repo root
 
 geno_levels <- c("Susceptible", "Rpv12", "Rpv12+1", "Rpv12+1+3")
 geno_colors <- c(
-  "Susceptible" = "#4D4D4D",
+  "Susceptible" = "dimgray",   # 2026-10-22: same grey as Figure 2C/D (PCA) and the other figures
   "Rpv12"       = "#DAA520",
   "Rpv12+1"     = "#FA8072",
   "Rpv12+1+3"   = "#6495ED"
@@ -29,7 +29,7 @@ geno_colors <- c(
 ## =============================================================================
 ## PANEL A: density by genotype, with loci-dosage regression + Spearman
 ## =============================================================================
-dens_geno <- read.csv("network_density_by_genotype_r0.8077_protected_9459panel.csv", stringsAsFactors = FALSE)
+dens_geno <- read.csv("06_PCNWA/combat_protected/results/network_density_by_genotype_r0.8077_protected_9459panel.csv", stringsAsFactors = FALSE)
 dens_geno$genotype <- factor(dens_geno$genotype, levels = geno_levels)
 dens_geno$loci_count <- c(Susceptible = 0, Rpv12 = 1, "Rpv12+1" = 2, "Rpv12+1+3" = 3)[as.character(dens_geno$genotype)]
 
@@ -63,7 +63,7 @@ panelA <- ggplot(dens_geno, aes(x = loci_count, y = density, color = genotype)) 
 ## PANEL B: density by timepoint (= old single-panel SF7), with timing
 ## regression + Spearman
 ## =============================================================================
-dens_time <- read.csv("network_density_by_timepoint_r0.8077_protected_9459panel.csv", stringsAsFactors = FALSE)
+dens_time <- read.csv("06_PCNWA/combat_protected/results/network_density_by_timepoint_r0.8077_protected_9459panel.csv", stringsAsFactors = FALSE)
 dens_time$hpi <- c(0, 6, 24)
 
 fit_time <- lm(density ~ hpi, data = dens_time)
@@ -71,7 +71,7 @@ sm_time <- summary(fit_time)
 sp_time <- suppressWarnings(cor.test(dens_time$hpi, dens_time$density, method = "spearman"))
 
 stat_label_B <- sprintf(
-  "Linear model: F(%d,%d) = %.2f, p = %.2f\nSpearman: rho = %.2f, p = %.2f (n=3, floor p=0.33)\nNo significant effect of infection timing",
+  "Linear model: F(%d,%d) = %.2f, p = %.2f\nSpearman: rho = %.2f, p = %.2f (n=3, floor p=0.33)\nNo significant effect of time point",
   sm_time$fstatistic[["numdf"]], sm_time$fstatistic[["dendf"]], sm_time$fstatistic[["value"]],
   pf(sm_time$fstatistic[["value"]], sm_time$fstatistic[["numdf"]], sm_time$fstatistic[["dendf"]], lower.tail = FALSE),
   sp_time$estimate, sp_time$p.value
@@ -84,7 +84,7 @@ panelB <- ggplot(dens_time, aes(x = hpi, y = density)) +
   ylim(0, max(dens_time$density) * 1.6) +
   annotate("label", x = 0, y = max(dens_time$density) * 1.6, hjust = 0, vjust = 1,
            label = stat_label_B, size = 3.1, fill = alpha("white", 0.85)) +
-  labs(x = "Time post infection (hpi)",
+  labs(x = "Time point (hpi)",
        y = expression("Network density (" * r >= 0.8077 * ")")) +
   theme_bw(base_size = 13)
 
@@ -93,8 +93,8 @@ combined <- (panelA | panelB) +
   plot_annotation(tag_levels = "A") &
   theme(plot.tag = element_text(face = "bold", size = 14))
 
-ggsave(file.path(out_dir, "Supplementary_Figure_7_REBUILD.png"), combined, width = 28, height = 13, units = "cm", dpi = 300)
-ggsave(file.path(out_dir, "Supplementary_Figure_7_REBUILD.pdf"), combined, width = 28, height = 13, units = "cm")
+ggsave(file.path(out_dir, "Additional_file_17_FigureS8.png"), combined, width = 28, height = 13, units = "cm", dpi = 300)
+ggsave(file.path(out_dir, "Additional_file_17_FigureS8.pdf"), combined, width = 28, height = 13, units = "cm")
 
 cat("Panel A stats:\n"); print(sm_geno$fstatistic); print(sp_geno)
 cat("\nPanel B stats:\n"); print(sm_time$fstatistic); print(sp_time)

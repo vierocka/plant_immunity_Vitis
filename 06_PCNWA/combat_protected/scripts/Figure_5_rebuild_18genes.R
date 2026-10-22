@@ -1,3 +1,5 @@
+# 2026-10-16: renumbered to the manuscript (this script builds manuscript Figure 5; was Figure_4_rebuild_18genes.R); also copies
+# the PNG and PDF to BMC_PlantBiology/Figures_main/Figure_5.*
 # AIM: Figure 4/5 heatmap+network for the 18-gene literature-established
 # immunity set (LRIP1/SOBIR1 receptor network + EDS1-SAG101-PAD4 paralogs).
 # MOTIVATION: replace the pre-canonical log2FC source and an outdated
@@ -43,29 +45,29 @@ outdir <- "06_PCNWA/combat_protected/figures"
 
 gene_df <- data.frame(
   id = c(
-    # LRIP1/SOBIR1-centered receptor network (7)
+    # LRIP1/SOBIR1-centered receptor network (8; RGI1 moved here 2026-10-15 - predicted SOBIR1 partner in Fig 5A)
     "Vitvi17g00964", "Vitvi09g04475", "Vitvi01g04419", "Vitvi12g01277",
-    "Vitvi07g02294", "Vitvi19g00098", "Vitvi09g04536",
+    "Vitvi07g02294", "Vitvi19g00098", "Vitvi09g04536", "Vitvi09g01951",
     # EDS1-SAG101-PAD4 paralog network (3)
     "Vitvi17g04216", "Vitvi14g03033", "Vitvi07g01908",
-    # Broader literature-established immunity genes (8)
+    # Broader literature-established immunity genes (7)
     "Vitvi18g04640", "Vitvi16g01127", "Vitvi07g01847", "Vitvi13g00189",
-    "Vitvi01g01751", "Vitvi09g01951", "Vitvi12g02607", "Vitvi05g00637"
+    "Vitvi01g01751", "Vitvi12g02607", "Vitvi05g00637"
   ),
-  label = c(
-    "SOBIR1", "LRIP1", "RLP34", "BAK1", "MIK2", "MRH1", "GSO2",
+  label = c(  # 2026-10-15: Vitvi12g01277 shown as "BAK1-like" (97-aa fragment); string_node keeps STRING's "BAK1"
+    "SOBIR1", "LRIP1", "RLP34", "BAK1-like", "MIK2-like", "MRH1", "GSO2", "RGI1",  # MIK2-like: Vitvi07g02294, one of ~44 MIK2 best hits (44%)
     "EDS1", "SAG101", "PAD4",
-    "LAZ5", "SARD4", "WRKY51", "WRKY55", "FER", "RCH2", "RUN1", "ACD6"
+    "LAZ5", "SARD4", "WRKY51", "WRKY55", "FER", "MVA3.30", "ACD6"  # 2026-10-15: one name, RGI1 (TAIR primary symbol of AT3G24240; = RGI1 in Fig 5)
   ),
   string_node = c(
-    "SOBIR1", "F19I3.16", "RLP34", "BAK1", "MIK2", "MDIS2", "GSO2",
+    "SOBIR1", "F19I3.16", "RLP34", "BAK1", "MIK2", "MDIS2", "GSO2", "RCH2",
     "EDS1", "SAG101", "PAD4",
-    "LAZ5", "SARD4", "WRKY51", "WRKY55", "FER", "RCH2", "MVA3.30", "ACD6"
+    "LAZ5", "SARD4", "WRKY51", "WRKY55", "FER", "MVA3.30", "ACD6"
   ),
   group = c(
-    rep("LRIP1/SOBIR1 network", 7),
+    rep("LRIP1/SOBIR1 network", 8),
     rep("EDS1-SAG101-PAD4 network", 3),
-    rep("Other immunity-related", 8)
+    rep("Other immunity-related", 7)
   ),
   stringsAsFactors = FALSE
 )
@@ -95,7 +97,8 @@ sub <- sub %>%
     col   = paste0(genotype, "_", timing)
   )
 
-col_order <- as.vector(outer(geno_order, time_order, function(g, t) paste0(g, "_", t)))
+# 2026-10-16 FIX: genotype-major order to match column_split/labels (was time-major via outer(): columns were mislabelled)
+col_order <- paste0(rep(geno_order, each = length(time_order)), "_", rep(time_order, times = length(geno_order)))
 
 mat_l2fc <- sub %>%
   select(label, col, log2FC_apeglm) %>%
@@ -112,6 +115,17 @@ mat_sig <- mat_sig[gene_df$label, , drop = FALSE]
 mat_l2fc_capped <- pmax(pmin(mat_l2fc, 4), -4)
 colnames(mat_l2fc_capped) <- rep(c("0h", "6h", "24h"), 3)
 
+# markers straight from DE_primary (= ST5 DE call: padj < 0.05 and |log2FC| > 1); checks against known ST5 values
+stopifnot(identical(colnames(mat_sig), col_order), identical(colnames(mat_l2fc), col_order),
+          mat_sig["BAK1-like", "Rpv12_0"], !mat_sig["BAK1-like", "Rpv12+1_0"], !mat_sig["BAK1-like", "Rpv12+1+3_0"],
+          mat_sig["EDS1", "Rpv12+1_0"], abs(mat_l2fc["EDS1", "Rpv12+1_0"] - 1.709) < 0.001)
+# cross-check every cell against Supplementary Table 5 (DEGs only; genes absent from ST5 must have no DE call)
+st5 <- readxl::read_excel("../draft/Sections_by_VK/BMC_PlantBiology/Supplementary_tables/Additional_file_9_TableS5.xlsx", sheet = "DEGs_9459")
+for (g in gene_df$id) for (cc in col_order) {
+  lab <- gene_df$label[gene_df$id == g]; r <- st5[st5$gene == g, ]
+  if (nrow(r) == 0) { stopifnot(!mat_sig[lab, cc]); next }
+  stopifnot(r[[paste0("DE_", cc, "_hpi")]] == mat_sig[lab, cc],
+            abs(r[[paste0("log2FC_", cc, "_hpi")]] - mat_l2fc[lab, cc]) < 1e-6) }
 star_mat <- matrix("", nrow = nrow(mat_sig), ncol = ncol(mat_sig))
 star_mat[mat_sig == TRUE] <- "*"
 rownames(star_mat) <- rownames(mat_sig)
@@ -157,6 +171,7 @@ ht <- Heatmap(
   column_split       = col_split,
   column_title_gp    = gpar(fontsize = 9 + PT_ADD + EXTRA_PT, fontface = "bold"),
   row_title_gp       = gpar(fontsize = 9 + PT_ADD, fontface = "bold"),
+  row_title          = c("LRIP1/SOBIR1\nnetwork", "EDS1-SAG101-\nPAD4", "Other immunity-\nrelated"),  # 2026-10-15: two-line titles, no overlap
   show_row_names     = TRUE,
   row_names_side     = "right",
   row_names_gp       = gpar(fontsize = 8 + PT_ADD + EXTRA_PT),
@@ -208,12 +223,12 @@ coords <- coords[match(gene_df$label, coords$label), ]
 
 # Manual spacing fixes for the isolated nodes, which STRING's own layout
 # packs too close together (visually overlapping given our node sizes):
-# FER/RCH2/GSO2/RUN1 form a tight vertical stack -> spread out with more
+# FER/RCH2/GSO2/MVA3.30 form a tight vertical stack -> spread out with more
 # gap; WRKY55 sits almost on top of SARD4 -> pulled further down/away.
 coords$y[coords$label == "FER"]   <- 0.08
-coords$y[coords$label == "RCH2"]  <- 0.27
+coords$y[coords$label == "RGI1"]  <- 0.27
 coords$y[coords$label == "GSO2"]  <- 0.46
-coords$y[coords$label == "RUN1"]  <- 0.65
+coords$y[coords$label == "MVA3.30"]  <- 0.65
 coords$y[coords$label == "WRKY55"] <- 0.06
 coords$x[coords$label == "WRKY55"] <- 0.68
 
@@ -228,7 +243,7 @@ layout_coords <- create_layout(g, layout = "manual", x = layout_manual$x, y = la
 Pb <- ggraph(layout_coords) +
   geom_edge_link(aes(width = score, alpha = score), color = "#E69F00") +
   geom_node_point(
-    aes(fill = Group, size = pmax(l2fc, 0.3)),
+    aes(fill = Group), size = 9,   # 2026-10-22: one node size (was log2FC clamped at 0.3; log2FC is shown in panel A)
     shape = 21, color = ifelse(V(g)$connected, "grey30", "grey70"),
     stroke = ifelse(V(g)$connected, 0.9, 0.6)
   ) +
@@ -246,7 +261,6 @@ Pb <- ggraph(layout_coords) +
   ) +
   scale_edge_alpha(range = c(0.35, 0.9), guide = "none") +
   scale_fill_manual(values = group_colors, name = "Group") +
-  scale_size_continuous(range = c(5, 12), guide = "none") +
   scale_x_continuous(expand = expansion(mult = 0.16)) +
   scale_y_continuous(expand = expansion(mult = 0.16)) +
   guides(fill = guide_legend(
@@ -340,14 +354,19 @@ combined <- plot_grid(
 ) + theme(plot.background = element_rect(fill = "white", color = NA),
           panel.background = element_rect(fill = "white", color = NA))
 
-ggsave(file.path(outdir, "Figure_4_panelA_rebuild.png"), plot = Pa_plot, width = 21, height = 18, units = "cm", dpi = 300)
-ggsave(file.path(outdir, "Figure_4_panelB_rebuild.png"), plot = Pb, width = 18, height = 16, units = "cm", dpi = 300)
-ggsave(file.path(outdir, "Figure_4_panelC_rebuild.png"), plot = Pc, width = 15, height = 14, units = "cm", dpi = 300)
+ggsave(file.path(outdir, "Figure_5_panelA_rebuild.png"), plot = Pa_plot, width = 21, height = 18, units = "cm", dpi = 300)
+ggsave(file.path(outdir, "Figure_5_panelB_rebuild.png"), plot = Pb, width = 18, height = 16, units = "cm", dpi = 300)
+ggsave(file.path(outdir, "Figure_5_panelC_rebuild.png"), plot = Pc, width = 15, height = 14, units = "cm", dpi = 300)
 
-ggsave(file.path(outdir, "Figure_4_rebuild.png"), combined, width = 40, height = 20, units = "cm", dpi = 300)
-ggsave(file.path(outdir, "Figure_4_rebuild.tiff"), combined, width = 40, height = 20, units = "cm", dpi = 600, compression = "lzw")
-cairo_pdf(file.path(outdir, "Figure_4_rebuild.pdf"), width = 40 / 2.54, height = 20 / 2.54)
+ggsave(file.path(outdir, "Figure_5_rebuild.png"), combined, width = 40, height = 20, units = "cm", dpi = 300)
+ggsave(file.path(outdir, "Figure_5_rebuild.tiff"), combined, width = 40, height = 20, units = "cm", dpi = 600, compression = "lzw")
+cairo_pdf(file.path(outdir, "Figure_5_rebuild.pdf"), width = 40 / 2.54, height = 20 / 2.54)
 print(combined)
 dev.off()
 
 message("Done. Files saved to: ", outdir)
+
+# 2026-10-16: BMC file names = Additional files (old Supplementary numbering mapped in BMC_PlantBiology/citation_changes.txt)
+
+file.copy(file.path(outdir, c("Figure_5_rebuild.png", "Figure_5_rebuild.pdf")),
+          file.path("../draft/Sections_by_VK/BMC_PlantBiology/Figures_main", c("Figure_5.png", "Figure_5.pdf")), overwrite = TRUE)

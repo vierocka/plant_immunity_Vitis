@@ -1,0 +1,7 @@
+"own_model","contrast","shared","same_direction","direction_pct","expected_pct","both_up","own_up_chit_down","own_down_chit_up","both_down","fisher_odds_ratio","fisher_p_greater"
+"subset_condition_only","6v0",147,110,74.8,51.3,69,26,11,41,9.70864484515072,1.51092889150623e-09
+"subset_condition_only","24v0",416,163,39.2,49.8,67,147,106,96,0.41369114359963,0.999996499292082
+"A_batch_condition","6v0",793,592,74.7,56.1,155,76,125,437,7.10845280200517,1.64401571144504e-32
+"A_batch_condition","24v0",354,261,73.7,59.9,48,22,71,213,6.50386693357613,1.95108145674816e-11
+"B_batch_plant_nested","6v0",768,578,75.3,56.3,150,66,124,428,7.81864136771953,1.24002843020615e-33
+"B_batch_plant_nested","24v0",308,226,73.4,61.9,35,20,62,191,5.35581807108845,5.17487274061766e-08

@@ -17,7 +17,7 @@ manuscript. Kept for traceability rather than removed.
   during revision.
 - **`PCA_unprotected_ComBat.R`** + its outputs — superseded by
   `../DESeq2_classic/scripts/PCA_protected_ComBat.R`, the protected-ComBat
-  version actually used for Figure 2 C/D and Supplementary Figure 4.
+  version actually used for Figure 2 C/D and Additional file 7: Figure S4.
 - **`mean_variance_perGenotime_atGivenTime.jpg`,
   `PC1-4_contributions_top50genes.jpg`, `PC1_PC2_byBatch_byTime.jpg`,
   `PC2_PC3_byBatch_byTime.jpg`, `Variance_explained_byPCs_plot.jpg`,

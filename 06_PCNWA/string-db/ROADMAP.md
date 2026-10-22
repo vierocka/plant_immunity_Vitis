@@ -2,7 +2,7 @@
 
 **AIM.** Independent validation of the co-transcriptional network against
 STRING v12.0 protein-protein interaction and functional-association
-evidence — Supplementary Figure 6C, Figure 5B, Figure 4's stickiness
+evidence — Additional file 15: Figure S7C, Figure 5B, Figure 4's stickiness
 checks.
 
 **MOTIVATION.** Pearson correlation alone cannot show a module reflects
@@ -13,9 +13,9 @@ source for the same gene pairs.
 ```
 raw_data/   STRING v12.0 downloads for taxon 29760 (grapevine): protein
             links (detailed, physical, filtered), aliases, sequences
-scripts/SF6_network_robustness_rebuild.R   Supplementary Figure 6 (all 4 panels)
+scripts/SF6_network_robustness_rebuild.R   Additional file 15: Figure S7 (all 4 panels; 2026-10-22: B/C from ../network_robustness/15_*, 16_*; run from 06_PCNWA/, writes to BMC folder)
 results/    STRING interaction/annotation tables, the Vitvi-gene ->
-            STRING-protein ID mapping, PPI screen results, SF6 panel data,
+            STRING-protein ID mapping, PPI screen results, Figure S7 panel data,
             hub-gene STRING annotation
 ```
 

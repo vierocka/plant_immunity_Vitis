@@ -63,14 +63,18 @@ cvals <- contrib(pca$rotation[, 1])
 names(sort(cvals, decreasing = TRUE)[1:50])
 # PC1: signal FDR=3.35e-07
 # PC2: PCD-related factors FDR=6.95e-06
+# 2026-10-16: labels corrected - PC1 term is UniProt KW-0732 "Signal" = signal peptide (not signalling);
+#   PC2 term is InterPro IPR042197 APAF-1 helical domain (NB-ARC/NLR proteins), not cell-death activity (ST4 sheet 2).
 # PC3: Plant hypersensitive response FDR=0.0306
 # PC4: Regulation of systemic acquired resistance FDR=0.005
+# 2026-10-16: PC3 = UniProt KW-0381 (3 genes); PC4 = STRING local network cluster CL:26107 "Mixed, incl. Regulation of SAR..."
+#   (3 genes), live STRING v12 re-query FDR = 0.0293 (the 0.005 above was an old value kept to match the text; now replaced).
 ############################ FIGURE 2 PANEL B (PC1/PC2, PC3/PC4) ################
 # GO-term axis labels, from the enrichment check above:
-go_pc1 <- "Signal\n(FDR=3.35e-07)"
-go_pc2 <- "PCD-related factors\n(FDR=6.95e-06)"
-go_pc3 <- "Plant hypersensitive\nresponse (FDR=0.0306)"
-go_pc4 <- "Regulation of systemic\nacquired resistance\n(FDR=0.005)"
+go_pc1 <- "Signal peptide\n(FDR=3.35e-07)"
+go_pc2 <- "NB-ARC/APAF-1 helical (NLR)\n(FDR=6.95e-06)"
+go_pc3 <- "Hypersensitive response\n(keyword; FDR=0.0306)"
+go_pc4 <- "Mixed STRING cluster incl.\nSAR annotations\n(FDR=0.029)"
 
 # Crosshairs at (0,0), same convention as the original Figure 2B, plus the
 # GO-term label positioned along each axis (x-axis label sits just above the
@@ -121,6 +125,7 @@ p_pc34 <- ggplot(scores, aes(PC3, PC4, color = genotype, shape = timepoint)) +
   theme_bw(base_size = 16) + ggtitle("D") +
   theme(axis.text = element_text(size = 16), axis.title = element_text(size = 16))
 
+p_pc12 <- p_pc12 + labs(shape = "time point (hpi)"); p_pc34 <- p_pc34 + labs(shape = "time point (hpi)")   # 2026-10-22: "time point" wording
 combined <- p_pc12 + p_pc34 + plot_layout(guides = "collect")
 combined
 ggsave(file.path(output_dir, "Figure_2_PanelB_PC1_PC2_PC3_PC4_PROTECTED.png"), combined, width = 11, height = 5, dpi = 300)

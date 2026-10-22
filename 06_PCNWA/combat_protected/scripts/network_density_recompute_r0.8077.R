@@ -83,6 +83,18 @@ time_val <- c(0, 6, 24)
 print(summary(lm(density_time ~ time_val)))
 print(cor.test(time_val, density_time, method = "spearman"))
 
-write.csv(metrics_genotype, "06_PCNWA/network_density_by_genotype_r0.8077_protected_9459panel.csv", row.names = FALSE)
-write.csv(metrics_time, "06_PCNWA/network_density_by_timepoint_r0.8077_protected_9459panel.csv", row.names = FALSE)
+write.csv(metrics_genotype, "06_PCNWA/combat_protected/results/network_density_by_genotype_r0.8077_protected_9459panel.csv", row.names = FALSE)
+write.csv(metrics_time, "06_PCNWA/combat_protected/results/network_density_by_timepoint_r0.8077_protected_9459panel.csv", row.names = FALSE)
 message("\nDone.")
+
+############ ALL THREE THRESHOLDS (2026-10-22; Additional file 16: Table S9, sheet NW_density_thresholds) ############
+# Same networks (9,459 DE genes; per genotype = 9 libraries, per time point = 12) at r >= 0.757 / 0.8077 / 0.8839
+# (top 1% / 0.5% / 0.1% of all pairwise correlations).
+thr_all <- c(0.757, 0.8077, 0.8839)
+sets <- list(Susceptible = c(10:12, 22:24, 34:36), Rpv12 = c(1:3, 13:15, 25:27), "Rpv12+1" = c(4:6, 16:18, 28:30),
+             "Rpv12+1+3" = c(7:9, 19:21, 31:33), "0 hpi" = seq(1, 34, 3), "6 hpi" = seq(2, 35, 3), "24 hpi" = seq(3, 36, 3))
+dens_thr <- do.call(rbind, lapply(thr_all, function(th) do.call(rbind, lapply(names(sets), function(k)
+  cbind(r_cutoff = th, network = k, type = ifelse(grepl("hpi", k), "per time point (12 libraries)", "per genotype (9 libraries)"),
+        graph_metrics(build_graph(expr_all[, sets[[k]]], thr = th)))))))
+write.csv(dens_thr, "06_PCNWA/combat_protected/results/network_density_three_thresholds_protected_9459panel.csv", row.names = FALSE)
+print(dens_thr[, c("r_cutoff", "network", "density", "mean_degree", "clustering")], digits = 3)

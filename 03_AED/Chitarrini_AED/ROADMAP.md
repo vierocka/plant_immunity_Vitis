@@ -5,9 +5,9 @@ Rpv12 dataset: within-condition temporal divergence (mock and inoculated
 arms) and the original cross-condition (inoculated vs. mock) tests.
 
 **MOTIVATION.** Cited in the manuscript body directly: mock-inoculated
-samples 0-12h show AggrDiv = 0.86, and Susceptible's own 24hpi temporal
-drift (AggrDiv = 0.657) sits within ~5% of Chitarrini's mock-only temporal
-drift (AggrDiv = 0.626) — cross-dataset evidence the study's own baseline
+samples 0-12h show AED = 0.86, and Susceptible's own 24hpi temporal
+drift (AED = 0.657) sits within ~5% of Chitarrini's mock-only temporal
+drift (AED = 0.626) — cross-dataset evidence the study's own baseline
 noise is not a pipeline artifact. Part of the 55-test/15-series
 cross-study battery (see `../../Shi_2024/explanation_for_AED.md`
 §10, the master reference).

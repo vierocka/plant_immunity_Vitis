@@ -19,7 +19,7 @@ scripts/
 ├── T_index_validation_MV102_vs_MV32.R   validates only 4 of 7 nominal
 │                                        developmental-stage labels (T0/T1/T4/T6)
 │                                        are true cross-cultivar matches
-├── AED_bySFdivergence_shi2024.R         within- and cross-cultivar AggrDiv
+├── AED_bySFdivergence_shi2024.R         within- and cross-cultivar AED
 ├── AED_plots_shi2024.R                  null-density and trajectory figures
 └── AED_gene_concentration_extended.R    gene-concentration decomposition
 

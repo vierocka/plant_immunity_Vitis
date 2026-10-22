@@ -1,11 +1,11 @@
 # ROADMAP: canonical_DESeq2
 
 **AIM.** Model the canonical DESeq2 DEG counts and temporal-response
-patterns across genotype, timepoint, and direction — Table 1 (Models A–D)
-and the temporal-response/pattern-group breakdown (Models E–F,
-Supplementary Table 3).
+patterns across genotype, timepoint, and direction — Models A–D
+and the temporal-response/pattern-group breakdown (Models E–F), all in
+Additional file 10: Table S6.
 
-**MOTIVATION.** Table 1's raw DEG-count models (A–D) show no simple
+**MOTIVATION.** The raw DEG-count models (A–D) show no simple
 dosage scaling; Models E–F test the same null more precisely by
 classifying each gene's temporal-response category (IEV/ER/TSR/LR/SCh/CP)
 and cross-genotype sharing pattern (groups I–VI), showing the timing
@@ -40,3 +40,5 @@ it records an error (`undefined columns selected`) that matches the
 *old* script's column-index subsetting, not this script's current code
 (the script was edited after this log was last written and never rerun).
 Kept for provenance; don't take it as reflecting the current script.
+
+**2026-10-22:** `scripts/tableS6_leave_one_out_sheet.py` adds sheet `leave_one_out` to Additional file 10: Table S6 (DEG counts in 36 leave-one-library-out DESeq2 refits; Rpv12+1+3 has the most DEGs at 6 hpi in all 36). Models A–E: negative binomial; Model F: quasibinomial (proportions).

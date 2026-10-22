@@ -7,7 +7,8 @@ built from it.
 
 **MOTIVATION.** This is the single source of truth for every DEG count,
 p-value, and log2FC reported in the manuscript (9,459-gene union, Figure 3,
-Table 1, Supplementary Figure 4). Everything else in `02_` compares against,
+Additional file 9: Table S5, Additional file 12: Table S7,
+Additional file 7: Figure S4). Everything else in `02_` compares against,
 or is a robustness check on, what this folder produces.
 
 ## Contents
@@ -22,15 +23,21 @@ scripts/
 │                                DGEA_check_mod.R and additional_tests/DGEA_leave_one_out_sensitivity.R
 ├── export_contrast_DESeq2_NB_BE_files.R   per-contrast DEG exports
 ├── export_condition_protected_matrices_xlsx.R   deposition-format matrix export
-├── PCA_protected_ComBat.R      Figure 2 C/D, Supplementary Figure 4
+├── PCA_protected_ComBat.R      Figure 2 C/D, Additional file 7: Figure S4
 ├── Figure_2_PanelD_volcano_grid.R   Figure 3 (kept its legacy "Panel D" name)
 ├── Heteroscedasticity_check.R  model-assumption diagnostic
-└── update_DEGs_perGroup_timing_direction_current.R   feeds 05_transcriptional_dynamics
+├── update_DEGs_perGroup_timing_direction_current.R   feeds 05_transcriptional_dynamics
+├── DGEA_resistant_pairwise.R   direct resistant-vs-resistant contrasts (2026-10-19): same
+│                                fit as DGEA_check_mod.R, reference level changed per
+│                                contrast; checks V1-V4; writes ../Rpv12_vs_Rpv12+1/,
+│                                ../Rpv12_vs_Rpv12+1+3/, ../Rpv12+1_vs_Rpv12+1+3/
+└── resistant_pairwise_workbook.py   3-sheet xlsx of those contrasts
+                                 (results/DGEA_reanalysis/resistant_pairwise_DESeq2.xlsx)
 
 results/DGEA_reanalysis/        full output of DGEA_check_mod.R (one script,
                                  one output folder — not split further)
 results/                        per-contrast CSVs, PCA loadings/scores, deposition xlsx
-figures/                        Figure 2 C/D, Figure 3, Supplementary Figure 4
+figures/                        Figure 2 C/D, Figure 3, Additional file 7: Figure S4
 ```
 
 ## Note on `dgea_stat_helpers.R`

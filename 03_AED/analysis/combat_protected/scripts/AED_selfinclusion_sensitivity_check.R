@@ -82,3 +82,31 @@ ct_excl <- cor.test(res$AggrDiv, res$null_median_excl, method = "spearman")
 cat(sprintf("\nSpearman rho WITH self-inclusion (as originally reported):    %.4f\n", ct_incl$estimate))
 cat(sprintf("Spearman rho WITHOUT self-inclusion (self-match removed):      %.4f\n", ct_excl$estimate))
 cat("\nBoth strong and highly significant -- the comparability finding is not an artifact of\nself-inclusion, but part of its apparent strength (0.985 vs 0.836) was. Use 0.836 as the\nmore defensible, conservative number when this is cited.\n")
+
+###############################################################################
+# ADDED 2026-10-15: NULL BIAS CHECK + EXACT LABEL-PERMUTATION AED
+# The saved nulls compare every combn() draw from pool = obs + ref with a FIXED
+# ref mean; draws that contain reference libraries are pulled towards it (null
+# mean 1.2-1.4 / 0.7 / 0.25 / 0 for 0 / 1 / 2 / 3 Susceptible libraries), so the
+# observed group (the only reference-free draw) ranks near the top even for pure
+# replicate noise (Froussios half-splits: 22/35 at rank 1). The p-value formula
+# also counted the observed split twice. Correct exact test: pool the 3 + 3
+# libraries, recompute BOTH means for every 3/3 split (20 splits, 10 distinct
+# AED values) -> smallest attainable p = 0.10. Run standalone from repo root.
+###############################################################################
+x <- as.matrix(read.csv("data_files/SizeFactorNorm_ComBatConditionProtected_36samples.csv", row.names = 1, check.names = FALSE))
+g <- sub("\\.[0-9]+\\.[ABC]$", "", colnames(x)); tp <- sub(".*\\.([0-9]+)\\.[ABC]$", "\\1", colnames(x))
+aed <- function(a, b) mean((rowMeans(x[, a, drop = FALSE]) - rowMeans(x[, b, drop = FALSE]))^2)
+perm_test <- function(a, b) { p6 <- c(a, b); cb <- combn(p6, 3)
+  nv <- apply(cb, 2, function(i) aed(i, setdiff(p6, i))); o <- aed(a, b)
+  data.frame(AggrDiv = o, n_splits = ncol(cb), p_label_perm = mean(nv >= o - 1e-9)) }
+cross <- do.call(rbind, lapply(c("0", "6", "24"), function(t) do.call(rbind, lapply(c("Rpv12", "Rpv12.1", "Rpv12.1.3"), function(ge)
+  cbind(test = "vs_Susceptible", genotype = ge, contrast = paste0(t, "hpi"),
+        perm_test(which(g == ge & tp == t), which(g == "Susceptible" & tp == t)))))))
+within <- do.call(rbind, lapply(c("Susceptible", "Rpv12", "Rpv12.1", "Rpv12.1.3"), function(ge) do.call(rbind, lapply(list(c("0", "6"), c("0", "24"), c("6", "24")), function(pr)
+  cbind(test = "within_genotype", genotype = ge, contrast = paste0(pr[2], "hpi_vs_", pr[1], "hpi"),
+        perm_test(which(g == ge & tp == pr[2]), which(g == ge & tp == pr[1])))))))
+res <- rbind(cross, within)
+res$p_adj_BH <- ave(res$p_label_perm, res$test, FUN = function(p) p.adjust(p, "BH"))
+write.csv(res, file.path("03_AED/analysis/combat_protected/tables", "AED_label_permutation_exact.csv"), row.names = FALSE)
+print(res)

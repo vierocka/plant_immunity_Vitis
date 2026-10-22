@@ -2,7 +2,7 @@
 
 **AIM.** Classical weighted gene co-expression network analysis
 (Langfelder & Horvath, 2008), genome-wide, for comparison against this
-study's hub-anchored method — Supplementary Figure 6D.
+study's hub-anchored method — Additional file 15: Figure S7D.
 
 **MOTIVATION.** WGCNA is the standard alternative co-expression method;
 directly benchmarking against it shows the hub-anchored method's design

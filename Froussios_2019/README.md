@@ -6,7 +6,7 @@ An independent, published *Arabidopsis thaliana* RNA-seq dataset (not
 grapevine), used in this project as external, real-sequencing input for
 testing/validating the Aggregated Expression Divergence (AED) method in
 `03_AED/Froussios_2019_AED/`, and for a size-factor/expression export
-feeding manuscript Supplementary Table 11.
+feeding manuscript Additional file 6: Table S3.
 
 - **Publication**: Froussios K, et al. (2019). *Bioinformatics*
   35(18):3372–3378 (doi:10.1093/bioinformatics/btz089).
@@ -29,5 +29,5 @@ feeding manuscript Supplementary Table 11.
    `ST11_size_factors_and_expr_export.R`.
 
 `ST11_size_factors_and_expr_export.R` — separate downstream step,
-size-factor-normalized expression export feeding Supplementary Table 11
+size-factor-normalized expression export feeding Additional file 6: Table S3
 (output in `ST10_ST11_export/`).

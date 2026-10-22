@@ -1,8 +1,8 @@
 # 05_transcriptional_dynamics
 
 DEG-count modeling and temporal-response categorization — manuscript
-Table 1 (Models A–D), Supplementary Table 3 (Models E–F), Supplementary
-Figure 5.
+Additional file 10: Table S6 (Models A–F), Additional file 12: Table S7 and
+Additional file 11: Figure S5.
 
 | Folder | What it is |
 |---|---|
@@ -23,7 +23,7 @@ DE comparison is centralized in
 duplicated here.
 
 ## Verified against the manuscript
-Table 1's Model A–D null result (DEG counts don't scale simply with
+The Model A–D null result (DEG counts don't scale simply with
 genotype/timing/direction/dosage) and the Model E–F finding that temporal
 signal is a raw-count dilution artifact, not absent, both trace directly
 to `canonical_DESeq2/tables/` — see that folder's own ROADMAP for the

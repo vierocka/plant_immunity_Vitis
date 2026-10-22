@@ -16,7 +16,7 @@ manuscript.
   current purposes by the canonical 9,459-gene panel used throughout
   `../combat_protected/` and `../network_robustness/`.
 - **`SF7_network_density_by_time_r0.8077.R`** — the original 1-panel
-  Supplementary Figure 7, superseded by the 2-panel
+  Additional file 17: Figure S8, superseded by the 2-panel
   `../combat_protected/scripts/SF7_rebuild.R`.
 - **Pre-rebuild Figure 4/5 material** (`Figure_4_new.*`, `Figure_4_panel*.png`,
   `Figure_5.R`, `Figure_5.jpeg`, `Figure_5.tiff`, `Figure5.tiff`,

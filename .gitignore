@@ -73,3 +73,10 @@ Shi_2024/*.out
 # 54MB: leave-one-out sensitivity, full per-gene evidence dump.
 # Reproduce: 02_Normalization_and_DGEA/additional_tests/scripts/DGEA_leave_one_out_sensitivity.R
 02_Normalization_and_DGEA/additional_tests/results/DGEA_additional_tests/standard_contrasts_all_gene_evidence.tsv.gz
+
+
+# PPIs/full_example: only the input FASTAs and the interface table go to GitHub; model files (PDB, JSON, MSA, plots; 68 MB) stay local
+PPIs/full_example/*
+!PPIs/full_example/SOBIR1_Vitvi17g00964.fa
+!PPIs/full_example/LRIP1_Vitvi09g04475.fa
+!PPIs/full_example/SOBIR1_LRIP1_interface_residues_by_domain.tsv

@@ -1,17 +1,12 @@
 ###############################################################################
-# AIM: Supplementary Figure 6, 4 panels -- network-robustness validation for
-# the current methodology (9,459-gene canonical DESeq2 panel, protected
-# ComBat, r in {0.757, 0.8077, 0.8839} = top 1%/0.5%/0.1% of correlations).
-# MOTIVATION: does not reuse network_robustness/'s older r=0.817/Bonferroni
-# outputs (they predate the 2026-08-27 module-definition rewrite); does
-# reuse its threshold-independent STRING reference edges and gene-ID mapping.
-# Panels: A) full correlation distribution (342,395,196 pairs) with r=0.8077
-# marked; B) module-size distributions at all 3 cutoffs (module significance
-# criterion: see OPEN ITEM below); C) STRING-db precision per cutoff, 4
-# reference sets; D) WGCNA module-size distribution for comparison.
-# OPEN ITEM: this header previously stated modules now use "no significance
-# filter as the primary criterion", but panel B's own description says
-# "FDR<0.05-significant modules only" -- not reconciled, check before citing.
+# Additional file 15: Figure S7 (2026-10-22 rebuild). Run from 06_PCNWA/:
+#   Rscript string-db/scripts/SF6_network_robustness_rebuild.R
+# A) all 342,395,196 pairwise correlations (rlog, condition-protected ComBat) with r = 0.8077 marked;
+# B) module sizes at r >= 0.757 / 0.8077 / 0.8839 (top 1% / 0.5% / 0.1%): ALL candidate modules
+#    (every one of the 9,459 DE anchors with >= 3 partners; no trait-association filter; network_robustness/15_*);
+# C) fold enrichment of STRING v12.0 support among network edges vs random anchor-gene pairs, for
+#    all evidence / experimental only / no text-mining or database (network_robustness/16_*);
+# D) WGCNA (power 8, protected, genome-wide) module sizes.
 ###############################################################################
 
 suppressPackageStartupMessages({
@@ -20,7 +15,7 @@ suppressPackageStartupMessages({
   library(scales)
 })
 
-outdir <- "."
+outdir <- "../../draft/Sections_by_VK/BMC_PlantBiology/Supplementary_figures"
 set.seed(1)
 
 pal_thr <- c("0.757" = "#4292c6", "0.8077" = "#D55E00", "0.8839" = "#238b45")
@@ -34,7 +29,7 @@ log10_exp_labels <- function(x) as.character(round(log10(x)))
 ## ---------------------------------------------------------------------------
 ## PANEL A: full correlation distribution + 99.5th-percentile cutoff
 ## ---------------------------------------------------------------------------
-bin_cache <- "SF6_panelA_histogram_bins.csv"
+bin_cache <- "string-db/results/SF6_panelA_histogram_bins.csv"
 r_cutoff <- 0.807742456485251
 n_pairs_expected <- 342395196
 
@@ -82,25 +77,11 @@ panelA <- ggplot(bin_df30, aes(x = mid, y = count)) +
 ## ---------------------------------------------------------------------------
 ## PANEL B: module-size distribution stability across the 3 r-cutoffs
 ## ---------------------------------------------------------------------------
-d757  <- read.csv("GCNA_rebuild_9459panel_r0.757/modules_info_protected_ComBat_r0.757.csv")
-d8077 <- read.csv("GCNA_rebuild_9459panel_FDR_datadriven_rcutoff/modules_info_protected_ComBat_FDR.csv")
-d8839 <- read.csv("GCNA_rebuild_9459panel_r0.8839/modules_info_protected_ComBat_r0.8839.csv")
-
-sig757  <- d757[d757$fdr  < 0.05, ]
-sig8077 <- d8077[d8077$fdr < 0.05, ]
-sig8839 <- d8839[d8839$fdr < 0.05, ]
-stopifnot(nrow(sig757) == 7585, nrow(sig8077) == 6600, nrow(sig8839) == 3995)
-
-sizeB <- rbind(
-  data.frame(r = "0.757",  module_size = sig757$module_size),
-  data.frame(r = "0.8077", module_size = sig8077$module_size),
-  data.frame(r = "0.8839", module_size = sig8839$module_size)
-)
-sizeB$r <- factor(sizeB$r, levels = c("0.757", "0.8077", "0.8839"))
-
-n_lab <- c("0.757" = paste0("r≥0.757 (n=", nrow(sig757), ")"),
-           "0.8077" = paste0("r≥0.8077 (n=", nrow(sig8077), ")"),
-           "0.8839" = paste0("r≥0.8839 (n=", nrow(sig8839), ")"))
+sizeB <- read.csv("network_robustness/15_candidate_modules/module_sizes_by_cutoff.csv")   # all candidate modules
+names(sizeB)[names(sizeB) == "n_partners"] <- "module_size"
+sizeB$r <- factor(sprintf("%s", sizeB$r), levels = c("0.757", "0.8077", "0.8839"))
+nB <- table(sizeB$r)
+n_lab <- setNames(paste0("r ≥ ", names(nB), " (n = ", format(as.integer(nB), big.mark = ","), ")"), names(nB))
 
 ## Same binning approach as panel D (bins=25 on the log10-transformed axis)
 ## so the two are directly visually comparable.
@@ -111,85 +92,30 @@ panelB <- ggplot(sizeB, aes(x = module_size, color = r, fill = r)) +
   scale_fill_manual(values = pal_thr, labels = n_lab, name = "Threshold") +
   labs(x = "log10(Module size, genes)", y = "Number of modules") +
   theme_bw(base_size = 13) +
-  theme(legend.position = c(0.78, 0.82), legend.background = element_rect(fill = alpha("white", 0.7)))
+  theme(legend.position = c(0.25, 0.86), legend.background = element_rect(fill = alpha("white", 0.7)))
 
 ## ---------------------------------------------------------------------------
-## PANEL C: STRING-db precision across the 3 r-cutoffs
+## PANEL C: STRING support of network edges (fold enrichment) across the 3 r-cutoffs
 ## ---------------------------------------------------------------------------
-string_cache <- "SF6_panelC_string_precision.csv"
-if (!file.exists(string_cache)) {
-  ref <- readRDS("network_robustness/string_reference/string_reference_pairkeys.rds")
-  gene_to_string <- readRDS("network_robustness/string_reference/gene_to_string_unambiguous.rds")
-  pair_key <- function(a, b) paste(pmin(a, b), pmax(a, b), sep = "||")
-
-  mm_files <- c("0.757"  = "GCNA_rebuild_9459panel_r0.757/module_members_protected_ComBat_r0.757_bonf.rds",
-                "0.8077" = "GCNA_rebuild_9459panel_FDR_datadriven_rcutoff/module_members_protected_ComBat_FDR.rds",
-                "0.8839" = "GCNA_rebuild_9459panel_r0.8839/module_members_protected_ComBat_r0.8839_bonf.rds")
-
-  ref_names <- c(ref_physical_any = "Physical PPI (any)",
-                 ref_detailed_any = "Detailed (any score)",
-                 ref_detailed_700 = "Detailed (score>=700)",
-                 ref_coexpression_above_median = "Co-expression channel (>median)")
-
-  results <- list()
-  for (rc in names(mm_files)) {
-    mm <- readRDS(mm_files[[rc]])
-    anchors <- names(mm)
-    edge_keys <- character(0)
-    for (a in anchors) {
-      partners <- mm[[a]]
-      if (length(partners) == 0) next
-      edge_keys <- c(edge_keys, pair_key(rep(a, length(partners)), partners))
-    }
-    edge_keys <- unique(edge_keys)
-    genes_in_edges <- unique(unlist(strsplit(edge_keys, "\\|\\|")))
-    mapped <- genes_in_edges %in% names(gene_to_string)
-    # map both ends to STRING ids; keep only edges where BOTH ends are mapped
-    parts <- strsplit(edge_keys, "\\|\\|")
-    a_id <- vapply(parts, `[`, character(1), 1)
-    b_id <- vapply(parts, `[`, character(1), 2)
-    keep <- a_id %in% names(gene_to_string) & b_id %in% names(gene_to_string)
-    a_s <- gene_to_string[a_id[keep]]
-    b_s <- gene_to_string[b_id[keep]]
-    string_keys <- pair_key(a_s, b_s)
-    n_mappable <- length(string_keys)
-
-    for (refname in names(ref)) {
-      n_confirmed <- sum(string_keys %in% ref[[refname]])
-      results[[length(results) + 1]] <- data.frame(
-        r_cutoff = rc, string_ref = ref_names[[refname]],
-        n_mappable_edges = n_mappable, n_confirmed = n_confirmed,
-        precision = n_confirmed / n_mappable
-      )
-    }
-    rm(mm); invisible(gc())
-  }
-  precC <- do.call(rbind, results)
-  write.csv(precC, string_cache, row.names = FALSE)
-} else {
-  precC <- read.csv(string_cache)
-}
-
-precC$r_cutoff <- factor(precC$r_cutoff, levels = c("0.757", "0.8077", "0.8839"))
-precC$r_numeric <- as.numeric(as.character(precC$r_cutoff))
-
-panelC <- ggplot(precC, aes(x = r_numeric, y = precision * 100, color = string_ref)) +
-  geom_line(linewidth = 0.9) +
-  geom_point(size = 2.8) +
+precC <- read.csv("network_robustness/15_candidate_modules/string_edge_support_by_threshold.csv")
+precC$r_numeric <- c("0.757" = 0.757, "0.8077" = 0.8077, "0.8839" = 0.8839)[sprintf("%s", precC$r_cutoff)]
+precC$evidence <- factor(precC$evidence, levels = c("all_evidence", "experimental", "no_literature"),
+                         labels = c("All evidence", "Experimental only", "No text-mining / database"))
+panelC <- ggplot(precC, aes(x = r_numeric, y = fold_enrichment, color = evidence)) +
+  geom_hline(yintercept = 1, linetype = "dashed", color = "grey50") +
+  geom_line(linewidth = 0.9) + geom_point(size = 2.8) +
   scale_x_continuous(breaks = c(0.757, 0.8077, 0.8839)) +
-  scale_y_continuous(labels = function(x) paste0(x, "%")) +
-  scale_color_brewer(palette = "Dark2", name = "STRING reference") +
-  labs(x = "Correlation threshold (r)", y = "% of candidate edges STRING-confirmed") +
+  scale_y_continuous(limits = c(0, NA)) +
+  scale_color_brewer(palette = "Dark2", name = "STRING evidence (score ≥ 400)") +
+  labs(x = "Correlation threshold (r)", y = "Fold enrichment of STRING support\n(network edges vs random pairs)") +
   guides(color = guide_legend(title.position = "top", nrow = 2, byrow = TRUE)) +
   theme_bw(base_size = 13) +
-  theme(legend.position = "bottom", legend.justification = "center",
-        legend.title = element_text(hjust = 0.5),
-        legend.background = element_rect(fill = alpha("white", 0.7)))
+  theme(legend.position = "bottom", legend.justification = "center", legend.title = element_text(hjust = 0.5))
 
 ## ---------------------------------------------------------------------------
 ## PANEL D: WGCNA module-size distribution (log10), grey excluded
 ## ---------------------------------------------------------------------------
-wg <- readRDS("WGCNA_classical_comparison_protected/WGCNA_module_colors_power8.rds")
+wg <- readRDS("WGCNA/results/WGCNA_classical_comparison_protected/WGCNA_module_colors_power8.rds")
 tab <- table(wg)
 tab_real <- tab[names(tab) != "grey"]
 sizesD <- data.frame(size = as.numeric(tab_real))
@@ -211,6 +137,6 @@ message("Panel D for the record (moved out of the plot, into the caption): ",
 combined <- (panelA | panelB) / (panelC | panelD) +
   plot_annotation(tag_levels = "A") &
   theme(plot.tag = element_text(face = "bold", size = 14))
-ggsave(file.path(outdir, "Supplementary_Figure_6.png"), combined, width = 34, height = 28, units = "cm", dpi = 300)
-ggsave(file.path(outdir, "Supplementary_Figure_6.pdf"), combined, width = 34, height = 28, units = "cm")
+ggsave(file.path(outdir, "Additional_file_15_FigureS7.png"), combined, width = 34, height = 28, units = "cm", dpi = 300)
+ggsave(file.path(outdir, "Additional_file_15_FigureS7.pdf"), combined, width = 34, height = 28, units = "cm")
 message("Done.")

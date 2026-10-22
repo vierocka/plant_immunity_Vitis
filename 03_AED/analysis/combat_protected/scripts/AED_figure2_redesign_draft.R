@@ -29,7 +29,7 @@ out_dir <- "03_AED/analysis/combat_protected/tables"
 
 geno_levels <- c("Susceptible", "Rpv12", "Rpv12+1", "Rpv12+1+3")
 geno_colors <- c(
-  "Susceptible" = "#4D4D4D",
+  "Susceptible" = "dimgray",   # 2026-10-22: same grey as Figure 2C/D (PCA) and the other figures
   "Rpv12"       = "#DAA520",
   "Rpv12+1"     = "#FA8072",
   "Rpv12+1+3"   = "#6495ED"
@@ -51,7 +51,8 @@ panelA_data <- rbind(
 panelA_data$geno_label <- factor(panelA_data$geno_label, levels = geno_levels)
 
 ############################ PANEL B: vs-Susceptible dynamics ##################
-vs_susc_raw <- read.csv("03_AED/AED_ComBat_protection_comparison.csv", stringsAsFactors = FALSE)
+vs_susc_raw <- read.csv("03_AED/analysis/comparison/tables/AED_ComBat_protection_comparison.csv"  # path fixed 2026-10-15
+                       , stringsAsFactors = FALSE)
 vs_susc_raw <- vs_susc_raw[vs_susc_raw$correction == "protected_ComBat_mod_condition", ]
 geno_map <- c(Rpv12 = "Rpv12", Rpv121 = "Rpv12+1", Rpv1213 = "Rpv12+1+3")
 vs_susc_raw$geno_label <- geno_map[vs_susc_raw$genotype]
@@ -66,15 +67,15 @@ panelB_data$geno_label <- factor(panelB_data$geno_label, levels = geno_levels[-1
 
 ############################ EXTERNAL BENCHMARK REFERENCE DATA #################
 froussios_noise_floor <- 0.844      # inter-experiment AggrDiv, isogenic Col-0
-froussios_label <- "Technical/isogenic noise floor\n(Froussios et al., 2019)"
+froussios_label <- "Isogenic Arabidopsis,\nbetween experiments"  # 2026-10-15: reference magnitude, not a floor/ceiling
 
 chitarrini_mock_points <- data.frame(
   hpi = c(12, 24),
   AggrDiv = c(0.862221807888797, 0.62577704745583),
-  lbl = "Susceptible, mock\n(Chitarrini et al., 2020)"
+  lbl = "Independent Rpv12 dataset:\nmock vs 0 h"
 )
 chitarrini_mock_drift <- mean(chitarrini_mock_points$AggrDiv)  # mean of 0-6(proxy 12h) and 0-24
-chitarrini_line_label <- "Mock-only mean temporal drift\n(Chitarrini et al., 2020)"
+chitarrini_line_label <- "Independent Rpv12 dataset:\nmock mean (12, 24 h)"
 
 permnull_mean_points <- data.frame(
   hpi = c(0, 6, 24),
@@ -111,65 +112,48 @@ starB_data <- panelB_data[panelB_data$sig == "*", ]
 starB_data$star_y <- geno_star_y[as.character(starB_data$geno_label)]
 
 panelA <- ggplot(panelA_data, aes(x = hpi, y = AggrDiv, color = geno_label, group = geno_label)) +
-  geom_hline(data = data.frame(y = froussios_noise_floor, lbl = froussios_label),
+  geom_hline(data = data.frame(y = c(froussios_noise_floor, chitarrini_mock_drift), lbl = c(froussios_label, chitarrini_line_label)),
              aes(yintercept = y, linetype = lbl), inherit.aes = FALSE,
-             color = "grey40", alpha = 0.5, linewidth = 0.8) +
-  geom_hline(yintercept = chitarrini_mock_drift, linetype = "dashed",
-             color = "darkolivegreen3", alpha = 0.75, linewidth = 0.8) +  # drawn, explained under Panel B
+             color = c("grey40", "darkolivegreen3"), alpha = 0.6, linewidth = 0.8) +
   geom_line(linewidth = 1.3) +
   geom_point(size = 4) +
-  geom_point(data = chitarrini_mock_points, aes(x = hpi, y = AggrDiv),
-             inherit.aes = FALSE, color = "darkolivegreen3", alpha = 1, size = 4, shape = 18) +
-  geom_text(data = starA_data, aes(x = hpi, y = star_y, label = sig, color = geno_label),
-            inherit.aes = FALSE, size = 8, show.legend = FALSE, na.rm = TRUE) +
+  geom_point(data = chitarrini_mock_points, aes(x = hpi, y = AggrDiv, shape = lbl),
+             inherit.aes = FALSE, color = "darkolivegreen3", alpha = 1, size = 4) +
   scale_x_continuous(breaks = c(0, 6, 12, 24), limits = c(0, 24)) +
   scale_y_continuous(limits = c(0, y_max)) +
   scale_color_manual(values = geno_colors, drop = FALSE) +
-  scale_linetype_manual(values = setNames("dashed", froussios_label)) +
-  guides(color = guide_legend(order = 1, nrow = 1),
-         linetype = guide_legend(order = 2, nrow = 1,
-                                 theme = theme(
-                                   legend.key.width  = grid::unit(1.75, "cm"),
-                                   legend.key.height = grid::unit(0.5, "cm")
-                                 ),
-         override.aes = list(color = "grey40", alpha = 0.5, linewidth = 1.3))) +
+  scale_linetype_manual(values = setNames(c("dashed", "dashed"), c(froussios_label, chitarrini_line_label)),
+                        breaks = c(froussios_label, chitarrini_line_label)) +  # fixes key order = override colours
+  scale_shape_manual(values = setNames(18, chitarrini_mock_points$lbl[1])) +
+  guides(color = guide_legend(order = 1, nrow = 1), shape = "none", linetype = "none") +  # reference legend sits under Panel B
   labs(title = "A", x = "hours post inoculation (hpi)",
-       y = "AggrDiv (vs. own 0 hpi)") +
-  theme(legend.text = element_text(size = 20)) + base_theme 
+       y = "AED (vs. own 0 hpi)") +   # 2026-10-16: axis label AggrDiv -> AED
+  theme(legend.text = element_text(size = 18)) + base_theme
 
+# 2026-10-15: no asterisks / null means - the fixed-reference triplet null was biased; the exact
+# label-permutation test cannot go below p = 0.10 with 3 vs 3 (AED_selfinclusion_sensitivity_check.R).
 panelB <- ggplot(panelB_data, aes(x = hpi, y = AggrDiv, color = geno_label, group = geno_label)) +
-  geom_point(size = 4) +
-  geom_point(data = permnull_mean_points, aes(x = hpi, y = AggrDiv, shape = lbl),
-             inherit.aes = FALSE, color = "dimgrey", alpha = 1, size = 4) +
-  geom_point(data = chitarrini_mock_points, aes(x = hpi, y = AggrDiv, shape = lbl),
-             inherit.aes = FALSE, color = "darkolivegreen3", alpha = 1, size = 4) +
-  geom_hline(data = data.frame(y = chitarrini_mock_drift, lbl = chitarrini_line_label),
+  geom_hline(data = data.frame(y = c(froussios_noise_floor, chitarrini_mock_drift), lbl = c(froussios_label, chitarrini_line_label)),
              aes(yintercept = y, linetype = lbl), inherit.aes = FALSE,
-             color = "darkolivegreen3", alpha = 0.75, linewidth = 0.8) +
-  geom_hline(yintercept = froussios_noise_floor, linetype = "dashed",
-             color = "grey40", alpha = 0.5, linewidth = 0.8) +  # drawn, explained under Panel A
+             color = c("grey40", "darkolivegreen3"), alpha = c(0.6, 0), linewidth = 0.8) +  # green line invisible here; legend only
+  geom_point(data = chitarrini_mock_points, aes(x = hpi, y = AggrDiv, shape = lbl),
+             inherit.aes = FALSE, color = "darkolivegreen3", alpha = 0, size = 4) +       # legend only
   geom_line(linewidth = 1.3) +
-  geom_text(data = starB_data, aes(x = hpi, y = star_y, label = sig, color = geno_label),
-            inherit.aes = FALSE, size = 12, show.legend = FALSE, na.rm = TRUE) +
+  geom_point(size = 4) +
   scale_x_continuous(breaks = c(0, 6, 24), limits = c(0, 24)) +
   scale_y_continuous(limits = c(0, y_max)) +
   scale_color_manual(values = geno_colors, drop = FALSE) +
-  scale_linetype_manual(values = setNames("dashed", chitarrini_line_label)) +
-  scale_shape_manual(values = setNames(c(18, 18),
-                                        c("Mean of\npermutation", "Susceptible, mock\n(Chitarrini et al., 2020)"))) +
-  guides(color = "none",  # same 3 genotype colors as Panel A; A's legend covers both, avoids a duplicate
-         shape = guide_legend(order = 1, nrow = 1,
-                               override.aes = list(color = c("dimgray", "darkolivegreen3"), alpha = 1)),
-         linetype = guide_legend(order = 2, nrow = 1,
-                                 theme = theme(
-                                   legend.key.width  = grid::unit(1.75, "cm"),
-                                   legend.key.height = grid::unit(0.5, "cm")
-                                 ),
-                                 override.aes = list(color = "darkolivegreen3", alpha = 0.75, linewidth = 1.3)),
-  ) +
+  scale_linetype_manual(values = setNames(c("dashed", "dashed"), c(froussios_label, chitarrini_line_label)),
+                        breaks = c(froussios_label, chitarrini_line_label)) +
+  scale_shape_manual(values = setNames(18, chitarrini_mock_points$lbl[1])) +
+  guides(color = "none",
+         shape = guide_legend(order = 1, nrow = 1, override.aes = list(color = "darkolivegreen3", alpha = 1)),
+         linetype = guide_legend(order = 2, nrow = 2,
+                                 theme = theme(legend.key.width = grid::unit(1.75, "cm"), legend.key.height = grid::unit(0.5, "cm")),
+                                 override.aes = list(color = c("grey40", "darkolivegreen3"), alpha = 0.6, linewidth = 1.3))) +
   labs(title = "B", x = "hours post inoculation (hpi)",
-       y = "AggrDiv (vs. Susceptible, same hpi)") +
-  theme(legend.text = element_text(size = 20)) + base_theme 
+       y = "AED (vs. Susceptible, same hpi)") +
+  theme(legend.text = element_text(size = 18)) + base_theme
 
 # NOT collected: each panel keeps its own local legend directly beneath it,
 # rather than one shared legend pooled under the whole row.

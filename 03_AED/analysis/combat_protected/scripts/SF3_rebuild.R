@@ -8,10 +8,8 @@
 # manuscript's Results and Methods ("Transcriptional Noise and Reference
 # Bias Assessment").
 #
-# Panel A: permutation-null backgrounds for the vs-Susceptible AED test
-#          (220 draws/hpi), observed AggrDiv per genotype overlaid -- style
-#          matches 03_AED/AED_figureS_redesign_draft.R's own panel A
-#          (reused directly, not re-derived).
+# Panel A: (2026-10-15) exact label permutation for each vs-Susceptible AED
+#          (20 divisions of the 3 + 3 libraries; observed vs split AEDs).
 # Panel B: noise-injection negative control at 1%, 5%, 10% added per-gene
 #          Gaussian noise -- shows resulting AggrDiv is negligible relative
 #          to real observed biological divergence.
@@ -29,41 +27,39 @@ suppressPackageStartupMessages({
 set.seed(1)
 geno_levels <- c("Susceptible", "Rpv12", "Rpv12+1", "Rpv12+1+3")
 geno_colors <- c(
-  "Susceptible" = "#4D4D4D",
+  "Susceptible" = "dimgray",   # 2026-10-22: same grey as Figure 2C/D (PCA) and the other figures
   "Rpv12"       = "#DAA520",
   "Rpv12+1"     = "#FA8072",
   "Rpv12+1+3"   = "#6495ED"
 )
 
 ## =============================================================================
-## PANEL A: permutation-null backgrounds, vs. Susceptible (220 draws/hpi)
-## Reused directly from 03_AED/AED_figureS_redesign_draft.R's panel A.
+## PANEL A (replaced 2026-10-15): exact label permutation, vs. Susceptible.
+## The old fixed-reference 220-triplet null was biased (draws containing
+## Susceptible libraries are pulled towards the reference). Here: the 3 + 3
+## libraries of each comparison are divided in all 20 ways, both means are
+## recomputed; observed AED in colour, the 20 split AEDs in grey. Floor p = 0.10.
 ## =============================================================================
 hpi_vals <- c(0, 6, 24)
-null_vs_susc <- do.call(rbind, lapply(hpi_vals, function(h) {
-  d <- read.csv(sprintf("03_AED/analysis/combat_protected/tables/null_cross_genotype_vs_Susceptible_protected_%shpi_220values.csv", h))
-  data.frame(hpi = h, null_AggrDiv = d$null_AggrDiv)
-}))
-null_vs_susc$hpi_label <- factor(paste0(null_vs_susc$hpi, " hpi"), levels = paste0(hpi_vals, " hpi"))
-
-vs_susc_raw <- read.csv("AED_ComBat_protection_comparison.csv", stringsAsFactors = FALSE)
-vs_susc_raw <- vs_susc_raw[vs_susc_raw$correction == "protected_ComBat_mod_condition", ]
-geno_map <- c(Rpv12 = "Rpv12", Rpv121 = "Rpv12+1", Rpv1213 = "Rpv12+1+3")
-vs_susc_raw$geno_label <- factor(geno_map[vs_susc_raw$genotype], levels = geno_levels[-1])
-vs_susc_raw$hpi_label <- factor(paste0(vs_susc_raw$timing, " hpi"), levels = paste0(hpi_vals, " hpi"))
-vs_susc_raw$sig <- ifelse(vs_susc_raw$p_adj < 0.05, "*", "n.s.")
-
-panelA <- ggplot() +
-  geom_density(data = null_vs_susc, aes(x = null_AggrDiv), fill = "grey80", color = "grey50", alpha = 0.6) +
-  geom_vline(data = vs_susc_raw, aes(xintercept = AggrDiv, color = geno_label), linewidth = 1.1) +
-  geom_text(data = vs_susc_raw, aes(x = AggrDiv, y = 0, label = sig, color = geno_label),
-            angle = 90, vjust = -0.5, hjust = 0, size = 3.3, show.legend = FALSE) +
+xm <- as.matrix(read.csv("data_files/SizeFactorNorm_ComBatConditionProtected_36samples.csv", row.names = 1, check.names = FALSE))
+cg <- sub("\\.[0-9]+\\.[ABC]$", "", colnames(xm)); ct <- sub(".*\\.([0-9]+)\\.[ABC]$", "\\1", colnames(xm))
+aed <- function(a, b) mean((rowMeans(xm[, a, drop = FALSE]) - rowMeans(xm[, b, drop = FALSE]))^2)
+geno_map <- c(Rpv12 = "Rpv12", Rpv12.1 = "Rpv12+1", Rpv12.1.3 = "Rpv12+1+3")
+perm_df <- do.call(rbind, lapply(hpi_vals, function(h) do.call(rbind, lapply(names(geno_map), function(ge) {
+  gi <- which(cg == ge & ct == h); si <- which(cg == "Susceptible" & ct == h); p6 <- c(gi, si); cb <- combn(p6, 3)
+  data.frame(hpi_label = paste0(h, " hpi"), geno_label = geno_map[[ge]],
+             AggrDiv = apply(cb, 2, function(i) aed(i, setdiff(p6, i))), observed = c(TRUE, rep(FALSE, ncol(cb) - 1)))
+}))))  # combn's first column is the observed split (gi)
+perm_df$hpi_label <- factor(perm_df$hpi_label, levels = paste0(hpi_vals, " hpi"))
+perm_df$geno_label <- factor(perm_df$geno_label, levels = geno_levels[-1])
+panelA <- ggplot(perm_df, aes(x = geno_label, y = AggrDiv)) +
+  geom_jitter(data = perm_df[!perm_df$observed, ], width = 0.12, height = 0, color = "grey55", size = 1.8, alpha = 0.8) +
+  geom_point(data = perm_df[perm_df$observed, ], aes(color = geno_label), size = 4.5) +
   facet_wrap(~hpi_label, nrow = 1) +
   scale_color_manual(values = geno_colors, drop = FALSE, name = NULL) +
-  labs(x = "AggrDiv (null and observed)", y = "Density") +
+  labs(x = NULL, y = "AED (vs. Susceptible, same hpi)") +
   theme_bw(base_size = 13) +
   theme(legend.position = "bottom")
-
 ## =============================================================================
 ## PANEL B: noise-injection negative control, 1% / 5% / 10%
 ## =============================================================================
@@ -75,7 +71,7 @@ noise_sub <- noise_all[noise_all$noise %in% c(0.01, 0.05, 0.1), ]
 noise_pos_map <- c("0.01" = 1, "0.05" = 2, "0.1" = 3)
 noise_sub$noise_pos <- noise_pos_map[as.character(noise_sub$noise)]
 
-# Real observed biological AggrDiv range, for scale contrast (from
+# Real observed AED range in this study, for scale contrast (from
 # Supplementary Table 2: inter-genotype 1.21-2.21, within-genotype 0.32-1.83).
 real_range <- c(0.32, 2.21)
 
@@ -84,19 +80,20 @@ panelB <- ggplot(noise_sub, aes(x = noise_pos, y = AggrDiv, group = noise_pos)) 
            fill = "steelblue", alpha = 0.12) +
   annotate("text", x = 0.55, y = real_range[2] * 1.15, hjust = 0, vjust = 0, size = 3.2,
            fontface = "italic", color = "steelblue4",
-           label = "observed biological AggrDiv range (0.32-2.21)") +
+           label = "observed AED range in this study (0.32-2.21)") +
   geom_boxplot(fill = "grey85", outlier.size = 0.3, outlier.alpha = 0.3, width = 0.35) +
   scale_x_continuous(breaks = 1:3, labels = c("1%", "5%", "10%"), limits = c(0.4, 3.6)) +
   scale_y_log10(labels = scales::label_comma()) +
   labs(x = "Added per-gene Gaussian noise (% of each gene's own SD)",
-       y = "AggrDiv (log scale)") +
+       y = "AED (log scale)") +
   theme_bw(base_size = 13)
 
 ## =============================================================================
 ## PANEL C: genome-wide mean expression variance vs. locus dosage
 ## Reproduces scripts/transcriptional_noise.R's own test exactly.
 ## =============================================================================
-tab <- read.table("../data_files/SizeFactorNorm_ComBatConditionProtected_36samples.csv", header = TRUE, sep = ",")
+tab <- read.table("data_files/SizeFactorNorm_ComBatConditionProtected_36samples.csv"  # path fixed 2026-10-15
+                 , header = TRUE, sep = ",")
 mat <- as.matrix(tab[, 2:37])
 rownames(mat) <- tab[, 1]
 
@@ -130,6 +127,9 @@ f_df1 <- sm$fstatistic[["numdf"]]
 f_df2 <- sm$fstatistic[["dendf"]]
 f_p <- pf(f_stat, f_df1, f_df2, lower.tail = FALSE)
 
+# 2026-10-16: test of the dosage terms themselves (main effect + dosage x time), not only the overall model F
+dos <- anova(lm(meanVar ~ time, data = noise_df), glm_noise)
+d_df1 <- dos$Df[2]; d_df2 <- dos$Res.Df[2]; d_F <- dos$F[2]; d_p <- dos$`Pr(>F)`[2]
 obs_slope <- coef(lm(meanVar ~ introgression, data = noise_df))[2]
 perm_slopes <- replicate(10000, {
   perm_intro <- sample(noise_df$introgression)
@@ -139,13 +139,11 @@ p_perm <- mean(abs(perm_slopes) >= abs(obs_slope))
 
 message(sprintf("Panel C model, live rerun against current canonical data: F(%d,%d)=%.4f, p=%.4f; permutation p=%.4f",
                 f_df1, f_df2, f_stat, f_p, p_perm))
-message("NOTE: this does NOT match manuscript text (F=0.44, p=0.81) or scripts/transcriptional_noise.R's",
-        " own hardcoded comment (also F=0.4374/p=0.8089) -- both are stale relative to the current data",
-        " file. Independently cross-checked in both R and Python; see help.txt for full writeup.")
+message(sprintf("Dosage terms (dosage + dosage x time vs time only): F(%d,%d)=%.4f, p=%.4f", d_df1, d_df2, d_F, d_p))
 
 time_colors <- c("0" = "#D62728", "6" = "#2CA02C", "24" = "#1F77B4")
-stat_label <- sprintf("Linear model: F(%d,%d) = %.2f, p = %.2f\nPermutation test (10,000x): p = %.2f\nNo significant effect of major-locus dosage",
-                       f_df1, f_df2, f_stat, f_p, p_perm)
+stat_label <- sprintf("Overall model: F(%d,%d) = %.2f, p = %.2f\nDosage terms: F(%d,%d) = %.2f, p = %.2f\nDosage slope, permutation (10,000x): p = %.2f",
+                       f_df1, f_df2, f_stat, f_p, d_df1, d_df2, d_F, d_p, p_perm)
 
 panelC <- ggplot(noise_df, aes(introgression, meanVar, color = time)) +
   geom_hline(yintercept = mean(noise_df$meanVar), linetype = "dashed", color = "grey50", linewidth = 0.5) +
@@ -157,14 +155,19 @@ panelC <- ggplot(noise_df, aes(introgression, meanVar, color = time)) +
            label = stat_label, size = 3.1, fill = alpha("white", 0.8)) +
   scale_color_manual(values = time_colors, name = "hpi") +
   scale_x_continuous(breaks = 0:3) +
-  labs(x = "Major resistance locus dosage", y = "Mean expression variance\n(transcriptional noise)") +
+  labs(x = "Major resistance locus dosage", y = "Mean between-replicate\nexpression variance") +
   theme_bw(base_size = 13)
 
 ## =============================================================================
-combined <- (panelA) / (panelB | panelC) +
+# 2026-10-16: permutation panel (panelA) dropped - AED is descriptive only (permutation p not calibrated); noise panels -> A, B
+combined <- (panelB | panelC) +
   plot_annotation(tag_levels = "A") &
   theme(plot.tag = element_text(face = "bold", size = 14))
 
-ggsave("03_AED/analysis/combat_protected/tables/Supplementary_Figure_3_REBUILD.png", combined, width = 30, height = 24, units = "cm", dpi = 300)
-ggsave("03_AED/analysis/combat_protected/tables/Supplementary_Figure_3_REBUILD.pdf", combined, width = 30, height = 24, units = "cm")
+sf_dir <- "../draft/Sections_by_VK/BMC_PlantBiology/Supplementary_figures"  # 2026-10-15: write to the BMC folder
+ggsave(file.path(sf_dir, "Additional_file_4_FigureS3.png"), combined, width = 30, height = 12, units = "cm", dpi = 300)
+ggsave(file.path(sf_dir, "Additional_file_4_FigureS3.pdf"), combined, width = 30, height = 12, units = "cm")
+ggsave("03_AED/analysis/combat_protected/tables/Supplementary_Figure_3_REBUILD.pdf", combined, width = 30, height = 12, units = "cm")
 message("Done.")
+
+# 2026-10-16: BMC file names = Additional files (old Supplementary numbering mapped in BMC_PlantBiology/citation_changes.txt)

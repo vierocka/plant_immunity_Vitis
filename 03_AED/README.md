@@ -1,8 +1,8 @@
 # 03_AED
 
-Aggregated Expression Divergence (AED/AggrDiv) for the pyramided-*Vitis
+Aggregated Expression Divergence (AED) for the pyramided-*Vitis
 vinifera* resistance-locus study — manuscript Figure 2 A/B, Supplementary
-Figure 3, Supplementary Table 2.
+Figure 3, Additional file 5: Table S2.
 
 Master cross-study reference (own study + Chitarrini2020 + Shi2024 +
 Froussios2019, 55 tests/15 series): `../Shi_2024/explanation_for_AED.md`.
@@ -13,7 +13,7 @@ This README covers only what's specific to this folder.
 | **analysis/combat_protected/** | Primary AED analysis, condition-protected ComBat — the published correction |
 | **analysis/comparison/** | Protected vs. unprotected ComBat compared directly |
 | **results/** | `AED_top_contributing_genes_significant_calls.csv` |
-| **figures/** | Figure 2 A/B and Supplementary Figure 3 draft/rebuild figures |
+| **figures/** | Figure 2 A/B and Additional file 4: Figure S3 draft/rebuild figures |
 | **exploratory_material/** | Superseded pre-revision figures |
 | **Chitarrini_AED/**, **Shi_2024_AED/**, **Froussios_2019_AED/** | independent AED replications, one per external dataset — see their own ROADMAPs. Scripts are provenance copies (self-relative paths); rerun from each dataset's original folder |
 
@@ -28,7 +28,7 @@ cross-genotype result). Scripts:
 ## Gene concentration: two findings worth keeping in mind
 - Restricting the %-genes-needed-for-75%-of-divergence metric to canonical
   DESeq2 `DE_primary` genes (vs. all 26,169 tested) roughly **triples** the
-  figure (~11% → ~35%) — AggrDiv aggregates a broad, coordinated shift well
+  figure (~11% → ~35%) — AED aggregates a broad, coordinated shift well
   beyond the individually-significant DEGs. Always source significance
   from `../02_Normalization_and_DGEA/DESeq2_classic/results/DGEA_reanalysis/DESeq2_all_gene_results.csv`,
   not the legacy per-contrast files.

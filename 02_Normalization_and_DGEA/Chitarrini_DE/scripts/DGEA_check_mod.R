@@ -389,3 +389,20 @@ message(
 ############################ SESSION INFO ######################################
 writeLines(capture.output(sessionInfo()), file.path(output_dir, "sessionInfo.txt"))
 message("\nCompleted. Outputs written to: ", output_dir)
+
+################## ADDED 2026-10-16: SUPPLEMENTARY FIGURE 8 WITH COLOUR SCALE ##################
+# Same matrix and same clustering as the base heatmap() above (symm = TRUE: no scaling; Euclidean distance between the
+# samples' correlation profiles, complete linkage), redrawn with pheatmap to add a colour scale. Standalone.
+res_dir <- "02_Normalization_and_DGEA/Chitarrini_DE/results/DGEA_check_results"
+cm <- read.csv(file.path(res_dir, "sample_pearson_correlation_matrix.csv"), check.names = FALSE)
+m <- as.matrix(cm[, -1]); rownames(m) <- cm$run_accession
+md <- read.csv(file.path(res_dir, "sample_metadata_used.csv"))[match(rownames(m), read.csv(file.path(res_dir, "sample_metadata_used.csv"))$run_accession), ]
+rownames(m) <- colnames(m) <- paste(md$bioreplicate, md$hpi, md$treatment, sep = "_")
+sf8 <- "../draft/Sections_by_VK/BMC_PlantBiology/Supplementary_figures/Additional_file_14_FigureS6"
+for (dev in c("png", "pdf", "tiff")) {
+  pheatmap::pheatmap(m, clustering_distance_rows = "euclidean", clustering_distance_cols = "euclidean",
+    clustering_method = "complete", color = rev(heat.colors(100)), border_color = NA,
+    legend_breaks = pretty(range(m[upper.tri(m)]), 5), main = "", fontsize = 10,
+    filename = paste0(sf8, ".", dev), width = 11, height = 10) }
+
+# 2026-10-16: BMC file names = Additional files (old Supplementary numbering mapped in BMC_PlantBiology/citation_changes.txt)

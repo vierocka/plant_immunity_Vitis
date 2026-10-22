@@ -16,11 +16,11 @@ applied to network construction.
 scripts/
 ├── GCNA_rebuild_9459panel_FDR_datadriven_rcutoff.R   primary module build
 ├── hub_genes_6600_r0.8077_FDR.R                       hub-gene extraction
-├── network_density_recompute_r0.8077.R                Supplementary Figure 7
-├── SF7_rebuild.R                                       Supplementary Figure 7, 2-panel
+├── network_density_recompute_r0.8077.R                Additional file 17: Figure S8
+├── SF7_rebuild.R                                       Additional file 17: Figure S8, 2-panel (run from repo root; writes to BMC folder)
 ├── save_full_correlation_matrix_compact.R              cached 26,169x26,169 correlation matrix
 ├── create_immunity_classes.R                           ETI/PTI/shared gene-class labels
-├── Figure3_pheatmap_MMs.R, Figure_4_rebuild_18genes.R, Figure_5_rebuild.R
+├── Figure3_pheatmap_MMs.R, Figure_5_rebuild_18genes.R, Figure_4_rebuild.R
 
 results/    modules_info, hub-gene tables, network-density tables, metamodule
             data, PPI/immunity-gene cross-checks, the cached correlation
@@ -33,7 +33,7 @@ correlation_cutoffs/   see its own ROADMAP.md
 ## Verified
 `GCNA_rebuild_9459panel_FDR_datadriven_rcutoff/r_cutoff_derivation.csv`:
 342,395,196 pairwise correlations, r = 0.807742... — exact match to
-Supplementary Figure 6A's caption.
+Additional file 15: Figure S7A's caption.
 
 ## One pre-existing bug fixed
 `Figure3_pheatmap_MMs.R` read `"WGCNA/Fig4_data_metamodules.csv"` — a path

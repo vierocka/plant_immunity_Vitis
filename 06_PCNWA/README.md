@@ -6,11 +6,11 @@ Supplementary Figures 6, 7; Supplementary Tables 7, 8.
 
 | Folder | What it is |
 |---|---|
-| **combat_protected/** | The current, manuscript-primary network: r=0.8077 (data-driven), 9,459-gene canonical DESeq2 panel, protected ComBat. Feeds Figures 3–5. `correlation_cutoffs/` holds the 3-threshold stability test (Supplementary Figure 6B). |
+| **combat_protected/** | The current, manuscript-primary network: r=0.8077 (data-driven), 9,459-gene canonical DESeq2 panel, protected ComBat. Feeds Figures 3–5. `correlation_cutoffs/` holds the 3-threshold stability test (Additional file 15: Figure S7B). |
 | **combat_unprotected/** | The original network build, unprotected ComBat, r=0.817. |
-| **WGCNA/** | Classical WGCNA, genome-wide, both ComBat settings (Supplementary Figure 6D). |
+| **WGCNA/** | Classical WGCNA, genome-wide, both ComBat settings (Additional file 15: Figure S7D). |
 | **cross-comparison/** | Protected-vs-unprotected ComBat sensitivity, and GCNA-vs-WGCNA on the historical panel. |
-| **string-db/** | STRING v12.0 independent validation (Supplementary Figure 6C, Figure 5B). |
+| **string-db/** | STRING v12.0 independent validation (Additional file 15: Figure S7C, Figure 5B). |
 | **network_robustness/** | The full validation suite: permutation null, threshold sensitivity, STRING precision, module purity vs. WGCNA, bootstrap, noise perturbation. Own numbered (00–14) pipeline and README. |
 | **additional_tests/** | Two extra robustness angles: a trusted-subset anchor panel, and a scale-matched historical-replacement panel. |
 | **exploratory_material/** | Superseded network builds and pre-rebuild figure drafts. |
@@ -27,13 +27,15 @@ correction slightly changes the pairwise-correlation distribution.
 0.8077.
 
 ## Verified against the manuscript
-- Supplementary Figure 6A: 342,395,196 pairwise correlations, r = 0.8077 —
+- Additional file 15: Figure S7A: 342,395,196 pairwise correlations, r = 0.8077 —
   exact match in `combat_protected/results/GCNA_rebuild_9459panel_FDR_datadriven_rcutoff/r_cutoff_derivation.csv`.
-- Supplementary Figure 6D: WGCNA's 53 genome-wide modules, largest two
+- Additional file 15: Figure S7D: WGCNA's 53 genome-wide modules, largest two
   5,499 and 3,896 genes — matches `WGCNA/results/`.
 - The manuscript's cited GCNA-vs-WGCNA numbers (83–84% vs. 59–62% PC1
-  variance; 10.2–30.3% STRING enrichment; 89–90% noise-edge retention) all
-  trace to `network_robustness/README.md` word-for-word.
+  variance; 10.2–30.3% STRING enrichment) trace to `network_robustness/README.md`.
+  Noise stability in the manuscript is reported on the primary matrix
+  (rlog + condition-protected ComBat): edge recall 99.6% at 0.5% and 95.3% at
+  5% noise (`02_Normalization_and_DGEA/additional_tests/scripts/noise_perturbation_network_stability_r08077.R`).
 
 ## Known gaps (not hidden, not fixed here)
 - `network_robustness/05_noise_perturbation.R` (hub-anchored method) was

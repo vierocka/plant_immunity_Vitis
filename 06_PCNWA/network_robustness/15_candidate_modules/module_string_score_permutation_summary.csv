@@ -1,0 +1,7 @@
+"score_type","method","n_modules_tested","frac_p_lt_0.05"
+"physical_ppi","correlation_modules_r0.8077",3822,0.175039246467818
+"physical_ppi","WGCNA_power8_protected",43,0.348837209302326
+"detailed_coexpr","correlation_modules_r0.8077",5567,0.153044727860607
+"detailed_coexpr","WGCNA_power8_protected",52,0.173076923076923
+"detailed_combined","correlation_modules_r0.8077",5567,0.136878031255613
+"detailed_combined","WGCNA_power8_protected",52,0.211538461538462

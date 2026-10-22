@@ -1,6 +1,6 @@
 # ROADMAP: Froussios_2019_AED
 
-**AIM.** Establish a purely technical/batch AggrDiv ceiling, using a
+**AIM.** Establish a purely technical/batch AED ceiling, using a
 genuinely isogenic dataset: 14 WT Col-0 *Arabidopsis* replicates from
 Froussios et al. 2019, split by their own real sequencing batch
 (ExpA/ExpB) — no genotype or treatment difference at all.
@@ -8,10 +8,10 @@ Froussios et al. 2019, split by their own real sequencing batch
 **MOTIVATION.** Directly cited in the manuscript: "A genuinely isogenic
 *Arabidopsis thaliana* dataset comprising two sequencing experiments of
 the same wild-type line (Froussios et al., 2019) showed a purely
-technical/batch-associated divergence of AggrDiv = 0.84" — confirmed
+technical/batch-associated divergence of AED = 0.84" — confirmed
 against `results/AED_check_results/froussios_AED_summary.csv`
-(inter_experiment, ExpB_vs_ExpA: AggrDiv = 0.8437). This is the technical
-noise floor the study's own AggrDiv values are read against.
+(inter_experiment, ExpB_vs_ExpA: AED = 0.8437). This is the technical
+noise floor the study's own AED values are read against.
 
 ## Contents
 ```

@@ -27,5 +27,5 @@ SOBIR1_partner_sets_old_vs_new.rds   orphaned — no script currently reads
 module purity, DE-panel-restricted WGCNA, and full cross-comparison
 Jaccard), which additionally cover the canonical 9,459-gene panel. Kept
 here as the dedicated, easy-to-find comparison folder; for the
-manuscript's actual cited numbers (83-84% vs 59-62% PC1 variance), see
+historical numbers (83-84% vs 59-62% PC1 variance; the manuscript now cites 85% vs 61% on the current network, `../network_robustness/15_candidate_modules/`), see
 `../network_robustness/README.md` §5, check 4.

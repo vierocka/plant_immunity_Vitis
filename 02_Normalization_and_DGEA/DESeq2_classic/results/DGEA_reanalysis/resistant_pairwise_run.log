@@ -1,0 +1,189 @@
+found results columns, replacing these
+using 'apeglm' for LFC shrinkage. If used in published research, please cite:
+    Zhu, A., Ibrahim, J.G., Love, M.I. (2018) Heavy-tailed prior distributions for
+    sequence count data: removing the noise and preserving large differences.
+    Bioinformatics. https://doi.org/10.1093/bioinformatics/bty895
+computing FSOS 'false sign or small' s-values (T=1)
+V1 canonical reproduction: max|dLFC| 4.97e-14, max|dp| 5.55e-16, DE mismatches 0
+found results columns, replacing these
+using 'apeglm' for LFC shrinkage. If used in published research, please cite:
+    Zhu, A., Ibrahim, J.G., Love, M.I. (2018) Heavy-tailed prior distributions for
+    sequence count data: removing the noise and preserving large differences.
+    Bioinformatics. https://doi.org/10.1093/bioinformatics/bty895
+computing FSOS 'false sign or small' s-values (T=1)
+found results columns, replacing these
+using 'apeglm' for LFC shrinkage. If used in published research, please cite:
+    Zhu, A., Ibrahim, J.G., Love, M.I. (2018) Heavy-tailed prior distributions for
+    sequence count data: removing the noise and preserving large differences.
+    Bioinformatics. https://doi.org/10.1093/bioinformatics/bty895
+computing FSOS 'false sign or small' s-values (T=1)
+Rpv12_vs_Rpv12+1 0h: V2 max|dMLE| 0.0051 | V3 max|LFC+rev| 0.01, max|dp| 0.002, sign conflicts 0, direction-dependent DE calls 136 | V4 sign agreement 1.00 | DE 2554 (up 1198, down 1356), DE both directions 2498
+found results columns, replacing these
+using 'apeglm' for LFC shrinkage. If used in published research, please cite:
+    Zhu, A., Ibrahim, J.G., Love, M.I. (2018) Heavy-tailed prior distributions for
+    sequence count data: removing the noise and preserving large differences.
+    Bioinformatics. https://doi.org/10.1093/bioinformatics/bty895
+computing FSOS 'false sign or small' s-values (T=1)
+found results columns, replacing these
+using 'apeglm' for LFC shrinkage. If used in published research, please cite:
+    Zhu, A., Ibrahim, J.G., Love, M.I. (2018) Heavy-tailed prior distributions for
+    sequence count data: removing the noise and preserving large differences.
+    Bioinformatics. https://doi.org/10.1093/bioinformatics/bty895
+computing FSOS 'false sign or small' s-values (T=1)
+Rpv12_vs_Rpv12+1 6h: V2 max|dMLE| 0.056 | V3 max|LFC+rev| 0.055, max|dp| 0.0059, sign conflicts 0, direction-dependent DE calls 160 | V4 sign agreement 1.00 | DE 1113 (up 565, down 548), DE both directions 1058
+found results columns, replacing these
+using 'apeglm' for LFC shrinkage. If used in published research, please cite:
+    Zhu, A., Ibrahim, J.G., Love, M.I. (2018) Heavy-tailed prior distributions for
+    sequence count data: removing the noise and preserving large differences.
+    Bioinformatics. https://doi.org/10.1093/bioinformatics/bty895
+computing FSOS 'false sign or small' s-values (T=1)
+found results columns, replacing these
+using 'apeglm' for LFC shrinkage. If used in published research, please cite:
+    Zhu, A., Ibrahim, J.G., Love, M.I. (2018) Heavy-tailed prior distributions for
+    sequence count data: removing the noise and preserving large differences.
+    Bioinformatics. https://doi.org/10.1093/bioinformatics/bty895
+computing FSOS 'false sign or small' s-values (T=1)
+  outside tolerance (3): Vitvi17g01564, Vitvi18g02927, Vitvi04g01674
+Rpv12_vs_Rpv12+1 24h: V2 max|dMLE| 1.6 | V3 max|LFC+rev| 1.6, max|dp| 0.15, sign conflicts 0, direction-dependent DE calls 89 | V4 sign agreement 1.00 | DE 2049 (up 829, down 1220), DE both directions 2003
+found results columns, replacing these
+using 'apeglm' for LFC shrinkage. If used in published research, please cite:
+    Zhu, A., Ibrahim, J.G., Love, M.I. (2018) Heavy-tailed prior distributions for
+    sequence count data: removing the noise and preserving large differences.
+    Bioinformatics. https://doi.org/10.1093/bioinformatics/bty895
+computing FSOS 'false sign or small' s-values (T=1)
+found results columns, replacing these
+using 'apeglm' for LFC shrinkage. If used in published research, please cite:
+    Zhu, A., Ibrahim, J.G., Love, M.I. (2018) Heavy-tailed prior distributions for
+    sequence count data: removing the noise and preserving large differences.
+    Bioinformatics. https://doi.org/10.1093/bioinformatics/bty895
+computing FSOS 'false sign or small' s-values (T=1)
+Rpv12_vs_Rpv12+1+3 0h: V2 max|dMLE| 0.0077 | V3 max|LFC+rev| 0.016, max|dp| 0.0018, sign conflicts 0, direction-dependent DE calls 53 | V4 sign agreement 1.00 | DE 6285 (up 4599, down 1686), DE both directions 6251
+found results columns, replacing these
+using 'apeglm' for LFC shrinkage. If used in published research, please cite:
+    Zhu, A., Ibrahim, J.G., Love, M.I. (2018) Heavy-tailed prior distributions for
+    sequence count data: removing the noise and preserving large differences.
+    Bioinformatics. https://doi.org/10.1093/bioinformatics/bty895
+computing FSOS 'false sign or small' s-values (T=1)
+found results columns, replacing these
+using 'apeglm' for LFC shrinkage. If used in published research, please cite:
+    Zhu, A., Ibrahim, J.G., Love, M.I. (2018) Heavy-tailed prior distributions for
+    sequence count data: removing the noise and preserving large differences.
+    Bioinformatics. https://doi.org/10.1093/bioinformatics/bty895
+computing FSOS 'false sign or small' s-values (T=1)
+  outside tolerance (2): Vitvi04g01674, Vitvi08g04333
+Rpv12_vs_Rpv12+1+3 6h: V2 max|dMLE| 0.15 | V3 max|LFC+rev| 0.15, max|dp| 0.031, sign conflicts 0, direction-dependent DE calls 205 | V4 sign agreement 1.00 | DE 817 (up 645, down 172), DE both directions 738
+found results columns, replacing these
+using 'apeglm' for LFC shrinkage. If used in published research, please cite:
+    Zhu, A., Ibrahim, J.G., Love, M.I. (2018) Heavy-tailed prior distributions for
+    sequence count data: removing the noise and preserving large differences.
+    Bioinformatics. https://doi.org/10.1093/bioinformatics/bty895
+computing FSOS 'false sign or small' s-values (T=1)
+found results columns, replacing these
+using 'apeglm' for LFC shrinkage. If used in published research, please cite:
+    Zhu, A., Ibrahim, J.G., Love, M.I. (2018) Heavy-tailed prior distributions for
+    sequence count data: removing the noise and preserving large differences.
+    Bioinformatics. https://doi.org/10.1093/bioinformatics/bty895
+computing FSOS 'false sign or small' s-values (T=1)
+  outside tolerance (1): Vitvi16g04475
+Rpv12_vs_Rpv12+1+3 24h: V2 max|dMLE| 3.9 | V3 max|LFC+rev| 7.9, max|dp| 0.084, sign conflicts 0, direction-dependent DE calls 64 | V4 sign agreement 1.00 | DE 4203 (up 2443, down 1760), DE both directions 4171
+found results columns, replacing these
+using 'apeglm' for LFC shrinkage. If used in published research, please cite:
+    Zhu, A., Ibrahim, J.G., Love, M.I. (2018) Heavy-tailed prior distributions for
+    sequence count data: removing the noise and preserving large differences.
+    Bioinformatics. https://doi.org/10.1093/bioinformatics/bty895
+computing FSOS 'false sign or small' s-values (T=1)
+found results columns, replacing these
+using 'apeglm' for LFC shrinkage. If used in published research, please cite:
+    Zhu, A., Ibrahim, J.G., Love, M.I. (2018) Heavy-tailed prior distributions for
+    sequence count data: removing the noise and preserving large differences.
+    Bioinformatics. https://doi.org/10.1093/bioinformatics/bty895
+computing FSOS 'false sign or small' s-values (T=1)
+Rpv12+1_vs_Rpv12+1+3 0h: V2 max|dMLE| 0.0068 | V3 max|LFC+rev| 0.0076, max|dp| 0.0024, sign conflicts 0, direction-dependent DE calls 63 | V4 sign agreement 1.00 | DE 6150 (up 4665, down 1485), DE both directions 6109
+found results columns, replacing these
+using 'apeglm' for LFC shrinkage. If used in published research, please cite:
+    Zhu, A., Ibrahim, J.G., Love, M.I. (2018) Heavy-tailed prior distributions for
+    sequence count data: removing the noise and preserving large differences.
+    Bioinformatics. https://doi.org/10.1093/bioinformatics/bty895
+computing FSOS 'false sign or small' s-values (T=1)
+found results columns, replacing these
+using 'apeglm' for LFC shrinkage. If used in published research, please cite:
+    Zhu, A., Ibrahim, J.G., Love, M.I. (2018) Heavy-tailed prior distributions for
+    sequence count data: removing the noise and preserving large differences.
+    Bioinformatics. https://doi.org/10.1093/bioinformatics/bty895
+computing FSOS 'false sign or small' s-values (T=1)
+  outside tolerance (2): Vitvi17g01564, Vitvi04g01674
+Rpv12+1_vs_Rpv12+1+3 6h: V2 max|dMLE| 0.31 | V3 max|LFC+rev| 0.31, max|dp| 0.025, sign conflicts 0, direction-dependent DE calls 140 | V4 sign agreement 1.00 | DE 2013 (up 1483, down 530), DE both directions 1954
+found results columns, replacing these
+using 'apeglm' for LFC shrinkage. If used in published research, please cite:
+    Zhu, A., Ibrahim, J.G., Love, M.I. (2018) Heavy-tailed prior distributions for
+    sequence count data: removing the noise and preserving large differences.
+    Bioinformatics. https://doi.org/10.1093/bioinformatics/bty895
+computing FSOS 'false sign or small' s-values (T=1)
+found results columns, replacing these
+using 'apeglm' for LFC shrinkage. If used in published research, please cite:
+    Zhu, A., Ibrahim, J.G., Love, M.I. (2018) Heavy-tailed prior distributions for
+    sequence count data: removing the noise and preserving large differences.
+    Bioinformatics. https://doi.org/10.1093/bioinformatics/bty895
+computing FSOS 'false sign or small' s-values (T=1)
+  outside tolerance (2): Vitvi15g04032, Vitvi04g01674
+Rpv12+1_vs_Rpv12+1+3 24h: V2 max|dMLE| 0.13 | V3 max|LFC+rev| 0.087, max|dp| 0.01, sign conflicts 0, direction-dependent DE calls 102 | V4 sign agreement 1.00 | DE 2271 (up 1564, down 707), DE both directions 2222
+              contrast time_hpi n_tested   DE up_first down_first
+1     Rpv12_vs_Rpv12+1        0    24636 2554     1198       1356
+2     Rpv12_vs_Rpv12+1        6    24129 1113      565        548
+3     Rpv12_vs_Rpv12+1       24    24129 2049      829       1220
+4   Rpv12_vs_Rpv12+1+3        0    24129 6285     4599       1686
+5   Rpv12_vs_Rpv12+1+3        6    23622  817      645        172
+6   Rpv12_vs_Rpv12+1+3       24    24636 4203     2443       1760
+7 Rpv12+1_vs_Rpv12+1+3        0    24636 6150     4665       1485
+8 Rpv12+1_vs_Rpv12+1+3        6    24129 2013     1483        530
+9 Rpv12+1_vs_Rpv12+1+3       24    24129 2271     1564        707
+  DE_both_directions genes_outside_tolerance DE_direction_dependent
+1               2498                       0                    136
+2               1058                       0                    160
+3               2003                       3                     89
+4               6251                       0                     53
+5                738                       2                    205
+6               4171                       1                     64
+7               6109                       0                     63
+8               1953                       2                    140
+9               2222                       2                    102
+  zero_both_groups V2_max_abs_diff V3_max_abs_diff V3_max_p_diff
+1              599     0.005076584     0.010045464   0.002027584
+2              521     0.056230625     0.055448440   0.005898955
+3              363     1.565604776     1.559847777   0.148716274
+4              974     0.007661635     0.016496005   0.001836075
+5              712     0.151230873     0.151195917   0.031036851
+6              367     3.902656686     7.938075590   0.083642922
+7              747     0.006849935     0.007579014   0.002389060
+8              735     0.314296990     0.314299605   0.024883193
+9              437     0.131157405     0.087213251   0.010006059
+  V3_sign_conflicts V4_sign_agreement
+1                 0                 1
+2                 0                 1
+3                 0                 1
+4                 0                 1
+5                 0                 1
+6                 0                 1
+7                 0                 1
+8                 0                 1
+9                 0                 1
+              contrast time_hpi      first       second first_batches
+1     Rpv12_vs_Rpv12+1        0    Rpv12.0    Rpv12.1.0            B1
+2     Rpv12_vs_Rpv12+1        6    Rpv12.6    Rpv12.1.6         B1+B2
+3     Rpv12_vs_Rpv12+1       24   Rpv12.24   Rpv12.1.24            B2
+4   Rpv12_vs_Rpv12+1+3        0    Rpv12.0  Rpv12.1.3.0            B1
+5   Rpv12_vs_Rpv12+1+3        6    Rpv12.6  Rpv12.1.3.6         B1+B2
+6   Rpv12_vs_Rpv12+1+3       24   Rpv12.24 Rpv12.1.3.24            B2
+7 Rpv12+1_vs_Rpv12+1+3        0  Rpv12.1.0  Rpv12.1.3.0            B1
+8 Rpv12+1_vs_Rpv12+1+3        6  Rpv12.1.6  Rpv12.1.3.6         B1+B2
+9 Rpv12+1_vs_Rpv12+1+3       24 Rpv12.1.24 Rpv12.1.3.24         B1+B2
+  second_batches
+1             B1
+2          B1+B2
+3          B1+B2
+4             B1
+5          B1+B2
+6          B1+B2
+7             B1
+8          B1+B2
+9          B1+B2

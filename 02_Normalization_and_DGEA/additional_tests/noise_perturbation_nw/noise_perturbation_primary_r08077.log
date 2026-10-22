@@ -1,0 +1,21 @@
+primary matrix: 9459 genes, 938485 reference edges
+primary noise=0.005 done
+primary noise=0.01 done
+primary noise=0.02 done
+primary noise=0.05 done
+reference edges: 938485 
+  noise n_edges.mean n_edges.min n_edges.max  n_edges.sd edge_recall.mean
+1 0.005  938266.3600 937870.0000 938606.0000    145.3637     9.962983e-01
+2 0.010  937678.5650 936950.0000 938334.0000    283.4965     9.924057e-01
+3 0.020  935226.6800 933887.0000 936367.0000    486.5397     9.839245e-01
+4 0.050  918368.9000 915008.0000 921757.0000   1285.6655     9.527228e-01
+  edge_recall.min edge_recall.max edge_recall.sd edge_jaccard.mean
+1    9.960479e-01    9.965103e-01   9.317208e-05      9.928543e-01
+2    9.919871e-01    9.928726e-01   1.667377e-04      9.857666e-01
+3    9.830141e-01    9.847946e-01   3.021193e-04      9.716778e-01
+4    9.505629e-01    9.547281e-01   8.283726e-04      9.287223e-01
+  edge_jaccard.min edge_jaccard.max edge_jaccard.sd
+1     9.926094e-01     9.930543e-01    8.707362e-05
+2     9.851786e-01     9.860673e-01    1.341158e-04
+3     9.711871e-01     9.723281e-01    2.098948e-04
+4     9.274469e-01     9.299331e-01    5.043192e-04

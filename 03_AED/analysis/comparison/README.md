@@ -16,7 +16,7 @@ construction and outlier robustness).
 unprotected-ComBat null files (`AgrDivergence_perturbedColumns_H0_t*`) —
 kept because `../combat_protected/scripts/AED_recompute_protected_null.R`
 documents a real bug this project caught: the manuscript's z-score
-comparability checks initially matched protected AggrDiv values against
+comparability checks initially matched protected AED values against
 these unprotected null files, the only null `DGE_bySFandCB_divergence.R`
 ever saved to disk. The fix (protected null) lives in
 `../combat_protected/tables/`.

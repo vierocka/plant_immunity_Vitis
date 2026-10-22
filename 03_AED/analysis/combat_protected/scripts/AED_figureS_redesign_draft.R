@@ -32,7 +32,7 @@ out_dir <- "03_AED/analysis/combat_protected/tables"
 
 geno_levels <- c("Susceptible", "Rpv12", "Rpv12+1", "Rpv12+1+3")
 geno_colors <- c(
-  "Susceptible" = "#4D4D4D",
+  "Susceptible" = "dimgray",   # 2026-10-22: same grey as the other figures
   "Rpv12"       = "#DAA520",
   "Rpv12+1"     = "#FA8072",
   "Rpv12+1+3"   = "#6495ED"

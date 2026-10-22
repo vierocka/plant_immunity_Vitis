@@ -10,9 +10,10 @@ per model — is not kept here). The curated, final results are in
 
 ## Aim
 
-Identify high-confidence candidate protein-protein interactions among
-immune-signaling genes, as structural support for the co-transcriptional
-network described in `06_PCNWA/`.
+Screen for possible protein-protein interactions among proteins encoded by
+immune-signaling genes of the co-transcriptional modules described in
+`06_PCNWA/`. The screen uses PN40024 v4 gene models; its receptor predictions
+depended on these models (see below).
 
 ## Motivation
 
@@ -91,13 +92,42 @@ category (13 variant types, present in 23/42 annotated genes).
 
 ## Brief summary of results
 
-Across the full screen: 10 novel high-confidence interactions, 44
+Across the full screen (PN40024 v4 gene models): 10 predicted interactions outside known complexes, 44
 positive-control pairs recovered, 10 pairs flagged and excluded as
 promiscuous, and 192 pairs with partial (not full 5-model) support. The
-core finding — a direct SOBIR1-LRIP1 interaction, homologous to the tomato
-receptor system — was resolved with strengthened confidence under the
-5-model criterion (ipTM 0.77-0.81 across all 5 models, mean PAE 7.80 Å).
+SOBIR1-LRIP1 pair, proposed a priori by homology to the tomato
+LeEIX2-SlSOBIR1 system, passed the five-model criterion (ipTM 0.77-0.81;
+mean contact-filtered PAE 7.80 Å, four models < 10 Å and one 18.7 Å). The
+five models come from the five AlphaFold2-Multimer parameter sets with a
+shared MSA, so they are not independent replicates.
+
+SOBIR1-LRIP1 interface by domain (`scripts/interface_domain_map.py`, contacts
+Cα-Cα < 8 Å, pLDDT ≥ 50; PAE from the scores JSONs): in all five models the
+confident interface (contact PAE 2.3-3.8 Å) is on the SOBIR1 extracellular
+LRR region (~residues 185-209). Kinase-domain contacts (2-116 per model) have
+PAE 20-26 Å, are topologically implausible for two membrane proteins, and
+explain the 18.7 Å model; no contacts involve the transmembrane helix.
+SOBIR1 map used: signal peptide 1-27, ectodomain 28-276, TM 277-313
+(GxxxGxxxG at 283/287), juxtamembrane 314-339, kinase 340-628. The grapevine
+LRIP1 model (410 aa) has no signal peptide and aligns to residues ~363-770 of
+Arabidopsis LRIP1 (905 aa), i.e. it is a fragment.
 Full per-pair numbers: `results/Supplementary_Table_8.xlsx`.
+
+**Gene-model dependence (2026-10-22).** Seven of the nine genes of the
+Figure 4A network have v4 models shorter than their Arabidopsis homologs.
+The ten pairs were predicted again (ColabFold 1.6.3, same settings and
+scoring) with the longest model of each locus from the GenBank or RefSeq
+annotation of the T2T assembly (GCA/GCF_030704535.1): none passed the
+strict criterion (eight without a consistent interface; RGI1-SOBIR1 and
+Vitvi09g04548-SOBIR1 weakened). The longer models are themselves
+unverified. EDS1-SAG101/PAD4 pairs with complete v4 models all passed.
+Results: Table S10 sheets `gene_models_network`, `gene_models_43`,
+`AF2_rerun_gene_models`, `gene_models_loci`.
+Scripts: `gene_models/` (run from the folder containing this repository, or
+set `VITIS_BASE`; `TMHMM_DIR` for TMHMM 2.0). Order: `gene_model_cross_annotation.py`
+(after `scripts/gene_model_audit.py`), `st10_gene_model_sheet.py`, `af2_rerun_scores.py`,
+`build_lrr_loci_workbook.py`. Reference annotations, the AF2 re-run output and
+intermediate results stay outside the repository.
 
 ## Contents
 
@@ -105,7 +135,16 @@ Full per-pair numbers: `results/Supplementary_Table_8.xlsx`.
 - `scripts/run_af2_multimer_example.sh` — one full worked example
   (SOBIR1 x LRIP1), install to prediction output; every other pair in the
   screen is the same command with a different input FASTA.
-- `full_example/` — the two input protein FASTAs for that example.
+- `full_example/` — the SOBIR1 × LRIP1 example: the two input FASTAs and
+  `SOBIR1_LRIP1_interface_residues_by_domain.tsv` (interface residues of the five
+  models mapped to SOBIR1 domains). The model files (five PDBs, score and PAE JSONs,
+  MSA; 68 MB) are not kept in the repository; available on request.
+- `scripts/st10_edge_categories.py` — labels the four candidate pairs from the receptor-family screen
+  (`reference/Vitis_vinifera/GG/colabfold_pairs_BRI1_BAK1_CLV1_BAM1_signaling.fa`) in Table S10.
+  Pair sources: within-module, cross-module, receptor-family screen (literature-based), plus control sets;
+  Figure 4A shows the source as edge line type.
+- `scripts/interface_domain_map.py` — interface residues per model, mapped to
+  SOBIR1 domains (`python3 scripts/interface_domain_map.py A B model*.pdb`).
 - `scripts/hmmscan_domain_prediction.sh` — Pfam-A domain annotation.
 - `results/Supplementary_Table_8.xlsx` — the manuscript's own curated
   results table (all sheets: positive hits, domain architecture,

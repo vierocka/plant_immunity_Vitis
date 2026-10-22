@@ -23,7 +23,7 @@ suppressPackageStartupMessages({
 
 output_dir <- "02_Normalization_and_DGEA"
 
-res <- read.csv(file.path(output_dir, "02_Normalization_and_DGEA/DESeq2_classic/results/DGEA_reanalysis/DESeq2_all_gene_results.csv"),
+res <- read.csv("02_Normalization_and_DGEA/DESeq2_classic/results/DGEA_reanalysis/DESeq2_all_gene_results.csv",  # 2026-10-16: path fixed (run from repo root)
                  stringsAsFactors = FALSE)
 res <- res[!is.na(res$padj_zero_null), ]
 
@@ -68,7 +68,7 @@ panelD <- ggplot(res, aes(x = log2FC_apeglm, y = neg_log10_padj, color = call)) 
             vjust = 2.2, size = 5, fontface = "bold", color = "#2166AC") +
   facet_grid(genotype ~ timing_label) +
   scale_color_manual(values = call_colors, name = NULL) +
-  labs(title = "D",  # plain-letter convention, matches A/B/C; full description: canonical DESeq2, vs. Susceptible, same hpi
+  labs(title = NULL,  # 2026-10-16: standalone Figure 3 -> no panel letter (was "D")
        x = expression(log[2]~"fold change (apeglm)"),
        y = expression(-log[10]~"(FDR)")) +
   guides(color = guide_legend(override.aes = list(size = 3, alpha = 1))) +
@@ -84,6 +84,9 @@ panelD <- ggplot(res, aes(x = log2FC_apeglm, y = neg_log10_padj, color = call)) 
 
 ggsave(file.path(output_dir, "Figure_2_PanelD_volcano_grid.png"), panelD, width = 12, height = 11, dpi = 300)
 ggsave(file.path(output_dir, "Figure_2_PanelD_volcano_grid.pdf"), panelD, width = 12, height = 11)
+fig_dir <- "../draft/Sections_by_VK/BMC_PlantBiology/Figures_main"   # manuscript Figure 3
+ggsave(file.path(fig_dir, "Figure_3.png"), panelD, width = 12, height = 11, dpi = 300)
+ggsave(file.path(fig_dir, "Figure_3.pdf"), panelD, width = 12, height = 11)
 
 cat("DE_primary counts per genotype x timing (Up/Down):\n")
 print(as.data.frame(n_labels[, c("genotype", "timing_label", "n_up", "n_down")]))

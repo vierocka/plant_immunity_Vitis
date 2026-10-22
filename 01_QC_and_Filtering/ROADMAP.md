@@ -16,11 +16,12 @@ destroying real biological signal.
 01_QC_and_Filtering/
 ├── QualityChecks_Trimming_Mapping.sh   HPC pipeline example: FastQC, Trimmomatic, STAR, featureCounts
 └── Batch_effects/
-    ├── read_checks.R, reads_overview.csv        Supplementary Figure 1: read-mapping QC vs. batch
+    ├── read_checks.R, reads_overview.csv        Additional file 2: Figure S1: read-mapping QC vs. batch;
+    │                                             mapping-efficiency model (batch + time + genotype)
     ├── batch_effects.R                          DESeq2/ComBat matrices, PC1-vs-batch diagnostics;
     │                                             also writes data_files/Rlogs_ComBat_protected.csv,
     │                                             used downstream by 03_AED and 06_PCNWA
-    ├── Batch_test_combined_v2.R + outputs        Supplementary Figure 2: PCA under 7 normalization/
+    ├── Batch_test_combined_v2.R + outputs        Additional file 3: Figure S2: PCA under 7 normalization/
     │                                             batch-correction choices
     ├── simulation_study/                         separate scope (read-degradation simulation); ignored here
     └── exploratory_material/                     superseded figure drafts and uncited diagnostics,
@@ -29,5 +30,5 @@ destroying real biological signal.
 
 ## Order of use
 `QualityChecks_Trimming_Mapping.sh` (raw reads to counts) → `read_checks.R`
-(Supplementary Figure 1) → `batch_effects.R` (builds the corrected matrices)
-→ `Batch_test_combined_v2.R` (Supplementary Figure 2).
+(Additional file 2: Figure S1) → `batch_effects.R` (builds the corrected matrices)
+→ `Batch_test_combined_v2.R` (Additional file 3: Figure S2).

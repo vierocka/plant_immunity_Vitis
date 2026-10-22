@@ -1,7 +1,7 @@
 # AED deep-dive: null construction, gene concentration, and outlier robustness
 
 Follow-up to `DGE_bySFandCB_divergence.R`, prompted by questions about the null
-distribution's construction and what drives the AggrDiv signal. Read-only analyses —
+distribution's construction and what drives the AED signal. Read-only analyses —
 neither modifies nor replaces the original script or its outputs.
 
 Scripts: `AED_null_composition_and_gene_concentration_check.R` (null tracing + per-gene
@@ -23,7 +23,7 @@ timepoints. Confirmed identical principle in the Chitarrini cross-check script.
 
 `combn()` over all 12 same-timepoint samples necessarily reproduces each genotype's own
 true replicate triplet as a literal entry in the null (verified directly — the observed
-AggrDiv value for each genotype is found byte-identical inside its own null vector).
+AED value for each genotype is found byte-identical inside its own null vector).
 Because the SAME null vector is reused to test all 3 resistant genotypes at a given
 timepoint, one genotype's significance test is implicitly compared against the OTHER
 two genotypes' real divergence values too, not a "clean" no-effect null. At 0hpi, the
@@ -36,7 +36,7 @@ are real, substantial effects from the other genotypes.
 
 ## 3. Concentration: few-large, not many-small — but not a handful of outliers either
 
-Per-gene decomposition of AggrDiv (= mean of per-gene squared differences) across all 9
+Per-gene decomposition of AED (= mean of per-gene squared differences) across all 9
 genotype×timepoint cells:
 
 | | top 1% of genes | top 5% | top 10% | genes for 50% of total | genes for 90% |
@@ -46,7 +46,7 @@ genotype×timepoint cells:
 **Outlier-robustness check** (drop the top N genes entirely, recompute the mean over
 what's left):
 
-| cell | full AggrDiv | after dropping top 10 | top 20 | top 50 | top 100 |
+| cell | full AED | after dropping top 10 | top 20 | top 50 | top 100 |
 |---|---|---|---|---|---|
 | Rpv12@0h | 2.079 | 97.9% | 96.5% | 93.2% | 89.0% |
 | Rpv12+1@0h | 1.760 | 97.7% | 96.1% | 92.2% | 87.7% |
@@ -56,7 +56,7 @@ what's left):
 | Rpv12+1@24h | 1.518 | 97.5% | 95.6% | 91.0% | 85.4% |
 | Rpv12+1+3@24h | 1.568 | 97.4% | 95.5% | 91.0% | 86.0% |
 
-Even removing the 100 single highest-contributing genes, **85–89% of the AggrDiv value
+Even removing the 100 single highest-contributing genes, **85–89% of the AED value
 remains** in every significant cell. Conclusion: the divergence signal is not resting on
 a handful of outlier genes (10–20 genes would leave it almost entirely intact if
 removed) — it's a genuinely broad, hundreds-to-low-thousands-of-genes signature, just

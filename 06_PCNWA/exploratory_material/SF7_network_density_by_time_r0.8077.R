@@ -9,7 +9,7 @@
 
 suppressPackageStartupMessages(library(ggplot2))
 
-out_dir <- "../../draft/Sections_by_VK/MPMI/Supplementary_figures"
+out_dir <- "figures"   # 2026-10-22: superseded exploratory version (manuscript Figure S8 is built by the current density script)
 
 dens <- read.csv("network_density_by_timepoint_r0.8077_protected_9459panel.csv",
                   stringsAsFactors = FALSE)

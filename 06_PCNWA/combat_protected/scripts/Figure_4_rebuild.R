@@ -1,8 +1,10 @@
+# 2026-10-16: PAE edge classes shown as numerical ranges only (no confidence labels; reviewer).
+# 2026-10-16: renumbered to the manuscript (this script builds manuscript Figure 4; was Figure_5_rebuild.R); also copies
+# the PNG and PDF to BMC_PlantBiology/Figures_main/Figure_4.*
 # Figure 5 rebuild — SOBIR1/LRIP1-centered structural complex + EDS1-SAG101-PAD4
 # + domain composition + stickiness validation.
 #
-# The previous Figure_5.png (draft/Sections_by_VK/MPMI/Figures_main/) is a
-# hand-built schematic with no editable source (no pptx/ai found) — this
+# The earlier version of this figure was a hand-built schematic with no editable source; this
 # script recreates it from scratch with current values, verified 2026-08-28.
 #
 # Panel decisions:
@@ -53,7 +55,7 @@ bump  <- function(mm, pt) mm + pt * mm_pt
 # ── Panel A: SOBIR1/LRIP1 9-gene / 10-edge network ───────────────────────────
 
 nodesA <- data.frame(
-  id    = c("SOBIR1","LRIP1","01g04416","09g04548","RLP34","RGI1","GSO2","BAK1","MRH1"),
+  id    = c("SOBIR1","LRIP1","01g04416","09g04548","RLP34","RGI1","GSO2","BAK1-like","MRH1"),  # 2026-10-15: BAK1-like (Vitvi12g01277 fragment)
   role  = c("anchor","anchor", rep("partner",7)),
   de0h  = c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE),
   x = c(0.22, 0.80,  0.05, 0.35,  0.95, 0.05,  0.20, 0.55, 1.00),
@@ -62,24 +64,40 @@ nodesA <- data.frame(
 
 edgesA <- data.frame(
   from = c("01g04416","09g04548","RLP34","RGI1","01g04416","01g04416","09g04548","01g04416","LRIP1","LRIP1"),
-  to   = c("09g04548","SOBIR1","LRIP1","SOBIR1","GSO2","BAK1","BAK1","LRIP1","MRH1","SOBIR1"),
+  to   = c("09g04548","SOBIR1","LRIP1","SOBIR1","GSO2","BAK1-like","BAK1-like","LRIP1","MRH1","SOBIR1"),
   ipTM = c(0.82,0.82,0.82,0.80,0.80,0.79,0.79,0.77,0.83,0.79),
-  PAE  = c(2.83,9.91,2.33,8.35,3.53,1.85,1.68,3.95,8.92,7.80)
+  PAE  = c(2.83,9.91,2.33,8.35,3.53,1.85,1.68,3.95,8.92,7.80),
+  # 2026-10-22: pair source as declared in Table S10 (all_positive_hits, declared_category)
+  source = c("receptor family","within-module","within-module","within-module","receptor family",
+             "receptor family","receptor family","within-module","cross-module","cross-module")   # receptor family = receptor-family screen
 )
-edgesA$tier <- cut(edgesA$PAE, breaks = c(-Inf,3,5,10), labels = c("< 3 Å (very high)","3–5 Å (high)","5–10 Å (moderate)"))
+edgesA$tier <- cut(edgesA$PAE, breaks = c(-Inf,3,5,10), labels = c("< 3 Å","3–5 Å","5–10 Å"))
+edgesA$source <- factor(edgesA$source, levels = c("within-module","cross-module","receptor family"))
 
 gA <- graph_from_data_frame(edgesA, directed = FALSE, vertices = nodesA$id)
 V(gA)$role <- setNames(nodesA$role, nodesA$id)[V(gA)$name]
 V(gA)$de0h <- setNames(nodesA$de0h, nodesA$id)[V(gA)$name]
+# 2026-10-19: "‡" = PN40024 v4 gene model differs from its closest Arabidopsis homolog (> 25 residues of the homolog
+# missing at either end of the best BLASTP alignment; PPIs/scripts/gene_model_audit.py). SOBIR1 and MRH1 are unaffected.
+modelA_differs <- c("LRIP1","01g04416","09g04548","RLP34","RGI1","GSO2","BAK1-like")
+V(gA)$lab <- ifelse(V(gA)$name %in% modelA_differs, paste0(V(gA)$name, "‡"), V(gA)$name)
 layoutA <- create_layout(gA, layout = "manual", x = nodesA$x, y = nodesA$y)
 
 Pa <- ggraph(layoutA) +
-  geom_edge_link(aes(color = tier, label = PAE), width = 1.1,
+  geom_edge_link(aes(color = tier, label = PAE, edge_linetype = source), width = 1.1,
                   angle_calc = "along", label_dodge = unit(3, "mm"),
                   label_size = bump(3.7, 2.75), label_colour = "grey20") +
+  scale_edge_linetype_manual(values = c("within-module" = "solid", "cross-module" = "dashed",
+                                        "receptor family" = "dotted"), name = "Pair source",
+                             guide = guide_legend(order = 3, nrow = 3, title.position = "top", title.hjust = 0.5,
+                                                  keywidth = unit(14, "mm"), override.aes = list(edge_width = 1.1))) +
   geom_node_point(aes(fill = role), shape = 21, size = 30, color = "grey20", stroke = 1) +
-  geom_node_text(aes(label = name), size = bump(3.75, 2.75), fontface = "bold", color = "white",
+  geom_node_text(aes(label = lab, filter = !name %in% modelA_differs), size = bump(3.75, 2.75), fontface = "bold", color = "white",
                  nudge_y = 0, lineheight = 0.8) +
+  geom_node_text(aes(label = lab, filter = name %in% modelA_differs), size = bump(3.75, 2.75) * 0.82, fontface = "bold", color = "white",
+                 nudge_y = 0, lineheight = 0.8) +   # marked labels slightly smaller so they stay inside the node
+  annotate("text", x = 1.02, y = -0.12, hjust = 1, size = bump(3.4, 2.75), color = "grey20",
+           label = "‡ gene model shorter than its Arabidopsis homolog\nEdges predicted from PN40024 v4 gene models;\nnot reproduced with longer gene models (Table S10)") +   # 2026-10-22 reframing
   geom_node_text(aes(label = ifelse(de0h, "$", "")), size = 6, fontface = "bold",
                  color = de_true_col, nudge_x = 0.05, nudge_y = 0.055) +
   geom_node_text(
@@ -106,7 +124,7 @@ Pa <- ggraph(layoutA) +
       )
     )
   ) +
-  scale_edge_color_manual(values = c("< 3 Å (very high)" = "#1b9e77", "3–5 Å (high)" = "#e6ab02", "5–10 Å (moderate)" = "#d95f02"),
+  scale_edge_color_manual(values = c("< 3 Å" = "#1b9e77", "3–5 Å" = "#e6ab02", "5–10 Å" = "#d95f02"),
                            name = "Contact-filtered PAE", guide = guide_legend(order = 2, nrow = 3, byrow = TRUE,
                                                                                title.position = "top",
                                                                                title.hjust = 0.5)) +
@@ -123,9 +141,9 @@ Pa <- ggraph(layoutA) +
     legend.box       = "horizontal",
     legend.box.just  = "top",
     legend.box.margin = margin(t = 6),
-    legend.spacing.x = unit(8, "mm"),
-    legend.text      = element_text(size = 16),
-    legend.title     = element_text(size = 16, face = "bold"),
+    legend.spacing.x = unit(4, "mm"),
+    legend.text      = element_text(size = 15),
+    legend.title     = element_text(size = 15, face = "bold"),
     plot.margin      = margin(8, 4, 4, 4),
     plot.caption     = ggtext::element_markdown(size = 16, color = "grey30", hjust = 0.5)
   )
@@ -140,21 +158,25 @@ domain_box <- function(x0, x1, y, h, fill, label, txt_col = "grey10", txt_size =
 }
 
 Pb1 <- ggplot() +
+  # 2026-10-19 redraw (Bar et al. 2010; Liebrand et al. 2013): EIX binds both LeEIX1 and LeEIX2; only LeEIX2 signals and
+  # associates with SlSOBIR1; BAK1 binds the decoy LeEIX1 (not LeEIX2); EIX induces a LeEIX1-LeEIX2 heterodimer (dashed).
   annotate("text", x = 0.6, y = 4.4, label = "tomato", fontface = "bold.italic", size = bump(3.75, 3.2), hjust = 0) +
-  # EIX/LeEIX2/LeEIX1/BAK1 boxes all 1.3x wider (width only, same center/height)
-  domain_box(0.5, 1.9, 3.35, 1.15, "#fdae6b", "EIX\nxylanase\nelicitor", txt_size = bump(3, 3.2)) +
-  domain_box(2.4, 3.85, 4.1, 0.9, "grey90", "LeEIX2\n(RLP)", txt_size = bump(3, 3.2)) +
-  domain_box(2.1, 3.85, 2.3, 0.9, "grey90", "LeEIX1\n(RLP, decoy)", txt_size = bump(3, 3.2)) +
-  domain_box(4.0, 7.0, 3, 1.4, "grey95", "") +
-  annotate("text", x = 5.5, y = 4.0, label = "SlSOBIR1", fontface = "bold", size = bump(3.2, 3)) +
-  domain_box(4.2, 5.1, 2.9, 0.7, "#9ecae1", "LRR", txt_size = bump(3, 3.2)) +
-  domain_box(5.1, 6.0, 2.9, 0.7, "#fc9272", "Kinase", txt_size = bump(3, 3.2)) +
-  domain_box(6.0, 6.9, 2.9, 0.7, "#9ecae1", "LRR", txt_size = bump(3, 3.2)) +
-  domain_box(7.25, 8.55, 3, 0.7, "grey90", "BAK1\n(RLK)", txt_size = bump(3, 3.2)) +
-  annotate("segment", x = 2.15, xend = 2.48, y = 3.8, yend = 3.8, linewidth = 0.6) +
-  annotate("segment", x = 1.85, xend = 2.18, y = 2.2, yend = 2.2, linewidth = 0.6) +
-  annotate("segment", x = 3.65, xend = 4.0, y = 3, yend = 3, linewidth = 0.6) +
-  annotate("segment", x = 7.0, xend = 7.25, y = 3, yend = 3, linewidth = 0.6) +
+  domain_box(0.5, 1.9, 3.1, 1.15, "#fdae6b", "EIX\nxylanase\nelicitor", txt_size = bump(3, 3.2)) +
+  domain_box(2.4, 3.85, 3.9, 0.9, "grey90", "LeEIX2\n(RLP)", txt_size = bump(3, 3.2)) +
+  domain_box(2.4, 3.85, 1.95, 0.9, "grey90", "LeEIX1\n(RLP, decoy)", txt_size = bump(3, 3.2)) +
+  domain_box(4.3, 7.3, 3.55, 1.1, "grey95", "") +
+  annotate("text", x = 5.8, y = 4.3, label = "SlSOBIR1", fontface = "bold", size = bump(3.2, 3)) +
+  # SOBIR1 = extracellular LRRs, transmembrane segment (GxxxG motif), cytoplasmic kinase (Bi et al. 2015 MPP)
+  domain_box(4.45, 5.6, 3.5, 0.6, "#9ecae1", "LRR", txt_size = bump(3, 3.2)) +
+  domain_box(5.6, 6.0, 3.5, 0.6, "grey60", "TM", txt_size = bump(2.4, 2.6)) +
+  domain_box(6.0, 7.15, 3.5, 0.6, "#fc9272", "Kinase", txt_size = bump(3, 3.2)) +
+  domain_box(4.3, 5.6, 1.95, 0.7, "grey90", "BAK1\n(RLK)", txt_size = bump(3, 3.2)) +
+  annotate("segment", x = 1.9, xend = 2.4, y = 3.45, yend = 3.8, linewidth = 0.6) +   # EIX -> LeEIX2
+  annotate("segment", x = 1.9, xend = 2.4, y = 2.75, yend = 2.1, linewidth = 0.6) +   # EIX -> LeEIX1
+  annotate("segment", x = 3.85, xend = 4.3, y = 3.75, yend = 3.75, linewidth = 0.6) + # LeEIX2 - SlSOBIR1
+  annotate("segment", x = 3.85, xend = 4.3, y = 1.95, yend = 1.95, linewidth = 0.6) + # LeEIX1 - BAK1
+  annotate("segment", x = 2.65, xend = 2.65, y = 2.4, yend = 3.45, linewidth = 0.6, linetype = "dashed") +
+  annotate("text", x = 2.75, y = 2.92, label = "EIX-induced\nheterodimer", hjust = 0, size = bump(2.5, 2.7), color = "grey30", lineheight = 0.85) +
   annotate("text", x = 5.5, y = 0.9, label = "tomato (Solanum lycopersicum)\nBar et al. 2010; Liebrand et al. 2013",
            size = bump(3.5, 3), fontface = "italic", color = "grey40") +
   coord_cartesian(xlim = c(0.5, 9), ylim = c(0.3, 4.6), clip = "off") +
@@ -166,12 +188,12 @@ Pb1 <- ggplot() +
 Pb2 <- ggplot() +
   annotate("text", x = 0.6, y = 4.4, label = "Arabidopsis", fontface = "bold.italic", size = bump(3.75, 3.2), hjust = 0) +
   # LRIP1 box 1.3x wider
-  domain_box(2.05, 3.65, 3, 1.125, "grey90", "LRIP1\n(RLP,\nLRR-only)", txt_size = bump(2.8, 3)) +
+  domain_box(2.05, 3.65, 3, 1.125, "grey90", "LRIP1\n(LRR-only)", txt_size = bump(2.8, 3)) +
   domain_box(4.0, 7.0, 3, 1.4, "grey95", "") +
   annotate("text", x = 5.5, y = 4.0, label = "SOBIR1", fontface = "bold", size = bump(3.2, 3)) +
-  domain_box(4.1, 5.1, 2.9, 0.7, "#9ecae1", "LRR", txt_size = bump(2.8, 3)) +
-  domain_box(5.0, 6.0, 2.9, 0.7, "#fc9272", "Kinase", txt_size = bump(2.8, 3)) +
-  domain_box(6.0, 6.9, 2.9, 0.7, "#9ecae1", "LRR", txt_size = bump(2.8, 3)) +
+  domain_box(4.15, 5.3, 2.9, 0.7, "#9ecae1", "LRR", txt_size = bump(2.8, 3)) +   # SOBIR1 architecture as in tomato panel
+  domain_box(5.3, 5.7, 2.9, 0.7, "grey60", "TM", txt_size = bump(2.4, 2.6)) +
+  domain_box(5.7, 6.85, 2.9, 0.7, "#fc9272", "Kinase", txt_size = bump(2.8, 3)) +
   # BAK1 box: connecting line to SOBIR1 made 1.5x longer (0.5 -> 0.75, box left edge 7.5 -> 7.75),
   # then box itself widened 1.3x (width 1.4 -> 1.82)
   domain_box(8, 10, 3.2, 1.1, "grey90", "BAK1\n(SERK\nco-receptor)", txt_size = bump(2.8, 3)) +
@@ -209,10 +231,14 @@ edgesC <- data.frame(
   ipTM = c(0.87, 0.88, 0.77, 0.87, 0.86, 0.84, 0.88),
   PAE  = c(3.09, 2.84, 4.76, 3.21, 2.12, 2.70, 2.77)
 )
-edgesC$tier <- cut(edgesC$PAE, breaks = c(-Inf,3,5,10), labels = c("< 3 Å (very high)","3–5 Å (high)","5–10 Å (moderate)"))
+edgesC$tier <- cut(edgesC$PAE, breaks = c(-Inf,3,5,10), labels = c("< 3 Å","3–5 Å","5–10 Å"))
 
 gC <- graph_from_data_frame(edgesC, directed = FALSE, vertices = nodesC$id)
 V(gC)$role <- setNames(nodesC$role, nodesC$id)[V(gC)$name]
+# 2026-10-19: "‡" as in panel A: EDS1 (Vitvi17g04216, C-terminus), SAG101-III (Vitvi14g03031, N-terminus),
+# SAG101-V (Vitvi14g04642, C-terminus) and the divergent paralog (Vitvi14g03033, C-terminus).
+modelC_differs <- c("EDS1","SAG101-III","SAG101-V","SAG101-like†")
+V(gC)$lab <- ifelse(V(gC)$name %in% modelC_differs, paste0(V(gC)$name, "‡"), V(gC)$name)
 layoutC <- create_layout(gC, layout = "manual", x = nodesC$x, y = nodesC$y)
 
 Pc_net <- ggraph(layoutC) +
@@ -220,8 +246,9 @@ Pc_net <- ggraph(layoutC) +
                  angle_calc = "along", label_dodge = unit(3, "mm"),
                  label_size = bump(3.7, 2.75), label_colour = "grey20") +
   geom_node_point(aes(fill = role), shape = 21, size =  37, color = "grey20", stroke = 1) +
-  geom_node_text(aes(label = name), size = bump(3.6, 2.7), fontface = "bold", color = "white", lineheight = 0.8) +
-  scale_edge_color_manual(values = c("< 3 Å (very high)" = "#1b9e77","3–5 Å (high)" = "#e6ab02","5–10 Å (moderate)" = "#d95f02"), guide = "none") +
+  geom_node_text(aes(label = lab, filter = !name %in% modelC_differs), size = bump(3.6, 2.7), fontface = "bold", color = "white", lineheight = 0.8) +
+  geom_node_text(aes(label = lab, filter = name %in% modelC_differs), size = bump(3.6, 2.7) * 0.85, fontface = "bold", color = "white", lineheight = 0.8) +
+  scale_edge_color_manual(values = c("< 3 Å" = "#1b9e77","3–5 Å" = "#e6ab02","5–10 Å" = "#d95f02"), guide = "none") +
   scale_fill_manual(values = c(anchor = alpha("firebrick", 0.5), partner = "#74c476",
                                 partner_dagger = "#238b45", partner_pad4 = alpha("dimgray", 0.5)),
                      labels = c(anchor = "EDS1", partner = "SAG101-like paralog",
@@ -245,8 +272,9 @@ Pc_text <- ggplot() +
            label = paste0(
              "SAG101-I = Vitvi05g00062\n SAG101-II = Vitvi14g03030\n SAG101-III = Vitvi14g03031\n",
              "SAG101-IV = Vitvi14g03032\nSAG101-V = Vitvi14g04642\n",
-             "† SAG101-like divergent paralog:\n retains the Lipase_3 domain only\n lacks EDS1_EP")) +
-  coord_cartesian(xlim = c(0, 1), ylim = c(0, 3.2), clip = "off") +
+             "† SAG101-like divergent paralog:\n retains the Lipase_3 domain only\n lacks EDS1_EP\n",
+             "‡ gene model shorter than its\n Arabidopsis homolog")) +
+  coord_cartesian(xlim = c(0, 1), ylim = c(-0.4, 3.2), clip = "off") +
   theme_void()
 
 Pc <- plot_grid(Pc_net, Pc_text, ncol = 2, rel_widths = c(1, 0.5))
@@ -259,27 +287,28 @@ Pc <- plot_grid(Pc_net, Pc_text, ncol = 2, rel_widths = c(1, 0.5))
 # unique common gene names (the 6 SAG101-family paralogs collapse to one
 # "SAG101" entry, since they share the same common name).
 
+# 2026-10-15: rebuilt from ST8 sheet 3 after the strict Pfam filter (domain_filter_ST8.py; genome-wide hmmscan):
+# genes per category, Pfam models listed; no "types" / "% share" columns (reviewer).
 domD <- data.frame(
-  category = c("LRR (leucine-rich repeat)","Kinase","EDS1/PAD4/SAG101 family"),
-  pct      = c("33.3%","33.3%","33.3%"),
-  types    = c("2","2","2"),
-  genes    = c("LRIP1, Vitvi01g04416, Vitvi09g04548,\nRLP34, RGI1, GSO2, BAK1",
-               "SOBIR1, MRH1", "EDS1, SAG101, PAD4")
+  category = c("Leucine-rich repeat\n(LRRNT_2, LRR_4, LRR_6, LRR_8)", "Protein kinase\n(Pkinase, PK_Tyr_Ser-Thr)",
+               "EDS1/PAD4/SAG101 family\n(EDS1_EP, Lipase_3)"),
+  n        = c("9", "2", "8"),
+  genes    = c("LRIP1, Vitvi01g04416, Vitvi09g04548,\nRLP34, RGI1, GSO2, BAK1-like,\nSOBIR1, MRH1",
+               "SOBIR1, MRH1", "EDS1, PAD4,\nSAG101-like (6 paralogs)")
 )
 
-col_xD <- c(0, 6.3, 8.6, 10.6)
+col_xD <- c(0, 8.2, 9.6)
 nD <- nrow(domD)
-row_yD <- c(4.4, 3.3, 2.3)   # uneven spacing: extra room under the 7-gene LRR row
+row_yD <- c(4.2, 2.8, 1.6)
 
 Pd <- ggplot(domD) +
-  annotate("text", x = col_xD[1], y = row_yD, label = domD$category, hjust = 0, size = bump(3, 6), fontface = "italic") +
-  annotate("text", x = col_xD[2], y = row_yD, label = domD$types, hjust = 0.5, size = bump(3, 6)) +
-  annotate("text", x = col_xD[3], y = row_yD, label = domD$pct, hjust = 0.5, size = bump(3, 6), fontface = "bold") +
-  annotate("text", x = col_xD[4], y = row_yD, label = domD$genes, hjust = 0, vjust = 0.5, lineheight = 1.1, size = bump(3, 6)) +
-  annotate("text", x = col_xD, y = 5.4, label = c("Category","Types","% share","Unique genes"),
-           hjust = c(0,0.5,0.5,0), size = bump(3, 6), fontface = "bold") +
+  annotate("text", x = col_xD[1], y = row_yD, label = domD$category, hjust = 0, lineheight = 1.05, size = bump(3, 6), fontface = "italic") +
+  annotate("text", x = col_xD[2], y = row_yD, label = domD$n, hjust = 0.5, size = bump(3, 6), fontface = "bold") +
+  annotate("text", x = col_xD[3], y = row_yD, label = domD$genes, hjust = 0, vjust = 0.5, lineheight = 1.1, size = bump(3, 6)) +
+  annotate("text", x = col_xD, y = 5.4, label = c("Domain category (Pfam models)", "Genes", "Genes carrying it"),
+           hjust = c(0, 0.5, 0), size = bump(3, 6), fontface = "bold") +
   geom_hline(yintercept = 5.05, linewidth = 0.5, color = "grey30") +
-  labs(title = "Domain composition — 17 genes, 3 categories (Panels A + C genes only)") +
+  labs(title = "Pfam domains of the 17 genes in panels A and C") +
   coord_cartesian(xlim = c(0.5, 19), ylim = c(0.2, 5.9), clip = "off") +
   theme_void(base_size = 18) +
   theme(
@@ -297,11 +326,11 @@ Pd <- ggplot(domD) +
 # A bar chart made the tiny 0.0%/2.1%/~0.2% differences look dramatic and
 # misleading; shown as a plain table instead.
 
-domE <- data.frame(
-  query   = c("SOBIR1","LRIP1","Negative controls"),
-  tested  = c("100","94","established baseline"),
-  passed  = c("0","2",""),
-  pct     = c("0.0%","2.1%","~0–0.4%")
+domE <- data.frame(  # 2026-10-15: third row = pre-specified TF negative-control set (0/366), not a mixed 0-0.6% range
+  query   = c("SOBIR1","LRIP1","TF negative-control set"),
+  tested  = c("100","94","366"),
+  passed  = c("0","2","0"),
+  pct     = c("0.0%","2.1%","0.0%")
 )
 
 # c(4.4, 3.3, 2.3)
@@ -315,7 +344,7 @@ Pe <- ggplot(domE) +
   annotate("text", x = col_x, y = n + 0.9, label = c("Query","Tested","Passed","Pass rate"),
            hjust = c(0,0.5,0.5,0.5), size = bump(3.75, 2.75), fontface = "bold") +
   geom_hline(yintercept = n + 0.65, linewidth = 0.5, color = "grey30") +
-  labs(title = "Stickiness validation (controlled 100-protein panel)") +
+  labs(title = "Promiscuity panel and negative-control set") +
   coord_cartesian(xlim = c(-0.1, 6.2), ylim = c(0.4, n + 1.2), clip = "off") +
   theme_void(base_size = 18) +
   theme(
@@ -339,10 +368,13 @@ combined <- plot_grid(
   labels = c("", "C", ""), label_size = 18
 ) + theme(plot.background = element_rect(fill = "white", color = NA))
 
-ggsave(file.path(outdir, "Figure_5_rebuild.png"), combined, width = 42, height = 36, units = "cm", dpi = 300)
-ggsave(file.path(outdir, "Figure_5_rebuild.tiff"), combined, width = 42, height = 36, units = "cm", dpi = 600, compression = "lzw")
-cairo_pdf(file.path(outdir, "Figure_5_rebuild.pdf"), width = 42/2.54, height = 36/2.54)
+ggsave(file.path(outdir, "Figure_4_rebuild.png"), combined, width = 42, height = 36, units = "cm", dpi = 300)
+ggsave(file.path(outdir, "Figure_4_rebuild.tiff"), combined, width = 42, height = 36, units = "cm", dpi = 600, compression = "lzw")
+cairo_pdf(file.path(outdir, "Figure_4_rebuild.pdf"), width = 42/2.54, height = 36/2.54)
 print(combined)
 dev.off()
 
 message("Done. Files saved to: ", outdir)
+
+file.copy(file.path(outdir, c("Figure_4_rebuild.png", "Figure_4_rebuild.pdf")),
+          file.path("../draft/Sections_by_VK/BMC_PlantBiology/Figures_main", c("Figure_4.png", "Figure_4.pdf")), overwrite = TRUE)

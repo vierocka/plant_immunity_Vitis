@@ -1,0 +1,23 @@
+9459 / 9459 anchor genes present in this matrix.
+8485 / 9459 anchors have >= 3 partners at r >= 0.757.
+7299 / 9459 anchors have >= 3 partners at r >= 0.807742456485251.
+4252 / 9459 anchors have >= 3 partners at r >= 0.8839.
+       r n_partners.n n_partners.median n_partners.max
+1  0.757         8485               136           2726
+2 0.8077         7299                72           2040
+3 0.8839         4252                31           1005
+                       method pve_pc1.mean pve_pc1.median    pve_pc1.n
+1 correlation_modules_r0.8077    0.8475985      0.8462794 7299.0000000
+2      WGCNA_power8_protected    0.6061188      0.5873962   53.0000000
+17604 genes in the STRING-mapped universe used for permutation.
+Loading STRING physical links (PPI score)...
+  usable physical edges (both endpoints mapped): 434010
+Loading STRING detailed (filtered) links (coexpression + combined score)...
+  usable detailed edges (both endpoints mapped): 3964150
+         score_type                      method n_modules_tested frac_p_lt_0.05
+1      physical_ppi correlation_modules_r0.8077             3822          0.175
+2      physical_ppi      WGCNA_power8_protected               43          0.349
+3   detailed_coexpr correlation_modules_r0.8077             5567          0.153
+4   detailed_coexpr      WGCNA_power8_protected               52          0.173
+5 detailed_combined correlation_modules_r0.8077             5567          0.137
+6 detailed_combined      WGCNA_power8_protected               52          0.212
